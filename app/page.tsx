@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TrustStrip from "@/components/TrustStrip";
+import ServicesGrid from "@/components/ServicesGrid";
+import TarifsTeaser from "@/components/TarifsTeaser";
 import MobileCallBar from "@/components/MobileCallBar";
 
 export default function Home() {
@@ -10,6 +12,8 @@ export default function Home() {
       <main className="flex-1 pb-20 lg:pb-0">
         <Hero />
         <TrustStrip />
+        <ServicesGrid />
+        <TarifsTeaser />
       </main>
       <MobileCallBar />
     </>
