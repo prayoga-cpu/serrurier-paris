@@ -1,27 +1,33 @@
-import Link from "next/link";
+import { ButtonLink } from "@/components/Button";
+import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 
-export default function TarifsTeaser() {
+export default function TarifsTeaser({ lang }: { lang: Locale }) {
+  const dict = getDictionary(lang);
+
   return (
-    <section className="border-t border-ink/10 bg-ink">
-      <div className="mx-auto max-w-7xl px-6 py-16 text-paper lg:px-8">
-        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+    <section className="bg-paper">
+      <div className="mx-auto max-w-7xl px-6 pb-20 lg:px-8">
+        <div className="flex flex-col items-start justify-between gap-8 rounded-4xl bg-signal px-8 py-12 sm:flex-row sm:items-center sm:px-14">
           <div className="max-w-xl">
-            <h2 className="font-headline text-2xl font-semibold sm:text-3xl">
-              Le tarif que vous voyez est le tarif que vous payez
+            <span className="inline-flex items-center rounded-full bg-ink px-4 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-signal">
+              {dict.pricingTeaser.eyebrow}
+            </span>
+            <h2 className="mt-5 font-headline text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
+              {dict.pricingTeaser.title}
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-paper/70">
-              Aucun montant caché, aucune majoration surprise à l&apos;arrivée. La
-              grille tarifaire complète est publique, avec la base de calcul du
-              déplacement et de la main d&apos;œuvre.
+            <p className="mt-3 text-sm leading-relaxed text-ink/75">
+              {dict.pricingTeaser.body}
             </p>
           </div>
-          <Link
-            href="/tarifs"
+          <ButtonLink
+            href={localePath(lang, "/tarifs")}
             data-event="tarifs_view"
-            className="flex shrink-0 items-center justify-center gap-2 rounded-full bg-paper px-6 py-3.5 text-base font-semibold text-ink transition-opacity hover:opacity-90"
+            variant="secondary"
+            tone="light"
+            className="shrink-0 border-ink/25 bg-ink text-paper hover:border-ink hover:bg-ink-deep"
           >
-            Voir la grille tarifaire
-          </Link>
+            {dict.pricingTeaser.cta}
+          </ButtonLink>
         </div>
       </div>
     </section>

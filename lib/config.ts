@@ -7,18 +7,12 @@ export const DOMAIN = "parisunlockdoor.fr";
 export const PHONE_DISPLAY = "06 49 65 85 10";
 export const PHONE_HREF = "tel:+33649658510";
 
+// Paths are locale-agnostic — run them through localePath() to render.
+// Labels live in the dictionary, keyed by `key`. See lib/i18n.ts.
 export const NAV_LINKS = [
-  { label: "Accueil", href: "/" },
-  { label: "Services", href: "/#services" },
-  { label: "Tarifs", href: "/tarifs" },
-  { label: "Zones", href: "/#zones" },
-  { label: "Contact", href: "/contact" },
-] as const;
-
-export const REQUIRED_SERVICES = [
-  "Ouverture de porte",
-  "Changement de serrure",
-  "Blindage de porte",
-  "Serrure multipoints",
-  "Sécurisation après effraction",
+  { key: "home", path: "/" },
+  { key: "services", path: "/#services" },
+  { key: "pricing", path: "/tarifs" },
+  { key: "zones", path: "/#zones" },
+  { key: "contact", path: "/contact" },
 ] as const;

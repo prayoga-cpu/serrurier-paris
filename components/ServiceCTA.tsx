@@ -1,22 +1,22 @@
+import { ButtonAnchor, ButtonLink } from "@/components/Button";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/config";
+import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 
-export default function ServiceCTA() {
+export default function ServiceCTA({ lang }: { lang: Locale }) {
+  const dict = getDictionary(lang);
+
   return (
     <div className="flex flex-col gap-3 sm:flex-row">
-      <a
-        href={PHONE_HREF}
-        data-event="call_click"
-        className="flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-base font-semibold text-paper transition-opacity hover:opacity-90"
-      >
-        Appeler maintenant &mdash; {PHONE_DISPLAY}
-      </a>
-      <a
-        href="/devis"
+      <ButtonAnchor href={PHONE_HREF} data-event="call_click" variant="primary">
+        {dict.common.callNow} &mdash; {PHONE_DISPLAY}
+      </ButtonAnchor>
+      <ButtonLink
+        href={localePath(lang, "/devis")}
         data-event="devis_start"
-        className="flex items-center justify-center gap-2 rounded-full border border-ink/20 px-6 py-3.5 text-base font-semibold text-ink transition-colors hover:border-ink/40"
+        variant="secondary"
       >
-        Demander un devis
-      </a>
+        {dict.common.requestQuote}
+      </ButtonLink>
     </div>
   );
 }

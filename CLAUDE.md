@@ -2,7 +2,9 @@
 
 > **How to use this file.** Save it as `CLAUDE.md` at the repo root. Claude Code reads it automatically as project context. It is the single source of truth for scope, stack, and standards. When something here is marked 🔴 BLOCKER, do not hardcode a value, stop and ask.
 
-Built by PRIONATION.io | Priority Foundation. Client: Serrurier Paris Express (working name, see blockers). Prepared 20/07/2026.
+Built by PRIONATION.io | Priority Foundation. Client: Serrurier Paris Express (working name, see blockers). Prepared 20/07/2026 · **v1.1, updated 20/07/2026 with client questionnaire answers (Rani Orwan, 13/07/2026).**
+
+> **What changed in v1.1.** Client intake confirmed the direct-artisan positioning (not a lead broker), broadened the audience to include businesses and syndics, added two B2B services and a maintenance-contract line, upgraded /devis to quote-plus-booking, and added an installation guarantee as a trust asset. A full development TODO checklist is now at §14. Changes are marked 🆕 through the doc.
 
 ---
 
@@ -16,7 +18,7 @@ Three things must be confirmed by the client before or during Phase 0. Do not gu
 | 🔴 B2 | **Primary domain** | `parisunlockdoor.fr` is owned and clean. `parisunlockdoor.lovable.app` is throwaway. Build for the real domain. | Target `parisunlockdoor.fr`. Never ship anything pointing at `.lovable.app` |
 | 🔴 B3 | **Blindage price** | Prototype lists "Porte blindée +80€". Real market is €990+ HT. €80 reads as the exact scam pattern the brand fights. | Do not publish any blindage price until confirmed. Leave "sur devis" |
 
-Also unconfirmed, needed before launch, not before code: SIRET number, exact arrondissements served, real customer reviews, final logo and palette.
+Also unconfirmed, needed before launch, not before code: SIRET number, exact arrondissements served, real customer reviews.
 
 ---
 
@@ -26,9 +28,12 @@ A production locksmith website for the Paris market, built to be found (SEO + AI
 
 **Positioning.** Honest, transparent pricing in a market where the French consumer authority DGCCRF flagged anomalies in 60% of inspected home-repair providers, with locksmithing the most-reported sector. The whole brand is "the price we say is the price you pay." Every build decision serves that.
 
-**Two customer modes, designed for both:**
+**Audience (🆕 confirmed and broadened by client).** Not just consumers. Explicitly: *particuliers, commerçants, entreprises, syndics de copropriété*, ages 20–80. Businesses and syndics are a first-class target, not a later add-on.
+
+**Three modes, designed for all three:**
 - **Emergency** — locked out now, on a phone, panicking. Wants to call in one tap. Speed and reassurance.
-- **Planned** — lock upgrade, blindage, post-burglary. Wants a quote and proof of competence. Form and detail.
+- **Planned** — lock upgrade, blindage, post-burglary. Wants a quote and proof of competence. Form or booking.
+- 🆕 **B2B / recurring** — businesses and syndics needing premises security and maintenance contracts. Less price-sensitive, higher lifetime value. Wants proof of qualification, insurance, and reliability.
 
 **What this is not.** Not a call-center lead-broker. Not a template locksmith site. Not blue-and-orange with stock photos of hands holding keys.
 
@@ -44,6 +49,7 @@ Non-negotiable choices, they serve the SEO/AEO/GEO goals directly.
 | Styling | Tailwind CSS | Fast, consistent, matches PRIONATION workflow |
 | Hosting | Vercel | Static, fast, owned by client |
 | Forms | React Hook Form + Zod validation + Cloudflare Turnstile | Spam protection without friction |
+| 🆕 Booking | Online appointment flow (date/time slot picker) for planned jobs | Client asked for *prendre rendez-vous en ligne*, not just quote requests. See §6 |
 | Form backend | Notion API (or client's CRM), server route or edge function | Matches PRIONATION's existing pattern |
 | Analytics | GTM container → GA4 + Google Ads conversion linker | See §8 |
 | Call tracking | Dynamic number insertion or per-source tracking numbers | Calls are the primary conversion, they must be measurable |
@@ -63,10 +69,12 @@ Non-negotiable choices, they serve the SEO/AEO/GEO goals directly.
 │   ├── /services/changement-de-serrure      serrure + cylindre / barillet
 │   ├── /services/blindage-de-porte          🔴 price gated by B3
 │   ├── /services/serrure-multipoints
-│   └── /services/securisation-apres-effraction
+│   ├── /services/securisation-apres-effraction
+│   ├── /services/securisation-locaux-pro    🆕 B2B — premises security
+│   └── /services/contrats-maintenance       🆕 B2B/copro — recurring, highest LTV
 │
 ├── /tarifs                             full transparent price grid, the trust weapon
-├── /devis                              quote request tool, rebuilt (see §6)
+├── /devis                              🆕 quote + online booking flow, rebuilt (see §6)
 │
 ├── ZONES  (start with 6, expand later)
 │   ├── /serrurier-paris-1
@@ -95,7 +103,7 @@ Non-negotiable choices, they serve the SEO/AEO/GEO goals directly.
 
 **Zone choice is deliberate.** Paris intra-muros takes 4–8 months to rank. Outer/denser arrondissements move in 6–12 weeks. 1 and 2 for base credibility, 10/11/18/20 because they're winnable faster and full of renters. Early wins buy patience on the hard central zones.
 
-**Build order for pages:** home → 5 services → /tarifs → /devis → legal → zones → guides. Ship and index the money pages before the long tail.
+**Build order for pages:** home → 5 core services → /tarifs → /devis (with booking) → legal → 2 B2B services → zones → guides. Ship and index the consumer money pages before the B2B and long-tail pages.
 
 ---
 
@@ -111,9 +119,15 @@ Every page, without exception:
 
 **Home** — emergency hero, tap-to-call above the fold, 5 services grid, trust row (certifié A2P, prix transparent, artisan pas centre d'appel), fair-price teaser linking to /tarifs, real reviews or none.
 
-**Service pages** — the problem, the intervention, honest price range, what's included, FAQ (feeds FAQPage schema), CTA split call vs devis.
+**Service pages** — the problem, the intervention, honest price range, what's included, FAQ (feeds FAQPage schema), CTA split call vs devis. 🆕 Surface the installation **guarantee** (*garantie sur les installations*) and *qualifiés et assurés* as trust proof on every relevant service page.
 
-**/tarifs** — the centerpiece. A clear, honest price grid. This is the most citable asset in the whole build, generative engines pull structured price answers. Mark prices "à partir de", include the travel/labor basis, note written quote required above €150 (French law since 24/01/2017).
+🆕 **/services/securisation-locaux-pro** — B2B premises security. Speak to commerçants and entreprises: access control, reinforced doors, multi-site. CTA leans to devis/booking, not emergency call.
+
+🆕 **/services/contrats-maintenance** — the highest-value page. Recurring maintenance contracts for entreprises and syndics de copropriété. This is recurring revenue, treat it as a lead-gen page with a dedicated B2B enquiry form, not a one-off job page.
+
+**/tarifs** — the centerpiece. A clear, honest price grid. This is the most citable asset in the whole build, generative engines pull structured price answers. Mark prices "à partir de", include the travel/labor basis, note written quote required above €150 (French law since 24/01/2017). 🆕 Use the client's exact response-time wording: *"moins de 30 minutes selon le secteur"*, not the prototype's flat "20–30 min". The "selon le secteur" qualifier is more honest and more defensible.
+
+🆕 **/devis** — quote request **and** online booking. Two intents on one page: instant quote estimate (like the prototype's calculator, but with the mechanics fixed per §6) plus a date/time slot picker for planned appointments. Emergency users still get pushed to tap-to-call, not the form.
 
 **Zone pages** — genuinely localized, not templated duplicates. Local landmarks, arrondissement-specific content, the services offered there. Thin duplicate zone pages get filtered by Google, write real content per zone.
 
@@ -131,6 +145,8 @@ Every page, without exception:
 | /services/blindage-de-porte | blindage de porte paris | 🔴 price gated |
 | /services/serrure-multipoints | serrure multipoints paris | |
 | /services/securisation-apres-effraction | sécurisation après effraction | high emotional intent |
+| 🆕 /services/securisation-locaux-pro | sécurisation locaux professionnels paris | B2B intent |
+| 🆕 /services/contrats-maintenance | contrat maintenance serrurerie copropriété | B2B/syndic, low volume, high LTV |
 | /tarifs | prix serrurier paris | + tarif ouverture de porte |
 | /serrurier-paris-11 (etc.) | serrurier paris 11 | ~€20 CPC but winnable |
 | /guides/eviter-arnaque-serrurier-paris | arnaque serrurier paris | low competition, high conversion |
@@ -153,7 +169,11 @@ The prototype gets the instinct right and the mechanics wrong. Fix all of these:
 | No SIRET shown | Publish it (once B-list confirmed). French buyers check it. Free trust |
 | Generic OG image | Custom branded OG image, 1200×630, per key page |
 
-**Call is the primary conversion.** Track calls of 60s+ as the real signal. Form is secondary. Design and measurement both reflect that.
+🆕 **Three conversion paths, not one.** Emergency → tap-to-call. Planned → quote estimate + online booking (date/time slot). B2B/syndic → dedicated enquiry form on the maintenance-contract page. Don't force all three through one generic form.
+
+**Call is the primary conversion** for consumer traffic. Track calls of 60s+ as the real signal. Booking and B2B form submits are the primary conversions for planned and B2B traffic. Measure all three separately.
+
+🆕 **Positioning is now client-validated, not our assumption.** Rani's questionnaire independently confirmed the anti-scam thesis: her customers already tried "chercher un serrurier sur Google en urgence" and couldn't tell honest pros from scams; she marks "tarifs annoncés avant toute intervention" as a real, current practice. The /tarifs page and the anti-scam guides are the client's own stated positioning. Lead with it confidently.
 
 ---
 
@@ -168,9 +188,10 @@ The reason the prototype is invisible to AI search: client-side rendering. Fixin
 
 **Structured data** (JSON-LD in HTML, server-rendered, never JS-injected)
 - `LocalBusiness` (type `Locksmith`) sitewide — name, phone, area served, hours (24/7), geo
-- `Service` on each service page
+- `Service` on each service page (🆕 including the two B2B pages)
 - `FAQPage` on service pages and guides that have FAQ blocks
-- **No `AggregateRating` until real, verifiable reviews exist**
+- 🆕 `warranty` / offer terms where the installation guarantee applies
+- **No `AggregateRating` until real, verifiable reviews exist** (🆕 client confirmed testimonials are placeholders "à remplacer par de vrais avis vérifiés")
 - `BreadcrumbList` on nested pages
 
 **Crawlability**
@@ -200,33 +221,7 @@ Nothing is measurable in the prototype. This is required before any ad spend.
 
 ---
 
-## 9. Branding
-
-🔴 Final logo and palette pending client pick (and the name decision B1). Do not hardcode brand colors, use CSS variables / Tailwind config tokens so a palette swap is one file.
-
-**Direction, pending confirmation** — three palette routes were presented. Client leaning to be confirmed:
-
-| Route | Feel | Core colors |
-|---|---|---|
-| A · Institutional trust | Verified document, calm, anti-panic | Ink `#12213A`, Paper `#F7F5F1`, Verified `#1F7A5C`, Signal `#E8A33D` |
-| B · Artisan craft | Brass, steel, real workshop | Charcoal `#23211E`, Bone `#EFE9DF`, Brass `#B08D3F`, Oxide `#7A3B2E` |
-| C · Clinical clarity | Swiss, high-contrast, price-list precision | Near-black `#0E0E10`, White, Accent `#FF4D2E`, Confirm `#00875A` |
-
-**Hard brand rules (regardless of route):**
-- No emergency-red as the dominant color, it's the scam signal. If route C, cap the red accent under ~10% coverage
-- No stock photos of hands holding keys or blurry locks
-- No clipart key in the logo
-- No blue-and-orange template look
-- No "24H" starburst
-- Calm over loud. The competition shouts, calm is the differentiator
-- Typography: avoid Montserrat/Poppins (template default). Must render French accents cleanly at 14px on mobile. Suggested: a serif or grotesque headline + Inter/Public Sans body
-- Logo must survive at 40px (favicon, Google Business Profile, van livery). Test small first
-
-Set up Tailwind config with semantic tokens: `--color-ink`, `--color-paper`, `--color-verified`, `--color-signal`, so the final palette drops in cleanly.
-
----
-
-## 10. Build phases
+## 9. Build phases
 
 | Phase | Window | Ships | Done when |
 |---|---|---|---|
@@ -241,7 +236,7 @@ LSA verification (background check, insurance, licence) takes 1–2 weeks on its
 
 ---
 
-## 11. Google Ads structure (context, separate workstream)
+## 10. Google Ads structure (context, separate workstream)
 
 Not part of the codebase, but the site must support it (tracking, landing pages matched to ad groups).
 
@@ -257,7 +252,7 @@ Each ad group points to its matched landing page, never all to home. Negative ke
 
 ---
 
-## 12. Competitor reference
+## 11. Competitor reference
 
 Study for structure and messaging, not visual style (the vertical is aesthetically poor).
 
@@ -271,7 +266,7 @@ Study for structure and messaging, not visual style (the vertical is aesthetical
 
 ---
 
-## 13. Client info status
+## 12. Client info status
 
 | Field | Status |
 |---|---|
@@ -280,14 +275,21 @@ Study for structure and messaging, not visual style (the vertical is aesthetical
 | Phone | +33 7 83 14 89 94 |
 | Public site phone | +33 6 49 65 85 10 |
 | Owned domain | parisunlockdoor.fr |
-| Business name | 🔴 B1 unconfirmed |
-| SIRET | pending |
-| Arrondissements served | pending (assumed Paris + petite couronne) |
-| Real reviews | pending |
+| Positioning | 🆕 Confirmed direct artisan, not a lead broker (client questionnaire, Q1 + competitor table) |
+| Audience | 🆕 Confirmed: particuliers, commerçants, entreprises, syndics · ages 20–80 |
+| Services | 🆕 Confirmed full list incl. B2B premises security + maintenance contracts |
+| Guarantee | 🆕 Installation guarantee confirmed as a formal commitment |
+| Insurance | 🆕 "Qualifiés et assurés" stated, supports LSA verification |
+| Business name | 🔴 B1 still unconfirmed (intent clear, legal name not given) |
+| SIRET | 🔴 still pending |
+| Blindage price | 🔴 B3 still pending (service listed, no price given) |
+| Which domain is live | 🔴 still unconfirmed (Q1 answered with a description, not a URL) |
+| Arrondissements served | "selon le secteur", not itemized |
+| Real reviews | Pending, client acknowledges current testimonials are placeholders |
 
 ---
 
-## 14. Definition of done (v1 launch)
+## 13. Definition of done (v1 launch)
 
 - [ ] All core pages live with unique title + meta
 - [ ] Full content present in raw HTML (JS-disabled test passes) on every page
@@ -297,10 +299,108 @@ Study for structure and messaging, not visual style (the vertical is aesthetical
 - [ ] Mobile Core Web Vitals green
 - [ ] Sticky tap-to-call on mobile, split urgent/planned CTAs
 - [ ] No `.lovable.app` references anywhere
-- [ ] Brand tokens in config, final palette applied
 - [ ] 🔴 B1, B2, B3 all resolved
 - [ ] SIRET published, legal pages complete
 - [ ] Custom OG images on key pages
+- [ ] 🆕 Two B2B service pages live (premises security, maintenance contracts)
+- [ ] 🆕 Online booking flow working, three conversion paths measured separately
+- [ ] 🆕 Installation guarantee surfaced on relevant pages + schema
+
+---
+
+## 14. Development TODO / roadmap
+
+Work top to bottom. Each phase gates the next. Check items as you go. 🔴 = blocked on client, don't code around it.
+
+### Phase 0 — Foundation (Week 1–2)
+*Goal: a deployable, tracked, indexable shell. None of this is visible to the client, all of it gates everything after.*
+
+**Repo & tooling**
+- [ ] Init Next.js with `output: 'export'` (static), TypeScript, ESLint, Prettier
+- [x] Design / visual system already implemented (styling in place, no branding decisions pending)
+- [ ] Folder structure: `/app` routes per §3, `/components`, `/content` (per-page copy), `/lib` (schema, config)
+- [ ] Single `site.config.ts` holding `BRAND_NAME`, phone, domain, hours, area, SIRET — never inline these
+- [ ] Base layout: header, footer, sticky mobile tap-to-call component
+
+**Infra**
+- [ ] Vercel project connected, preview deploys on
+- [ ] 🔴 Point build at final domain once B2 confirmed (`parisunlockdoor.fr`); until then use Vercel preview URL, never `.lovable.app`
+- [ ] `robots.txt` allowing GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended
+- [ ] `sitemap.xml` auto-generated from routes
+- [ ] Per-page metadata system (unique title + description enforced, no duplicates)
+
+**Tracking (before any ad spend)**
+- [ ] GTM container installed
+- [ ] GA4 via GTM + CNIL-compliant geo-gated consent banner
+- [ ] Google Ads conversion linker
+- [ ] Call tracking (dynamic number insertion or per-source numbers)
+- [ ] Events wired: `call_click`, `form_submit`, `booking_complete`, `tarifs_view`, `devis_start`
+- [ ] Search Console verified, sitemap submitted
+
+**Parallel, non-code**
+- [ ] 🔴 Start LSA verification (background check, insurance, licence — takes 1–2 weeks)
+- [ ] 🔴 Claim + verify Google Business Profile, set 24/7 hours
+
+**Phase 0 done when:** shell deploys, indexes, tracking fires, JS-disabled test shows the shell's static content.
+
+### Phase 1 — Core pages (Week 3–4)
+*Goal: consumer money pages live, indexed, converting.*
+
+- [ ] Home: emergency hero, tap-to-call above fold, 5-service grid, trust row, fair-price teaser, guarantee callout
+- [ ] `/services/ouverture-de-porte`
+- [ ] `/services/changement-de-serrure`
+- [ ] `/services/blindage-de-porte` 🔴 leave price "sur devis" until B3
+- [ ] `/services/serrure-multipoints`
+- [ ] `/services/securisation-apres-effraction`
+- [ ] `/tarifs` — honest price grid, "à partir de", "selon le secteur", €150 written-quote note
+- [ ] `/devis` — quote estimate (mechanics fixed per §6) + online booking slot picker
+- [ ] Legal: `/mentions-legales`, `/cgv`, `/politique-de-confidentialite`
+- [ ] Schema on every page: `LocalBusiness`, `Service`, `FAQPage`, `BreadcrumbList` (no `AggregateRating`)
+- [ ] Per-page unique meta + custom OG images
+- [ ] Conversion fixes: always-active submit, inline validation, cancellation notice moved to confirmation step
+
+**Phase 1 done when:** all core pages indexed with unique meta, schema validates, JS-disabled test passes on every page, forms + booking submit successfully.
+
+### Phase 2 — Paid readiness (Week 5–6)
+*Goal: everything an ad campaign needs. Campaign build itself is a separate workstream.*
+
+- [ ] Verify call + form + booking conversions fire correctly end to end
+- [ ] Landing-page-per-ad-group check: every §10 ad group has a matched page, none point to home
+- [ ] Mobile Core Web Vitals green
+- [ ] 🔴 Confirm LSA verification cleared, listing live
+
+**Phase 2 done when:** first tracked calls/bookings recorded, real CPL data flowing.
+
+### Phase 3 — B2B + local depth (Month 2–3)
+*Goal: the higher-LTV pages and the winnable local zones.*
+
+- [ ] 🆕 `/services/securisation-locaux-pro`
+- [ ] 🆕 `/services/contrats-maintenance` with dedicated B2B enquiry form
+- [ ] Zone pages, genuinely localized (not templated duplicates): paris-1, 2, 10, 11, 18, 20
+- [ ] Review request engine: SMS/email after invoice
+- [ ] 🔴 Replace placeholder testimonials with real verified reviews; only then consider `AggregateRating`
+
+**Phase 3 done when:** B2B pages live with working enquiry flow, outer-zone pages entering top 20, real reviews collecting.
+
+### Phase 4 — Authority / AEO / GEO (Month 3–6)
+*Goal: own the trust and price queries, start earning AI citations.*
+
+- [ ] `/guides/eviter-arnaque-serrurier-paris` (priority 1)
+- [ ] `/guides/prix-serrurier-paris` (priority 2)
+- [ ] `/guides/porte-claquee-que-faire`
+- [ ] `/guides/norme-a2p-expliquee`
+- [ ] `/guides/serrurerie-assurance-habitation`
+- [ ] Each guide 1,000+ words, real FAQ blocks, internal links to services + /tarifs
+- [ ] Citations: PagesJaunes, sector directories, syndic/insurer outreach
+- [ ] Quarterly /tarifs price refresh routine established
+
+**Phase 4 done when:** guides indexed, AI engines beginning to cite for target queries, central-Paris rankings moving.
+
+### Phase 5 — Compound (Month 6–12)
+- [ ] Expand zones beyond the first 6 based on what's ranking
+- [ ] Scale whatever ad channels convert, cut what doesn't
+- [ ] Track organic share of leads climbing vs paid
+- [ ] Iterate content on real query data from Search Console
 
 ---
 

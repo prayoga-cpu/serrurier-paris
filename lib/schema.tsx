@@ -1,5 +1,6 @@
 import { BRAND_NAME, DOMAIN, PHONE_HREF } from "@/lib/config";
-import type { Service } from "@/lib/services";
+import { HTML_LANG, localePath, type Locale } from "@/lib/i18n";
+import type { LocalizedService } from "@/lib/services";
 
 const SITE_URL = `https://${DOMAIN}`;
 
@@ -36,14 +37,15 @@ export function localBusinessSchema() {
   };
 }
 
-export function serviceSchema(service: Service) {
+export function serviceSchema(service: LocalizedService, lang: Locale) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: service.title,
     name: service.title,
     description: service.summary,
-    url: `${SITE_URL}/services/${service.slug}`,
+    url: `${SITE_URL}${localePath(lang, `/services/${service.slug}`)}`,
+    inLanguage: HTML_LANG[lang],
     provider: {
       "@type": "Locksmith",
       name: BRAND_NAME,
@@ -55,10 +57,14 @@ export function serviceSchema(service: Service) {
   };
 }
 
-export function faqSchema(faq: { question: string; answer: string }[]) {
+export function faqSchema(
+  faq: { question: string; answer: string }[],
+  lang: Locale,
+) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    inLanguage: HTML_LANG[lang],
     mainEntity: faq.map((item) => ({
       "@type": "Question",
       name: item.question,

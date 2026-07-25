@@ -1,37 +1,25 @@
-const FEATURES = [
-  {
-    title: "Intervention rapide",
-    description: "Un artisan se déplace dès votre appel, disponible 7j/7.",
-  },
-  {
-    title: "Prix annoncé avant travaux",
-    description: "Le tarif est communiqué et validé avant toute intervention.",
-  },
-  {
-    title: "Artisan, pas un centre d'appel",
-    description: "Vous parlez directement à la personne qui intervient chez vous.",
-  },
-  {
-    title: "Devis écrit systématique",
-    description: "Au-delà de 150€, un devis écrit est fourni, comme l'exige la loi.",
-  },
-];
+import { getDictionary, type Locale } from "@/lib/i18n";
 
-export default function TrustStrip() {
+export default function TrustStrip({ lang }: { lang: Locale }) {
+  const dict = getDictionary(lang);
+
   return (
-    <section className="border-t border-ink/10 bg-paper">
-      <div className="mx-auto max-w-7xl px-6 py-14 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURES.map((feature) => (
-            <div key={feature.title}>
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-verified/10 text-verified">
+    <section className="bg-surface">
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {dict.trust.map((feature) => (
+            <div
+              key={feature.title}
+              className="rounded-3xl border border-ink/8 bg-paper p-7 shadow-sm"
+            >
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-signal text-ink">
                 <svg
-                  width="18"
-                  height="18"
+                  width="22"
+                  height="22"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2"
+                  strokeWidth="3"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   aria-hidden="true"
@@ -39,10 +27,10 @@ export default function TrustStrip() {
                   <path d="M20 6 9 17l-5-5" />
                 </svg>
               </div>
-              <h3 className="font-headline text-base font-semibold text-ink">
+              <h3 className="font-headline text-base font-bold text-ink">
                 {feature.title}
               </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink/65">
+              <p className="mt-2 text-sm leading-relaxed text-muted">
                 {feature.description}
               </p>
             </div>

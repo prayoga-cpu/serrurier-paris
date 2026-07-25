@@ -1,21 +1,30 @@
 import type { MetadataRoute } from "next";
 import { DOMAIN } from "@/lib/config";
+import { LOCALES, localePath, type Locale } from "@/lib/i18n";
 import { SERVICES } from "@/lib/services";
 
 const SITE_URL = `https://${DOMAIN}`;
 
 export const dynamic = "force-static";
 
+function entry(lang: Locale, path: string): MetadataRoute.Sitemap[number] {
+  return {
+    url: `${SITE_URL}${localePath(lang, path)}`,
+    lastModified: new Date(),
+    alternates: {
+      languages: Object.fromEntries(
+        LOCALES.map((locale) => [locale, `${SITE_URL}${localePath(locale, path)}`]),
+      ),
+    },
+  };
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["/", "/tarifs"].map((path) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: new Date(),
-  }));
-
-  const serviceRoutes = SERVICES.map((service) => ({
-    url: `${SITE_URL}/services/${service.slug}`,
-    lastModified: new Date(),
-  }));
-
-  return [...staticRoutes, ...serviceRoutes];
+  const paths = [
+    "/",
+    "/tarifs",
+    "/devis",
+    ...SERVICES.map((s) => `/services/${s.slug}`),
+  ];
+  return LOCALES.flatMap((lang) => paths.map((path) => entry(lang, path)));
 }
