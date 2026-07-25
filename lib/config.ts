@@ -13,6 +13,6 @@ export const NAV_LINKS = [
   { key: "home", path: "/" },
   { key: "services", path: "/#services" },
   { key: "pricing", path: "/tarifs" },
-  { key: "zones", path: "/#zones" },
+  { key: "zones", path: "/zones" },
   { key: "contact", path: "/contact" },
 ] as const;

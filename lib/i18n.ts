@@ -61,6 +61,7 @@ const fr = {
   },
   hero: {
     eyebrow: "#1 Serrurier à Paris",
+    availableNow: "Disponible maintenant",
     title: "Le prix qu'on vous annonce est le prix que vous payez.",
     lead: "Ouverture de porte, changement de serrure, blindage. Un artisan indépendant se déplace, annonce le tarif avant d'intervenir, et s'y tient. Pas de centre d'appel, pas de mauvaise surprise.",
     photoTitle: "Interventions honnêtes, dans tout Paris",
@@ -188,6 +189,38 @@ const fr = {
     urgentTitle: "Besoin d'aide maintenant ?",
     urgentLead: "Pour une urgence, appeler reste le plus rapide.",
   },
+  zonePage: {
+    landmarksTitle: "Points de repère",
+    neighborhoodsTitle: "Quartiers desservis",
+    servicesTitle: "Nos interventions dans le secteur",
+    faqTitle: "Questions fréquentes",
+    ctaTitle: "Besoin d'un serrurier dans le secteur ?",
+    ctaBody:
+      "Appelez-nous directement pour une urgence, ou décrivez votre besoin pour recevoir une estimation avant intervention.",
+  },
+  zonesIndexPage: {
+    eyebrow: "Zones d'intervention",
+    title: "Serrurier à Paris, par arrondissement",
+    lead: "Nous intervenons dans plusieurs arrondissements de Paris. Sélectionnez le vôtre pour des informations locales : quartiers desservis, points de repère et interventions courantes.",
+  },
+  contactPage: {
+    eyebrow: "Contact",
+    title: "Contactez-nous",
+    lead: "Une question, un projet, ou besoin d'un serrurier ? Appelez-nous directement ou laissez-nous un message.",
+    phoneLabel: "Téléphone",
+    hoursLabel: "Disponibilité",
+    hoursValue: "24h/24, 7j/7",
+    areaLabel: "Secteur",
+    areaValue: "Paris",
+    formTitle: "Envoyer un message",
+    formLead: "Pour une demande de devis avec estimation, utilisez plutôt notre formulaire de devis.",
+    devisBoxTitle: "Besoin d'une estimation ?",
+    devisBoxBody: "Vérifiez votre secteur et décrivez votre besoin pour recevoir un prix avant tout déplacement.",
+    devisCta: "Demander un devis",
+    fieldMessage: "Votre message",
+    fieldMessagePlaceholder: "Comment pouvons-nous vous aider ?",
+    submitCta: "Envoyer",
+  },
   meta: {
     homeTitle: "Serrurier à Paris, prix transparent",
     homeDescription:
@@ -200,6 +233,14 @@ const fr = {
       "Vérifiez si nous intervenons dans votre secteur et décrivez votre besoin. Estimation avant tout déplacement, aucune majoration surprise.",
     serviceDescriptionSuffix:
       "Intervention par un artisan indépendant, tarif annoncé avant travaux.",
+    zonesTitle: "Zones d'intervention — serrurier à Paris",
+    zonesDescription:
+      "Découvrez les arrondissements de Paris où nous intervenons : ouverture de porte, changement de serrure et blindage, tarif annoncé avant travaux.",
+    zoneDescriptionSuffix:
+      "Ouverture de porte, changement de serrure, blindage. Artisan indépendant, tarif annoncé avant travaux.",
+    contactTitle: "Contact — serrurier à Paris",
+    contactDescription:
+      "Contactez-nous par téléphone ou par message. Serrurier indépendant à Paris, disponible 24h/24 et 7j/7.",
     inParis: "à Paris",
   },
 };
@@ -227,6 +268,7 @@ const en: Dictionary = {
   },
   hero: {
     eyebrow: "#1 Locksmith in Paris",
+    availableNow: "Available now",
     title: "The price we quote is the price you pay.",
     lead: "Door opening, lock replacement, door reinforcement. An independent tradesperson comes out, quotes the price before starting, and sticks to it. No call centre, no nasty surprises.",
     photoTitle: "Honest call-outs, across Paris",
@@ -352,6 +394,38 @@ const en: Dictionary = {
     urgentTitle: "Need help right now?",
     urgentLead: "For an emergency, calling is still fastest.",
   },
+  zonePage: {
+    landmarksTitle: "Landmarks",
+    neighborhoodsTitle: "Neighbourhoods covered",
+    servicesTitle: "What we do in the area",
+    faqTitle: "Frequently asked questions",
+    ctaTitle: "Need a locksmith in the area?",
+    ctaBody:
+      "Call us directly for an emergency, or describe what you need to get an estimate before any work begins.",
+  },
+  zonesIndexPage: {
+    eyebrow: "Areas we cover",
+    title: "Locksmith in Paris, by arrondissement",
+    lead: "We cover several arrondissements across Paris. Pick yours for local information: neighbourhoods covered, landmarks, and the jobs we handle most often there.",
+  },
+  contactPage: {
+    eyebrow: "Contact",
+    title: "Contact us",
+    lead: "A question, a project, or need a locksmith? Call us directly or leave us a message.",
+    phoneLabel: "Phone",
+    hoursLabel: "Availability",
+    hoursValue: "24/7",
+    areaLabel: "Area",
+    areaValue: "Paris",
+    formTitle: "Send a message",
+    formLead: "For a quote request with an estimate, use our quote form instead.",
+    devisBoxTitle: "Need an estimate?",
+    devisBoxBody: "Check your area and describe what you need to get a price before anyone travels.",
+    devisCta: "Request a quote",
+    fieldMessage: "Your message",
+    fieldMessagePlaceholder: "How can we help?",
+    submitCta: "Send",
+  },
   meta: {
     homeTitle: "Locksmith in Paris, transparent pricing",
     homeDescription:
@@ -364,6 +438,14 @@ const en: Dictionary = {
       "Check we cover your area and describe what you need. An estimate before anyone travels, never a surprise surcharge.",
     serviceDescriptionSuffix:
       "Carried out by an independent tradesperson, price quoted before any work.",
+    zonesTitle: "Areas we cover — locksmith in Paris",
+    zonesDescription:
+      "See the Paris arrondissements we cover: door opening, lock replacement and door reinforcement, price quoted before any work.",
+    zoneDescriptionSuffix:
+      "Door opening, lock replacement, door reinforcement. Independent tradesperson, price quoted before any work.",
+    contactTitle: "Contact — locksmith in Paris",
+    contactDescription:
+      "Get in touch by phone or message. Independent locksmith in Paris, available 24/7.",
     inParis: "in Paris",
   },
 };

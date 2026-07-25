@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { DOMAIN } from "@/lib/config";
 import { LOCALES, localePath, type Locale } from "@/lib/i18n";
 import { SERVICES } from "@/lib/services";
+import { ZONES } from "@/lib/zones";
 
 const SITE_URL = `https://${DOMAIN}`;
 
@@ -24,7 +25,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/tarifs",
     "/devis",
+    "/zones",
+    "/contact",
     ...SERVICES.map((s) => `/services/${s.slug}`),
+    ...ZONES.map((z) => `/${z.slug}`),
   ];
   return LOCALES.flatMap((lang) => paths.map((path) => entry(lang, path)));
 }

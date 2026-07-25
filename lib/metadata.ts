@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BRAND_NAME, DOMAIN } from "@/lib/config";
 import { alternates, getDictionary, type Locale } from "@/lib/i18n";
 import { getLocalizedService } from "@/lib/services";
+import { getLocalizedZone } from "@/lib/zones";
 
 const OG_LOCALE: Record<Locale, string> = { fr: "fr_FR", en: "en_GB" };
 
@@ -66,5 +67,38 @@ export function serviceMetadata(lang: Locale, slug: string): Metadata {
     `/services/${service.slug}`,
     `${service.title} ${dict.meta.inParis} — ${BRAND_NAME}`,
     `${service.summary} ${dict.meta.serviceDescriptionSuffix}`,
+  );
+}
+
+export function zonesIndexMetadata(lang: Locale): Metadata {
+  const dict = getDictionary(lang);
+  return base(
+    lang,
+    "/zones",
+    `${dict.meta.zonesTitle} | ${BRAND_NAME}`,
+    dict.meta.zonesDescription,
+  );
+}
+
+export function zoneMetadata(lang: Locale, slug: string): Metadata {
+  const dict = getDictionary(lang);
+  const zone = getLocalizedZone(slug, lang);
+  if (!zone) return {};
+
+  return base(
+    lang,
+    `/${zone.slug}`,
+    `${zone.title} — ${BRAND_NAME}`,
+    `${zone.title}. ${dict.meta.zoneDescriptionSuffix}`,
+  );
+}
+
+export function contactMetadata(lang: Locale): Metadata {
+  const dict = getDictionary(lang);
+  return base(
+    lang,
+    "/contact",
+    `${dict.meta.contactTitle} | ${BRAND_NAME}`,
+    dict.meta.contactDescription,
   );
 }

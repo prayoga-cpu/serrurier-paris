@@ -58,6 +58,30 @@ export default function Footer({ lang }: { lang: Locale }) {
                   {dict.footer.pricingGrid}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href={localePath(lang, "/devis")}
+                  className="transition-colors hover:text-signal"
+                >
+                  {dict.common.requestQuote}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={localePath(lang, "/zones")}
+                  className="transition-colors hover:text-signal"
+                >
+                  {dict.nav.zones}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={localePath(lang, "/contact")}
+                  className="transition-colors hover:text-signal"
+                >
+                  {dict.nav.contact}
+                </Link>
+              </li>
             </ul>
           </div>
 

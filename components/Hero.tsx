@@ -21,6 +21,20 @@ const STAT_ICONS = [
   </>,
 ];
 
+// Pulsing dot + label — a true, standing claim (the business runs 24/7, see
+// dict.hero.stat1Value) rather than a fake live-visitor-style counter.
+function AvailableNowBadge({ label }: { label: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/10 bg-white px-3 py-1 text-xs font-semibold text-ink/70 shadow-sm">
+      <span className="relative flex h-2 w-2">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+      </span>
+      {label}
+    </span>
+  );
+}
+
 export default function Hero({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
 
@@ -60,7 +74,10 @@ export default function Hero({ lang }: { lang: Locale }) {
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 lg:px-8 lg:pt-24 lg:pb-14">
         {step === 1 ? (
           <div className="mx-auto max-w-2xl text-center">
-            <Eyebrow>{dict.hero.eyebrow}</Eyebrow>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <Eyebrow>{dict.hero.eyebrow}</Eyebrow>
+              <AvailableNowBadge label={dict.hero.availableNow} />
+            </div>
             <h1 className="mx-auto mt-6 font-headline text-4xl font-extrabold leading-[1.15] tracking-tight text-ink sm:text-6xl sm:leading-[1.08] lg:text-7xl lg:leading-[1.05]">
               {dict.hero.title}
             </h1>
@@ -115,7 +132,10 @@ export default function Hero({ lang }: { lang: Locale }) {
           // below, which extends past this section onto the photo band.
           // Capped width so text never runs behind where the card floats.
           <div className="lg:max-w-xl">
-            <Eyebrow>{dict.hero.eyebrow}</Eyebrow>
+            <div className="flex flex-wrap items-center gap-2">
+              <Eyebrow>{dict.hero.eyebrow}</Eyebrow>
+              <AvailableNowBadge label={dict.hero.availableNow} />
+            </div>
             <h1 className="mt-6 font-headline text-4xl font-extrabold leading-[1.15] tracking-tight text-ink sm:text-5xl sm:leading-[1.08] lg:text-6xl lg:leading-[1.05]">
               {dict.hero.title}
             </h1>
