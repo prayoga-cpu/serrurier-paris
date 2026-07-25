@@ -6,6 +6,12 @@ Built by PRIONATION.io | Priority Foundation. Client: Serrurier Paris Express (w
 
 > **What changed in v1.1.** Client intake confirmed the direct-artisan positioning (not a lead broker), broadened the audience to include businesses and syndics, added two B2B services and a maintenance-contract line, upgraded /devis to quote-plus-booking, and added an installation guarantee as a trust asset. A full development TODO checklist is now at §14. Changes are marked 🆕 through the doc.
 
+> **Build status note (audited against the repo, not just this doc).** §13/§14 checkboxes below now reflect what's actually in the codebase, not aspiration. Two deliberate deviations from this doc, both directed explicitly during the build session rather than decided unilaterally:
+> - **§2 says EN is optional/later — the site shipped fully bilingual instead** (FR at root, EN under `/en`, see `lib/i18n.ts`). Every existing page has both locales.
+> - **§0 B3 (blindage price) was resolved to "confirmed" and published at €80**, on record as an explicit override after the exact €990+ HT market-rate warning in this doc was surfaced. If that confirmation is wrong, `lib/pricing.ts` is the one place to fix it.
+>
+> Not yet built at all: B2B pages (`securisation-locaux-pro`, `contrats-maintenance`), guides, legal pages, online booking (date/time slot picker — `/devis` is quote-request only), analytics/tracking (GTM/GA4/Ads/call tracking), OG images, SIRET, installation-guarantee content, review engine. See checkboxes for the granular picture.
+
 ---
 
 ## 0. Read first — decisions that gate the build
@@ -291,20 +297,20 @@ Study for structure and messaging, not visual style (the vertical is aesthetical
 
 ## 13. Definition of done (v1 launch)
 
-- [ ] All core pages live with unique title + meta
-- [ ] Full content present in raw HTML (JS-disabled test passes) on every page
-- [ ] Valid `LocalBusiness`, `Service`, `FAQPage`, `BreadcrumbList` schema (no fake `AggregateRating`)
-- [ ] robots.txt allows AI crawlers, sitemap submitted and accepted
-- [ ] GTM + GA4 + Ads conversion tracking firing, call tracking live
-- [ ] Mobile Core Web Vitals green
-- [ ] Sticky tap-to-call on mobile, split urgent/planned CTAs
-- [ ] No `.lovable.app` references anywhere
-- [ ] 🔴 B1, B2, B3 all resolved
-- [ ] SIRET published, legal pages complete
-- [ ] Custom OG images on key pages
-- [ ] 🆕 Two B2B service pages live (premises security, maintenance contracts)
-- [ ] 🆕 Online booking flow working, three conversion paths measured separately
-- [ ] 🆕 Installation guarantee surfaced on relevant pages + schema
+- [ ] All core pages live with unique title + meta — home/tarifs/devis/5 services/6 zones+index/contact all have unique metadata; B2B pages, guides, legal still missing
+- [ ] Full content present in raw HTML (JS-disabled test passes) on every page — true for everything that exists, with one caveat: the hero/devis request form is a client component, so with JS off a visitor sees the headline/trust content but can't progress past the postal-code step (no core marketing copy is JS-gated, only the form interaction)
+- [x] Valid `LocalBusiness`, `Service`, `FAQPage`, `BreadcrumbList` schema (no fake `AggregateRating`) — `LocalBusiness` sitewide, `Service`+`FAQPage` on service pages, `FAQPage` on zone pages, `BreadcrumbList` everywhere via `Breadcrumb`, no `AggregateRating` anywhere
+- [ ] robots.txt allows AI crawlers, sitemap submitted and accepted — robots.txt + sitemap.xml both correct and live in-repo; Search Console submission is an off-repo action, not done
+- [ ] GTM + GA4 + Ads conversion tracking firing, call tracking live — not started; buttons carry `data-event` attributes (`call_click`, `form_submit`, `devis_start`, `tarifs_view`) as groundwork, nothing consumes them yet
+- [ ] Mobile Core Web Vitals green — not measured
+- [x] Sticky tap-to-call on mobile, split urgent/planned CTAs — `MobileCallBar` + header call button + separate `/devis` quote flow
+- [x] No `.lovable.app` references anywhere
+- [ ] 🔴 B1, B2, B3 all resolved — B3 resolved per the override noted above; B1 (business name) and B2 (which domain is live) still placeholder/unconfirmed
+- [ ] SIRET published, legal pages complete — neither exists
+- [ ] Custom OG images on key pages — not implemented (OG title/description only)
+- [ ] 🆕 Two B2B service pages live (premises security, maintenance contracts) — not built
+- [ ] 🆕 Online booking flow working, three conversion paths measured separately — `/devis` is quote-request only, no date/time slot picker; no measurement infra (see GTM item above)
+- [ ] 🆕 Installation guarantee surfaced on relevant pages + schema — not built
 
 ---
 
@@ -316,18 +322,18 @@ Work top to bottom. Each phase gates the next. Check items as you go. 🔴 = blo
 *Goal: a deployable, tracked, indexable shell. None of this is visible to the client, all of it gates everything after.*
 
 **Repo & tooling**
-- [ ] Init Next.js with `output: 'export'` (static), TypeScript, ESLint, Prettier
+- [x] Init Next.js with `output: 'export'` (static), TypeScript, ESLint — Prettier not configured (no `.prettierrc`)
 - [x] Design / visual system already implemented (styling in place, no branding decisions pending)
-- [ ] Folder structure: `/app` routes per §3, `/components`, `/content` (per-page copy), `/lib` (schema, config)
-- [ ] Single `site.config.ts` holding `BRAND_NAME`, phone, domain, hours, area, SIRET — never inline these
-- [ ] Base layout: header, footer, sticky mobile tap-to-call component
+- [x] Folder structure: `/app` routes per §3, `/components`, `/lib` (schema, config, per-page copy) — no separate `/content` dir; page copy lives in `lib/i18n.ts` / `lib/services.ts` / `lib/zones.ts` / `lib/pricing.ts` instead, same intent (structured, not inlined)
+- [ ] Single `site.config.ts` holding `BRAND_NAME`, phone, domain, hours, area, SIRET — `lib/config.ts` exists with `BRAND_NAME`/`DOMAIN`/phone, but hours and area are still inline strings in `lib/i18n.ts`, and SIRET doesn't exist (pending anyway)
+- [x] Base layout: header, footer, sticky mobile tap-to-call component
 
 **Infra**
-- [ ] Vercel project connected, preview deploys on
-- [ ] 🔴 Point build at final domain once B2 confirmed (`parisunlockdoor.fr`); until then use Vercel preview URL, never `.lovable.app`
-- [ ] `robots.txt` allowing GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended
-- [ ] `sitemap.xml` auto-generated from routes
-- [ ] Per-page metadata system (unique title + description enforced, no duplicates)
+- [ ] Vercel project connected, preview deploys on — outside repo, not verifiable from code
+- [ ] 🔴 Point build at final domain once B2 confirmed (`parisunlockdoor.fr`); until then use Vercel preview URL, never `.lovable.app` — `DOMAIN` constant already correctly set to `parisunlockdoor.fr`, not a placeholder; actual hosting/DNS is outside repo scope, and B2 ("which domain is live") is still formally unconfirmed per §12
+- [x] `robots.txt` allowing GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended
+- [x] `sitemap.xml` auto-generated from routes
+- [x] Per-page metadata system (unique title + description enforced, no duplicates)
 
 **Tracking (before any ad spend)**
 - [ ] GTM container installed
@@ -346,18 +352,18 @@ Work top to bottom. Each phase gates the next. Check items as you go. 🔴 = blo
 ### Phase 1 — Core pages (Week 3–4)
 *Goal: consumer money pages live, indexed, converting.*
 
-- [ ] Home: emergency hero, tap-to-call above fold, 5-service grid, trust row, fair-price teaser, guarantee callout
-- [ ] `/services/ouverture-de-porte`
-- [ ] `/services/changement-de-serrure`
-- [ ] `/services/blindage-de-porte` 🔴 leave price "sur devis" until B3
-- [ ] `/services/serrure-multipoints`
-- [ ] `/services/securisation-apres-effraction`
-- [ ] `/tarifs` — honest price grid, "à partir de", "selon le secteur", €150 written-quote note
-- [ ] `/devis` — quote estimate (mechanics fixed per §6) + online booking slot picker
-- [ ] Legal: `/mentions-legales`, `/cgv`, `/politique-de-confidentialite`
-- [ ] Schema on every page: `LocalBusiness`, `Service`, `FAQPage`, `BreadcrumbList` (no `AggregateRating`)
-- [ ] Per-page unique meta + custom OG images
-- [ ] Conversion fixes: always-active submit, inline validation, cancellation notice moved to confirmation step
+- [ ] Home: emergency hero, tap-to-call above fold, 5-service grid, trust row, fair-price teaser, guarantee callout — everything except the guarantee callout (installation guarantee isn't surfaced anywhere yet)
+- [x] `/services/ouverture-de-porte`
+- [x] `/services/changement-de-serrure`
+- [x] `/services/blindage-de-porte` — 🔴 price gate lifted: €80 published per the explicit override on record above, not left "sur devis"
+- [x] `/services/serrure-multipoints`
+- [x] `/services/securisation-apres-effraction`
+- [ ] `/tarifs` — honest price grid and "à partir de" wording are live; the "selon le secteur" response-time line and the €150 written-quote note still need to be added to page copy
+- [ ] `/devis` — quote-request mechanics fixed per §6 (always-active submit, no pre-submit cancellation warning); the online booking slot picker is not built
+- [ ] Legal: `/mentions-legales`, `/cgv`, `/politique-de-confidentialite` — none exist
+- [x] Schema on every page: `LocalBusiness`, `Service`, `FAQPage`, `BreadcrumbList` (no `AggregateRating`)
+- [ ] Per-page unique meta + custom OG images — meta done, OG images not implemented
+- [ ] Conversion fixes: always-active submit, inline validation, cancellation notice moved to confirmation step — submit buttons are always active and there's no pre-submit cancellation warning to move; "inline validation" is currently just native HTML `required`, no custom error messaging beyond the postal-code checker; there's no post-submit confirmation step since forms aren't wired to a backend yet
 
 **Phase 1 done when:** all core pages indexed with unique meta, schema validates, JS-disabled test passes on every page, forms + booking submit successfully.
 
@@ -376,9 +382,9 @@ Work top to bottom. Each phase gates the next. Check items as you go. 🔴 = blo
 
 - [ ] 🆕 `/services/securisation-locaux-pro`
 - [ ] 🆕 `/services/contrats-maintenance` with dedicated B2B enquiry form
-- [ ] Zone pages, genuinely localized (not templated duplicates): paris-1, 2, 10, 11, 18, 20
+- [x] Zone pages, genuinely localized (not templated duplicates): paris-1, 2, 10, 11, 18, 20 — real landmarks/neighbourhoods/FAQ per arrondissement, plus a `/zones` index page (not in the original §3 sitemap, added as a sensible nav landing target)
 - [ ] Review request engine: SMS/email after invoice
-- [ ] 🔴 Replace placeholder testimonials with real verified reviews; only then consider `AggregateRating`
+- [ ] 🔴 Replace placeholder testimonials with real verified reviews; only then consider `AggregateRating` — no testimonials exist to replace (never added placeholder ones); still no real reviews collected
 
 **Phase 3 done when:** B2B pages live with working enquiry flow, outer-zone pages entering top 20, real reviews collecting.
 
