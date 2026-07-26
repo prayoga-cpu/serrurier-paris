@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { BRAND_NAME, DOMAIN } from "@/lib/config";
 import { alternates, getDictionary, type Locale } from "@/lib/i18n";
+import {
+  getMentionsLegalesContent,
+  getCgvContent,
+  getPrivacyContent,
+} from "@/lib/legal";
 import { getLocalizedService } from "@/lib/services";
 import { getLocalizedZone } from "@/lib/zones";
 
@@ -11,7 +16,12 @@ const OG_LOCALE: Record<Locale, string> = { fr: "fr_FR", en: "en_GB" };
  * canonical and hreflang alternates. CLAUDE.md §7 — duplicate meta is what broke
  * indexing on the prototype, so this is the single place titles are built.
  */
-function base(lang: Locale, path: string, title: string, description: string): Metadata {
+function base(
+  lang: Locale,
+  path: string,
+  title: string,
+  description: string,
+): Metadata {
   return {
     metadataBase: new URL(`https://${DOMAIN}`),
     title,
@@ -100,5 +110,30 @@ export function contactMetadata(lang: Locale): Metadata {
     "/contact",
     `${dict.meta.contactTitle} | ${BRAND_NAME}`,
     dict.meta.contactDescription,
+  );
+}
+
+export function mentionsLegalesMetadata(lang: Locale): Metadata {
+  const content = getMentionsLegalesContent(lang);
+  return base(
+    lang,
+    "/mentions-legales",
+    `${content.title} | ${BRAND_NAME}`,
+    content.intro,
+  );
+}
+
+export function cgvMetadata(lang: Locale): Metadata {
+  const content = getCgvContent(lang);
+  return base(lang, "/cgv", `${content.title} | ${BRAND_NAME}`, content.intro);
+}
+
+export function privacyMetadata(lang: Locale): Metadata {
+  const content = getPrivacyContent(lang);
+  return base(
+    lang,
+    "/politique-de-confidentialite",
+    `${content.title} | ${BRAND_NAME}`,
+    content.intro,
   );
 }

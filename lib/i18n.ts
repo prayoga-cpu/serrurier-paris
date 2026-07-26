@@ -74,6 +74,7 @@ const fr = {
       "Prix transparent affiché",
       "Artisan indépendant, pas un centre d'appel",
       "Devis écrit avant travaux",
+      "Garantie sur nos installations",
     ],
     formTitle: "Besoin d'un serrurier maintenant ?",
     formLead:
@@ -92,15 +93,23 @@ const fr = {
     },
     {
       title: "Prix annoncé avant travaux",
-      description: "Le tarif est communiqué et validé avant toute intervention.",
+      description:
+        "Le tarif est communiqué et validé avant toute intervention.",
     },
     {
       title: "Artisan, pas un centre d'appel",
-      description: "Vous parlez directement à la personne qui intervient chez vous.",
+      description:
+        "Vous parlez directement à la personne qui intervient chez vous.",
     },
     {
       title: "Devis écrit systématique",
-      description: "Au-delà de 150€, un devis écrit est fourni, comme l'exige la loi.",
+      description:
+        "Au-delà de 150€, un devis écrit est fourni, comme l'exige la loi.",
+    },
+    {
+      title: "Garantie sur nos installations",
+      description:
+        "Chaque installation est garantie. Les conditions exactes vous sont communiquées avec votre devis.",
     },
   ],
   services: {
@@ -128,12 +137,17 @@ const fr = {
     intervention: "L'intervention",
     included: "Ce qui est inclus",
     price: "Tarif",
+    guaranteeTitle: "Garantie",
+    guaranteeBody:
+      "Cette intervention est couverte par notre garantie sur les installations. Les conditions et la durée exactes sont communiquées avec votre devis écrit. Nous sommes qualifiés et assurés pour cette prestation.",
     faq: "Questions fréquentes",
   },
   pricingPage: {
     eyebrow: "prix serrurier paris",
     title: "Une grille tarifaire transparente",
     lead: "La serrurerie parisienne compte parmi les secteurs les plus signalés par la DGCCRF pour des anomalies de prix. Notre position est simple : le tarif annoncé au téléphone ou par écrit est celui que vous payez, sans majoration à l'arrivée.",
+    responseTime:
+      "Délai d'intervention : moins de 30 minutes selon le secteur.",
     colIntervention: "Intervention",
     colPrice: "Tarif",
     from: "À partir de",
@@ -172,7 +186,8 @@ const fr = {
     collapseForm: "Réduire le formulaire",
     expandForm: "Afficher le formulaire",
     servicesLabel: "Type d'intervention",
-    servicesHint: "Sélectionnez une ou plusieurs interventions, si vous savez déjà de quoi il s'agit.",
+    servicesHint:
+      "Sélectionnez une ou plusieurs interventions, si vous savez déjà de quoi il s'agit.",
     notSureOption: "Je ne suis pas sûr — décrire la situation dans le message",
     optionsLabel: "Précisions",
     infoTitle: "Vos informations",
@@ -213,13 +228,36 @@ const fr = {
     areaLabel: "Secteur",
     areaValue: "Paris",
     formTitle: "Envoyer un message",
-    formLead: "Pour une demande de devis avec estimation, utilisez plutôt notre formulaire de devis.",
+    formLead:
+      "Pour une demande de devis avec estimation, utilisez plutôt notre formulaire de devis.",
     devisBoxTitle: "Besoin d'une estimation ?",
-    devisBoxBody: "Vérifiez votre secteur et décrivez votre besoin pour recevoir un prix avant tout déplacement.",
+    devisBoxBody:
+      "Vérifiez votre secteur et décrivez votre besoin pour recevoir un prix avant tout déplacement.",
     devisCta: "Demander un devis",
     fieldMessage: "Votre message",
     fieldMessagePlaceholder: "Comment pouvons-nous vous aider ?",
     submitCta: "Envoyer",
+  },
+  legal: {
+    mentionsNav: "Mentions légales",
+    cgvNav: "CGV",
+    privacyNav: "Politique de confidentialité",
+    pending: "En attente de confirmation client.",
+    lastUpdated: "Dernière mise à jour",
+  },
+  booking: {
+    title: "Créneau souhaité",
+    lead: "Pour une intervention planifiée, indiquez quand cela vous arrange.",
+    dateLabel: "Date souhaitée",
+    timeLabel: "Créneau horaire souhaité",
+    disclaimer:
+      "Créneau indicatif : nous vous confirmons la disponibilité exacte par téléphone. Pour une urgence, appelez-nous directement.",
+  },
+  consent: {
+    title: "Mesure d'audience",
+    body: "Nous aimerions mesurer l'audience du site pour l'améliorer. Aucun cookie de mesure n'est déposé sans votre accord.",
+    accept: "Accepter",
+    decline: "Refuser",
   },
   meta: {
     homeTitle: "Serrurier à Paris, prix transparent",
@@ -281,6 +319,7 @@ const en: Dictionary = {
       "Transparent published pricing",
       "An independent tradesperson, not a call centre",
       "Written quote before any work",
+      "Guarantee on our installations",
     ],
     formTitle: "Need a locksmith right now?",
     formLead:
@@ -295,7 +334,8 @@ const en: Dictionary = {
   trust: [
     {
       title: "Fast call-out",
-      description: "A tradesperson sets off as soon as you call, available 7 days a week.",
+      description:
+        "A tradesperson sets off as soon as you call, available 7 days a week.",
     },
     {
       title: "Price quoted before work",
@@ -307,7 +347,13 @@ const en: Dictionary = {
     },
     {
       title: "Written quote as standard",
-      description: "Above €150 a written quote is provided, as French law requires.",
+      description:
+        "Above €150 a written quote is provided, as French law requires.",
+    },
+    {
+      title: "Guarantee on our installations",
+      description:
+        "Every installation is guaranteed. Exact terms are given with your written quote.",
     },
   ],
   services: {
@@ -335,12 +381,16 @@ const en: Dictionary = {
     intervention: "The work",
     included: "What's included",
     price: "Price",
+    guaranteeTitle: "Guarantee",
+    guaranteeBody:
+      "This work is covered by our guarantee on installations. Exact terms and duration are given with your written quote. We are qualified and insured for this service.",
     faq: "Frequently asked questions",
   },
   pricingPage: {
     eyebrow: "locksmith prices paris",
     title: "A transparent price list",
     lead: "Locksmithing in Paris is among the sectors most reported to the DGCCRF, the French consumer authority, for pricing irregularities. Our position is simple: the price quoted by phone or in writing is the price you pay, with no surcharge on arrival.",
+    responseTime: "Response time: under 30 minutes depending on the area.",
     colIntervention: "Service",
     colPrice: "Price",
     from: "From",
@@ -418,13 +468,36 @@ const en: Dictionary = {
     areaLabel: "Area",
     areaValue: "Paris",
     formTitle: "Send a message",
-    formLead: "For a quote request with an estimate, use our quote form instead.",
+    formLead:
+      "For a quote request with an estimate, use our quote form instead.",
     devisBoxTitle: "Need an estimate?",
-    devisBoxBody: "Check your area and describe what you need to get a price before anyone travels.",
+    devisBoxBody:
+      "Check your area and describe what you need to get a price before anyone travels.",
     devisCta: "Request a quote",
     fieldMessage: "Your message",
     fieldMessagePlaceholder: "How can we help?",
     submitCta: "Send",
+  },
+  legal: {
+    mentionsNav: "Legal notice",
+    cgvNav: "Terms of service",
+    privacyNav: "Privacy policy",
+    pending: "Pending client confirmation.",
+    lastUpdated: "Last updated",
+  },
+  booking: {
+    title: "Preferred slot",
+    lead: "For a planned job, tell us when suits you.",
+    dateLabel: "Preferred date",
+    timeLabel: "Preferred time of day",
+    disclaimer:
+      "This is a preference, not a confirmed booking — we'll confirm exact availability by phone. For an emergency, call us directly.",
+  },
+  consent: {
+    title: "Audience measurement",
+    body: "We'd like to measure site traffic to improve it. No measurement cookie is set without your agreement.",
+    accept: "Accept",
+    decline: "Decline",
   },
   meta: {
     homeTitle: "Locksmith in Paris, transparent pricing",

@@ -137,12 +137,14 @@ export const SERVICES: Service[] = [
               "Le cylindre (barillet) est la pièce dans laquelle la clé tourne ; il se remplace seul si le reste du mécanisme est sain. La serrure complète inclut le boîtier et le pêne, nécessaire si le mécanisme est endommagé.",
           },
           {
-            question: "Puis-je faire changer ma serrure sans en changer le modèle ?",
+            question:
+              "Puis-je faire changer ma serrure sans en changer le modèle ?",
             answer:
               "Oui, dans la majorité des cas un cylindre compatible peut être posé sans modifier la serrure existante, ce qui limite le coût et le temps d'intervention.",
           },
           {
-            question: "Quand faut-il changer sa serrure après un déménagement ?",
+            question:
+              "Quand faut-il changer sa serrure après un déménagement ?",
             answer:
               "Idéalement avant votre emménagement ou dès que possible après, pour être certain que d'anciens jeux de clés en circulation ne donnent plus accès au logement.",
           },
@@ -207,12 +209,14 @@ export const SERVICES: Service[] = [
           "À partir de 80 €. Le tarif final dépend de la porte et du niveau de blindage choisi — devis écrit détaillé fourni avant tout engagement.",
         faq: [
           {
-            question: "Quelle est la différence entre blindage et bloc-porte blindé ?",
+            question:
+              "Quelle est la différence entre blindage et bloc-porte blindé ?",
             answer:
               "Le blindage habille une porte existante d'une tôle renforcée. Le bloc-porte blindé remplace l'ensemble porte et cadre par un système certifié, généralement plus résistant.",
           },
           {
-            question: "Le blindage est-il éligible à une réduction d'assurance ?",
+            question:
+              "Le blindage est-il éligible à une réduction d'assurance ?",
             answer:
               "Certains assureurs proposent des conditions avantageuses pour un logement équipé d'une porte certifiée A2P. Vérifiez avec votre assureur, le devis peut servir de justificatif.",
           },
@@ -272,7 +276,8 @@ export const SERVICES: Service[] = [
         priceNote: PRICE_NOTE_FR,
         faq: [
           {
-            question: "Une serrure multipoints s'installe-t-elle sur toutes les portes ?",
+            question:
+              "Une serrure multipoints s'installe-t-elle sur toutes les portes ?",
             answer:
               "Dans la plupart des cas oui, sur porte bois, PVC ou aluminium. L'artisan vérifie la compatibilité de votre porte avant de proposer un modèle.",
           },
@@ -383,7 +388,10 @@ export function getService(slug: string): Service | undefined {
   return SERVICES.find((service) => service.slug === slug);
 }
 
-export function localizeService(service: Service, lang: Locale): LocalizedService {
+export function localizeService(
+  service: Service,
+  lang: Locale,
+): LocalizedService {
   return { slug: service.slug, ...service.content[lang] };
 }
 

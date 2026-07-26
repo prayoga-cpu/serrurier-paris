@@ -1,5 +1,6 @@
 import { BRAND_NAME, DOMAIN, PHONE_HREF } from "@/lib/config";
 import { HTML_LANG, localePath, type Locale } from "@/lib/i18n";
+import { getStartingPrice } from "@/lib/pricing";
 import type { LocalizedService } from "@/lib/services";
 
 const SITE_URL = `https://${DOMAIN}`;
@@ -38,6 +39,8 @@ export function localBusinessSchema() {
 }
 
 export function serviceSchema(service: LocalizedService, lang: Locale) {
+  const startingPrice = getStartingPrice(service.slug);
+
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -54,6 +57,25 @@ export function serviceSchema(service: LocalizedService, lang: Locale) {
       "@type": "City",
       name: "Paris",
     },
+    // Real starting price where the client has confirmed one — CLAUDE.md §4
+    // wants structured price answers, since that's what generative engines
+    // pull. Services without a confirmed price emit no offer at all rather
+    // than a placeholder.
+    ...(startingPrice !== undefined && {
+      offers: {
+        "@type": "Offer",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "EUR",
+          minPrice: startingPrice,
+          valueAddedTaxIncluded: false,
+        },
+        availability: "https://schema.org/InStock",
+      },
+    }),
+    // No WarrantyPromise node: the guarantee is real and stated in page copy,
+    // but its duration isn't client-confirmed, and an empty WarrantyPromise
+    // would be meaningless markup. Add it here once the term is confirmed.
   };
 }
 

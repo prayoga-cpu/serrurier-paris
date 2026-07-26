@@ -23,7 +23,10 @@ export default function ContactFields({
 
       <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-ink">
+          <label
+            htmlFor="name"
+            className="mb-1.5 block text-sm font-semibold text-ink"
+          >
             {dict.hero.fieldName} *
           </label>
           <input
@@ -36,7 +39,10 @@ export default function ContactFields({
           />
         </div>
         <div>
-          <label htmlFor="phone" className="mb-1.5 block text-sm font-semibold text-ink">
+          <label
+            htmlFor="phone"
+            className="mb-1.5 block text-sm font-semibold text-ink"
+          >
             {dict.hero.fieldPhone} *
           </label>
           <input
@@ -51,7 +57,10 @@ export default function ContactFields({
       </div>
 
       <div className="mt-5">
-        <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-ink">
+        <label
+          htmlFor="email"
+          className="mb-1.5 block text-sm font-semibold text-ink"
+        >
           {dict.devis.fieldEmail}
         </label>
         <input
@@ -64,7 +73,10 @@ export default function ContactFields({
       </div>
 
       <div className="mt-5">
-        <label htmlFor="address" className="mb-1.5 block text-sm font-semibold text-ink">
+        <label
+          htmlFor="address"
+          className="mb-1.5 block text-sm font-semibold text-ink"
+        >
           {dict.devis.fieldAddress} *
         </label>
         <input
@@ -82,7 +94,10 @@ export default function ContactFields({
       </div>
 
       <div className="mt-5">
-        <label htmlFor="message" className="mb-1.5 block text-sm font-semibold text-ink">
+        <label
+          htmlFor="message"
+          className="mb-1.5 block text-sm font-semibold text-ink"
+        >
           {dict.devis.fieldMessage}
         </label>
         <textarea
@@ -94,7 +109,11 @@ export default function ContactFields({
         />
       </div>
 
-      <ButtonSubmit type="submit" data-event="form_submit" className="mt-6 w-full">
+      <ButtonSubmit
+        type="submit"
+        data-event="form_submit"
+        className="mt-6 w-full"
+      >
         {dict.devis.submitCta}
       </ButtonSubmit>
 

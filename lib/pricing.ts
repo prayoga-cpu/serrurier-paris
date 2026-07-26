@@ -37,13 +37,19 @@ export const PRICE_TIERS: PriceTier[] = [
   {
     slug: "serrure-standard",
     serviceSlug: "changement-de-serrure",
-    label: { fr: "Changement de serrure standard", en: "Standard lock replacement" },
+    label: {
+      fr: "Changement de serrure standard",
+      en: "Standard lock replacement",
+    },
     price: 150,
   },
   {
     slug: "serrure-securite",
     serviceSlug: "changement-de-serrure",
-    label: { fr: "Changement de serrure haute sécurité", en: "High-security lock replacement" },
+    label: {
+      fr: "Changement de serrure haute sécurité",
+      en: "High-security lock replacement",
+    },
     price: 250,
   },
   {
@@ -77,4 +83,16 @@ export const PRICE_OPTIONS: PriceOption[] = [
 
 export function formatPrice(amount: number, lang: Locale): string {
   return lang === "fr" ? `${amount} €` : `€${amount}`;
+}
+
+/**
+ * Lowest confirmed starting price for a service, or undefined when the client
+ * hasn't confirmed one (serrure-multipoints, securisation-apres-effraction).
+ * Used for Service schema offers — see lib/schema.tsx.
+ */
+export function getStartingPrice(serviceSlug: string): number | undefined {
+  const prices = PRICE_TIERS.filter((t) => t.serviceSlug === serviceSlug).map(
+    (t) => t.price,
+  );
+  return prices.length > 0 ? Math.min(...prices) : undefined;
 }

@@ -11,7 +11,13 @@ import { getLocalizedZone } from "@/lib/zones";
 import { getLocalizedServices } from "@/lib/services";
 import { JsonLd, faqSchema } from "@/lib/schema";
 
-export default function ZoneView({ lang, slug }: { lang: Locale; slug: string }) {
+export default function ZoneView({
+  lang,
+  slug,
+}: {
+  lang: Locale;
+  slug: string;
+}) {
   const dict = getDictionary(lang);
   const zone = getLocalizedZone(slug, lang);
   if (!zone) notFound();
@@ -36,7 +42,9 @@ export default function ZoneView({ lang, slug }: { lang: Locale; slug: string })
           <h1 className="mt-5 font-headline text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl">
             {zone.title}
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-muted">{zone.intro}</p>
+          <p className="mt-5 text-lg leading-relaxed text-muted">
+            {zone.intro}
+          </p>
 
           <div className="mt-10">
             <ServiceCTA lang={lang} />
@@ -49,7 +57,10 @@ export default function ZoneView({ lang, slug }: { lang: Locale; slug: string })
               </h2>
               <ul className="mt-3 space-y-2">
                 {zone.landmarks.map((landmark) => (
-                  <li key={landmark} className="flex items-start gap-2 text-muted">
+                  <li
+                    key={landmark}
+                    className="flex items-start gap-2 text-muted"
+                  >
                     <svg
                       width="16"
                       height="16"
@@ -127,8 +138,12 @@ export default function ZoneView({ lang, slug }: { lang: Locale; slug: string })
             <div className="mt-5 space-y-6">
               {zone.faq.map((item) => (
                 <div key={item.question}>
-                  <h3 className="font-headline font-bold text-ink">{item.question}</h3>
-                  <p className="mt-1.5 leading-relaxed text-muted">{item.answer}</p>
+                  <h3 className="font-headline font-bold text-ink">
+                    {item.question}
+                  </h3>
+                  <p className="mt-1.5 leading-relaxed text-muted">
+                    {item.answer}
+                  </p>
                 </div>
               ))}
             </div>

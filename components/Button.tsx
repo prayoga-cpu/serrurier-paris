@@ -28,8 +28,14 @@ function styles(variant: Variant, tone: Tone) {
     };
   }
   return tone === "dark"
-    ? { shell: "border border-paper/25 text-paper hover:border-paper/50", badge: "bg-signal text-ink" }
-    : { shell: "border border-ink/15 text-ink hover:border-ink/35", badge: "bg-signal text-ink" };
+    ? {
+        shell: "border border-paper/25 text-paper hover:border-paper/50",
+        badge: "bg-signal text-ink",
+      }
+    : {
+        shell: "border border-ink/15 text-ink hover:border-ink/35",
+        badge: "bg-signal text-ink",
+      };
 }
 
 function Inner({
@@ -149,7 +155,10 @@ export function ButtonSubmit({
 }: CommonProps & Omit<ComponentProps<"button">, "className" | "children">) {
   const s = styles(variant, tone);
   return (
-    <button className={`${BASE} ${SIZES[size]} ${s.shell} ${className}`} {...rest}>
+    <button
+      className={`${BASE} ${SIZES[size]} ${s.shell} ${className}`}
+      {...rest}
+    >
       <Inner arrow={arrow} badge={s.badge} size={size}>
         {children}
       </Inner>

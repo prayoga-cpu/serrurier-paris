@@ -14,7 +14,10 @@ function entry(lang: Locale, path: string): MetadataRoute.Sitemap[number] {
     lastModified: new Date(),
     alternates: {
       languages: Object.fromEntries(
-        LOCALES.map((locale) => [locale, `${SITE_URL}${localePath(locale, path)}`]),
+        LOCALES.map((locale) => [
+          locale,
+          `${SITE_URL}${localePath(locale, path)}`,
+        ]),
       ),
     },
   };
@@ -27,6 +30,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/devis",
     "/zones",
     "/contact",
+    "/mentions-legales",
+    "/cgv",
+    "/politique-de-confidentialite",
     ...SERVICES.map((s) => `/services/${s.slug}`),
     ...ZONES.map((z) => `/${z.slug}`),
   ];

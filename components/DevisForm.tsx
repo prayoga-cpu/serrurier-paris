@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { ButtonAnchor, ButtonSubmit } from "@/components/Button";
 import ServiceChecklist from "@/components/ServiceChecklist";
+import BookingPicker from "@/components/BookingPicker";
 import ContactFields from "@/components/ContactFields";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/config";
 import { getDictionary, type Locale } from "@/lib/i18n";
@@ -81,6 +82,7 @@ export default function DevisForm({ lang }: { lang: Locale }) {
 
             <form className="space-y-8">
               <ServiceChecklist lang={lang} />
+              <BookingPicker lang={lang} />
               <ContactFields lang={lang} postalCode={postalCode} />
             </form>
 
@@ -100,7 +102,9 @@ export default function DevisForm({ lang }: { lang: Locale }) {
           <h3 className="font-headline text-lg font-extrabold tracking-tight">
             {dict.devis.urgentTitle}
           </h3>
-          <p className="mt-1.5 text-sm text-paper/70">{dict.devis.urgentLead}</p>
+          <p className="mt-1.5 text-sm text-paper/70">
+            {dict.devis.urgentLead}
+          </p>
           <ButtonAnchor
             href={PHONE_HREF}
             data-event="call_click"
@@ -113,7 +117,10 @@ export default function DevisForm({ lang }: { lang: Locale }) {
 
         <ul className="space-y-2.5 rounded-3xl border border-ink/10 bg-white p-6">
           {dict.hero.badges.map((badge) => (
-            <li key={badge} className="flex items-start gap-2.5 text-sm text-ink/80">
+            <li
+              key={badge}
+              className="flex items-start gap-2.5 text-sm text-ink/80"
+            >
               <svg
                 width="16"
                 height="16"

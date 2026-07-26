@@ -40,7 +40,12 @@ export const ZONES: Zone[] = [
           "Pont Neuf",
           "Jardin des Tuileries",
         ],
-        neighborhoods: ["Les Halles", "Palais-Royal", "Saint-Germain-l'Auxerrois", "Place Vendôme"],
+        neighborhoods: [
+          "Les Halles",
+          "Palais-Royal",
+          "Saint-Germain-l'Auxerrois",
+          "Place Vendôme",
+        ],
         faq: [
           {
             question: "Intervenez-vous près du Louvre et des Halles ?",
@@ -48,7 +53,8 @@ export const ZONES: Zone[] = [
               "Oui, nous intervenons dans tout le 1er arrondissement, y compris les zones à forte fréquentation touristique comme le Louvre, le Palais-Royal et les Halles.",
           },
           {
-            question: "Les immeubles anciens du 1er ont-ils des serrures particulières ?",
+            question:
+              "Les immeubles anciens du 1er ont-ils des serrures particulières ?",
             answer:
               "Beaucoup d'immeubles du centre historique ont conservé des serrures ou portes cochères d'origine. L'artisan évalue le mécanisme en place avant de proposer une intervention adaptée, sans dégât inutile.",
           },
@@ -67,7 +73,12 @@ export const ZONES: Zone[] = [
           "Pont Neuf",
           "Tuileries Garden",
         ],
-        neighborhoods: ["Les Halles", "Palais-Royal", "Saint-Germain-l'Auxerrois", "Place Vendôme"],
+        neighborhoods: [
+          "Les Halles",
+          "Palais-Royal",
+          "Saint-Germain-l'Auxerrois",
+          "Place Vendôme",
+        ],
         faq: [
           {
             question: "Do you cover the area around the Louvre and Les Halles?",
@@ -92,11 +103,17 @@ export const ZONES: Zone[] = [
         keyword: "serrurier paris 2",
         intro:
           "Le 2e arrondissement mêle le quartier d'affaires de la Bourse, le Sentier et ses grossistes textiles, et les passages couverts historiques comme le passage des Panoramas. Rideaux métalliques de boutiques, portes d'entrepôts et immeubles de bureaux côtoient des logements résidentiels — chaque type de fermeture demande une approche différente.",
-        landmarks: ["La Bourse de Paris", "Le Sentier", "Les Grands Boulevards", "Passage des Panoramas"],
+        landmarks: [
+          "La Bourse de Paris",
+          "Le Sentier",
+          "Les Grands Boulevards",
+          "Passage des Panoramas",
+        ],
         neighborhoods: ["Bourse", "Sentier", "Vivienne", "Gaillon"],
         faq: [
           {
-            question: "Intervenez-vous sur les rideaux métalliques de commerce ?",
+            question:
+              "Intervenez-vous sur les rideaux métalliques de commerce ?",
             answer:
               "Nous intervenons sur les serrures de boutiques et de rideaux métalliques bloqués, en plus des ouvertures et changements de serrure classiques pour les logements.",
           },
@@ -112,7 +129,12 @@ export const ZONES: Zone[] = [
         keyword: "locksmith paris 2nd arrondissement",
         intro:
           "The 2nd arrondissement combines the Bourse business district, the Sentier textile wholesale quarter, and historic covered passages like Passage des Panoramas. Shop shutters, warehouse doors and office buildings sit alongside residential flats — each type of lock calls for a different approach.",
-        landmarks: ["Paris Stock Exchange (Bourse)", "Sentier", "Grands Boulevards", "Passage des Panoramas"],
+        landmarks: [
+          "Paris Stock Exchange (Bourse)",
+          "Sentier",
+          "Grands Boulevards",
+          "Passage des Panoramas",
+        ],
         neighborhoods: ["Bourse", "Sentier", "Vivienne", "Gaillon"],
         faq: [
           {
@@ -138,8 +160,18 @@ export const ZONES: Zone[] = [
         keyword: "serrurier paris 10",
         intro:
           "Le 10e arrondissement s'étend des gares du Nord et de l'Est jusqu'au canal Saint-Martin. C'est un secteur à très forte affluence, avec un parc immobilier ancien près des gares et des immeubles plus récents autour du canal. La densité de passage justifie une vigilance particulière sur la sécurisation des accès.",
-        landmarks: ["Gare du Nord", "Gare de l'Est", "Canal Saint-Martin", "Place de la République (bordure)"],
-        neighborhoods: ["Gare du Nord", "Gare de l'Est", "Canal Saint-Martin", "Porte Saint-Martin"],
+        landmarks: [
+          "Gare du Nord",
+          "Gare de l'Est",
+          "Canal Saint-Martin",
+          "Place de la République (bordure)",
+        ],
+        neighborhoods: [
+          "Gare du Nord",
+          "Gare de l'Est",
+          "Canal Saint-Martin",
+          "Porte Saint-Martin",
+        ],
         faq: [
           {
             question: "Intervenez-vous près des gares du Nord et de l'Est ?",
@@ -158,11 +190,22 @@ export const ZONES: Zone[] = [
         keyword: "locksmith paris 10th arrondissement",
         intro:
           "The 10th arrondissement runs from Gare du Nord and Gare de l'Est down to Canal Saint-Martin. It's a high-footfall area, with older building stock near the stations and more recent developments around the canal. That density makes securing entry points a real priority.",
-        landmarks: ["Gare du Nord", "Gare de l'Est", "Canal Saint-Martin", "Place de la République (edge)"],
-        neighborhoods: ["Gare du Nord", "Gare de l'Est", "Canal Saint-Martin", "Porte Saint-Martin"],
+        landmarks: [
+          "Gare du Nord",
+          "Gare de l'Est",
+          "Canal Saint-Martin",
+          "Place de la République (edge)",
+        ],
+        neighborhoods: [
+          "Gare du Nord",
+          "Gare de l'Est",
+          "Canal Saint-Martin",
+          "Porte Saint-Martin",
+        ],
         faq: [
           {
-            question: "Do you cover the area near Gare du Nord and Gare de l'Est?",
+            question:
+              "Do you cover the area near Gare du Nord and Gare de l'Est?",
             answer:
               "Yes, we cover the whole 10th arrondissement, including the areas near both stations.",
           },
@@ -184,8 +227,18 @@ export const ZONES: Zone[] = [
         keyword: "serrurier paris 11",
         intro:
           "Le 11e arrondissement, entre Bastille, Oberkampf et République, est l'un des plus densément peuplés de Paris. Immeubles résidentiels avec digicode, forte rotation de locataires et vie nocturne animée autour d'Oberkampf : les demandes de changement de serrure y sont fréquentes, notamment après un déménagement.",
-        landmarks: ["Place de la Bastille", "Rue Oberkampf", "Place de la République", "Cirque d'Hiver"],
-        neighborhoods: ["Bastille", "Oberkampf", "Folie-Méricourt", "Sainte-Marguerite"],
+        landmarks: [
+          "Place de la Bastille",
+          "Rue Oberkampf",
+          "Place de la République",
+          "Cirque d'Hiver",
+        ],
+        neighborhoods: [
+          "Bastille",
+          "Oberkampf",
+          "Folie-Méricourt",
+          "Sainte-Marguerite",
+        ],
         faq: [
           {
             question: "Faut-il changer sa serrure en emménageant dans le 11e ?",
@@ -204,8 +257,18 @@ export const ZONES: Zone[] = [
         keyword: "locksmith paris 11th arrondissement",
         intro:
           "The 11th arrondissement, between Bastille, Oberkampf and République, is one of the most densely populated in Paris. Residential buildings with keypad entry, high tenant turnover and a lively nightlife scene around Oberkampf mean lock-change requests are common, especially after moving in.",
-        landmarks: ["Place de la Bastille", "Rue Oberkampf", "Place de la République", "Cirque d'Hiver"],
-        neighborhoods: ["Bastille", "Oberkampf", "Folie-Méricourt", "Sainte-Marguerite"],
+        landmarks: [
+          "Place de la Bastille",
+          "Rue Oberkampf",
+          "Place de la République",
+          "Cirque d'Hiver",
+        ],
+        neighborhoods: [
+          "Bastille",
+          "Oberkampf",
+          "Folie-Méricourt",
+          "Sainte-Marguerite",
+        ],
         faq: [
           {
             question: "Should I change the lock when moving into the 11th?",
@@ -230,8 +293,18 @@ export const ZONES: Zone[] = [
         keyword: "serrurier paris 18",
         intro:
           "Le 18e arrondissement va du village de Montmartre et du Sacré-Cœur jusqu'aux rues animées de Barbès et Château Rouge. Ruelles pavées et immeubles historiques à Montmartre, habitat plus dense côté Barbès : le secteur demande une bonne connaissance des différents types de bâtis, du plus ancien au plus récent.",
-        landmarks: ["Sacré-Cœur", "Montmartre", "Moulin Rouge", "Barbès-Rochechouart"],
-        neighborhoods: ["Montmartre", "Barbès", "Château Rouge", "La Goutte d'Or"],
+        landmarks: [
+          "Sacré-Cœur",
+          "Montmartre",
+          "Moulin Rouge",
+          "Barbès-Rochechouart",
+        ],
+        neighborhoods: [
+          "Montmartre",
+          "Barbès",
+          "Château Rouge",
+          "La Goutte d'Or",
+        ],
         faq: [
           {
             question: "Intervenez-vous dans les ruelles de Montmartre ?",
@@ -250,8 +323,18 @@ export const ZONES: Zone[] = [
         keyword: "locksmith paris 18th arrondissement",
         intro:
           "The 18th arrondissement runs from the village-like streets of Montmartre and the Sacré-Cœur down to the busy streets of Barbès and Château Rouge. Cobbled lanes and historic buildings in Montmartre, denser housing towards Barbès: the area calls for real familiarity with building types old and new.",
-        landmarks: ["Sacré-Cœur", "Montmartre", "Moulin Rouge", "Barbès-Rochechouart"],
-        neighborhoods: ["Montmartre", "Barbès", "Château Rouge", "La Goutte d'Or"],
+        landmarks: [
+          "Sacré-Cœur",
+          "Montmartre",
+          "Moulin Rouge",
+          "Barbès-Rochechouart",
+        ],
+        neighborhoods: [
+          "Montmartre",
+          "Barbès",
+          "Château Rouge",
+          "La Goutte d'Or",
+        ],
         faq: [
           {
             question: "Do you cover Montmartre's narrow streets?",
@@ -276,8 +359,18 @@ export const ZONES: Zone[] = [
         keyword: "serrurier paris 20",
         intro:
           "Le 20e arrondissement, entre Belleville, Ménilmontant et le cimetière du Père Lachaise, est un secteur vallonné à l'est de Paris. Bâti ancien de Belleville, immeubles plus récents près de la Porte de Bagnolet : la topographie et la diversité du parc immobilier font partie des spécificités du quartier.",
-        landmarks: ["Cimetière du Père Lachaise", "Belleville", "Ménilmontant", "Parc de Belleville"],
-        neighborhoods: ["Belleville", "Ménilmontant", "Saint-Fargeau", "Charonne"],
+        landmarks: [
+          "Cimetière du Père Lachaise",
+          "Belleville",
+          "Ménilmontant",
+          "Parc de Belleville",
+        ],
+        neighborhoods: [
+          "Belleville",
+          "Ménilmontant",
+          "Saint-Fargeau",
+          "Charonne",
+        ],
         faq: [
           {
             question: "Intervenez-vous près du Père Lachaise ?",
@@ -296,8 +389,18 @@ export const ZONES: Zone[] = [
         keyword: "locksmith paris 20th arrondissement",
         intro:
           "The 20th arrondissement, between Belleville, Ménilmontant and Père Lachaise cemetery, is a hilly district in eastern Paris. Older buildings around Belleville, more recent blocks near Porte de Bagnolet: the terrain and the mix of building stock are part of what defines the area.",
-        landmarks: ["Père Lachaise Cemetery", "Belleville", "Ménilmontant", "Parc de Belleville"],
-        neighborhoods: ["Belleville", "Ménilmontant", "Saint-Fargeau", "Charonne"],
+        landmarks: [
+          "Père Lachaise Cemetery",
+          "Belleville",
+          "Ménilmontant",
+          "Parc de Belleville",
+        ],
+        neighborhoods: [
+          "Belleville",
+          "Ménilmontant",
+          "Saint-Fargeau",
+          "Charonne",
+        ],
         faq: [
           {
             question: "Do you cover the area near Père Lachaise?",
@@ -327,7 +430,10 @@ export function getLocalizedZones(lang: Locale): LocalizedZone[] {
   return ZONES.map((zone) => localizeZone(zone, lang));
 }
 
-export function getLocalizedZone(slug: string, lang: Locale): LocalizedZone | undefined {
+export function getLocalizedZone(
+  slug: string,
+  lang: Locale,
+): LocalizedZone | undefined {
   const zone = getZone(slug);
   return zone ? localizeZone(zone, lang) : undefined;
 }

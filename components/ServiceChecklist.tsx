@@ -52,7 +52,9 @@ export default function ServiceChecklist({ lang }: { lang: Locale }) {
                 />
                 <span className="flex flex-col gap-1">
                   <span className="font-medium text-ink">{service.title}</span>
-                  <span className="text-xs text-muted">{dict.pricingPage.onQuote}</span>
+                  <span className="text-xs text-muted">
+                    {dict.pricingPage.onQuote}
+                  </span>
                 </span>
               </label>
             ))}
@@ -63,7 +65,9 @@ export default function ServiceChecklist({ lang }: { lang: Locale }) {
               value="not-sure"
               className="h-4 w-4 shrink-0 accent-signal-press"
             />
-            <span className="font-medium text-ink">{dict.devis.notSureOption}</span>
+            <span className="font-medium text-ink">
+              {dict.devis.notSureOption}
+            </span>
           </label>
         </div>
       </div>

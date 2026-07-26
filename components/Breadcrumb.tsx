@@ -25,7 +25,10 @@ export default function Breadcrumb({
             {index === items.length - 1 ? (
               <span className="font-semibold text-ink">{item.name}</span>
             ) : (
-              <Link href={item.path} className="transition-colors hover:text-ink">
+              <Link
+                href={item.path}
+                className="transition-colors hover:text-ink"
+              >
                 {item.name}
               </Link>
             )}

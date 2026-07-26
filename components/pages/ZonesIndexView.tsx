@@ -39,9 +39,13 @@ export default function ZonesIndexView({ lang }: { lang: Locale }) {
                 className="group flex flex-col rounded-3xl border border-ink/10 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink text-signal">
-                  <span className="font-headline text-lg font-extrabold">{zone.number}</span>
+                  <span className="font-headline text-lg font-extrabold">
+                    {zone.number}
+                  </span>
                 </div>
-                <h2 className="mt-4 font-headline text-lg font-bold text-ink">{zone.title}</h2>
+                <h2 className="mt-4 font-headline text-lg font-bold text-ink">
+                  {zone.title}
+                </h2>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
                   {zone.neighborhoods.slice(0, 3).join(" · ")}
                 </p>

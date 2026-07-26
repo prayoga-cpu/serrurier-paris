@@ -1,3 +1,4 @@
+import Analytics from "@/components/Analytics";
 import { fontVariables } from "@/lib/fonts";
 import { HTML_LANG, type Locale } from "@/lib/i18n";
 import { JsonLd, localBusinessSchema } from "@/lib/schema";
@@ -15,10 +16,14 @@ export default function RootShell({
   children: React.ReactNode;
 }) {
   return (
-    <html lang={HTML_LANG[lang]} className={`${fontVariables} h-full antialiased`}>
+    <html
+      lang={HTML_LANG[lang]}
+      className={`${fontVariables} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col bg-paper text-ink">
         <JsonLd data={localBusinessSchema()} />
         {children}
+        <Analytics lang={lang} />
       </body>
     </html>
   );

@@ -105,8 +105,30 @@ export default function Footer({ lang }: { lang: Locale }) {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-paper/10 pt-6 text-xs">
-          © {new Date().getFullYear()} {BRAND_NAME}. {dict.footer.rights}
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-paper/10 pt-6 text-xs">
+          <span>
+            © {new Date().getFullYear()} {BRAND_NAME}. {dict.footer.rights}
+          </span>
+          <nav className="flex flex-wrap gap-x-5 gap-y-2">
+            <Link
+              href={localePath(lang, "/mentions-legales")}
+              className="transition-colors hover:text-signal"
+            >
+              {dict.legal.mentionsNav}
+            </Link>
+            <Link
+              href={localePath(lang, "/cgv")}
+              className="transition-colors hover:text-signal"
+            >
+              {dict.legal.cgvNav}
+            </Link>
+            <Link
+              href={localePath(lang, "/politique-de-confidentialite")}
+              className="transition-colors hover:text-signal"
+            >
+              {dict.legal.privacyNav}
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>

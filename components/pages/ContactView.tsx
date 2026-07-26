@@ -2,7 +2,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileCallBar from "@/components/MobileCallBar";
 import Breadcrumb from "@/components/Breadcrumb";
-import { ButtonAnchor, ButtonLink, ButtonSubmit, Eyebrow } from "@/components/Button";
+import {
+  ButtonAnchor,
+  ButtonLink,
+  ButtonSubmit,
+  Eyebrow,
+} from "@/components/Button";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/config";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 
@@ -10,7 +15,11 @@ export default function ContactView({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
 
   const info = [
-    { label: dict.contactPage.phoneLabel, value: PHONE_DISPLAY, href: PHONE_HREF },
+    {
+      label: dict.contactPage.phoneLabel,
+      value: PHONE_DISPLAY,
+      href: PHONE_HREF,
+    },
     { label: dict.contactPage.hoursLabel, value: dict.contactPage.hoursValue },
     { label: dict.contactPage.areaLabel, value: dict.contactPage.areaValue },
   ];
@@ -62,7 +71,11 @@ export default function ContactView({ lang }: { lang: Locale }) {
           </div>
 
           <div className="mt-6">
-            <ButtonAnchor href={PHONE_HREF} data-event="call_click" variant="primary">
+            <ButtonAnchor
+              href={PHONE_HREF}
+              data-event="call_click"
+              variant="primary"
+            >
               {dict.common.callNow} — {PHONE_DISPLAY}
             </ButtonAnchor>
           </div>
@@ -72,7 +85,9 @@ export default function ContactView({ lang }: { lang: Locale }) {
               <h2 className="font-headline text-xl font-extrabold tracking-tight text-ink">
                 {dict.contactPage.formTitle}
               </h2>
-              <p className="mt-2 text-sm text-muted">{dict.contactPage.formLead}</p>
+              <p className="mt-2 text-sm text-muted">
+                {dict.contactPage.formLead}
+              </p>
 
               <form className="mt-6 space-y-5">
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -127,7 +142,11 @@ export default function ContactView({ lang }: { lang: Locale }) {
                   />
                 </div>
 
-                <ButtonSubmit type="submit" data-event="form_submit" className="w-full">
+                <ButtonSubmit
+                  type="submit"
+                  data-event="form_submit"
+                  className="w-full"
+                >
                   {dict.contactPage.submitCta}
                 </ButtonSubmit>
               </form>
@@ -137,7 +156,9 @@ export default function ContactView({ lang }: { lang: Locale }) {
               <h2 className="font-headline text-lg font-extrabold tracking-tight">
                 {dict.contactPage.devisBoxTitle}
               </h2>
-              <p className="mt-2 text-sm text-paper/70">{dict.contactPage.devisBoxBody}</p>
+              <p className="mt-2 text-sm text-paper/70">
+                {dict.contactPage.devisBoxBody}
+              </p>
               <ButtonLink
                 href={localePath(lang, "/devis")}
                 data-event="devis_start"

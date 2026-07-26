@@ -36,6 +36,27 @@ export default function PricingView({ lang }: { lang: Locale }) {
             {dict.pricingPage.lead}
           </p>
 
+          <div className="mt-6 inline-flex items-center gap-2.5 rounded-2xl border border-ink/10 bg-white px-4 py-2.5 shadow-sm">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="shrink-0 text-signal-press"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 2" />
+            </svg>
+            <span className="text-sm font-semibold text-ink">
+              {dict.pricingPage.responseTime}
+            </span>
+          </div>
+
           <div className="mt-10 overflow-hidden rounded-3xl border border-ink/10">
             <table className="w-full border-collapse text-left">
               <thead>
@@ -130,14 +151,18 @@ export default function PricingView({ lang }: { lang: Locale }) {
 
           <div className="mt-6 rounded-3xl border border-signal bg-cream/50 p-6 text-sm leading-relaxed text-ink/80">
             <p>
-              <strong className="text-ink">{dict.pricingPage.noticeTitle}</strong>{" "}
+              <strong className="text-ink">
+                {dict.pricingPage.noticeTitle}
+              </strong>{" "}
               {dict.pricingPage.noticeBody}
             </p>
           </div>
 
           <div className="mt-10 space-y-4 text-muted">
             <p>
-              <strong className="text-ink">{dict.pricingPage.basisTitle}</strong>{" "}
+              <strong className="text-ink">
+                {dict.pricingPage.basisTitle}
+              </strong>{" "}
               {dict.pricingPage.basisBody}
             </p>
             <p>

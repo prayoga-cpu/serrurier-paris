@@ -6,6 +6,7 @@ export const DOMAIN = "parisunlockdoor.fr";
 
 export const PHONE_DISPLAY = "06 49 65 85 10";
 export const PHONE_HREF = "tel:+33649658510";
+export const EMAIL = "admin@parisunlockdoor.fr";
 
 // Paths are locale-agnostic — run them through localePath() to render.
 // Labels live in the dictionary, keyed by `key`. See lib/i18n.ts.

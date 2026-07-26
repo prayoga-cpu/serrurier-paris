@@ -3,6 +3,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { ButtonSubmit, Eyebrow } from "@/components/Button";
 import ServiceChecklist from "@/components/ServiceChecklist";
+import BookingPicker from "@/components/BookingPicker";
 import ContactFields from "@/components/ContactFields";
 import { PHONE_HREF } from "@/lib/config";
 import { getDictionary, type Locale } from "@/lib/i18n";
@@ -45,6 +46,10 @@ export default function Hero({ lang }: { lang: Locale }) {
   // so the browser has an initial (hidden) frame to transition from.
   const [revealed, setRevealed] = useState(false);
   const [formCollapsed, setFormCollapsed] = useState(false);
+  // True for the brief window between "postal code confirmed" and the step-2
+  // render actually mounting — lets step 1 play its exit animation before the
+  // layout swaps, instead of vanishing instantly. See handleCheck.
+  const [transitioning, setTransitioning] = useState(false);
 
   useEffect(() => {
     if (step !== 2) return;
@@ -54,9 +59,15 @@ export default function Hero({ lang }: { lang: Locale }) {
 
   function handleCheck(e: FormEvent) {
     e.preventDefault();
+    if (transitioning) return;
     const result = checkPostal(postalCode);
     setStatus(result);
-    if (result !== "invalid") setStep(2);
+    if (result === "invalid") return;
+    setTransitioning(true);
+    window.setTimeout(() => {
+      setStep(2);
+      setTransitioning(false);
+    }, 280);
   }
 
   function handleEditPostal() {
@@ -73,7 +84,13 @@ export default function Hero({ lang }: { lang: Locale }) {
     <section className="relative bg-paper">
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 lg:px-8 lg:pt-24 lg:pb-14">
         {step === 1 ? (
-          <div className="mx-auto max-w-2xl text-center">
+          <div
+            className={`mx-auto max-w-2xl text-center transition-all duration-300 ease-in ${
+              transitioning
+                ? "pointer-events-none -translate-y-3 scale-95 opacity-0"
+                : "translate-y-0 scale-100 opacity-100"
+            }`}
+          >
             <div className="flex flex-wrap items-center justify-center gap-2">
               <Eyebrow>{dict.hero.eyebrow}</Eyebrow>
               <AvailableNowBadge label={dict.hero.availableNow} />
@@ -100,7 +117,9 @@ export default function Hero({ lang }: { lang: Locale }) {
                   placeholder={dict.devis.postalPlaceholder}
                   value={postalCode}
                   onChange={(e) => {
-                    setPostalCode(e.target.value.replace(/\D/g, "").slice(0, 5));
+                    setPostalCode(
+                      e.target.value.replace(/\D/g, "").slice(0, 5),
+                    );
                     setStatus(null);
                   }}
                   className="h-14 w-full rounded-2xl border border-ink/15 bg-paper px-4 text-ink outline-none transition-colors focus:border-signal-press"
@@ -111,7 +130,11 @@ export default function Hero({ lang }: { lang: Locale }) {
                   </p>
                 )}
               </div>
-              <ButtonSubmit type="submit" className="h-14 shrink-0">
+              <ButtonSubmit
+                type="submit"
+                disabled={transitioning}
+                className="h-14 shrink-0 disabled:opacity-60"
+              >
                 {dict.devis.checkCta}
               </ButtonSubmit>
             </form>
@@ -131,7 +154,13 @@ export default function Hero({ lang }: { lang: Locale }) {
           // Left column only — the form now lives in the floating overlay
           // below, which extends past this section onto the photo band.
           // Capped width so text never runs behind where the card floats.
-          <div className="lg:max-w-xl">
+          // Same `revealed` gate as the card, so the two cascade in together
+          // (text first, card a beat behind — see its `delay-150` below).
+          <div
+            className={`transition-all duration-500 ease-out lg:max-w-xl ${
+              revealed ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+            }`}
+          >
             <div className="flex flex-wrap items-center gap-2">
               <Eyebrow>{dict.hero.eyebrow}</Eyebrow>
               <AvailableNowBadge label={dict.hero.availableNow} />
@@ -173,7 +202,10 @@ export default function Hero({ lang }: { lang: Locale }) {
 
             <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {dict.hero.badges.map((badge) => (
-                <li key={badge} className="flex items-start gap-2 text-sm text-muted">
+                <li
+                  key={badge}
+                  className="flex items-start gap-2 text-sm text-muted"
+                >
                   <svg
                     width="18"
                     height="18"
@@ -211,7 +243,9 @@ export default function Hero({ lang }: { lang: Locale }) {
             <h2 className="font-headline text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
               {dict.hero.photoTitle}
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted">{dict.hero.lead}</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted">
+              {dict.hero.lead}
+            </p>
 
             <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-ink/8 pt-5">
               {dict.hero.badges.map((badge) => (
@@ -254,7 +288,7 @@ export default function Hero({ lang }: { lang: Locale }) {
       {step === 2 && (
         <div className="pointer-events-none relative z-30 mt-6 px-6 lg:absolute lg:inset-x-0 lg:top-24 lg:mx-auto lg:mt-0 lg:max-w-7xl lg:px-8">
           <div
-            className={`pointer-events-auto rounded-3xl border border-ink/10 bg-white p-8 shadow-2xl transition-all duration-500 ease-out sm:p-10 lg:ml-auto lg:max-w-md lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto ${
+            className={`pointer-events-auto rounded-3xl border border-ink/10 bg-white p-8 shadow-2xl transition-all delay-150 duration-500 ease-out sm:p-10 lg:ml-auto lg:max-w-md lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto ${
               revealed ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
             }`}
           >
@@ -272,7 +306,9 @@ export default function Hero({ lang }: { lang: Locale }) {
                 onClick={() => setFormCollapsed((v) => !v)}
                 aria-expanded={!formCollapsed}
                 aria-label={
-                  formCollapsed ? dict.devis.expandForm : dict.devis.collapseForm
+                  formCollapsed
+                    ? dict.devis.expandForm
+                    : dict.devis.collapseForm
                 }
                 className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-surface"
               >
@@ -308,6 +344,7 @@ export default function Hero({ lang }: { lang: Locale }) {
 
                 <form className="mt-7 space-y-7">
                   <ServiceChecklist lang={lang} />
+                  <BookingPicker lang={lang} />
                   <ContactFields lang={lang} postalCode={postalCode} />
                 </form>
 
