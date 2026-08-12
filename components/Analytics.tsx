@@ -14,6 +14,7 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 
 const KNOWN_EVENTS: readonly AnalyticsEvent[] = [
   "call_click",
+  "whatsapp_click",
   "form_submit",
   "booking_complete",
   "tarifs_view",

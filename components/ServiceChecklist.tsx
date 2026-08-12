@@ -1,6 +1,6 @@
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { PRICE_TIERS, PRICE_OPTIONS, formatPrice } from "@/lib/pricing";
-import { getLocalizedServices } from "@/lib/services";
+import { getLocalizedServicesFor } from "@/lib/services";
 
 /** Service tiers + add-on options, as checkboxes — shared by the homepage
  * hero (once a postal code checks out) and the full /devis form. Name and
@@ -8,7 +8,9 @@ import { getLocalizedServices } from "@/lib/services";
  * can wrap onto two lines without squeezing the price into the same line. */
 export default function ServiceChecklist({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
-  const services = getLocalizedServices(lang);
+  // B2C only: the B2B services route to their own enquiry form, not through
+  // the emergency/planned estimator. See CLAUDE.md §6, three conversion paths.
+  const services = getLocalizedServicesFor(lang, "b2c");
 
   return (
     <>
@@ -32,7 +34,7 @@ export default function ServiceChecklist({ lang }: { lang: Locale }) {
               <span className="flex flex-col gap-1">
                 <span className="font-medium text-ink">{tier.label[lang]}</span>
                 <span className="text-xs text-muted">
-                  {dict.pricingPage.from} {formatPrice(tier.price, lang)}
+                  {dict.pricingPage.from} {formatPrice(tier.priceHT, lang)}
                 </span>
               </span>
             </label>
@@ -92,7 +94,7 @@ export default function ServiceChecklist({ lang }: { lang: Locale }) {
                 <span className="text-ink">{option.label[lang]}</span>
                 <span className="text-xs text-muted">
                   {option.surcharge ? "+ " : ""}
-                  {formatPrice(option.price, lang)}
+                  {formatPrice(option.priceHT, lang)}
                 </span>
               </span>
             </label>

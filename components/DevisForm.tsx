@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { ButtonAnchor, ButtonSubmit } from "@/components/Button";
+import { ButtonSubmit } from "@/components/Button";
 import ServiceChecklist from "@/components/ServiceChecklist";
 import BookingPicker from "@/components/BookingPicker";
 import ContactFields from "@/components/ContactFields";
-import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/config";
+import WhatsAppForm from "@/components/WhatsAppForm";
+import ContactOptions from "@/components/ContactOptions";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { checkPostal, type PostalStatus } from "@/lib/postal";
 
@@ -74,17 +75,23 @@ export default function DevisForm({ lang }: { lang: Locale }) {
                 {dict.devis.postalParis}
               </p>
             )}
+            {status === "idf" && (
+              <p className="mb-5 rounded-2xl bg-cream/60 px-4 py-3 text-sm leading-relaxed text-ink">
+                {dict.devis.postalIdf}
+              </p>
+            )}
             {status === "other" && (
               <p className="mb-5 rounded-2xl bg-signal/15 px-4 py-3 text-sm leading-relaxed text-ink/80">
                 {dict.devis.postalOther}
               </p>
             )}
 
-            <form className="space-y-8">
+            <WhatsAppForm lang={lang} kind="quote" className="space-y-8">
+              <input type="hidden" name="postal" value={postalCode} />
               <ServiceChecklist lang={lang} />
               <BookingPicker lang={lang} />
               <ContactFields lang={lang} postalCode={postalCode} />
-            </form>
+            </WhatsAppForm>
 
             <button
               type="button"
@@ -105,14 +112,12 @@ export default function DevisForm({ lang }: { lang: Locale }) {
           <p className="mt-1.5 text-sm text-paper/70">
             {dict.devis.urgentLead}
           </p>
-          <ButtonAnchor
-            href={PHONE_HREF}
-            data-event="call_click"
+          <ContactOptions
+            lang={lang}
+            variant="secondary"
             tone="dark"
             className="mt-5 w-full"
-          >
-            {dict.common.callNow} — {PHONE_DISPLAY}
-          </ButtonAnchor>
+          />
         </div>
 
         <ul className="space-y-2.5 rounded-3xl border border-ink/10 bg-white p-6">

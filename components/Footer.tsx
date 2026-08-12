@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { LogoWordmark } from "@/components/Logo";
-import { BRAND_NAME, PHONE_DISPLAY, PHONE_HREF } from "@/lib/config";
+import {
+  APE_CODE,
+  BRAND_NAME,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+  SIRET,
+  WHATSAPP_HREF,
+} from "@/lib/config";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 import { getLocalizedServices } from "@/lib/services";
 
@@ -76,6 +83,22 @@ export default function Footer({ lang }: { lang: Locale }) {
               </li>
               <li>
                 <Link
+                  href={localePath(lang, "/guides")}
+                  className="transition-colors hover:text-signal"
+                >
+                  {dict.nav.guides}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={localePath(lang, "/a-propos")}
+                  className="transition-colors hover:text-signal"
+                >
+                  {dict.aboutPage.eyebrow}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={localePath(lang, "/contact")}
                   className="transition-colors hover:text-signal"
                 >
@@ -99,13 +122,47 @@ export default function Footer({ lang }: { lang: Locale }) {
                   {PHONE_DISPLAY}
                 </a>
               </li>
+              <li>
+                <a
+                  href={WHATSAPP_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-event="whatsapp_click"
+                  className="transition-colors hover:text-signal"
+                >
+                  {dict.common.whatsapp}
+                </a>
+              </li>
               <li>{dict.footer.availability}</li>
               <li>{dict.footer.area}</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-paper/10 pt-6 text-xs">
+        {/* Business identifiers + the legal written-quote notice, on every
+            page rather than only /tarifs — CLAUDE.md §14 P1.5. SIRET and APE
+            render only once lib/config has them; an "en attente" line in the
+            footer would read worse than no line at all. */}
+        <div className="mt-14 border-t border-paper/10 pt-6 text-xs leading-relaxed">
+          <p>
+            <span className="text-paper/85">{dict.footer.identity}</span>
+            {SIRET && (
+              <>
+                {" "}
+                {dict.footer.siretLabel} : {SIRET}.
+              </>
+            )}
+            {APE_CODE && (
+              <>
+                {" "}
+                {dict.footer.apeLabel} : {APE_CODE}.
+              </>
+            )}
+          </p>
+          <p className="mt-1.5">{dict.footer.writtenQuote}</p>
+        </div>
+
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-paper/10 pt-6 text-xs">
           <span>
             © {new Date().getFullYear()} {BRAND_NAME}. {dict.footer.rights}
           </span>

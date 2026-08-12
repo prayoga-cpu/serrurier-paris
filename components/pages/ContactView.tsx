@@ -2,12 +2,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileCallBar from "@/components/MobileCallBar";
 import Breadcrumb from "@/components/Breadcrumb";
-import {
-  ButtonAnchor,
-  ButtonLink,
-  ButtonSubmit,
-  Eyebrow,
-} from "@/components/Button";
+import { ButtonLink, ButtonSubmit, Eyebrow } from "@/components/Button";
+import WhatsAppForm from "@/components/WhatsAppForm";
+import ContactOptions from "@/components/ContactOptions";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/config";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 
@@ -70,14 +67,8 @@ export default function ContactView({ lang }: { lang: Locale }) {
             ))}
           </div>
 
-          <div className="mt-6">
-            <ButtonAnchor
-              href={PHONE_HREF}
-              data-event="call_click"
-              variant="primary"
-            >
-              {dict.common.callNow} — {PHONE_DISPLAY}
-            </ButtonAnchor>
+          <div className="mt-6 inline-block">
+            <ContactOptions lang={lang} />
           </div>
 
           <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-[1.3fr_1fr]">
@@ -89,7 +80,11 @@ export default function ContactView({ lang }: { lang: Locale }) {
                 {dict.contactPage.formLead}
               </p>
 
-              <form className="mt-6 space-y-5">
+              <WhatsAppForm
+                lang={lang}
+                kind="contact"
+                className="mt-6 space-y-5"
+              >
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
                     <label
@@ -149,7 +144,7 @@ export default function ContactView({ lang }: { lang: Locale }) {
                 >
                   {dict.contactPage.submitCta}
                 </ButtonSubmit>
-              </form>
+              </WhatsAppForm>
             </div>
 
             <div className="rounded-3xl bg-ink p-8 text-paper">

@@ -6,14 +6,14 @@ import Breadcrumb from "@/components/Breadcrumb";
 import ServiceCTA from "@/components/ServiceCTA";
 import { Eyebrow } from "@/components/Button";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
-import { PRICE_TIERS, PRICE_OPTIONS, formatPrice } from "@/lib/pricing";
-import { getLocalizedServices } from "@/lib/services";
+import { PRICE_TIERS, PRICE_OPTIONS, formatPriceDual } from "@/lib/pricing";
+import { getLocalizedServicesFor } from "@/lib/services";
 
 const PRICED_SLUGS = new Set(PRICE_TIERS.map((tier) => tier.serviceSlug));
 
 export default function PricingView({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
-  const services = getLocalizedServices(lang);
+  const services = getLocalizedServicesFor(lang, "b2c");
   const unpricedServices = services.filter((s) => !PRICED_SLUGS.has(s.slug));
 
   return (
@@ -90,7 +90,8 @@ export default function PricingView({ lang }: { lang: Locale }) {
                       </Link>
                     </td>
                     <td className="border-t border-ink/10 px-6 py-4 text-muted">
-                      {dict.pricingPage.from} {formatPrice(tier.price, lang)}
+                      {dict.pricingPage.from}{" "}
+                      {formatPriceDual(tier.priceHT, lang)}
                     </td>
                   </tr>
                 ))}
@@ -140,7 +141,7 @@ export default function PricingView({ lang }: { lang: Locale }) {
                       </td>
                       <td className="px-6 py-4 text-muted">
                         {option.surcharge ? "+ " : `${dict.pricingPage.from} `}
-                        {formatPrice(option.price, lang)}
+                        {formatPriceDual(option.priceHT, lang)}
                       </td>
                     </tr>
                   ))}
@@ -159,6 +160,12 @@ export default function PricingView({ lang }: { lang: Locale }) {
           </div>
 
           <div className="mt-10 space-y-4 text-muted">
+            <p>
+              <strong className="text-ink">
+                {dict.pricingPage.taxBasisTitle}
+              </strong>{" "}
+              {dict.pricingPage.taxBasisBody}
+            </p>
             <p>
               <strong className="text-ink">
                 {dict.pricingPage.basisTitle}

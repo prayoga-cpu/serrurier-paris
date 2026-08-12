@@ -20,7 +20,16 @@ export default function RootShell({
       lang={HTML_LANG[lang]}
       className={`${fontVariables} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-paper text-ink">
+      {/*
+       * suppressHydrationWarning: browser extensions (Grammarly, password
+       * managers) add attributes to <body> before React hydrates, which React
+       * reports as a mismatch. It only silences attribute drift on this one
+       * element, not on children.
+       */}
+      <body
+        className="flex min-h-full flex-col bg-paper text-ink"
+        suppressHydrationWarning
+      >
         <JsonLd data={localBusinessSchema()} />
         {children}
         <Analytics lang={lang} />

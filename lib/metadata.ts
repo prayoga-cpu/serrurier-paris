@@ -6,10 +6,27 @@ import {
   getCgvContent,
   getPrivacyContent,
 } from "@/lib/legal";
+import { getLocalizedGuide } from "@/lib/guides";
 import { getLocalizedService } from "@/lib/services";
+import { getLocalizedTask } from "@/lib/tasks";
 import { getLocalizedZone } from "@/lib/zones";
+import { formatPrice, getStartingPriceHT, getTierPriceHT } from "@/lib/pricing";
 
 const OG_LOCALE: Record<Locale, string> = { fr: "fr_FR", en: "en_GB" };
+
+/**
+ * The cheapest published price, rendered into a meta description. A description
+ * that answers "how much?" before the click outperforms one that doesn't — it's
+ * the single lever the benchmark site uses on every page.
+ */
+function priceLine(lang: Locale, priceHT: number, template: string): string {
+  return template.replace("{price}", formatPrice(priceHT, lang));
+}
+
+/** Descriptions are capped so Google doesn't truncate mid-price. */
+function withPrice(description: string, suffix: string): string {
+  return `${description} ${suffix}`.slice(0, 300);
+}
 
 /**
  * Every page gets a unique title + description per locale, plus self-referencing
@@ -43,7 +60,14 @@ export function homeMetadata(lang: Locale): Metadata {
     lang,
     "/",
     `${BRAND_NAME} — ${dict.meta.homeTitle}`,
-    dict.meta.homeDescription,
+    withPrice(
+      dict.meta.homeDescription,
+      priceLine(
+        lang,
+        getTierPriceHT("ouverture-porte-claquee"),
+        dict.meta.priceSuffix,
+      ),
+    ),
   );
 }
 
@@ -53,7 +77,14 @@ export function pricingMetadata(lang: Locale): Metadata {
     lang,
     "/tarifs",
     `${dict.meta.pricingTitle} | ${BRAND_NAME}`,
-    dict.meta.pricingDescription,
+    withPrice(
+      dict.meta.pricingDescription,
+      priceLine(
+        lang,
+        getTierPriceHT("ouverture-porte-claquee"),
+        dict.meta.priceSuffix,
+      ),
+    ),
   );
 }
 
@@ -72,11 +103,19 @@ export function serviceMetadata(lang: Locale, slug: string): Metadata {
   const service = getLocalizedService(slug, lang);
   if (!service) return {};
 
+  const startingPriceHT = getStartingPriceHT(service.slug);
+  const description = `${service.summary} ${dict.meta.serviceDescriptionSuffix}`;
+
   return base(
     lang,
     `/services/${service.slug}`,
     `${service.title} ${dict.meta.inParis} — ${BRAND_NAME}`,
-    `${service.summary} ${dict.meta.serviceDescriptionSuffix}`,
+    startingPriceHT === undefined
+      ? description
+      : withPrice(
+          description,
+          priceLine(lang, startingPriceHT, dict.meta.servicePriceSuffix),
+        ),
   );
 }
 
@@ -99,7 +138,67 @@ export function zoneMetadata(lang: Locale, slug: string): Metadata {
     lang,
     `/${zone.slug}`,
     `${zone.title} — ${BRAND_NAME}`,
-    `${zone.title}. ${dict.meta.zoneDescriptionSuffix}`,
+    withPrice(
+      `${zone.title}. ${dict.meta.zoneDescriptionSuffix}`,
+      priceLine(
+        lang,
+        getTierPriceHT("ouverture-porte-claquee"),
+        dict.meta.priceSuffix,
+      ),
+    ),
+  );
+}
+
+export function guidesIndexMetadata(lang: Locale): Metadata {
+  const dict = getDictionary(lang);
+  return base(
+    lang,
+    "/guides",
+    `${dict.meta.guidesTitle} | ${BRAND_NAME}`,
+    dict.meta.guidesDescription,
+  );
+}
+
+export function guideMetadata(lang: Locale, slug: string): Metadata {
+  const guide = getLocalizedGuide(slug, lang);
+  if (!guide) return {};
+
+  return base(
+    lang,
+    `/guides/${guide.slug}`,
+    `${guide.title} — ${BRAND_NAME}`,
+    guide.summary,
+  );
+}
+
+export function taskMetadata(lang: Locale, slug: string): Metadata {
+  const dict = getDictionary(lang);
+  const task = getLocalizedTask(slug, lang);
+  if (!task) return {};
+
+  const startingPriceHT = getStartingPriceHT(task.serviceSlug);
+  const description = `${task.summary} ${dict.meta.serviceDescriptionSuffix}`;
+
+  return base(
+    lang,
+    `/${task.slug}`,
+    `${task.title} ${dict.meta.inParis} — ${BRAND_NAME}`,
+    startingPriceHT === undefined
+      ? description
+      : withPrice(
+          description,
+          priceLine(lang, startingPriceHT, dict.meta.servicePriceSuffix),
+        ),
+  );
+}
+
+export function aboutMetadata(lang: Locale): Metadata {
+  const dict = getDictionary(lang);
+  return base(
+    lang,
+    "/a-propos",
+    `${dict.meta.aboutTitle} | ${BRAND_NAME}`,
+    dict.meta.aboutDescription,
   );
 }
 

@@ -27,6 +27,7 @@ export type ConsentValue = "granted" | "denied";
  */
 export type AnalyticsEvent =
   | "call_click"
+  | "whatsapp_click"
   | "form_submit"
   | "booking_complete"
   | "tarifs_view"

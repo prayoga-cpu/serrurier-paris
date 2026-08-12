@@ -5,7 +5,8 @@ import { ButtonSubmit, Eyebrow } from "@/components/Button";
 import ServiceChecklist from "@/components/ServiceChecklist";
 import BookingPicker from "@/components/BookingPicker";
 import ContactFields from "@/components/ContactFields";
-import { PHONE_HREF } from "@/lib/config";
+import WhatsAppForm from "@/components/WhatsAppForm";
+import { PHONE_HREF, WHATSAPP_HREF } from "@/lib/config";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { checkPostal, type PostalStatus } from "@/lib/postal";
 
@@ -147,6 +148,15 @@ export default function Hero({ lang }: { lang: Locale }) {
                 className="font-semibold text-ink underline-offset-2 hover:underline"
               >
                 {dict.hero.noPostalCta}
+              </a>{" "}
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event="whatsapp_click"
+                className="font-semibold text-ink underline-offset-2 hover:underline"
+              >
+                {dict.common.orWhatsapp}
               </a>
             </p>
           </div>
@@ -230,10 +240,20 @@ export default function Hero({ lang }: { lang: Locale }) {
 
       {/* Full-bleed photo band with an overlapping trust card. */}
       <div className="relative mt-6 lg:mt-10">
-        <div
-          className="relative h-105 w-full bg-ink bg-cover bg-center bg-fixed sm:h-130"
-          style={{ backgroundImage: "url('/paris-bg.jpg')" }}
-        >
+        {/* A real <img> rather than a CSS background: a background image is
+            invisible to image search and carries no alt text. Plain <img>
+            because the build is a static export with next/image unoptimized. */}
+        <div className="relative h-105 w-full overflow-hidden bg-ink sm:h-130">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/paris-bg.jpg"
+            alt={dict.hero.photoAlt}
+            width={1920}
+            height={1080}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover object-center"
+          />
           <div className="absolute inset-0 backdrop-blur-[1.5px] backdrop-brightness-[0.85]" />
           <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-ink/0 to-ink/0" />
         </div>
@@ -336,17 +356,27 @@ export default function Hero({ lang }: { lang: Locale }) {
                     {dict.devis.postalParis}
                   </p>
                 )}
+                {status === "idf" && (
+                  <p className="mt-5 rounded-2xl bg-cream/60 px-4 py-3 text-sm leading-relaxed text-ink">
+                    {dict.devis.postalIdf}
+                  </p>
+                )}
                 {status === "other" && (
                   <p className="mt-5 rounded-2xl bg-signal/15 px-4 py-3 text-sm leading-relaxed text-ink/80">
                     {dict.devis.postalOther}
                   </p>
                 )}
 
-                <form className="mt-7 space-y-7">
+                <WhatsAppForm
+                  lang={lang}
+                  kind="quote"
+                  className="mt-7 space-y-7"
+                >
+                  <input type="hidden" name="postal" value={postalCode} />
                   <ServiceChecklist lang={lang} />
                   <BookingPicker lang={lang} />
                   <ContactFields lang={lang} postalCode={postalCode} />
-                </form>
+                </WhatsAppForm>
 
                 <button
                   type="button"
