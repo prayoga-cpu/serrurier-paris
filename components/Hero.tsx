@@ -5,9 +5,10 @@ import { ButtonSubmit, Eyebrow } from "@/components/Button";
 import ServiceChecklist from "@/components/ServiceChecklist";
 import BookingPicker from "@/components/BookingPicker";
 import ContactFields from "@/components/ContactFields";
+import Modal from "@/components/Modal";
 import WhatsAppForm from "@/components/WhatsAppForm";
 import { PHONE_HREF, WHATSAPP_HREF } from "@/lib/config";
-import { getDictionary, type Locale } from "@/lib/i18n";
+import { getDictionary, type Dictionary, type Locale } from "@/lib/i18n";
 import { checkPostal, type PostalStatus } from "@/lib/postal";
 
 const STAT_ICONS = [
@@ -23,6 +24,25 @@ const STAT_ICONS = [
   </>,
 ];
 
+function CheckIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="shrink-0 text-signal-press"
+      aria-hidden="true"
+    >
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
 // Pulsing dot + label — a true, standing claim (the business runs 24/7, see
 // dict.hero.stat1Value) rather than a fake live-visitor-style counter.
 function AvailableNowBadge({ label }: { label: string }) {
@@ -37,16 +57,35 @@ function AvailableNowBadge({ label }: { label: string }) {
   );
 }
 
+// Shared by both steps, so the headline block doesn't shift or resize when the
+// postcode is confirmed — only what sits under it changes.
+function HeroHeading({ dict }: { dict: Dictionary }) {
+  return (
+    <>
+      <div className="flex flex-wrap items-center justify-center gap-2">
+        <Eyebrow>{dict.hero.eyebrow}</Eyebrow>
+        <AvailableNowBadge label={dict.hero.availableNow} />
+      </div>
+      <h1 className="mx-auto mt-6 font-headline text-4xl font-extrabold leading-[1.15] tracking-tight text-ink sm:text-6xl sm:leading-[1.08] lg:text-7xl lg:leading-[1.05]">
+        {dict.hero.title}
+      </h1>
+      <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted">
+        {dict.hero.lead}
+      </p>
+    </>
+  );
+}
+
 export default function Hero({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
 
   const [step, setStep] = useState<1 | 2>(1);
   const [postalCode, setPostalCode] = useState("");
   const [status, setStatus] = useState<PostalStatus | null>(null);
-  // Drives the fade/slide-in on the step-2 form — flipped a tick after mount
-  // so the browser has an initial (hidden) frame to transition from.
+  // Drives the fade/slide-in on the step-2 content — flipped a tick after
+  // mount so the browser has an initial (hidden) frame to transition from.
   const [revealed, setRevealed] = useState(false);
-  const [formCollapsed, setFormCollapsed] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
   // True for the brief window between "postal code confirmed" and the step-2
   // render actually mounting — lets step 1 play its exit animation before the
   // layout swaps, instead of vanishing instantly. See handleCheck.
@@ -67,11 +106,16 @@ export default function Hero({ lang }: { lang: Locale }) {
     setTransitioning(true);
     window.setTimeout(() => {
       setStep(2);
+      // The whole point of the postcode gate is to hand the visitor straight
+      // to the request form, so it opens itself rather than waiting for a
+      // second tap.
+      setFormOpen(true);
       setTransitioning(false);
     }, 280);
   }
 
   function handleEditPostal() {
+    setFormOpen(false);
     setRevealed(false);
     setStep(1);
   }
@@ -83,31 +127,23 @@ export default function Hero({ lang }: { lang: Locale }) {
 
   return (
     <section className="relative bg-paper">
-      <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 lg:px-8 lg:pt-24 lg:pb-14">
+      <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 text-center lg:px-8 lg:pt-24 lg:pb-14">
         {step === 1 ? (
           <div
-            className={`mx-auto max-w-2xl text-center transition-all duration-300 ease-in ${
+            className={`mx-auto max-w-2xl transition-all duration-300 ease-in ${
               transitioning
                 ? "pointer-events-none -translate-y-3 scale-95 opacity-0"
                 : "translate-y-0 scale-100 opacity-100"
             }`}
           >
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              <Eyebrow>{dict.hero.eyebrow}</Eyebrow>
-              <AvailableNowBadge label={dict.hero.availableNow} />
-            </div>
-            <h1 className="mx-auto mt-6 font-headline text-4xl font-extrabold leading-[1.15] tracking-tight text-ink sm:text-6xl sm:leading-[1.08] lg:text-7xl lg:leading-[1.05]">
-              {dict.hero.title}
-            </h1>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted">
-              {dict.hero.lead}
-            </p>
+            <HeroHeading dict={dict} />
 
-            <form
-              onSubmit={handleCheck}
-              className="mx-auto mt-9 flex max-w-md flex-col items-stretch gap-3 sm:flex-row sm:items-center"
-            >
-              <div className="flex-1 text-left">
+            {/* The postcode field and its button are one centred row; the
+                validation message sits below the row rather than inside it,
+                so showing an error can't push the button out of line with
+                the field. */}
+            <form onSubmit={handleCheck} className="mx-auto mt-9 max-w-md">
+              <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                 <input
                   id="postal"
                   name="postal"
@@ -115,6 +151,7 @@ export default function Hero({ lang }: { lang: Locale }) {
                   inputMode="numeric"
                   maxLength={5}
                   aria-label={dict.devis.postalLabel}
+                  aria-invalid={status === "invalid"}
                   placeholder={dict.devis.postalPlaceholder}
                   value={postalCode}
                   onChange={(e) => {
@@ -123,21 +160,21 @@ export default function Hero({ lang }: { lang: Locale }) {
                     );
                     setStatus(null);
                   }}
-                  className="h-14 w-full rounded-2xl border border-ink/15 bg-paper px-4 text-ink outline-none transition-colors focus:border-signal-press"
+                  className="h-14 w-full flex-1 rounded-2xl border border-ink/15 bg-paper px-4 text-center text-ink outline-none transition-colors focus:border-signal-press sm:text-left"
                 />
-                {status === "invalid" && (
-                  <p className="mt-2 text-sm font-medium text-danger">
-                    {dict.devis.postalInvalid}
-                  </p>
-                )}
+                <ButtonSubmit
+                  type="submit"
+                  disabled={transitioning}
+                  className="h-14 shrink-0 disabled:opacity-60"
+                >
+                  {dict.devis.checkCta}
+                </ButtonSubmit>
               </div>
-              <ButtonSubmit
-                type="submit"
-                disabled={transitioning}
-                className="h-14 shrink-0 disabled:opacity-60"
-              >
-                {dict.devis.checkCta}
-              </ButtonSubmit>
+              {status === "invalid" && (
+                <p className="mt-2 text-sm font-medium text-danger">
+                  {dict.devis.postalInvalid}
+                </p>
+              )}
             </form>
 
             <p className="mt-4 text-sm text-muted">
@@ -161,28 +198,17 @@ export default function Hero({ lang }: { lang: Locale }) {
             </p>
           </div>
         ) : (
-          // Left column only — the form now lives in the floating overlay
-          // below, which extends past this section onto the photo band.
-          // Capped width so text never runs behind where the card floats.
-          // Same `revealed` gate as the card, so the two cascade in together
-          // (text first, card a beat behind — see its `delay-150` below).
+          // The request form is a modal now, so this column is no longer
+          // capped to leave room for a floating card beside it — it keeps the
+          // full centred width and the proof points sit under the headline.
           <div
-            className={`transition-all duration-500 ease-out lg:max-w-xl ${
+            className={`mx-auto max-w-3xl transition-all duration-500 ease-out ${
               revealed ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
             }`}
           >
-            <div className="flex flex-wrap items-center gap-2">
-              <Eyebrow>{dict.hero.eyebrow}</Eyebrow>
-              <AvailableNowBadge label={dict.hero.availableNow} />
-            </div>
-            <h1 className="mt-6 font-headline text-4xl font-extrabold leading-[1.15] tracking-tight text-ink sm:text-5xl sm:leading-[1.08] lg:text-6xl lg:leading-[1.05]">
-              {dict.hero.title}
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-              {dict.hero.lead}
-            </p>
+            <HeroHeading dict={dict} />
 
-            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
+            <div className="mt-8 flex flex-wrap justify-center gap-x-10 gap-y-4">
               {stats.map((stat, i) => (
                 <div key={stat.value} className="flex items-center gap-2.5">
                   <span className="text-signal-press">
@@ -200,7 +226,7 @@ export default function Hero({ lang }: { lang: Locale }) {
                       {STAT_ICONS[i]}
                     </svg>
                   </span>
-                  <span className="flex flex-col leading-tight">
+                  <span className="flex flex-col text-left leading-tight">
                     <span className="font-headline text-lg font-extrabold text-ink">
                       {stat.value}
                     </span>
@@ -210,30 +236,37 @@ export default function Hero({ lang }: { lang: Locale }) {
               ))}
             </div>
 
-            <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <ul className="mx-auto mt-8 flex max-w-2xl flex-wrap justify-center gap-x-6 gap-y-3">
               {dict.hero.badges.map((badge) => (
                 <li
                   key={badge}
-                  className="flex items-start gap-2 text-sm text-muted"
+                  className="flex items-center gap-2 text-sm text-muted"
                 >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mt-0.5 shrink-0 text-signal-press"
-                    aria-hidden="true"
-                  >
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>
+                  <CheckIcon size={16} />
                   {badge}
                 </li>
               ))}
             </ul>
+
+            {/* Re-entry point: the modal opens itself on arrival, so once it's
+                dismissed there has to be something obvious that brings it
+                back — otherwise closing it strands the visitor mid-request. */}
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+              <ButtonSubmit
+                type="button"
+                onClick={() => setFormOpen(true)}
+                data-event="devis_start"
+              >
+                {dict.hero.formCta}
+              </ButtonSubmit>
+              <button
+                type="button"
+                onClick={handleEditPostal}
+                className="text-sm font-semibold text-muted underline-offset-2 hover:text-ink hover:underline"
+              >
+                ← {dict.devis.editPostal}
+              </button>
+            </div>
           </div>
         )}
       </div>
@@ -273,20 +306,7 @@ export default function Hero({ lang }: { lang: Locale }) {
                   key={badge}
                   className="flex items-center gap-1.5 text-xs font-medium text-muted"
                 >
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="shrink-0 text-signal-press"
-                    aria-hidden="true"
-                  >
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>
+                  <CheckIcon size={14} />
                   {badge}
                 </li>
               ))}
@@ -295,101 +315,47 @@ export default function Hero({ lang }: { lang: Locale }) {
         </div>
       </div>
 
-      {/* Floating request-form card. Absolutely positioned (at lg+) within
-          this section's `relative` root, so it isn't confined to the row
-          height above and can extend down over the photo band — the effect
-          asked for. The inner div replicates the page's own container
-          classes (max-w-7xl/px-6/px-8) so its horizontal position lines up
-          with the rest of the content; ml-auto + max-w-md then pushes it to
-          the right edge. Below lg it drops back into normal flow (position:
-          static) — it's the last element in this section's DOM order, so it
-          renders after the photo band rather than floating over it, since
-          there's no spare width for an overlay on a narrow screen. */}
-      {step === 2 && (
-        <div className="pointer-events-none relative z-30 mt-6 px-6 lg:absolute lg:inset-x-0 lg:top-24 lg:mx-auto lg:mt-0 lg:max-w-7xl lg:px-8">
-          <div
-            className={`pointer-events-auto rounded-3xl border border-ink/10 bg-white p-8 shadow-2xl transition-all delay-150 duration-500 ease-out sm:p-10 lg:ml-auto lg:max-w-md lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto ${
-              revealed ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-            }`}
-          >
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <h2 className="font-headline text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
-                  {dict.hero.formTitle}
-                </h2>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted">
-                  {dict.hero.formLead}
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => setFormCollapsed((v) => !v)}
-                aria-expanded={!formCollapsed}
-                aria-label={
-                  formCollapsed
-                    ? dict.devis.expandForm
-                    : dict.devis.collapseForm
-                }
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-surface"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={`transition-transform duration-300 ${formCollapsed ? "rotate-180" : ""}`}
-                  aria-hidden="true"
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-            </div>
+      {/* The request form. A modal on every breakpoint: as a right-hand card it
+          competed with the hero copy on desktop, and below the fold on mobile
+          it needed a scroll the visitor had no reason to expect. */}
+      <Modal
+        open={step === 2 && formOpen}
+        onClose={() => setFormOpen(false)}
+        title={dict.hero.formTitle}
+        lead={dict.hero.formLead}
+        closeLabel={dict.devis.closeForm}
+      >
+        {status === "paris" && (
+          <p className="mb-6 rounded-2xl bg-cream/60 px-4 py-3 text-sm font-medium text-ink">
+            {dict.devis.postalParis}
+          </p>
+        )}
+        {status === "idf" && (
+          <p className="mb-6 rounded-2xl bg-cream/60 px-4 py-3 text-sm leading-relaxed text-ink">
+            {dict.devis.postalIdf}
+          </p>
+        )}
+        {status === "other" && (
+          <p className="mb-6 rounded-2xl bg-signal/15 px-4 py-3 text-sm leading-relaxed text-ink/80">
+            {dict.devis.postalOther}
+          </p>
+        )}
 
-            {!formCollapsed && (
-              <>
-                {status === "paris" && (
-                  <p className="mt-5 rounded-2xl bg-cream/60 px-4 py-3 text-sm font-medium text-ink">
-                    {dict.devis.postalParis}
-                  </p>
-                )}
-                {status === "idf" && (
-                  <p className="mt-5 rounded-2xl bg-cream/60 px-4 py-3 text-sm leading-relaxed text-ink">
-                    {dict.devis.postalIdf}
-                  </p>
-                )}
-                {status === "other" && (
-                  <p className="mt-5 rounded-2xl bg-signal/15 px-4 py-3 text-sm leading-relaxed text-ink/80">
-                    {dict.devis.postalOther}
-                  </p>
-                )}
+        <WhatsAppForm lang={lang} kind="quote" className="space-y-7">
+          <input type="hidden" name="postal" value={postalCode} />
+          <ServiceChecklist lang={lang} />
+          <BookingPicker lang={lang} />
+          <ContactFields lang={lang} postalCode={postalCode} />
+        </WhatsAppForm>
 
-                <WhatsAppForm
-                  lang={lang}
-                  kind="quote"
-                  className="mt-7 space-y-7"
-                >
-                  <input type="hidden" name="postal" value={postalCode} />
-                  <ServiceChecklist lang={lang} />
-                  <BookingPicker lang={lang} />
-                  <ContactFields lang={lang} postalCode={postalCode} />
-                </WhatsAppForm>
-
-                <button
-                  type="button"
-                  onClick={handleEditPostal}
-                  className="mt-6 text-sm font-semibold text-muted underline-offset-2 hover:text-ink hover:underline"
-                >
-                  ← {dict.devis.editPostal}
-                </button>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+        <button
+          type="button"
+          onClick={handleEditPostal}
+          className="mt-6 text-sm font-semibold text-muted underline-offset-2 hover:text-ink hover:underline"
+        >
+          ← {dict.devis.editPostal}
+        </button>
+      </Modal>
     </section>
   );
 }

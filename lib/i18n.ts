@@ -91,6 +91,7 @@ const fr = {
     formTitle: "Besoin d'un serrurier maintenant ?",
     formLead:
       "Décrivez votre besoin, on vous rappelle avec un prix clair, avant toute intervention.",
+    formCta: "Reprendre ma demande",
     fieldName: "Nom complet",
     fieldNamePlaceholder: "Votre nom",
     fieldPhone: "Numéro de téléphone",
@@ -216,8 +217,7 @@ const fr = {
     postalOther:
       "Nous intervenons à Paris et en Île-de-France. Laissez vos coordonnées ci-dessous : nous vous confirmons rapidement si nous pouvons intervenir chez vous.",
     editPostal: "Modifier le code postal",
-    collapseForm: "Réduire le formulaire",
-    expandForm: "Afficher le formulaire",
+    closeForm: "Fermer le formulaire",
     servicesLabel: "Type d'intervention",
     servicesHint:
       "Sélectionnez une ou plusieurs interventions, si vous savez déjà de quoi il s'agit.",
@@ -541,6 +541,7 @@ const en: Dictionary = {
     formTitle: "Need a locksmith right now?",
     formLead:
       "Tell us what you need and we'll call you back with a clear price, before any work begins.",
+    formCta: "Continue my request",
     fieldName: "Full name",
     fieldNamePlaceholder: "Your name",
     fieldPhone: "Phone number",
@@ -663,8 +664,7 @@ const en: Dictionary = {
     postalOther:
       "We cover Paris and Île-de-France. Leave your details below and we'll quickly confirm whether we can come to you.",
     editPostal: "Edit postcode",
-    collapseForm: "Collapse form",
-    expandForm: "Show form",
+    closeForm: "Close the form",
     servicesLabel: "Type of work",
     servicesHint: "Select one or more if you already know what's needed.",
     notSureOption: "Not sure — I'll describe it in the message",
