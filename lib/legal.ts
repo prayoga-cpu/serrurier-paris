@@ -265,6 +265,14 @@ export function getPrivacyContent(lang: Locale): LegalPageContent {
           ],
         },
         {
+          heading: "Location data",
+          paragraphs: [
+            'The postcode step offers an optional "use my position" button. It does nothing unless you press it, and your browser asks for your permission before anything is read.',
+            "If you allow it, your device's coordinates are sent to the reverse-geocoding service of the Géoplateforme, run by IGN, the French national mapping agency, purely to turn those coordinates into a street address you can check and edit. The request goes straight from your browser to that service, so it also sees your IP address.",
+            "We do not store your coordinates. Only the address you finally submit with the form reaches us, exactly as if you had typed it. Refusing makes no difference to the service: the postcode field works normally.",
+          ],
+        },
+        {
           heading: "Why we collect it",
           paragraphs: [
             "To respond to quote requests and contact messages, and to organise the service you request. We do not sell or rent your data to third parties.",
@@ -291,7 +299,12 @@ export function getPrivacyContent(lang: Locale): LegalPageContent {
         {
           heading: "Who receives it",
           paragraphs: [
-            `${BRAND_NAME} and our hosting provider (Vercel Inc.). Data is not shared with any other third party.`,
+            `${BRAND_NAME}, and the service providers below acting on our instructions. Your data is never sold, rented, or shared for advertising.`,
+          ],
+          list: [
+            "Vercel Inc. — hosting (United States)",
+            "Resend — delivery of the emails sent when you submit a form (United States)",
+            "IGN / Géoplateforme — reverse geocoding, and only if you press the optional \u201cuse my position\u201d button (France)",
           ],
         },
         {
@@ -337,6 +350,14 @@ export function getPrivacyContent(lang: Locale): LegalPageContent {
         ],
       },
       {
+        heading: "Données de localisation",
+        paragraphs: [
+          "L'étape du code postal propose un bouton facultatif « Utiliser ma position ». Il ne se déclenche que si vous appuyez dessus, et votre navigateur vous demande votre autorisation avant toute lecture de position.",
+          "Si vous l'autorisez, les coordonnées de votre appareil sont transmises au service de géocodage inverse de la Géoplateforme, opérée par l'IGN (Institut national de l'information géographique et forestière), dans le seul but de les convertir en une adresse postale que vous pouvez vérifier et corriger. La requête part directement de votre navigateur vers ce service, qui voit donc aussi votre adresse IP.",
+          "Nous ne conservons pas vos coordonnées. Seule l'adresse que vous validez en envoyant le formulaire nous parvient, exactement comme si vous l'aviez saisie. Refuser ne change rien au service : le champ code postal fonctionne normalement.",
+        ],
+      },
+      {
         heading: "Finalités",
         paragraphs: [
           "Pour répondre à vos demandes de devis et de contact, et organiser l'intervention demandée. Vos données ne sont ni vendues ni louées à des tiers.",
@@ -363,7 +384,12 @@ export function getPrivacyContent(lang: Locale): LegalPageContent {
       {
         heading: "Destinataires",
         paragraphs: [
-          `${BRAND_NAME} et notre hébergeur (Vercel Inc.). Aucune donnée n'est partagée avec un autre tiers.`,
+          `${BRAND_NAME}, ainsi que les prestataires ci-dessous qui agissent sur nos instructions. Vos données ne sont jamais vendues, louées, ni transmises à des fins publicitaires.`,
+        ],
+        list: [
+          "Vercel Inc. — hébergement (États-Unis)",
+          "Resend — acheminement des emails envoyés lors de la soumission d'un formulaire (États-Unis)",
+          "IGN / Géoplateforme — géocodage inverse, uniquement si vous appuyez sur le bouton facultatif « Utiliser ma position » (France)",
         ],
       },
       {

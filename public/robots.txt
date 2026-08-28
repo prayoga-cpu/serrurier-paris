@@ -16,4 +16,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://parisunlockdoor.fr/sitemap.xml
+Sitemap: https://serrurier-paris-theta.vercel.app/sitemap.xml

@@ -1,8 +1,19 @@
 // Central brand/config constants. Never inline these values elsewhere.
-// See CLAUDE.md §0 — BRAND_NAME and DOMAIN are blocked on client confirmation (B1, B2).
 
 export const BRAND_NAME = "Serrurier Paris Express";
-export const DOMAIN = "parisunlockdoor.fr";
+
+/**
+ * The live origin. Canonicals, hreflang, the sitemap, OG URLs and the
+ * LocalBusiness schema all derive from this one constant.
+ *
+ * Deliberately the Vercel deployment URL for now, not parisunlockdoor.fr:
+ * that domain is bought but not yet pointed at this build (CLAUDE.md §0 B2),
+ * and canonicals must name a URL that actually serves the page. Nothing is in
+ * Search Console yet, so no ranking equity is being staked on this hostname.
+ * Switch this one line — plus the Sitemap: line in public/robots.txt — the day
+ * DNS cuts over, and add a redirect from this host to the new one.
+ */
+export const DOMAIN = "serrurier-paris-theta.vercel.app";
 
 export const PHONE_DISPLAY = "06 49 65 85 10";
 export const PHONE_HREF = "tel:+33649658510";
