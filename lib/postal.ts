@@ -1,18 +1,26 @@
 // Shared postal-code gate logic — used by the homepage hero and /devis, which
 // both run the same "check coverage, then show the full request form" flow.
 //
-// Coverage is derived from what is actually published in lib/zones rather than
-// hardcoded here, so the checker can never claim a department the site has no
-// page for. That mattered when coverage was Paris + the seven Île-de-France
-// departments (CLAUDE.md §14 P1); it matters more now that the client has asked
-// to expand nationally (adjustment brief §4), because the checker is the one
-// place a visitor is told, in so many words, "yes, we come to you".
+// This module deliberately has NO imports. Hero.tsx and DevisForm.tsx are client
+// components, so anything reachable from here ships to the browser; importing
+// lib/zones pulled the entire bilingual zone dataset (~290 KB of prose) into the
+// client bundle for the sake of a handful of five-digit strings.
+//
+// COVERED_POSTAL_CODES is therefore written out rather than derived, and
+// lib/zones/index.ts asserts at build time that it still matches the city pages
+// that are actually published. Drift fails the build instead of going unnoticed.
+//
+// Matching is on the FULL five-digit code, never a two-digit prefix. Île-de-
+// France is the one exception: each of its seven prefixes has a department hub
+// page behind it that claims the whole department, so prefix matching there is
+// backed by a published page. Outside Île-de-France we publish one city, not one
+// department — matching "63" would tell every one of the ~470 communes of the
+// Puy-de-Dôme that we cover them on the strength of a single Clermont-Ferrand
+// page.
 //
 // Anything outside the published set still gets the form, with copy saying we'll
-// confirm — never a hard "we don't cover you", which the audit (§15) flagged as
-// the one thing the reference site handles gracefully.
-
-import { ZONES } from "@/lib/zones";
+// confirm — never a hard "we don't cover you", which the audit (CLAUDE.md §15)
+// flagged as the one thing the reference site handles gracefully.
 
 export const POSTAL_RE = /^\d{5}$/;
 
@@ -20,21 +28,31 @@ export const POSTAL_RE = /^\d{5}$/;
 export const IDF_PREFIXES = ["77", "78", "91", "92", "93", "94", "95"] as const;
 
 /**
- * Two-digit prefixes of cities published outside Île-de-France, taken from the
- * postal code each city page stores. Empty until the coverage question in
- * lib/zones/types.ts (ZoneCoverage) is answered and those pages ship.
+ * Every postal code covered by a published city page outside Île-de-France.
+ * Grouped by city, in the order the cities appear in lib/zones/national.ts.
+ * Keep in sync with the `postalCodes` on each national Zone — the assertion in
+ * lib/zones/index.ts enforces it.
  */
-const NETWORK_PREFIXES: string[] = ZONES.filter(
-  (zone) => zone.kind === "city" && !zone.departmentSlug,
-).map((zone) => zone.number.slice(0, 2));
+export const COVERED_POSTAL_CODES: readonly string[] = [
+  "63000",
+  "63100", // Clermont-Ferrand
+  "87000",
+  "87100",
+  "87280", // Limoges
+  "72000",
+  "72100", // Le Mans
+  "66000",
+  "66100", // Perpignan
+  "29200", // Brest
+  "14000", // Caen
+];
 
 export type PostalStatus = "invalid" | "paris" | "idf" | "network" | "other";
 
 export function checkPostal(code: string): PostalStatus {
   if (!POSTAL_RE.test(code)) return "invalid";
   if (code.startsWith("75")) return "paris";
-  const prefix = code.slice(0, 2);
-  if (IDF_PREFIXES.some((idf) => idf === prefix)) return "idf";
-  if (NETWORK_PREFIXES.includes(prefix)) return "network";
+  if (IDF_PREFIXES.some((prefix) => prefix === code.slice(0, 2))) return "idf";
+  if (COVERED_POSTAL_CODES.includes(code)) return "network";
   return "other";
 }

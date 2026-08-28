@@ -138,18 +138,34 @@ export function zoneMetadata(lang: Locale, slug: string): Metadata {
   const zone = getLocalizedZone(slug, lang);
   if (!zone) return {};
 
+  // A zone only claims in its SERP snippet what its coverage model can keep —
+  // ZoneView already switches the on-page trust block, and a snippet that
+  // contradicts the page it introduces is worse than a plainer snippet.
+  // Network zones also drop the price line: it carries "déplacement inclus",
+  // which is a travel promise we don't make outside the zones we service
+  // directly. CLAUDE.md §15b wants a price in every meta description, so this is
+  // a deliberate, narrow exception rather than a change of policy.
+  const isNetwork = zone.coverage === "network";
+  const description = `${zone.title}. ${
+    isNetwork
+      ? dict.meta.zoneDescriptionSuffixNetwork
+      : dict.meta.zoneDescriptionSuffix
+  }`;
+
   return base(
     lang,
     `/${zone.slug}`,
     `${zone.title} — ${BRAND_NAME}`,
-    withPrice(
-      `${zone.title}. ${dict.meta.zoneDescriptionSuffix}`,
-      priceLine(
-        lang,
-        getTierPriceTTC("ouverture-porte-claquee"),
-        dict.meta.priceSuffix,
-      ),
-    ),
+    isNetwork
+      ? description
+      : withPrice(
+          description,
+          priceLine(
+            lang,
+            getTierPriceTTC("ouverture-porte-claquee"),
+            dict.meta.priceSuffix,
+          ),
+        ),
   );
 }
 

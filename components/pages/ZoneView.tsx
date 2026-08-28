@@ -347,7 +347,11 @@ export default function ZoneView({
 
           {nearby.length > 0 && (
             <div className="mt-14">
-              <SectionHeading>{dict.zonePage.nearbyTitle}</SectionHeading>
+              <SectionHeading>
+                {zone.coverage === "network"
+                  ? dict.zonePage.nearbyTitleNetwork
+                  : dict.zonePage.nearbyTitle}
+              </SectionHeading>
               <ul className="mt-5 flex flex-wrap gap-2">
                 {nearby.map((z) => (
                   <li key={z.slug}>

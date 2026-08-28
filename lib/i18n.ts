@@ -134,14 +134,14 @@ const fr = {
    */
   trustNetwork: [
     {
-      title: "Un artisan vérifié dans votre ville",
+      title: "Joignable à toute heure",
       description:
-        "Nous travaillons avec des serruriers qualifiés et assurés, sélectionnés ville par ville.",
+        "Par téléphone ou sur WhatsApp, jour et nuit, week-ends et jours fériés compris. Vous décrivez la situation, nous vous répondons.",
     },
     {
-      title: "Le délai vous est confirmé avant tout déplacement",
+      title: "La couverture est confirmée avant tout déplacement",
       description:
-        "Vous savez sous combien de temps quelqu'un se présente avant de valider la demande, plutôt qu'une promesse d'arrivée invérifiable.",
+        "À partir de votre code postal et de votre description, nous vous disons ce que nous pouvons faire et sous quel délai — avant que qui que ce soit prenne la route.",
     },
     {
       title: "Le montant est fixé avant l'intervention",
@@ -175,7 +175,7 @@ const fr = {
   },
   footer: {
     tagline:
-      "Ouverture de porte, changement de serrure et blindage à Paris et en Île-de-France. Artisan indépendant, montant fixé avant le déplacement.",
+      "Ouverture de porte, changement de serrure et blindage à Paris, en Île-de-France et dans une sélection de villes en France. Artisan indépendant, montant fixé avant le déplacement.",
     interventions: "Interventions",
     information: "Informations",
     contact: "Contact",
@@ -207,7 +207,7 @@ const fr = {
   pricingPage: {
     eyebrow: "prix serrurier paris",
     title: "Une grille tarifaire transparente",
-    lead: "La serrurerie parisienne compte parmi les secteurs les plus signalés par la DGCCRF pour des anomalies de prix. Notre position est simple : le tarif annoncé au téléphone ou par écrit est celui que vous payez, sans majoration à l'arrivée.",
+    lead: "Voici ce que coûte chaque intervention, ligne par ligne. Le tarif est fixé avec vous au téléphone, confirmé par écrit dès 150 €, et c'est celui qui figure sur la facture.",
     responseTime:
       "Délai d'intervention : moins de 30 minutes selon le secteur.",
     colIntervention: "Intervention",
@@ -219,7 +219,7 @@ const fr = {
       "Ces suppléments s'ajoutent au tarif de l'intervention selon le contexte.",
     noticeTitle: "Tarifs indicatifs, à partir de.",
     noticeBody:
-      "Les prix ci-dessus couvrent le cas standard le plus courant. Le tarif exact dépend de la complexité sur place (état de la serrure, accès, matériel nécessaire) et vous est communiqué par téléphone avant le déplacement, puis validé avec vous avant toute intervention — jamais de majoration surprise à l'arrivée.",
+      "Les prix ci-dessus couvrent le cas standard le plus courant. Le tarif exact dépend de la complexité sur place (état de la serrure, accès, matériel nécessaire) et vous est communiqué par téléphone avant le déplacement, puis validé avec vous avant toute intervention.",
     taxBasisTitle: "Montants TTC, HT entre parenthèses.",
     taxBasisBody:
       "Chaque ligne affiche d'abord le prix TTC — celui qu'un particulier règle, TVA de 20 % comprise — puis le montant HT, utile aux professionnels qui récupèrent la TVA. Certains travaux dans un logement de plus de deux ans relèvent d'un taux réduit : le cas échéant, le devis l'applique et vous payez moins que le montant affiché ici, jamais plus.",
@@ -309,6 +309,9 @@ const fr = {
     guidesLead:
       "Nos guides sont écrits pour être utiles même si vous appelez quelqu'un d'autre.",
     nearbyTitle: "Secteurs voisins",
+    // National cities are scattered across France — Brest and Perpignan are
+    // 1 100 km apart — so "voisins" would be plainly false there.
+    nearbyTitleNetwork: "Autres villes couvertes",
     trustTitle: "Ce qui ne change pas, quel que soit le secteur",
     otherCitiesTitle: "Autres communes desservies",
     notListedTitle: "Votre commune n'apparaît pas dans la liste ?",
@@ -320,7 +323,7 @@ const fr = {
   zonesIndexPage: {
     eyebrow: "Zones d'intervention",
     title: "Serrurier à Paris et en Île-de-France",
-    lead: "Nous intervenons dans les 20 arrondissements de Paris et dans les sept départements d'Île-de-France. Sélectionnez votre secteur pour des informations locales : quartiers desservis, points de repère et interventions les plus fréquentes.",
+    lead: "Nous couvrons les 20 arrondissements de Paris, les sept départements d'Île-de-France et une sélection de villes ailleurs en France. Sélectionnez votre secteur pour des informations locales : quartiers desservis, points de repère et interventions les plus fréquentes.",
     parisTitle: "Paris, arrondissement par arrondissement",
     parisLead:
       "Chaque arrondissement a son bâti, ses serrures et ses contraintes d'accès. Nos pages arrondissement le disent concrètement plutôt que de répéter la même fiche vingt fois.",
@@ -368,8 +371,8 @@ const fr = {
     lead: "Vous joignez directement l'artisan qui prend en charge votre intervention, et c'est lui qui vous annonce le prix.",
     storyTitle: "Un artisan indépendant, joignable directement",
     story: [
-      "Nous travaillons en direct, sans intermédiaire rémunéré sur le montant de votre facture. C'est ce qui nous permet d'annoncer un tarif au téléphone et de le tenir : personne n'a besoin de prendre une marge en cours de route.",
-      "Vous avez un seul interlocuteur, du premier appel jusqu'à la facture. Il connaît son secteur, annonce un tarif au téléphone et s'y tient une fois sur place. C'est le modèle qui rend possible ce que nous affichons sur la page tarifs.",
+      "Le montant annoncé au téléphone est celui qui figure sur le devis écrit, puis sur la facture. C'est possible parce que la personne qui évalue le travail est aussi celle qui le réalise.",
+      "Vous avez un seul interlocuteur, du premier appel jusqu'à la facture. Il connaît son secteur, ses immeubles et ses serrures, ce qui lui permet d'évaluer le travail avant même de se déplacer. C'est ce qui rend possible la grille publiée sur la page tarifs.",
     ],
     credentialsTitle: "Qualifications et garanties",
     credentials: [
@@ -430,7 +433,11 @@ const fr = {
   },
   guidePage: {
     takeawaysTitle: "L'essentiel en 30 secondes",
+    urgentTitle: "Vous êtes devant la porte, maintenant ?",
+    urgentBody:
+      "Ne lisez pas ce guide. Appelez, ou ouvrez la marche à suivre correspondant à votre situation.",
     tocTitle: "Au sommaire",
+    expandHint: "Déplier",
     faqTitle: "Questions fréquentes",
     relatedTitle: "À lire ensuite",
     updatedLabel: "Mis à jour le",
@@ -508,14 +515,18 @@ const fr = {
       "La grille tarifaire de nos interventions à Paris : ouverture de porte, changement de serrure, blindage. Tarif toujours annoncé avant travaux.",
     devisTitle: "Demande de devis serrurier Paris",
     devisDescription:
-      "Vérifiez si nous intervenons dans votre secteur et décrivez votre besoin. Estimation avant tout déplacement, aucune majoration surprise.",
+      "Vérifiez si nous intervenons dans votre secteur et décrivez votre besoin. Estimation avant tout déplacement, montant confirmé par écrit.",
     serviceDescriptionSuffix:
       "Artisan indépendant, montant fixé au téléphone avant le déplacement.",
     zonesTitle: "Zones d'intervention — serrurier à Paris et en Île-de-France",
     zonesDescription:
-      "Les 20 arrondissements de Paris et les sept départements d'Île-de-France : ouverture de porte, changement de serrure et blindage, montant fixé avant le déplacement.",
+      "Les 20 arrondissements de Paris, les sept départements d'Île-de-France et nos villes couvertes ailleurs en France : ouverture de porte, changement de serrure et blindage, montant fixé avant le déplacement.",
     zoneDescriptionSuffix:
       "Ouverture de porte, changement de serrure, blindage. Artisan indépendant, montant fixé avant le déplacement.",
+    // Zones marked coverage: "network" — no independent-artisan claim, because
+    // that promise belongs to the zones we service directly. See ZoneCoverage.
+    zoneDescriptionSuffixNetwork:
+      "Ouverture de porte, changement de serrure, blindage. Couverture, délai et tarif confirmés avant tout déplacement.",
     contactTitle: "Contact — serrurier à Paris",
     contactDescription:
       "Contactez-nous par téléphone ou par message. Serrurier indépendant à Paris, disponible 24h/24 et 7j/7.",
@@ -621,14 +632,14 @@ const en: Dictionary = {
   ],
   trustNetwork: [
     {
-      title: "A vetted tradesperson in your town",
+      title: "Reachable at any hour",
       description:
-        "We work with qualified, insured locksmiths, selected town by town.",
+        "By phone or on WhatsApp, day and night, weekends and public holidays included. You describe the situation, we answer.",
     },
     {
-      title: "The timing is confirmed before anyone travels",
+      title: "Coverage is confirmed before anyone travels",
       description:
-        "You know how soon someone will arrive before you confirm the request, rather than an arrival promise nobody can check.",
+        "From your postcode and your description, we tell you what we can do and how soon — before anybody sets off.",
     },
     {
       title: "The amount is settled before the job",
@@ -662,7 +673,7 @@ const en: Dictionary = {
   },
   footer: {
     tagline:
-      "Door opening, lock replacement and door reinforcement in Paris and Île-de-France. An independent tradesperson, amount settled before travel.",
+      "Door opening, lock replacement and door reinforcement in Paris, Île-de-France and a selection of towns across France. An independent tradesperson, amount settled before travel.",
     interventions: "Services",
     information: "Information",
     contact: "Contact",
@@ -694,7 +705,7 @@ const en: Dictionary = {
   pricingPage: {
     eyebrow: "locksmith prices paris",
     title: "A transparent price list",
-    lead: "Locksmithing in Paris is among the sectors most reported to the DGCCRF, the French consumer authority, for pricing irregularities. Our position is simple: the price quoted by phone or in writing is the price you pay, with no surcharge on arrival.",
+    lead: "Here is what each job costs, line by line. The price is settled with you on the phone, confirmed in writing from €150 up, and it is the one that appears on the invoice.",
     responseTime: "Response time: under 30 minutes depending on the area.",
     colIntervention: "Service",
     colPrice: "Price",
@@ -704,7 +715,7 @@ const en: Dictionary = {
     optionsLead: "These add to the job price depending on the situation.",
     noticeTitle: "Indicative prices, starting from.",
     noticeBody:
-      "The prices above cover the most common standard case. The exact price depends on the complexity on site (state of the lock, access, materials needed) and is given to you by phone before travel, then agreed with you before any work begins — never a surprise surcharge on arrival.",
+      "The prices above cover the most common standard case. The exact price depends on the complexity on site (state of the lock, access, materials needed) and is given to you by phone before travel, then agreed with you before any work begins.",
     taxBasisTitle: "Prices inc. VAT, ex-VAT in brackets.",
     taxBasisBody:
       "Each line shows the price including French VAT at 20% first — what a private customer actually pays — then the ex-VAT figure, which businesses reclaiming VAT need. Some work on housing over two years old qualifies for a reduced rate: where it applies, the quote uses it and you pay less than the figure shown here, never more.",
@@ -789,6 +800,7 @@ const en: Dictionary = {
     guidesLead:
       "Our guides are written to be useful even if you end up calling someone else.",
     nearbyTitle: "Nearby areas",
+    nearbyTitleNetwork: "Other towns we cover",
     trustTitle: "What doesn't change, whatever the area",
     otherCitiesTitle: "Other towns covered",
     notListedTitle: "Your town isn't on the list?",
@@ -800,7 +812,7 @@ const en: Dictionary = {
   zonesIndexPage: {
     eyebrow: "Areas we cover",
     title: "Locksmith in Paris and Île-de-France",
-    lead: "We cover all 20 Paris arrondissements and the seven departments of Île-de-France. Pick your area for local information: neighbourhoods covered, landmarks, and the jobs we handle most often there.",
+    lead: "We cover all 20 Paris arrondissements, the seven departments of Île-de-France and a selection of towns elsewhere in France. Pick your area for local information: neighbourhoods covered, landmarks, and the jobs we handle most often there.",
     parisTitle: "Paris, arrondissement by arrondissement",
     parisLead:
       "Every arrondissement has its own building stock, locks and access constraints. Our arrondissement pages say so concretely, rather than repeating one template twenty times.",
@@ -847,8 +859,8 @@ const en: Dictionary = {
     lead: "You reach the tradesperson handling your job directly — and they're the one who quotes the price.",
     storyTitle: "An independent tradesperson, reachable directly",
     story: [
-      "We work direct, with no intermediary paid out of the amount on your invoice. That is what lets us quote a price on the phone and hold to it: nobody needs to take a margin along the way.",
-      "You have one point of contact, from the first call through to the invoice. They know their area, quote a price on the phone and hold to it on site. It is the model that makes what we publish on the pricing page possible.",
+      "The figure given on the phone is the one on the written quote, and then on the invoice. That works because the person who assesses the job is also the person who does it.",
+      "You have one point of contact, from the first call through to the invoice. They know their area, its buildings and its locks, which is what makes an accurate assessment possible before anyone travels. That is what makes the price list we publish possible.",
     ],
     credentialsTitle: "Qualifications and guarantees",
     credentials: [
@@ -909,7 +921,11 @@ const en: Dictionary = {
   },
   guidePage: {
     takeawaysTitle: "The short version",
+    urgentTitle: "Standing in front of the door right now?",
+    urgentBody:
+      "Don't read this guide. Call, or open the step-by-step page for your situation.",
     tocTitle: "In this guide",
+    expandHint: "Expand",
     faqTitle: "Frequently asked questions",
     relatedTitle: "Read next",
     updatedLabel: "Updated",
@@ -987,14 +1003,16 @@ const en: Dictionary = {
       "The price list for our work in Paris: door opening, lock replacement, door reinforcement. The price is always quoted before any work.",
     devisTitle: "Request a locksmith quote in Paris",
     devisDescription:
-      "Check we cover your area and describe what you need. An estimate before anyone travels, never a surprise surcharge.",
+      "Check we cover your area and describe what you need. An estimate before anyone travels, with the amount confirmed in writing.",
     serviceDescriptionSuffix:
       "Independent tradesperson, amount settled on the phone before travel.",
     zonesTitle: "Areas we cover — locksmith in Paris and Île-de-France",
     zonesDescription:
-      "All 20 Paris arrondissements and the seven departments of Île-de-France: door opening, lock replacement and door reinforcement, amount settled before travel.",
+      "All 20 Paris arrondissements, the seven departments of Île-de-France and the towns we cover elsewhere in France: door opening, lock replacement and door reinforcement, amount settled before travel.",
     zoneDescriptionSuffix:
       "Door opening, lock replacement, door reinforcement. Independent tradesperson, amount settled before travel.",
+    zoneDescriptionSuffixNetwork:
+      "Door opening, lock replacement, door reinforcement. Coverage, timing and price confirmed before anyone travels.",
     contactTitle: "Contact — locksmith in Paris",
     contactDescription:
       "Get in touch by phone or message. Independent locksmith in Paris, available 24/7.",

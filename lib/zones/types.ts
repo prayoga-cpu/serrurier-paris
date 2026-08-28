@@ -72,6 +72,14 @@ export type Zone = {
   departmentSlug?: string;
   /** Defaults to "direct" when unset — see ZoneCoverage. */
   coverage?: ZoneCoverage;
+  /**
+   * Cities outside Île-de-France only: every postal code this page's coverage
+   * claim actually extends to. A French city routinely has several
+   * (Clermont-Ferrand is 63000 and 63100), and the postcode checker matches on
+   * the full five digits, so the list has to be explicit. Île-de-France zones
+   * leave this unset — they are covered prefix-wide by a department hub page.
+   */
+  postalCodes?: string[];
   content: Record<Locale, ZoneContent>;
 };
 

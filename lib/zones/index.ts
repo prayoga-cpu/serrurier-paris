@@ -2,7 +2,9 @@ import type { Locale } from "@/lib/i18n";
 import { DEPARTMENT_ADJACENCY, PARIS_ADJACENCY } from "@/lib/zones/adjacency";
 import { CITY_ZONES } from "@/lib/zones/cities";
 import { DEPARTMENT_ZONES } from "@/lib/zones/departments";
+import { NATIONAL_CITY_ZONES } from "@/lib/zones/national";
 import { PARIS_ZONES } from "@/lib/zones/paris";
+import { COVERED_POSTAL_CODES } from "@/lib/postal";
 import type { LocalizedZone, Zone, ZoneKind } from "@/lib/zones/types";
 
 export type {
@@ -24,6 +26,8 @@ export const ZONES: Zone[] = [
   ...[...PARIS_ZONES].sort((a, b) => Number(a.number) - Number(b.number)),
   ...DEPARTMENT_ZONES,
   ...CITY_ZONES,
+  // Outside Île-de-France, coverage: "network". See ./national.ts.
+  ...NATIONAL_CITY_ZONES,
 ];
 
 export function getZone(slug: string): Zone | undefined {
@@ -130,4 +134,31 @@ export function getParentDepartment(
   return zone.departmentSlug
     ? getLocalizedZone(zone.departmentSlug, lang)
     : undefined;
+}
+
+/**
+ * lib/postal.ts writes its covered-code list out by hand so that it can stay
+ * import-free and out of the client bundle. That is only safe if the two cannot
+ * drift, so this runs on every server build: a national city whose postal codes
+ * are missing from the checker would publish a page nobody can pass the coverage
+ * gate for, and a code in the checker with no page behind it is exactly the
+ * over-claim the list exists to prevent.
+ */
+const declaredCodes = ZONES.filter(
+  (zone) => zone.kind === "city" && !zone.departmentSlug,
+).flatMap((zone) => zone.postalCodes ?? [zone.number]);
+
+const missingFromChecker = declaredCodes.filter(
+  (code) => !COVERED_POSTAL_CODES.includes(code),
+);
+const unbackedByPage = COVERED_POSTAL_CODES.filter(
+  (code) => !declaredCodes.includes(code),
+);
+
+if (missingFromChecker.length > 0 || unbackedByPage.length > 0) {
+  throw new Error(
+    "lib/postal.ts COVERED_POSTAL_CODES is out of sync with the published city pages. " +
+      `Missing from the checker: [${missingFromChecker.join(", ")}]. ` +
+      `In the checker with no page behind them: [${unbackedByPage.join(", ")}].`,
+  );
 }
