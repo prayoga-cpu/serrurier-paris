@@ -34,7 +34,7 @@ export default function ServiceChecklist({ lang }: { lang: Locale }) {
               <span className="flex flex-col gap-1">
                 <span className="font-medium text-ink">{tier.label[lang]}</span>
                 <span className="text-xs text-muted">
-                  {dict.pricingPage.from} {formatPrice(tier.priceHT, lang)}
+                  {dict.pricingPage.from} {formatPrice(tier.priceTTC, lang)}
                 </span>
               </span>
             </label>
@@ -94,7 +94,7 @@ export default function ServiceChecklist({ lang }: { lang: Locale }) {
                 <span className="text-ink">{option.label[lang]}</span>
                 <span className="text-xs text-muted">
                   {option.surcharge ? "+ " : ""}
-                  {formatPrice(option.priceHT, lang)}
+                  {formatPrice(option.priceTTC, lang)}
                 </span>
               </span>
             </label>

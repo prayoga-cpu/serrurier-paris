@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n";
-import { formatPrice, getTierPriceHT } from "@/lib/pricing";
+import { formatPrice, getTierPriceTTC } from "@/lib/pricing";
 
 export type ServiceFaq = { question: string; answer: string };
 
@@ -54,7 +54,7 @@ const PRICE_NOTE_B2B_EN =
 
 /** A tier price, formatted with its tax basis — see lib/pricing.ts. */
 const price = (tierSlug: string, lang: Locale) =>
-  formatPrice(getTierPriceHT(tierSlug), lang);
+  formatPrice(getTierPriceTTC(tierSlug), lang);
 
 export const SERVICES: Service[] = [
   {

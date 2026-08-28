@@ -16,7 +16,7 @@ import {
 } from "@/lib/zones";
 import { getLocalizedServicesFor } from "@/lib/services";
 import { getLocalizedGuides } from "@/lib/guides";
-import { formatPrice, getStartingPriceHT } from "@/lib/pricing";
+import { formatPrice, getStartingPriceTTC } from "@/lib/pricing";
 import { JsonLd, faqSchema } from "@/lib/schema";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
@@ -65,6 +65,9 @@ export default function ZoneView({
   const cities = isDepartment ? getDepartmentCities(zone.slug, lang) : [];
   const parent = getParentDepartment(zone, lang);
   const nearby = getNearbyZones(zone, lang);
+  // A zone only makes the promises its coverage model can keep — see
+  // ZoneCoverage in lib/zones/types.ts.
+  const trust = zone.coverage === "network" ? dict.trustNetwork : dict.trust;
 
   return (
     <>
@@ -207,7 +210,7 @@ export default function ZoneView({
               <table className="w-full border-collapse text-left text-sm">
                 <tbody>
                   {services.map((service, index) => {
-                    const startingPriceHT = getStartingPriceHT(service.slug);
+                    const startingPriceTTC = getStartingPriceTTC(service.slug);
                     return (
                       <tr
                         key={service.slug}
@@ -222,9 +225,9 @@ export default function ZoneView({
                           </Link>
                         </td>
                         <td className="px-5 py-3.5 text-muted">
-                          {startingPriceHT === undefined
+                          {startingPriceTTC === undefined
                             ? dict.pricingPage.onQuote
-                            : `${dict.pricingPage.from} ${formatPrice(startingPriceHT, lang)}`}
+                            : `${dict.pricingPage.from} ${formatPrice(startingPriceTTC, lang)}`}
                         </td>
                       </tr>
                     );
@@ -267,7 +270,7 @@ export default function ZoneView({
           <div className="mt-14">
             <SectionHeading>{dict.zonePage.trustTitle}</SectionHeading>
             <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {dict.trust.map((feature) => (
+              {trust.map((feature) => (
                 <div
                   key={feature.title}
                   className="rounded-2xl border border-ink/10 bg-white p-5"

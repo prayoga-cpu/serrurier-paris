@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Eyebrow } from "@/components/Button";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 import { getLocalizedTasks } from "@/lib/tasks";
-import { formatPrice, getStartingPriceHT } from "@/lib/pricing";
+import { formatPrice, getStartingPriceTTC } from "@/lib/pricing";
 
 /**
  * Symptom-first entry points. Someone in trouble doesn't search for "lock
@@ -28,7 +28,7 @@ export default function SituationsGrid({ lang }: { lang: Locale }) {
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {tasks.map((task) => {
-            const startingPriceHT = getStartingPriceHT(task.serviceSlug);
+            const startingPriceTTC = getStartingPriceTTC(task.serviceSlug);
             return (
               <Link
                 key={task.slug}
@@ -41,9 +41,10 @@ export default function SituationsGrid({ lang }: { lang: Locale }) {
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
                   {task.summary}
                 </p>
-                {startingPriceHT !== undefined && (
+                {startingPriceTTC !== undefined && (
                   <span className="mt-4 inline-flex w-fit rounded-full bg-cream px-3 py-1 text-sm font-bold text-ink">
-                    {dict.pricingPage.from} {formatPrice(startingPriceHT, lang)}
+                    {dict.pricingPage.from}{" "}
+                    {formatPrice(startingPriceTTC, lang)}
                   </span>
                 )}
               </Link>

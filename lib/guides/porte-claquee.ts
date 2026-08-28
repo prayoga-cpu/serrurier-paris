@@ -11,6 +11,12 @@ export const PORTE_CLAQUEE: Guide = {
       summary:
         "Les gestes utiles et ceux à éviter quand la porte s'est refermée, qui appeler selon la situation, et ce qu'une ouverture doit coûter et durer.",
       lead: "Une porte claquée n'est pas une urgence vitale, sauf dans deux cas précis que ce guide détaille en premier. C'est surtout une situation où les mauvaises décisions se prennent dans les dix premières minutes. Voici l'ordre dans lequel procéder.",
+      keyTakeaways: [
+        "Si un enfant en bas âge, une personne âgée ou vulnérable est seul à l'intérieur, appelez le 18 ou le 112 : les pompiers passent en priorité et arrivent avant tout artisan.",
+        "Porte claquée et porte fermée à clé ne se traitent pas pareil et ne coûtent pas pareil. Vérifiez laquelle vous avez, et dites-le au téléphone.",
+        "N'essayez pas la carte bancaire : sur une porte moderne elle tord le pêne ou déforme la gâche, et transforme une ouverture simple en réparation de serrure.",
+        "Après une ouverture sans dégât, aucun remplacement de serrure ne se justifie techniquement. Un remplacement proposé « par sécurité » se refuse sans hésiter.",
+      ],
       sections: [
         {
           heading: "D'abord : est-ce une urgence vitale ?",
@@ -97,6 +103,12 @@ export const PORTE_CLAQUEE: Guide = {
       summary:
         "What helps and what makes it worse when the door has closed behind you, who to call depending on the situation, and what an opening should cost and take.",
       lead: "A door that has shut behind you isn't a life-threatening emergency, except in two specific cases this guide covers first. It is, above all, a situation where the bad decisions get made in the first ten minutes. Here's the order to work through.",
+      keyTakeaways: [
+        "If a small child, an elderly person or a vulnerable adult is alone inside, call 18 or 112: the fire service takes priority and will arrive before any tradesperson.",
+        "A slammed door and a locked door are different jobs at different prices. Work out which one you have, and say so on the phone.",
+        "Don't try the bank-card trick: on a modern door it bends the latch or deforms the strike plate, turning a simple opening into a lock repair.",
+        "After a damage-free opening, no lock replacement is technically justified. One offered “just to be safe” can be turned down without hesitation.",
+      ],
       sections: [
         {
           heading: "First: is this actually an emergency?",

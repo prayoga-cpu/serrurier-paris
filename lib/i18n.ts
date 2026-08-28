@@ -73,7 +73,7 @@ const fr = {
     // word-for-word the client-supplied reference site. Same strategy, own words,
     // and the primary keyword (§5: "serrurier paris") is now actually in the H1.
     title: "Serrurier à Paris : le prix d'abord, l'outil ensuite.",
-    lead: "Ouverture de porte, changement de serrure, blindage. Vous connaissez le montant avant que l'artisan ne prenne la route, et ce montant ne bouge plus une fois devant votre porte.",
+    lead: "Ouverture de porte, changement de serrure, blindage. Vous connaissez le montant avant que l'artisan ne prenne la route, et il vous est confirmé par écrit avant toute intervention.",
     photoTitle: "Un tarif tenu, de Paris à toute l'Île-de-France",
     photoAlt:
       "Toits et façades haussmanniennes de Paris, secteur d'intervention de nos serruriers",
@@ -84,7 +84,7 @@ const fr = {
     badges: [
       "Certifié A2P",
       "Grille tarifaire publique, consultable avant d'appeler",
-      "Celui qui répond au téléphone est celui qui vient",
+      "Un seul interlocuteur, du premier appel à la facture",
       "Devis écrit dès 150 €, comme la loi l'impose",
       "Garantie sur nos installations",
     ],
@@ -108,12 +108,12 @@ const fr = {
     {
       title: "Le montant est fixé au téléphone",
       description:
-        "Vous savez ce que vous allez payer avant le déplacement. Ce chiffre ne change pas une fois la porte ouverte.",
+        "Vous savez ce que vous allez payer avant le déplacement, et c'est ce chiffre que vous réglez une fois l'intervention terminée.",
     },
     {
-      title: "La personne qui décroche est celle qui intervient",
+      title: "Un artisan qualifié et assuré",
       description:
-        "Ni standard téléphonique, ni intermédiaire, ni commission ajoutée à votre facture.",
+        "Vous parlez à la personne qui suit votre dossier, du premier appel jusqu'à la facture.",
     },
     {
       title: "Tout est écrit avant qu'on commence",
@@ -122,6 +122,39 @@ const fr = {
     },
     {
       title: "Garantie sur nos installations",
+      description:
+        "Chaque installation est garantie. Les conditions exactes vous sont communiquées avec votre devis.",
+    },
+  ],
+  /**
+   * Trust block for zones marked coverage: "network" — see ZoneCoverage in
+   * lib/zones/types.ts. Same commitments, minus the two the direct model earns
+   * and a dispatch model cannot: a 30-minute arrival, and the promise that
+   * whoever answers is whoever travels.
+   */
+  trustNetwork: [
+    {
+      title: "Un artisan vérifié dans votre ville",
+      description:
+        "Nous travaillons avec des serruriers qualifiés et assurés, sélectionnés ville par ville.",
+    },
+    {
+      title: "Le délai vous est confirmé avant tout déplacement",
+      description:
+        "Vous savez sous combien de temps quelqu'un se présente avant de valider la demande, plutôt qu'une promesse d'arrivée invérifiable.",
+    },
+    {
+      title: "Le montant est fixé avant l'intervention",
+      description:
+        "Vous savez ce que vous allez payer avant que qui que ce soit se déplace, et c'est ce chiffre que vous réglez.",
+    },
+    {
+      title: "Tout est écrit avant qu'on commence",
+      description:
+        "Devis détaillé remis dès 150 €, conformément à la réglementation du 24/01/2017.",
+    },
+    {
+      title: "Garantie sur les installations",
       description:
         "Chaque installation est garantie. Les conditions exactes vous sont communiquées avec votre devis.",
     },
@@ -136,8 +169,8 @@ const fr = {
   },
   pricingTeaser: {
     eyebrow: "Prix transparent",
-    title: "Une grille publique, pas un chiffre improvisé sur le palier",
-    body: "Nos tarifs sont consultables avant même de nous appeler : montant de départ par intervention, base de calcul du déplacement et de la main d'œuvre, suppléments de nuit et de week-end. Rien n'apparaît sur la facture qui n'ait été annoncé avant.",
+    title: "Une grille publique, consultable et mise à jour",
+    body: "Nos tarifs sont consultables avant même de nous appeler : montant de départ par intervention, base de calcul du déplacement et de la main d'œuvre, suppléments de nuit et de week-end. Vous avez tous les éléments en main avant de décider.",
     cta: "Voir la grille tarifaire",
   },
   footer: {
@@ -214,8 +247,13 @@ const fr = {
     postalParis: "Vous êtes dans notre zone d'intervention à Paris.",
     postalIdf:
       "Vous êtes en Île-de-France, dans notre zone d'intervention. Le délai dépend du secteur : il vous est annoncé au téléphone, avec le tarif.",
+    // Shown for a city we publish outside Île-de-France. Deliberately promises
+    // a confirmed time and price rather than a 30-minute arrival: see
+    // ZoneCoverage in lib/zones/types.ts.
+    postalNetwork:
+      "Votre ville fait partie des secteurs que nous couvrons. Le délai et le tarif vous sont confirmés avant tout déplacement.",
     postalOther:
-      "Nous intervenons à Paris et en Île-de-France. Laissez vos coordonnées ci-dessous : nous vous confirmons rapidement si nous pouvons intervenir chez vous.",
+      "Laissez vos coordonnées ci-dessous : nous vous confirmons rapidement si nous pouvons intervenir chez vous, et sous quel délai.",
     editPostal: "Modifier le code postal",
     closeForm: "Fermer le formulaire",
     servicesLabel: "Type d'intervention",
@@ -286,6 +324,10 @@ const fr = {
     parisTitle: "Paris, arrondissement par arrondissement",
     parisLead:
       "Chaque arrondissement a son bâti, ses serrures et ses contraintes d'accès. Nos pages arrondissement le disent concrètement plutôt que de répéter la même fiche vingt fois.",
+    // Rendered only when there is at least one city page outside Île-de-France.
+    nationalTitle: "Autres villes en France",
+    nationalLead:
+      "Les villes hors Île-de-France où nous couvrons les interventions. Le délai et le tarif vous sont confirmés avant tout déplacement.",
     idfTitle: "Île-de-France, par département",
     idfLead:
       "Petite et grande couronne : pavillons, résidences collectives, locaux commerciaux et copropriétés. Choisissez votre département pour voir les communes couvertes.",
@@ -323,11 +365,11 @@ const fr = {
   aboutPage: {
     eyebrow: "L'artisan",
     title: "Qui intervient chez vous",
-    lead: "Vous n'appelez pas une plateforme qui redistribue votre demande à un sous-traitant payé à la commission. Vous appelez l'artisan qui viendra, et c'est lui qui vous annonce le prix.",
-    storyTitle: "Un artisan, pas un centre d'appel",
+    lead: "Vous joignez directement l'artisan qui prend en charge votre intervention, et c'est lui qui vous annonce le prix.",
+    storyTitle: "Un artisan indépendant, joignable directement",
     story: [
-      "La serrurerie d'urgence parisienne fonctionne majoritairement par intermédiaires : une annonce, un standard téléphonique, puis un intervenant rémunéré sur le montant final de votre facture. C'est ce modèle qui produit les factures à quatre chiffres pour une porte claquée, et c'est celui que nous n'utilisons pas.",
-      "Ici, la personne qui décroche est celle qui se déplace. Elle connaît son secteur, annonce un tarif au téléphone et s'y tient une fois sur place. C'est plus lent à faire grandir qu'un réseau de sous-traitants, et c'est le seul modèle compatible avec ce que nous affichons sur la page tarifs.",
+      "Nous travaillons en direct, sans intermédiaire rémunéré sur le montant de votre facture. C'est ce qui nous permet d'annoncer un tarif au téléphone et de le tenir : personne n'a besoin de prendre une marge en cours de route.",
+      "Vous avez un seul interlocuteur, du premier appel jusqu'à la facture. Il connaît son secteur, annonce un tarif au téléphone et s'y tient une fois sur place. C'est le modèle qui rend possible ce que nous affichons sur la page tarifs.",
     ],
     credentialsTitle: "Qualifications et garanties",
     credentials: [
@@ -384,9 +426,10 @@ const fr = {
   guidesIndexPage: {
     eyebrow: "Guides",
     title: "Comprendre avant d'appeler un serrurier",
-    lead: "Ce que coûte réellement une intervention, comment repérer une arnaque, quoi faire à 2 h du matin devant une porte claquée. Des guides écrits pour être utiles même si vous ne nous appelez jamais.",
+    lead: "Ce que coûte réellement une intervention, comment lire un devis, quoi faire à 2 h du matin devant une porte claquée. Des guides écrits pour être utiles même si vous ne nous appelez jamais.",
   },
   guidePage: {
+    takeawaysTitle: "L'essentiel en 30 secondes",
     tocTitle: "Au sommaire",
     faqTitle: "Questions fréquentes",
     relatedTitle: "À lire ensuite",
@@ -478,10 +521,10 @@ const fr = {
       "Contactez-nous par téléphone ou par message. Serrurier indépendant à Paris, disponible 24h/24 et 7j/7.",
     aboutTitle: "À propos — artisan serrurier à Paris",
     aboutDescription:
-      "Qui intervient, avec quelles qualifications et quels engagements. Artisan indépendant, pas un centre d'appel : le tarif est annoncé avant le déplacement.",
-    guidesTitle: "Guides serrurerie — prix, arnaques et urgences",
+      "Qui intervient, avec quelles qualifications et quels engagements. Artisan indépendant joignable directement : le tarif est annoncé avant le déplacement.",
+    guidesTitle: "Guides serrurerie — prix, sécurité et urgences",
     guidesDescription:
-      "Nos guides sur le prix d'un serrurier à Paris, les arnaques à la serrurerie, la norme A2P et les démarches d'assurance. Écrits pour être utiles, pas pour vendre.",
+      "Nos guides sur le prix d'un serrurier à Paris, la lecture d'un devis, la norme A2P et les démarches d'assurance. Écrits pour être utiles, pas pour vendre.",
     inParis: "à Paris",
     // Price in the meta description is a CTR lever: the benchmark site puts one
     // in every description, and "à partir de X €" is exactly the answer the
@@ -523,7 +566,7 @@ const en: Dictionary = {
     eyebrow: "Locksmith in Paris and Île-de-France",
     availableNow: "Available now",
     title: "Locksmith in Paris: price first, tools second.",
-    lead: "Door opening, lock replacement, door reinforcement. You know the amount before the tradesperson sets off, and that amount doesn't move once they're at your door.",
+    lead: "Door opening, lock replacement, door reinforcement. You know the amount before the tradesperson sets off, and it is confirmed to you in writing before any work begins.",
     photoTitle: "A price that holds, from Paris across Île-de-France",
     photoAlt:
       "Paris rooftops and Haussmann façades, the area our locksmiths cover",
@@ -534,7 +577,7 @@ const en: Dictionary = {
     badges: [
       "A2P certified",
       "Published price list, readable before you call",
-      "The person who answers is the person who comes",
+      "One point of contact, from the first call to the invoice",
       "Written quote from €150, as the law requires",
       "Guarantee on our installations",
     ],
@@ -558,12 +601,12 @@ const en: Dictionary = {
     {
       title: "The amount is settled on the phone",
       description:
-        "You know what you'll pay before anyone travels. That figure doesn't change once the door is open.",
+        "You know what you'll pay before anyone travels, and that is the figure you settle once the job is done.",
     },
     {
-      title: "Whoever picks up is whoever turns up",
+      title: "A qualified, insured tradesperson",
       description:
-        "No switchboard, no middleman, no commission added to your invoice.",
+        "You speak to the person handling your job, from the first call through to the invoice.",
     },
     {
       title: "Everything is in writing before we start",
@@ -572,6 +615,33 @@ const en: Dictionary = {
     },
     {
       title: "Guarantee on our installations",
+      description:
+        "Every installation is guaranteed. Exact terms are given with your written quote.",
+    },
+  ],
+  trustNetwork: [
+    {
+      title: "A vetted tradesperson in your town",
+      description:
+        "We work with qualified, insured locksmiths, selected town by town.",
+    },
+    {
+      title: "The timing is confirmed before anyone travels",
+      description:
+        "You know how soon someone will arrive before you confirm the request, rather than an arrival promise nobody can check.",
+    },
+    {
+      title: "The amount is settled before the job",
+      description:
+        "You know what you'll pay before anyone travels, and that is the figure you settle.",
+    },
+    {
+      title: "Everything is in writing before we start",
+      description:
+        "A detailed quote from €150 up, under the French regulations of 24/01/2017.",
+    },
+    {
+      title: "Guarantee on installations",
       description:
         "Every installation is guaranteed. Exact terms are given with your written quote.",
     },
@@ -586,8 +656,8 @@ const en: Dictionary = {
   },
   pricingTeaser: {
     eyebrow: "Transparent pricing",
-    title: "A published list, not a number invented on your doorstep",
-    body: "Our prices are readable before you even call: a starting figure per job, how call-out and labour are calculated, night and weekend surcharges. Nothing appears on the invoice that wasn't stated up front.",
+    title: "A published list, kept current and readable any time",
+    body: "Our prices are readable before you even call: a starting figure per job, how call-out and labour are calculated, night and weekend surcharges. You have everything you need before you decide.",
     cta: "View the price list",
   },
   footer: {
@@ -661,8 +731,10 @@ const en: Dictionary = {
     postalParis: "You're in our service area in Paris.",
     postalIdf:
       "You're in Île-de-France, inside our service area. Travel time depends on the area — we tell you on the phone, along with the price.",
+    postalNetwork:
+      "Your town is one of the areas we cover. We confirm the timing and the price before anyone travels.",
     postalOther:
-      "We cover Paris and Île-de-France. Leave your details below and we'll quickly confirm whether we can come to you.",
+      "Leave your details below and we'll quickly confirm whether we can come to you, and how soon.",
     editPostal: "Edit postcode",
     closeForm: "Close the form",
     servicesLabel: "Type of work",
@@ -732,6 +804,9 @@ const en: Dictionary = {
     parisTitle: "Paris, arrondissement by arrondissement",
     parisLead:
       "Every arrondissement has its own building stock, locks and access constraints. Our arrondissement pages say so concretely, rather than repeating one template twenty times.",
+    nationalTitle: "Other towns in France",
+    nationalLead:
+      "Towns outside Île-de-France where we cover call-outs. Timing and price are confirmed before anyone travels.",
     idfTitle: "Île-de-France, by department",
     idfLead:
       "Inner and outer suburbs: houses, apartment blocks, commercial premises and managed buildings. Choose your department to see the towns covered.",
@@ -769,11 +844,11 @@ const en: Dictionary = {
   aboutPage: {
     eyebrow: "The tradesperson",
     title: "Who actually turns up",
-    lead: "You're not calling a platform that redistributes your request to a subcontractor paid on commission. You're calling the tradesperson who will come — and they're the one who quotes the price.",
-    storyTitle: "A tradesperson, not a call centre",
+    lead: "You reach the tradesperson handling your job directly — and they're the one who quotes the price.",
+    storyTitle: "An independent tradesperson, reachable directly",
     story: [
-      "Emergency locksmithing in Paris runs largely through intermediaries: an advert, a switchboard, then someone paid out of the final amount on your invoice. That model is what produces four-figure bills for a door that simply shut, and it's the one we don't use.",
-      "Here, whoever answers is whoever travels. They know their area, quote a price on the phone and hold to it on site. It grows more slowly than a subcontractor network, and it's the only model compatible with what we publish on the pricing page.",
+      "We work direct, with no intermediary paid out of the amount on your invoice. That is what lets us quote a price on the phone and hold to it: nobody needs to take a margin along the way.",
+      "You have one point of contact, from the first call through to the invoice. They know their area, quote a price on the phone and hold to it on site. It is the model that makes what we publish on the pricing page possible.",
     ],
     credentialsTitle: "Qualifications and guarantees",
     credentials: [
@@ -830,9 +905,10 @@ const en: Dictionary = {
   guidesIndexPage: {
     eyebrow: "Guides",
     title: "What to know before you call a locksmith",
-    lead: "What a call-out actually costs, how to spot a scam, what to do at 2am in front of a door that has shut behind you. Written to be useful even if you never call us.",
+    lead: "What a call-out actually costs, how to read a quote, what to do at 2am in front of a door that has shut behind you. Written to be useful even if you never call us.",
   },
   guidePage: {
+    takeawaysTitle: "The short version",
     tocTitle: "In this guide",
     faqTitle: "Frequently asked questions",
     relatedTitle: "Read next",
@@ -924,10 +1000,10 @@ const en: Dictionary = {
       "Get in touch by phone or message. Independent locksmith in Paris, available 24/7.",
     aboutTitle: "About — independent locksmith in Paris",
     aboutDescription:
-      "Who turns up, with what qualifications and what commitments. An independent tradesperson, not a call centre: the price is quoted before anyone travels.",
-    guidesTitle: "Locksmith guides — prices, scams and emergencies",
+      "Who turns up, with what qualifications and what commitments. An independent tradesperson, reachable directly: the price is quoted before anyone travels.",
+    guidesTitle: "Locksmith guides — prices, security and emergencies",
     guidesDescription:
-      "Our guides to what a locksmith costs in Paris, how locksmith scams work, the A2P standard and insurance claims. Written to be useful, not to sell.",
+      "Our guides to what a locksmith costs in Paris, how to read a quote, the A2P standard and insurance claims. Written to be useful, not to sell.",
     inParis: "in Paris",
     priceSuffix: "Door opening from {price}, call-out included.",
     servicePriceSuffix: "From {price}.",

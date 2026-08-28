@@ -10,7 +10,11 @@ import { getLocalizedGuide } from "@/lib/guides";
 import { getLocalizedService } from "@/lib/services";
 import { getLocalizedTask } from "@/lib/tasks";
 import { getLocalizedZone } from "@/lib/zones";
-import { formatPrice, getStartingPriceHT, getTierPriceHT } from "@/lib/pricing";
+import {
+  formatPrice,
+  getStartingPriceTTC,
+  getTierPriceTTC,
+} from "@/lib/pricing";
 
 const OG_LOCALE: Record<Locale, string> = { fr: "fr_FR", en: "en_GB" };
 
@@ -19,8 +23,8 @@ const OG_LOCALE: Record<Locale, string> = { fr: "fr_FR", en: "en_GB" };
  * that answers "how much?" before the click outperforms one that doesn't — it's
  * the single lever the benchmark site uses on every page.
  */
-function priceLine(lang: Locale, priceHT: number, template: string): string {
-  return template.replace("{price}", formatPrice(priceHT, lang));
+function priceLine(lang: Locale, priceTTC: number, template: string): string {
+  return template.replace("{price}", formatPrice(priceTTC, lang));
 }
 
 /** Descriptions are capped so Google doesn't truncate mid-price. */
@@ -64,7 +68,7 @@ export function homeMetadata(lang: Locale): Metadata {
       dict.meta.homeDescription,
       priceLine(
         lang,
-        getTierPriceHT("ouverture-porte-claquee"),
+        getTierPriceTTC("ouverture-porte-claquee"),
         dict.meta.priceSuffix,
       ),
     ),
@@ -81,7 +85,7 @@ export function pricingMetadata(lang: Locale): Metadata {
       dict.meta.pricingDescription,
       priceLine(
         lang,
-        getTierPriceHT("ouverture-porte-claquee"),
+        getTierPriceTTC("ouverture-porte-claquee"),
         dict.meta.priceSuffix,
       ),
     ),
@@ -103,18 +107,18 @@ export function serviceMetadata(lang: Locale, slug: string): Metadata {
   const service = getLocalizedService(slug, lang);
   if (!service) return {};
 
-  const startingPriceHT = getStartingPriceHT(service.slug);
+  const startingPriceTTC = getStartingPriceTTC(service.slug);
   const description = `${service.summary} ${dict.meta.serviceDescriptionSuffix}`;
 
   return base(
     lang,
     `/services/${service.slug}`,
     `${service.title} ${dict.meta.inParis} — ${BRAND_NAME}`,
-    startingPriceHT === undefined
+    startingPriceTTC === undefined
       ? description
       : withPrice(
           description,
-          priceLine(lang, startingPriceHT, dict.meta.servicePriceSuffix),
+          priceLine(lang, startingPriceTTC, dict.meta.servicePriceSuffix),
         ),
   );
 }
@@ -142,7 +146,7 @@ export function zoneMetadata(lang: Locale, slug: string): Metadata {
       `${zone.title}. ${dict.meta.zoneDescriptionSuffix}`,
       priceLine(
         lang,
-        getTierPriceHT("ouverture-porte-claquee"),
+        getTierPriceTTC("ouverture-porte-claquee"),
         dict.meta.priceSuffix,
       ),
     ),
@@ -176,18 +180,18 @@ export function taskMetadata(lang: Locale, slug: string): Metadata {
   const task = getLocalizedTask(slug, lang);
   if (!task) return {};
 
-  const startingPriceHT = getStartingPriceHT(task.serviceSlug);
+  const startingPriceTTC = getStartingPriceTTC(task.serviceSlug);
   const description = `${task.summary} ${dict.meta.serviceDescriptionSuffix}`;
 
   return base(
     lang,
     `/${task.slug}`,
     `${task.title} ${dict.meta.inParis} — ${BRAND_NAME}`,
-    startingPriceHT === undefined
+    startingPriceTTC === undefined
       ? description
       : withPrice(
           description,
-          priceLine(lang, startingPriceHT, dict.meta.servicePriceSuffix),
+          priceLine(lang, startingPriceTTC, dict.meta.servicePriceSuffix),
         ),
   );
 }

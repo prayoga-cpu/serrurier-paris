@@ -16,6 +16,15 @@ export type GuideContent = {
   summary: string;
   /** Standfirst under the H1. */
   lead: string;
+  /**
+   * The whole guide in four bullets, rendered above the table of contents.
+   * Client instruction 28/08/2026 (adjustment brief §1): the guides read as too
+   * long and dense for someone on a phone in a hurry. Rather than cut the body
+   * — the length is what makes these pages rank and what answer engines quote —
+   * the answer moves to the top, so a reader gets it in fifteen seconds and the
+   * depth stays available underneath for anyone who wants it.
+   */
+  keyTakeaways: string[];
   sections: GuideSection[];
   faq: GuideFaq[];
 };

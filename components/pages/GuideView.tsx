@@ -75,7 +75,25 @@ export default function GuideView({
             {guide.lead}
           </p>
 
-          <nav className="mt-10 rounded-3xl border border-ink/10 bg-surface p-6">
+          {/* The answer first, the depth underneath — see GuideContent.keyTakeaways. */}
+          <section className="mt-10 rounded-3xl border-2 border-signal bg-signal/10 p-6 sm:p-7">
+            <h2 className="font-headline text-sm font-bold uppercase tracking-wide text-ink">
+              {dict.guidePage.takeawaysTitle}
+            </h2>
+            <ul className="mt-4 space-y-3">
+              {guide.keyTakeaways.map((item) => (
+                <li key={item} className="flex gap-3">
+                  <span
+                    aria-hidden="true"
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-ink"
+                  />
+                  <span className="leading-relaxed text-ink">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <nav className="mt-8 rounded-3xl border border-ink/10 bg-surface p-6">
             <h2 className="font-headline text-sm font-bold uppercase tracking-wide text-ink">
               {dict.guidePage.tocTitle}
             </h2>

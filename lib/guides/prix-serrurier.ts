@@ -1,11 +1,11 @@
 import type { Guide } from "@/lib/guides/types";
 import type { Locale } from "@/lib/i18n";
-import { formatPrice, getTierPriceHT } from "@/lib/pricing";
+import { formatPrice, getTierPriceTTC } from "@/lib/pricing";
 
 // Prices in this guide come from the same grid as /tarifs — a price guide that
 // drifts from the price page is worse than no guide.
 const price = (tierSlug: string, lang: Locale) =>
-  formatPrice(getTierPriceHT(tierSlug), lang);
+  formatPrice(getTierPriceTTC(tierSlug), lang);
 
 export const PRIX_SERRURIER: Guide = {
   slug: "prix-serrurier-paris",
@@ -18,6 +18,12 @@ export const PRIX_SERRURIER: Guide = {
       summary:
         "Les prix réels du marché parisien intervention par intervention, ce qui fait varier la facture, et comment distinguer un tarif normal d'un tarif abusif.",
       lead: "Personne ne connaît le prix d'un serrurier avant d'en avoir besoin, et c'est précisément ce qui rend ce marché opaque. Voici les fourchettes réelles à Paris et en Île-de-France, ce qui les fait bouger, et les repères qui permettent de dire « ce montant est normal » ou « ce montant ne l'est pas ».",
+      keyTakeaways: [
+        `Une ouverture de porte claquée se situe autour de ${price("ouverture-porte-claquee", "fr")} ; un changement de cylindre autour de ${price("changement-cylindre", "fr")}. Au-delà du double, demandez le détail.`,
+        "Trois choses font réellement bouger la facture : l'heure (nuit, week-end, jour férié), le type de fermeture, et l'état de la porte — pas l'urgence de votre situation.",
+        "Un « à partir de » sans base de calcul n'est pas un prix. Demandez le montant total TTC pour votre cas précis, par écrit, avant le déplacement.",
+        "Comparez deux devis sur trois lignes : déplacement, main-d'œuvre, matériel. Une ligne unique ne se compare pas, et ce n'est pas un hasard.",
+      ],
       sections: [
         {
           heading: "Les ordres de grandeur, intervention par intervention",
@@ -54,7 +60,7 @@ export const PRIX_SERRURIER: Guide = {
         {
           heading: "HT ou TTC : une différence de 20 %",
           paragraphs: [
-            "Beaucoup de sites de serrurerie affichent des prix HT, ce qui est parfaitement légal en B2B mais trompeur pour un particulier : à taux normal, 890 € HT deviennent 1 068 € TTC sur la facture. Un écart de 20 % qui n'apparaît qu'au moment de payer produit exactement la sensation d'arnaque, même quand il n'y a pas fraude.",
+            "Beaucoup de sites de serrurerie affichent des prix HT. C'est parfaitement légal, et c'est la norme entre professionnels — mais pour un particulier, la TVA à 20 % s'ajoute au moment de la facture, et l'écart surprend. Un blindage annoncé autour de 890 € HT se règle près de 1 070 € TTC.",
             "Pour un consommateur, le prix affiché doit être le prix payé, taxes comprises. C'est pourquoi notre grille indique le TTC en premier et le HT entre parenthèses, plutôt que l'inverse.",
             "Un cas mérite d'être connu : certains travaux d'amélioration ou d'entretien dans un logement achevé depuis plus de deux ans relèvent d'un taux de TVA réduit. Quand il s'applique, il apparaît sur le devis et vous payez moins que le tarif affiché — jamais plus.",
           ],
@@ -105,6 +111,12 @@ export const PRIX_SERRURIER: Guide = {
       summary:
         "Real Paris market prices job by job, what legitimately moves the invoice, and how to tell a normal price from an abusive one.",
       lead: 'Nobody knows what a locksmith costs until they need one, which is exactly what keeps this market opaque. Here are the real ranges in Paris and Île-de-France, what makes them move, and the reference points that let you say "this figure is normal" or "this one isn\'t".',
+      keyTakeaways: [
+        `Opening a slammed door runs around ${price("ouverture-porte-claquee", "en")}; a cylinder swap around ${price("changement-cylindre", "en")}. Beyond double that, ask for the breakdown.`,
+        "Three things genuinely move the invoice: the hour (night, weekend, public holiday), the type of lock, and the state of the door — not how urgent your situation is.",
+        "A “from” price with no basis is not a price. Ask for the total inc-VAT figure for your specific case, in writing, before anyone travels.",
+        "Compare two quotes on three lines: call-out, labour, parts. A single-line quote cannot be compared, and that is not an accident.",
+      ],
       sections: [
         {
           heading: "Orders of magnitude, job by job",
@@ -141,7 +153,7 @@ export const PRIX_SERRURIER: Guide = {
         {
           heading: "Ex-VAT or inc-VAT: a 20% difference",
           paragraphs: [
-            "Many locksmith sites publish ex-VAT prices, which is perfectly legal B2B practice but misleading for a private customer: at the standard rate, €890 ex-VAT becomes €1,068 on the invoice. A 20% gap that only appears at payment time produces exactly the feeling of being scammed, even where there's no fraud.",
+            "Many locksmith sites publish ex-VAT prices. That is perfectly legal, and it is the norm between businesses — but for a private customer the 20% VAT is added at invoice time, and the gap comes as a surprise. Door reinforcement quoted at around €890 ex-VAT is settled at close to €1,070 inc. VAT.",
             "For a consumer, the advertised price should be the price paid, taxes included. That's why our grid shows the inc-VAT figure first and the ex-VAT figure in brackets, rather than the other way round.",
             "One case is worth knowing: some improvement or maintenance work in homes completed more than two years ago qualifies for a reduced VAT rate. Where it applies, it appears on the quote and you pay less than the advertised price — never more.",
           ],

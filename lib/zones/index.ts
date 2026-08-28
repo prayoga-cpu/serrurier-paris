@@ -9,6 +9,7 @@ export type {
   LocalizedZone,
   Zone,
   ZoneContent,
+  ZoneCoverage,
   ZoneFaq,
   ZoneKind,
 } from "@/lib/zones/types";
@@ -35,6 +36,9 @@ export function localizeZone(zone: Zone, lang: Locale): LocalizedZone {
     number: zone.number,
     slug: zone.slug,
     departmentSlug: zone.departmentSlug,
+    // Everything published today is Île-de-France, serviced directly. A zone
+    // has to opt out of that promise explicitly — see ZoneCoverage.
+    coverage: zone.coverage ?? "direct",
     ...zone.content[lang],
   };
 }
@@ -93,15 +97,29 @@ export function getNearbyZones(
   }
 
   // Cities: the other cities of the same department, then the department hub.
-  const siblings = zone.departmentSlug
-    ? getDepartmentCities(zone.departmentSlug, lang).filter(
-        (c) => c.slug !== zone.slug,
-      )
-    : [];
-  const parent = zone.departmentSlug
-    ? getLocalizedZone(zone.departmentSlug, lang)
-    : undefined;
-  return parent ? [...siblings, parent] : siblings;
+  if (zone.departmentSlug) {
+    const siblings = getDepartmentCities(zone.departmentSlug, lang).filter(
+      (c) => c.slug !== zone.slug,
+    );
+    const parent = getLocalizedZone(zone.departmentSlug, lang);
+    return parent ? [...siblings, parent] : siblings;
+  }
+
+  // A city with no department hub sits outside Île-de-France. Its neighbours
+  // are the other cities in the same position — linking it back to a Paris
+  // arrondissement would be a false adjacency and read as filler.
+  return getNationalCities(lang).filter((c) => c.slug !== zone.slug);
+}
+
+/**
+ * City pages with no department hub — i.e. outside Île-de-France. Empty until
+ * the coverage question at ZoneCoverage is answered; the /zones hub renders
+ * their section only when there is something in it.
+ */
+export function getNationalCities(lang: Locale): LocalizedZone[] {
+  return ZONES.filter(
+    (zone) => zone.kind === "city" && !zone.departmentSlug,
+  ).map((zone) => localizeZone(zone, lang));
 }
 
 /** The department hub a city page sits under, for breadcrumbs and back-links. */

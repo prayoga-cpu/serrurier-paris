@@ -11,6 +11,12 @@ export const NORME_A2P: Guide = {
       summary:
         "Ce que certifie réellement le label A2P, ce que valent une, deux ou trois étoiles, et comment choisir sans payer pour un niveau dont vous n'avez pas besoin.",
       lead: "A2P est le seul repère objectif dont dispose un particulier pour juger une serrure. Encore faut-il savoir ce qu'il mesure : pas une qualité générale, mais un temps de résistance à l'effraction, mesuré en laboratoire. Voici comment le lire, et comment choisir sans surpayer.",
+      keyTakeaways: [
+        "A2P mesure une seule chose : le temps de résistance à l'effraction en laboratoire, certifié par le CNPP. Une étoile = 5 minutes, deux = 10, trois = 15.",
+        "Le marquage est gravé sur le produit lui-même, jamais seulement sur l'emballage ou dans une brochure. Vérifiez-le physiquement.",
+        "Une serrure trois étoiles sur une porte faible ne protège pas trois fois mieux : c'est le point le plus faible de l'ensemble qui décide.",
+        "La clé protégée est une protection distincte de la résistance : sans carte de propriété, personne ne reproduit votre clé.",
+      ],
       sections: [
         {
           heading: "Ce que A2P certifie exactement",
@@ -95,6 +101,12 @@ export const NORME_A2P: Guide = {
       summary:
         "What the A2P label actually certifies, what one, two or three stars are worth, and how to choose without paying for a level you don't need.",
       lead: "A2P is the only objective reference a private customer has for judging a lock. But you need to know what it measures: not general quality, but resistance time against forced entry, measured in a laboratory. Here's how to read it, and how to choose without overpaying.",
+      keyTakeaways: [
+        "A2P measures one thing: how long a product resists forced entry in laboratory testing, certified by the CNPP. One star = 5 minutes, two = 10, three = 15.",
+        "The marking is engraved on the product itself, never only on the packaging or in a brochure. Check it physically.",
+        "A three-star lock on a weak door does not protect three times better: the weakest part of the assembly is what decides.",
+        "A protected key is a different kind of protection from resistance: without the ownership card, nobody copies your key.",
+      ],
       sections: [
         {
           heading: "What A2P actually certifies",

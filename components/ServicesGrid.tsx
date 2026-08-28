@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Eyebrow } from "@/components/Button";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
-import { formatPrice, getStartingPriceHT } from "@/lib/pricing";
+import { formatPrice, getStartingPriceTTC } from "@/lib/pricing";
 import { getLocalizedServicesFor } from "@/lib/services";
 
 const SERVICE_ICONS: Record<string, React.ReactNode> = {
@@ -75,7 +75,7 @@ export default function ServicesGrid({ lang }: { lang: Locale }) {
           {services.map((service) => {
             // Starting price on the card itself, not behind a click — one of
             // the things the reference site does better (CLAUDE.md §15).
-            const startingPriceHT = getStartingPriceHT(service.slug);
+            const startingPriceTTC = getStartingPriceTTC(service.slug);
             return (
               <Link
                 key={service.slug}
@@ -104,9 +104,9 @@ export default function ServicesGrid({ lang }: { lang: Locale }) {
                   {service.summary}
                 </p>
                 <span className="mt-5 inline-flex w-fit rounded-full bg-cream px-3 py-1 text-sm font-bold text-ink">
-                  {startingPriceHT === undefined
+                  {startingPriceTTC === undefined
                     ? dict.pricingPage.onQuote
-                    : `${dict.pricingPage.from} ${formatPrice(startingPriceHT, lang)}`}
+                    : `${dict.pricingPage.from} ${formatPrice(startingPriceTTC, lang)}`}
                 </span>
                 <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-ink">
                   {dict.common.learnMore}

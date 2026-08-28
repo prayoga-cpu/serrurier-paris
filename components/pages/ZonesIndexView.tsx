@@ -5,7 +5,11 @@ import MobileCallBar from "@/components/MobileCallBar";
 import Breadcrumb from "@/components/Breadcrumb";
 import { ButtonLink, Eyebrow } from "@/components/Button";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
-import { getLocalizedZonesByKind, type LocalizedZone } from "@/lib/zones";
+import {
+  getLocalizedZonesByKind,
+  getNationalCities,
+  type LocalizedZone,
+} from "@/lib/zones";
 
 function ZoneCard({
   lang,
@@ -61,6 +65,9 @@ export default function ZonesIndexView({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
   const arrondissements = getLocalizedZonesByKind(lang, "arrondissement");
   const departments = getLocalizedZonesByKind(lang, "department");
+  // Cities outside Île-de-France have no department hub to be listed on, so the
+  // hub lists them directly — otherwise publishing one would orphan it.
+  const national = getNationalCities(lang);
 
   return (
     <>
@@ -121,6 +128,28 @@ export default function ZonesIndexView({ lang }: { lang: Locale }) {
               ))}
             </div>
           </div>
+
+          {national.length > 0 && (
+            <div className="mt-16">
+              <h2 className="font-headline text-2xl font-extrabold tracking-tight text-ink">
+                {dict.zonesIndexPage.nationalTitle}
+              </h2>
+              <p className="mt-2 max-w-2xl leading-relaxed text-muted">
+                {dict.zonesIndexPage.nationalLead}
+              </p>
+              <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {national.map((zone) => (
+                  <ZoneCard
+                    key={zone.slug}
+                    lang={lang}
+                    zone={zone}
+                    subtitle={zone.neighborhoods.slice(0, 3).join(" · ")}
+                    learnMore={dict.common.learnMore}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="mt-16 rounded-3xl border border-ink/10 bg-surface p-7">
             <h2 className="font-headline text-xl font-bold text-ink">

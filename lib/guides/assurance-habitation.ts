@@ -11,6 +11,12 @@ export const ASSURANCE_HABITATION: Guide = {
       summary:
         "Ce que votre contrat prend en charge après une effraction ou une perte de clés, les clauses qui peuvent réduire l'indemnisation, et les documents à réunir.",
       lead: "Presque tous les contrats multirisque habitation touchent à la serrurerie, sans que personne ne lise la clause avant d'en avoir besoin. Voici ce qui est généralement couvert, ce qui ne l'est pas, et les erreurs qui coûtent une indemnisation.",
+      keyTakeaways: [
+        "L'effraction est le cas le mieux couvert : la garantie vol prend généralement en charge la porte et la serrure endommagées, en plus des biens volés.",
+        "Lisez la clause « moyens de protection » de votre contrat. Elle peut exiger un nombre de points de fermeture ou une certification A2P, et réduire l'indemnisation si elle n'est pas respectée.",
+        "N'attendez pas l'accord de l'assureur pour sécuriser le logement : les mesures conservatoires font partie de vos obligations, pas de vos torts.",
+        "Une facture détaillée est ce qui déclenche le remboursement. Une ligne unique « intervention serrurerie » ne rattache la dépense à aucun fait garanti.",
+      ],
       sections: [
         {
           heading: "Trois situations, trois traitements différents",
@@ -98,6 +104,12 @@ export const ASSURANCE_HABITATION: Guide = {
       summary:
         "What your policy covers after a break-in or lost keys, the clauses that can cut your payout, and the documents to gather.",
       lead: "Almost every French home insurance policy touches locksmithing, and almost nobody reads the clause before needing it. Here's what is generally covered, what isn't, and the mistakes that cost a payout.",
+      keyTakeaways: [
+        "A break-in is the best-covered case: theft cover generally pays for the damaged door and lock as well as the stolen goods.",
+        "Read the “protection measures” clause in your policy. It can require a minimum number of locking points or A2P certification, and cut your payout if it isn't met.",
+        "Don't wait for the insurer's approval before securing the property: protective measures are part of your obligations, not a fault against you.",
+        "An itemised invoice is what triggers reimbursement. A single line reading “locksmith call-out” connects the cost to no covered event.",
+      ],
       sections: [
         {
           heading: "Three situations, three different treatments",

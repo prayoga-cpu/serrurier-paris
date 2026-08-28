@@ -143,7 +143,7 @@ export default function ServiceView({
                           </td>
                           <td className="px-5 py-3.5 text-muted">
                             {dict.pricingPage.from}{" "}
-                            {formatPriceDual(tier.priceHT, lang)}
+                            {formatPriceDual(tier.priceTTC, lang)}
                           </td>
                         </tr>
                       ))}

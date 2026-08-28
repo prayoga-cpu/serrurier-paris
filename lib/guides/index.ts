@@ -53,6 +53,7 @@ export function getLocalizedGuide(
 export function readingMinutes(guide: LocalizedGuide): number {
   const words = [
     guide.lead,
+    ...guide.keyTakeaways,
     ...guide.sections.flatMap((s) => [...s.paragraphs, ...(s.list ?? [])]),
     ...guide.faq.flatMap((f) => [f.question, f.answer]),
   ]

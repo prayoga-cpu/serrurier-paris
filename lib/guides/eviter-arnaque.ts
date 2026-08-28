@@ -11,6 +11,12 @@ export const EVITER_ARNAQUE: Guide = {
       summary:
         "Comment fonctionne l'arnaque au dépannage serrurerie, les signaux d'alerte avant l'intervention, ce que la loi impose et les recours si la facture a déjà explosé.",
       lead: "La serrurerie d'urgence est l'un des secteurs les plus signalés à la DGCCRF. Ce guide décrit le mécanisme complet d'une arnaque type, les questions à poser avant qu'un artisan se déplace, et ce que vous pouvez faire si vous avez déjà payé une facture abusive.",
+      keyTakeaways: [
+        "Faites-vous annoncer un prix total TTC au téléphone, avant tout déplacement. Un professionnel sait chiffrer une ouverture de porte : ne pas vouloir le faire est le signal le plus fiable.",
+        "Au-delà de 150 €, le devis écrit et détaillé est obligatoire avant les travaux (arrêté du 24 janvier 2017), avec matériaux, main-d'œuvre et déplacement séparés.",
+        "Un écart entre le prix annoncé au téléphone et le devis présenté sur le palier est le moment de refuser — pas après l'intervention.",
+        "Facture abusive déjà réglée : réclamez la facture détaillée, contestez par lettre recommandée avec accusé de réception, puis signalez à la DGCCRF via SignalConso.",
+      ],
       sections: [
         {
           heading: "Pourquoi ce secteur concentre autant d'abus",
@@ -118,6 +124,12 @@ export const EVITER_ARNAQUE: Guide = {
       summary:
         "How the emergency locksmith scam works, the warning signs before anyone travels, what French law requires, and your options if the invoice has already exploded.",
       lead: "Emergency locksmithing is one of the most reported sectors to the French consumer authority. This guide sets out how a typical scam works end to end, the questions to ask before anyone comes out, and what you can do if you've already paid an abusive invoice.",
+      keyTakeaways: [
+        "Get a total inc-VAT price on the phone, before anyone travels. A professional can quote a door opening: being unwilling to is the most reliable warning sign.",
+        "Above €150 a detailed written quote is required before work starts (French order of 24 January 2017), itemising materials, labour and call-out separately.",
+        "A gap between the price quoted on the phone and the quote handed to you at the door is the moment to say no — not after the work.",
+        "Already paid an abusive invoice: request the itemised invoice, dispute it by recorded-delivery letter, then report it to the DGCCRF via SignalConso.",
+      ],
       sections: [
         {
           heading: "Why this sector attracts so much abuse",

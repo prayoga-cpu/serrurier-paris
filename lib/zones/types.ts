@@ -25,6 +25,24 @@ export type ZoneContent = {
 export type ZoneKind = "arrondissement" | "department" | "city";
 
 /**
+ * How a zone is actually serviced — the field that decides which promise a zone
+ * page is allowed to make.
+ *
+ * The site ships three claims that are only true within travelling distance of
+ * the team: "sur place en moins de 30 minutes", "un seul interlocuteur du
+ * premier appel à la facture", and the direct-artisan positioning on /a-propos.
+ * The client asked (adjustment brief §4, 28/08/2026) to expand beyond
+ * Île-de-France to ten low-CPC cities — Clermont-Ferrand is 420 km from Paris,
+ * Brest 590 km — which those three claims cannot survive unchanged.
+ *
+ * So coverage is data, not copy. `direct` keeps the existing promises. `network`
+ * swaps them for the ones a dispatch model can actually keep. Nothing outside
+ * Île-de-France publishes until the client confirms which model applies, and
+ * when she does, it is one field per zone rather than a rewrite per page.
+ */
+export type ZoneCoverage = "direct" | "network";
+
+/**
  * Zones are a three-level hierarchy — hub (/zones) → department → city — with
  * Paris arrondissements sitting directly under the hub (CLAUDE.md §14 P1).
  *
@@ -44,8 +62,16 @@ export type Zone = {
   /** Arrondissement number, department code, or postal code for a city. */
   number: string;
   slug: string;
-  /** Cities only: the department hub this page belongs under. */
+  /**
+   * Cities only, and only where a parent hub exists: the department page this
+   * city sits under. A city outside Île-de-France has no department hub of its
+   * own — building seven more hub pages to carry ten cities would manufacture
+   * exactly the thin pages CLAUDE.md §3 forbids — so it leaves this unset and
+   * is listed directly on /zones instead.
+   */
   departmentSlug?: string;
+  /** Defaults to "direct" when unset — see ZoneCoverage. */
+  coverage?: ZoneCoverage;
   content: Record<Locale, ZoneContent>;
 };
 
@@ -54,4 +80,6 @@ export type LocalizedZone = ZoneContent & {
   number: string;
   slug: string;
   departmentSlug?: string;
+  /** Always resolved — localizeZone applies the "direct" default. */
+  coverage: ZoneCoverage;
 };

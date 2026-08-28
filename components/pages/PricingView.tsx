@@ -91,7 +91,7 @@ export default function PricingView({ lang }: { lang: Locale }) {
                     </td>
                     <td className="border-t border-ink/10 px-6 py-4 text-muted">
                       {dict.pricingPage.from}{" "}
-                      {formatPriceDual(tier.priceHT, lang)}
+                      {formatPriceDual(tier.priceTTC, lang)}
                     </td>
                   </tr>
                 ))}
@@ -141,7 +141,7 @@ export default function PricingView({ lang }: { lang: Locale }) {
                       </td>
                       <td className="px-6 py-4 text-muted">
                         {option.surcharge ? "+ " : `${dict.pricingPage.from} `}
-                        {formatPriceDual(option.priceHT, lang)}
+                        {formatPriceDual(option.priceTTC, lang)}
                       </td>
                     </tr>
                   ))}
