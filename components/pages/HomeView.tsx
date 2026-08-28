@@ -14,10 +14,15 @@ import MobileCallBar from "@/components/MobileCallBar";
 import type { Locale } from "@/lib/i18n";
 
 /**
- * Section order follows intent, not the site map: panic (hero), reassurance
- * (trust), what we do (services), what happened to you (situations), what it
- * costs (pricing), how it runs (process), where (coverage), why believe us
- * (reviews + guides).
+ * Section order follows intent, not the site map, and it is ordered for the
+ * phone because that is where an emergency visitor actually arrives.
+ *
+ * The first three answer the only questions someone locked out has, in the
+ * order they ask them: can you come to me (hero coverage check), what happens
+ * if I call (process), what will it cost (pricing). Everything after that —
+ * trust, catalogue, situations, coverage detail, reviews and guides — is for
+ * the visitor who is researching rather than stranded, and it can wait below
+ * the fold. Client direction 28/08/2026.
  */
 export default function HomeView({ lang }: { lang: Locale }) {
   return (
@@ -25,11 +30,11 @@ export default function HomeView({ lang }: { lang: Locale }) {
       <Header lang={lang} path="/" />
       <main className="flex-1 pb-20 lg:pb-0">
         <Hero lang={lang} />
+        <ProcessSection lang={lang} variant="compact" />
+        <TarifsTeaser lang={lang} />
         <TrustStrip lang={lang} />
         <ServicesGrid lang={lang} />
         <SituationsGrid lang={lang} />
-        <TarifsTeaser lang={lang} />
-        <ProcessSection lang={lang} />
         <CoverageSection lang={lang} />
         <AuthoritySection lang={lang} />
       </main>

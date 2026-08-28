@@ -49,11 +49,17 @@ export function getLocalizedGuide(
   return guide ? localizeGuide(guide, lang) : undefined;
 }
 
-/** Rough reading time, for the "x min read" line. ~200 words a minute. */
+/**
+ * Rough reading time, for the "x min read" line. ~200 words a minute.
+ *
+ * keyTakeaways are deliberately excluded: they restate content that is already
+ * counted below, so including them inflates the badge by roughly half a minute
+ * — moving the number up, when the whole point of the block is to make the page
+ * read as shorter (adjustment brief §1).
+ */
 export function readingMinutes(guide: LocalizedGuide): number {
   const words = [
     guide.lead,
-    ...guide.keyTakeaways,
     ...guide.sections.flatMap((s) => [...s.paragraphs, ...(s.list ?? [])]),
     ...guide.faq.flatMap((f) => [f.question, f.answer]),
   ]

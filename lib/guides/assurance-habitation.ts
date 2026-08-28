@@ -29,9 +29,14 @@ export const ASSURANCE_HABITATION: Guide = {
         {
           heading: "La clause qui peut réduire votre indemnisation",
           paragraphs: [
-            "Cherchez dans vos conditions générales le paragraphe intitulé « moyens de protection » ou « mesures de prévention ». Il décrit ce que l'assureur attend de vous : un nombre minimal de points de fermeture, parfois une certification A2P, parfois la fermeture à clé de toutes les issues en cas d'absence.",
-            "Ces exigences sont fréquemment renforcées pour les rez-de-chaussée, les premiers étages accessibles, les logements inoccupés au-delà d'une durée donnée, ou quand le capital mobilier assuré dépasse un certain seuil.",
-            "Si les protections exigées n'étaient pas en place au moment du sinistre, l'assureur peut réduire l'indemnisation, voire la refuser. C'est le mécanisme le plus courant de mauvaise surprise après un cambriolage — et il se prévient en dix minutes de lecture, avant le sinistre.",
+            "Si les protections exigées par votre contrat n'étaient pas en place au moment du sinistre, l'assureur peut réduire l'indemnisation, voire la refuser. C'est le mécanisme le plus courant de mauvaise surprise après un cambriolage — et il se prévient en dix minutes de lecture, avant le sinistre.",
+            "Cherchez dans vos conditions générales le paragraphe intitulé « moyens de protection » ou « mesures de prévention ». Il décrit ce que l'assureur attend de vous.",
+            "Ces exigences sont fréquemment renforcées pour les rez-de-chaussée, les premiers étages accessibles, les logements inoccupés au-delà d'une durée donnée, ou quand le capital mobilier assuré dépasse un certain seuil. La clause tient le plus souvent en trois points :",
+          ],
+          list: [
+            "Un nombre minimal de points de fermeture.",
+            "Parfois une certification A2P de la serrure ou du cylindre.",
+            "Parfois la fermeture à clé de toutes les issues en cas d'absence.",
           ],
         },
         {
@@ -50,7 +55,7 @@ export const ASSURANCE_HABITATION: Guide = {
         {
           heading: "Sécuriser tout de suite sans compromettre le dossier",
           paragraphs: [
-            "C'est la question que tout le monde se pose sur le palier : faut-il attendre l'accord de l'assureur avant de faire réparer ? Non, et attendre serait même contre-productif. Les contrats prévoient les mesures conservatoires — remettre en sécurité un logement ouvert fait partie de vos obligations, pas de vos torts.",
+            "N'attendez pas l'accord de l'assureur pour faire sécuriser le logement : c'est la question que tout le monde se pose sur le palier, et attendre serait contre-productif. Les contrats prévoient les mesures conservatoires — remettre en sécurité un logement ouvert fait partie de vos obligations, pas de vos torts.",
             "Ce qu'il faut, c'est documenter avant de réparer : photos, dépôt de plainte, devis écrit. Une intervention faite dans ces conditions se justifie sans difficulté auprès d'un gestionnaire de sinistre.",
             "En pratique, la séquence propre consiste à sécuriser d'abord — remplacement de cylindre, remise en état provisoire de la porte — puis à traiter la réparation définitive une fois le dossier ouvert et le mode de prise en charge connu.",
           ],
@@ -59,14 +64,21 @@ export const ASSURANCE_HABITATION: Guide = {
           heading: "Ce que l'assureur attend d'une facture de serrurerie",
           paragraphs: [
             "Un gestionnaire de sinistre ne cherche pas à vous piéger, il cherche à rattacher une dépense à un fait garanti. Une facture qui indique « intervention serrurerie : 620 € » ne le lui permet pas ; une facture détaillée, oui.",
-            "Doivent y figurer : la nature de l'intervention, le matériel remplacé avec sa marque, sa référence et sa certification éventuelle, la main-d'œuvre, le déplacement, et la date. La correspondance entre le devis et la facture finale compte autant que les montants.",
-            "C'est aussi la raison pratique pour laquelle un devis écrit protège au-delà du litige commercial : c'est la pièce qui transforme une dépense en dépense remboursable.",
+            "C'est aussi la raison pratique pour laquelle un devis écrit protège au-delà du litige commercial : c'est la pièce qui transforme une dépense en dépense remboursable. La correspondance entre le devis et la facture finale compte d'ailleurs autant que les montants.",
+            "Doivent figurer sur l'un comme sur l'autre :",
+          ],
+          list: [
+            "La nature de l'intervention.",
+            "Le matériel remplacé, avec sa marque, sa référence et sa certification éventuelle.",
+            "La main-d'œuvre et le déplacement.",
+            "La date de l'intervention.",
           ],
         },
         {
           heading: "Locataire ou propriétaire : qui paie quoi",
           paragraphs: [
-            "En location, la règle générale veut que l'entretien courant de la serrure incombe au locataire, tandis que la vétusté et le remplacement de l'ouvrant relèvent du propriétaire. Une serrure détériorée lors d'une effraction est le plus souvent traitée par l'assurance — celle du locataire pour ses biens, celle du propriétaire ou de la copropriété pour l'ouvrant selon les cas.",
+            "En location, la règle générale veut que l'entretien courant de la serrure incombe au locataire, tandis que la vétusté et le remplacement de l'ouvrant relèvent du propriétaire.",
+            "Une serrure détériorée lors d'une effraction est le plus souvent traitée par l'assurance — celle du locataire pour ses biens, celle du propriétaire ou de la copropriété pour l'ouvrant selon les cas.",
             "Une clé perdue par le locataire reste en principe à sa charge, sauf garantie spécifique de son contrat. Prévenir l'agence ou le bailleur avant de faire changer la serrure évite les contestations ultérieures, notamment lors de l'état des lieux de sortie.",
             "En copropriété, la porte palière est une zone hybride : sa face extérieure relève des parties communes dans de nombreux règlements. Changer le cylindre ne pose aucun problème ; remplacer la porte ou modifier son aspect suppose l'accord de la copropriété.",
           ],
@@ -122,9 +134,14 @@ export const ASSURANCE_HABITATION: Guide = {
         {
           heading: "The clause that can cut your payout",
           paragraphs: [
-            'Look in your policy for the paragraph headed "protection measures" or similar. It sets out what the insurer expects of you: a minimum number of locking points, sometimes an A2P certification, sometimes that every way in is locked when the home is empty.',
-            "These requirements are frequently stricter for ground floors, accessible first floors, homes left empty beyond a stated period, or where the insured contents value passes a threshold.",
-            "If the required protection wasn't in place when the loss happened, the insurer can reduce the payout or refuse it. That's the most common nasty surprise after a burglary — and ten minutes of reading, before anything happens, prevents it.",
+            "If the protection your policy required wasn't in place when the loss happened, the insurer can reduce the payout or refuse it. That's the most common nasty surprise after a burglary — and ten minutes of reading, before anything happens, prevents it.",
+            'Look in your policy for the paragraph headed "protection measures" or similar. It sets out what the insurer expects of you.',
+            "These requirements are frequently stricter for ground floors, accessible first floors, homes left empty beyond a stated period, or where the insured contents value passes a threshold. The clause usually comes down to three points:",
+          ],
+          list: [
+            "A minimum number of locking points.",
+            "Sometimes an A2P certification for the lock or the cylinder.",
+            "Sometimes that every way in is locked when the home is empty.",
           ],
         },
         {
@@ -143,7 +160,7 @@ export const ASSURANCE_HABITATION: Guide = {
         {
           heading: "Securing immediately without harming the claim",
           paragraphs: [
-            "It's the question everyone asks on the landing: should you wait for the insurer's agreement before repairing? No — and waiting would be counterproductive. Policies provide for protective measures; making an open home secure is part of your obligations, not a fault.",
+            "Don't wait for the insurer's agreement before securing the property: it's the question everyone asks on the landing, and waiting would be counterproductive. Policies provide for protective measures; making an open home secure is part of your obligations, not a fault.",
             "What matters is documenting before repairing: photos, police report, written quote. Work carried out on that basis is easy to justify to a claims handler.",
             "In practice the clean sequence is to secure first — cylinder replacement, temporary repair of the door — then handle the permanent repair once the claim is open and the basis of cover is known.",
           ],
@@ -152,14 +169,21 @@ export const ASSURANCE_HABITATION: Guide = {
           heading: "What an insurer wants from a locksmith's invoice",
           paragraphs: [
             "A claims handler isn't trying to trap you, they're trying to tie a cost to a covered event. An invoice reading \"locksmithing: €620\" doesn't let them; an itemised one does.",
-            "It should show the nature of the work, the hardware replaced with brand, reference and any certification, the labour, the travel charge, and the date. Consistency between the quote and the final invoice counts as much as the amounts.",
-            "That's also the practical reason a written quote protects you beyond any commercial dispute: it's the document that turns a cost into a reimbursable cost.",
+            "That's also the practical reason a written quote protects you beyond any commercial dispute: it's the document that turns a cost into a reimbursable cost. Consistency between the quote and the final invoice counts as much as the amounts.",
+            "Both documents should show:",
+          ],
+          list: [
+            "The nature of the work.",
+            "The hardware replaced, with brand, reference and any certification.",
+            "The labour and the travel charge.",
+            "The date of the work.",
           ],
         },
         {
           heading: "Tenant or owner: who pays for what",
           paragraphs: [
-            "In a rented home the general rule is that routine lock maintenance falls to the tenant, while wear and tear and replacing the door itself fall to the owner. A lock damaged in a break-in is usually handled by insurance — the tenant's for their contents, the owner's or the building's for the door, depending on the case.",
+            "In a rented home the general rule is that routine lock maintenance falls to the tenant, while wear and tear and replacing the door itself fall to the owner.",
+            "A lock damaged in a break-in is usually handled by insurance — the tenant's for their contents, the owner's or the building's for the door, depending on the case.",
             "A key lost by the tenant is in principle at their expense, unless their policy has a specific guarantee. Telling the agency or landlord before changing the lock avoids arguments later, particularly at the end-of-tenancy inventory.",
             "In a shared building the flat door is a hybrid zone: its outer face belongs to the common parts under many building rules. Changing the cylinder raises no issue; replacing the door or altering its appearance needs the building's approval.",
           ],

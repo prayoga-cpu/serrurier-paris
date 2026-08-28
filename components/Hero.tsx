@@ -5,11 +5,13 @@ import { ButtonSubmit, Eyebrow } from "@/components/Button";
 import ServiceChecklist from "@/components/ServiceChecklist";
 import BookingPicker from "@/components/BookingPicker";
 import ContactFields from "@/components/ContactFields";
+import GeoLocateButton from "@/components/GeoLocateButton";
 import Modal from "@/components/Modal";
 import WhatsAppForm from "@/components/WhatsAppForm";
 import { PHONE_HREF, WHATSAPP_HREF } from "@/lib/config";
 import { getDictionary, type Dictionary, type Locale } from "@/lib/i18n";
 import { checkPostal, type PostalStatus } from "@/lib/postal";
+import type { GeoAddress } from "@/lib/geolocate";
 
 const STAT_ICONS = [
   // clock
@@ -82,6 +84,9 @@ export default function Hero({ lang }: { lang: Locale }) {
   const [step, setStep] = useState<1 | 2>(1);
   const [postalCode, setPostalCode] = useState("");
   const [status, setStatus] = useState<PostalStatus | null>(null);
+  // Set only when the visitor used "use my location". Feeds the address field
+  // in step two so a one-tap start does not become a typing exercise.
+  const [detectedAddress, setDetectedAddress] = useState("");
   // Drives the fade/slide-in on the step-2 content — flipped a tick after
   // mount so the browser has an initial (hidden) frame to transition from.
   const [revealed, setRevealed] = useState(false);
@@ -97,10 +102,8 @@ export default function Hero({ lang }: { lang: Locale }) {
     return () => cancelAnimationFrame(id);
   }, [step]);
 
-  function handleCheck(e: FormEvent) {
-    e.preventDefault();
-    if (transitioning) return;
-    const result = checkPostal(postalCode);
+  /** Shared by the typed check and the device-location check. */
+  function advance(result: PostalStatus) {
     setStatus(result);
     if (result === "invalid") return;
     setTransitioning(true);
@@ -114,7 +117,24 @@ export default function Hero({ lang }: { lang: Locale }) {
     }, 280);
   }
 
+  function handleCheck(e: FormEvent) {
+    e.preventDefault();
+    if (transitioning) return;
+    advance(checkPostal(postalCode));
+  }
+
+  function handleGeoFound(address: GeoAddress) {
+    if (transitioning) return;
+    setPostalCode(address.postcode);
+    setDetectedAddress(address.label);
+    advance(checkPostal(address.postcode));
+  }
+
   function handleEditPostal() {
+    // The detected address belongs to the detected postcode. If the visitor
+    // goes back to change the code, carrying it forward would prefill an
+    // address in the wrong town.
+    setDetectedAddress("");
     setFormOpen(false);
     setRevealed(false);
     setStep(1);
@@ -160,7 +180,7 @@ export default function Hero({ lang }: { lang: Locale }) {
                     );
                     setStatus(null);
                   }}
-                  className="h-14 w-full flex-1 rounded-2xl border border-ink/15 bg-paper px-4 text-center text-ink outline-none transition-colors focus:border-signal-press sm:text-left"
+                  className="h-14 w-full rounded-2xl border border-ink/15 bg-paper px-4 text-center text-ink outline-none transition-colors focus:border-signal-press sm:flex-1 sm:text-left"
                 />
                 <ButtonSubmit
                   type="submit"
@@ -175,6 +195,11 @@ export default function Hero({ lang }: { lang: Locale }) {
                   {dict.devis.postalInvalid}
                 </p>
               )}
+              <GeoLocateButton
+                lang={lang}
+                onFound={handleGeoFound}
+                disabled={transitioning}
+              />
             </form>
 
             <p className="mt-4 text-sm text-muted">
@@ -350,7 +375,11 @@ export default function Hero({ lang }: { lang: Locale }) {
           <input type="hidden" name="postal" value={postalCode} />
           <ServiceChecklist lang={lang} />
           <BookingPicker lang={lang} />
-          <ContactFields lang={lang} postalCode={postalCode} />
+          <ContactFields
+            lang={lang}
+            postalCode={postalCode}
+            addressDefault={detectedAddress}
+          />
         </WhatsAppForm>
 
         <button

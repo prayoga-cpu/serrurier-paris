@@ -15,10 +15,12 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 const KNOWN_EVENTS: readonly AnalyticsEvent[] = [
   "call_click",
   "whatsapp_click",
+  "email_click",
   "form_submit",
   "booking_complete",
   "tarifs_view",
   "devis_start",
+  "geo_locate",
 ];
 
 // "ssr" = rendering on the server / not yet hydrated, "unset" = hydrated and

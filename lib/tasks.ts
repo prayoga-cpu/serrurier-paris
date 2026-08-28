@@ -494,6 +494,25 @@ export function getLocalizedTask(
   return task ? localizeTask(task, lang) : undefined;
 }
 
+/**
+ * Tasks surfaced at the top of a guide, so a visitor who is actually locked out
+ * right now can leave for the short transactional page instead of reading 1,300
+ * words (adjustment brief §1: the guides read as too long for someone in a
+ * hurry on a phone). Tasks that name this guide come first; the list is then
+ * topped up to `limit` so every guide keeps the same internal-link weight.
+ */
+export function getTasksForGuide(
+  guideSlug: string,
+  lang: Locale,
+  limit = 3,
+): LocalizedTask[] {
+  const matching = TASKS.filter((t) => t.guideSlug === guideSlug);
+  const rest = TASKS.filter((t) => t.guideSlug !== guideSlug);
+  return [...matching, ...rest]
+    .slice(0, limit)
+    .map((t) => localizeTask(t, lang));
+}
+
 /** Tasks that route to a given service — rendered on that service's page. */
 export function getTasksForService(
   serviceSlug: string,

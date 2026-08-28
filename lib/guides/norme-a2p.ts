@@ -23,7 +23,7 @@ export const NORME_A2P: Guide = {
           paragraphs: [
             "A2P — pour « Assurance Prévention Protection » — est une certification délivrée par le CNPP, un organisme indépendant, après des essais en laboratoire. Des techniciens tentent de forcer le produit avec des outils définis, et l'on mesure le temps qu'il tient.",
             "C'est là tout l'intérêt du label, et aussi sa limite : A2P ne dit pas qu'une serrure est « bonne », il dit qu'elle a résisté un temps donné à des méthodes d'effraction connues. Ce n'est pas un avis commercial, c'est un résultat d'essai reproductible.",
-            "Le raisonnement derrière ce choix est celui des cambrioleurs eux-mêmes : la grande majorité des tentatives sont abandonnées quand elles prennent trop de temps ou font trop de bruit. Gagner cinq minutes n'est pas un détail, c'est souvent toute la différence entre une tentative et un cambriolage.",
+            "Gagner cinq minutes n'est pas un détail : c'est souvent toute la différence entre une tentative et un cambriolage. Le raisonnement du label est celui des cambrioleurs eux-mêmes — la grande majorité des tentatives sont abandonnées quand elles prennent trop de temps ou font trop de bruit.",
           ],
         },
         {
@@ -41,7 +41,8 @@ export const NORME_A2P: Guide = {
         {
           heading: "La serrure certifiée ne suffit pas",
           paragraphs: [
-            "C'est l'erreur la plus fréquente, et la plus coûteuse. Une serrure A2P trois étoiles posée sur une porte creuse en bois avec un dormant fatigué ne protège pas trois fois mieux qu'un modèle une étoile : elle protège autant que le point le plus faible de l'ensemble, qui n'est plus la serrure.",
+            "C'est l'erreur la plus fréquente, et la plus coûteuse. Une serrure A2P trois étoiles posée sur une porte creuse en bois avec un dormant fatigué ne protège pas trois fois mieux qu'un modèle une étoile.",
+            "Elle protège exactement autant que le point le plus faible de l'ensemble, qui n'est plus la serrure.",
             "Un ensemble cohérent, c'est la serrure, le cylindre, la gâche, le dormant, les paumelles et la porte elle-même. Sur une porte standard, renforcer la gâche et poser une cornière anti-pince apporte souvent plus, pour beaucoup moins cher, que de monter d'un niveau de certification.",
             "C'est pourquoi un diagnostic sérieux commence toujours par la porte, jamais par le catalogue de serrures. Un professionnel qui vous vend une certification sans avoir examiné le dormant ne vend pas de la sécurité, il vend une référence produit.",
           ],
@@ -50,24 +51,34 @@ export const NORME_A2P: Guide = {
           heading: "Clé protégée : une protection différente",
           paragraphs: [
             "À côté de la résistance mécanique, il existe une seconde question, souvent plus concrète au quotidien : qui peut faire un double de votre clé ? Un cylindre à clé protégée est livré avec une carte de propriété, et sans elle, aucun serrurier sérieux ne reproduira la clé.",
-            "Cela ne change rien face à un cambrioleur qui force la porte, mais cela change tout dans les situations les plus fréquentes : un jeu de clés non rendu par un ancien locataire, une clé perdue dans la rue avec l'adresse dans le même sac, une copie faite discrètement pendant des travaux.",
+            "Cela ne change rien face à un cambrioleur qui force la porte.",
+            "En revanche, cela change tout dans les situations les plus fréquentes : un jeu de clés non rendu par un ancien locataire, une clé perdue dans la rue avec l'adresse dans le même sac, une copie faite discrètement pendant des travaux.",
             "Certification A2P et clé protégée sont deux protections indépendantes. Beaucoup de cylindres combinent les deux, et pour un logement en location, la clé protégée est souvent l'argument le plus utile des deux.",
           ],
         },
         {
           heading: "Comment vérifier qu'un produit est vraiment certifié",
           paragraphs: [
-            "Le marquage figure physiquement sur le produit : le logo A2P avec le nombre d'étoiles est gravé ou apposé sur le corps de la serrure ou la tête du cylindre. Il ne s'agit pas d'une mention sur l'emballage ou dans une brochure.",
-            "Demandez que la certification apparaisse nommément sur le devis puis sur la facture, avec la marque et la référence du produit. Un devis qui indique « serrure haute sécurité » sans référence ni certification ne vous engage à rien de vérifiable, et ne vaudra rien auprès d'un assureur.",
-            "Méfiez-vous des formulations approchantes : « conforme aux normes », « type A2P », « qualité certifiée » ne sont pas des certifications. A2P est un label précis, avec un nombre d'étoiles ; le reste est du marketing.",
+            "Le marquage figure physiquement sur le produit, jamais seulement sur l'emballage ou dans une brochure. Le logo A2P avec le nombre d'étoiles est gravé ou apposé sur le corps de la serrure ou la tête du cylindre.",
+            "Méfiez-vous aussi des formulations approchantes : « conforme aux normes », « type A2P », « qualité certifiée » ne sont pas des certifications. A2P est un label précis, avec un nombre d'étoiles ; le reste est du marketing.",
+            "Un devis qui indique « serrure haute sécurité » sans référence ni certification ne vous engage à rien de vérifiable, et ne vaudra rien auprès d'un assureur. Exigez donc, noir sur blanc :",
+          ],
+          list: [
+            "la marque et la référence exacte du produit ;",
+            "la certification A2P nommée, avec son nombre d'étoiles ;",
+            "les mêmes mentions reportées du devis sur la facture.",
           ],
         },
         {
           heading: "Faut-il systématiquement viser trois étoiles ?",
           paragraphs: [
-            "Non, et c'est un point sur lequel il est facile de dépenser beaucoup pour rien. Le niveau utile dépend de l'exposition réelle : étage, présence d'un gardien ou d'un contrôle d'accès, visibilité depuis la rue, durée des absences, et exigences éventuelles de votre assureur.",
-            "Pour un appartement en étage dans un immeuble fermé, un cylindre A2P une étoile à clé protégée, posé sur une porte saine avec une gâche renforcée, offre un rapport protection/prix difficile à battre.",
-            "Pour un rez-de-chaussée sur rue, un premier étage accessible depuis une cour ou un logement souvent vide, monter en deux étoiles et traiter le dormant est justifié. Trois étoiles se discute surtout quand un contrat d'assurance l'exige explicitement.",
+            "Non. Le niveau utile dépend de votre exposition réelle : l'étage, la présence d'un gardien ou d'un contrôle d'accès, la visibilité depuis la rue, la durée de vos absences, et les exigences éventuelles de votre assureur.",
+            "C'est un point sur lequel il est facile de dépenser beaucoup pour rien. Dans la pratique, trois profils couvrent l'essentiel des situations.",
+          ],
+          list: [
+            "Appartement en étage dans un immeuble fermé : un cylindre A2P une étoile à clé protégée, posé sur une porte saine avec une gâche renforcée, offre un rapport protection/prix difficile à battre.",
+            "Rez-de-chaussée sur rue, premier étage accessible depuis une cour, logement souvent vide : monter en deux étoiles et traiter le dormant est justifié.",
+            "Trois étoiles : à discuter surtout quand un contrat d'assurance l'exige explicitement, ou pour des biens de valeur réellement exposés.",
           ],
         },
       ],
@@ -113,7 +124,7 @@ export const NORME_A2P: Guide = {
           paragraphs: [
             "A2P is a certification issued by CNPP, an independent French body, after laboratory testing. Technicians attempt to force the product with defined tools, and the time it holds out is measured.",
             "That's both the value of the label and its limit: A2P doesn't say a lock is \"good\", it says it withstood a given time against known attack methods. It isn't a commercial opinion, it's a reproducible test result.",
-            "The reasoning behind it comes from burglars themselves: the large majority of attempts are abandoned when they take too long or make too much noise. Gaining five minutes isn't a detail — it's often the whole difference between an attempt and a burglary.",
+            "Gaining five minutes isn't a detail: it's often the whole difference between an attempt and a burglary. The reasoning behind the label comes from burglars themselves — the large majority of attempts are abandoned when they take too long or make too much noise.",
           ],
         },
         {
@@ -131,7 +142,8 @@ export const NORME_A2P: Guide = {
         {
           heading: "A certified lock isn't enough on its own",
           paragraphs: [
-            "This is the most common and most expensive mistake. A three-star lock fitted to a hollow timber door with a tired frame doesn't protect three times better than a one-star model: it protects as well as the weakest part of the assembly, which is no longer the lock.",
+            "This is the most common and most expensive mistake. A three-star lock fitted to a hollow timber door with a tired frame doesn't protect three times better than a one-star model.",
+            "It protects exactly as well as the weakest part of the assembly, which is no longer the lock.",
             "A coherent assembly means the lock, cylinder, strike plate, frame, hinges and the door itself. On a standard door, reinforcing the strike plate and fitting an anti-crowbar angle often buys more, for far less, than moving up a certification level.",
             "That's why a serious survey always starts with the door, never with the lock catalogue. Anyone selling you a certification without having examined the frame isn't selling security, they're selling a product reference.",
           ],
@@ -140,24 +152,34 @@ export const NORME_A2P: Guide = {
           heading: "Protected keys: a different kind of protection",
           paragraphs: [
             "Alongside mechanical resistance there's a second question, often more concrete day to day: who can copy your key? A protected-key cylinder comes with an ownership card, and without it no serious locksmith will cut a copy.",
-            "That changes nothing against a burglar forcing the door, but it changes everything in the most common situations: a key set never returned by a previous tenant, a key lost in the street with the address in the same bag, a copy quietly made during building work.",
+            "That changes nothing against a burglar forcing the door.",
+            "It changes everything, though, in the most common situations: a key set never returned by a previous tenant, a key lost in the street with the address in the same bag, a copy quietly made during building work.",
             "A2P certification and protected keys are independent protections. Many cylinders combine both, and for a rented home the protected key is often the more useful of the two.",
           ],
         },
         {
           heading: "How to check a product really is certified",
           paragraphs: [
-            "The marking is physically on the product: the A2P logo with the number of stars is engraved or applied on the lock body or the cylinder head. It isn't a line on the packaging or in a brochure.",
-            'Ask for the certification to be named on the quote and then on the invoice, with the product\'s brand and reference. A quote that says "high-security lock" with no reference or certification commits nobody to anything verifiable, and will be worth nothing to an insurer.',
-            'Be wary of near-miss wording: "meets standards", "A2P type", "certified quality" are not certifications. A2P is a precise label with a star count; the rest is marketing.',
+            "The marking is physically on the product, never only on the packaging or in a brochure. The A2P logo with the number of stars is engraved or applied on the lock body or the cylinder head.",
+            'Be wary too of near-miss wording: "meets standards", "A2P type", "certified quality" are not certifications. A2P is a precise label with a star count; the rest is marketing.',
+            'A quote that says "high-security lock" with no reference or certification commits nobody to anything verifiable, and will be worth nothing to an insurer. So ask for three things in writing:',
+          ],
+          list: [
+            "the product's brand and exact reference;",
+            "the A2P certification named, with its star count;",
+            "the same details carried from the quote onto the invoice.",
           ],
         },
         {
           heading: "Should you always aim for three stars?",
           paragraphs: [
-            "No, and this is an easy place to spend a lot for nothing. The useful level depends on real exposure: which floor, whether there's a caretaker or access control, visibility from the street, how long the home stands empty, and any requirement from your insurer.",
-            "For an upper-floor flat in a secured building, a one-star protected-key cylinder on a sound door with a reinforced strike plate is hard to beat on protection per euro.",
-            "For a ground floor on the street, an accessible first floor above a courtyard, or a home often empty, moving to two stars and treating the frame is justified. Three stars is mainly a conversation when an insurance policy explicitly demands it.",
+            "No. The useful level depends on your real exposure: which floor you're on, whether there's a caretaker or access control, visibility from the street, how long the home stands empty, and any requirement from your insurer.",
+            "This is an easy place to spend a lot for nothing. In practice, three profiles cover most situations.",
+          ],
+          list: [
+            "Upper-floor flat in a secured building: a one-star protected-key cylinder on a sound door with a reinforced strike plate is hard to beat on protection per euro.",
+            "Ground floor on the street, accessible first floor above a courtyard, a home often empty: moving to two stars and treating the frame is justified.",
+            "Three stars: mainly a conversation when an insurance policy explicitly demands it, or for genuinely exposed valuables.",
           ],
         },
       ],

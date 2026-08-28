@@ -6,7 +6,7 @@ export const DOMAIN = "parisunlockdoor.fr";
 
 export const PHONE_DISPLAY = "06 49 65 85 10";
 export const PHONE_HREF = "tel:+33649658510";
-export const EMAIL = "admin@parisunlockdoor.fr";
+export const EMAIL = "parisunlockdoor@gmail.com";
 
 // WhatsApp is the second contact channel, offered alongside the call rather
 // than instead of it: some people can't or won't phone, and a written thread

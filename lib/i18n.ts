@@ -98,6 +98,22 @@ const fr = {
     fieldPhonePlaceholder: "06 XX XX XX XX",
     noPostalHelp: "Vous ne connaissez pas votre code postal ?",
     noPostalCta: "Appelez-nous directement",
+    geoOr: "ou",
+    geoCta: "Utiliser ma position",
+    geoBusy: "Localisation en cours…",
+    geoNote:
+      "Votre position sert uniquement à retrouver l'adresse. Elle n'est pas conservée.",
+    geoFound: "Adresse détectée",
+    geoErrorDenied:
+      "Accès à la position refusé. Saisissez votre code postal ci-dessus.",
+    geoErrorUnavailable:
+      "Position introuvable. Saisissez votre code postal ci-dessus.",
+    geoErrorTimeout:
+      "La localisation a pris trop de temps. Saisissez votre code postal ci-dessus.",
+    geoErrorLookup:
+      "Adresse indisponible pour le moment. Saisissez votre code postal ci-dessus.",
+    geoErrorNoAddress:
+      "Aucune adresse française à cette position. Saisissez votre code postal ci-dessus.",
   },
   trust: [
     {
@@ -408,6 +424,24 @@ const fr = {
   },
   homeSections: {
     processEyebrow: "Comment ça se passe",
+    processTitleShort: "Trois étapes, aucune surprise",
+    // The homepage runs the compact variant: an emergency visitor on a phone
+    // needs the shape of the job in one glance, not the full account. The long
+    // version stays on the zone pages, where the visitor is researching.
+    processStepsShort: [
+      {
+        title: "Vous appelez",
+        body: "Le prix et l'heure d'arrivée, annoncés avant que l'artisan parte.",
+      },
+      {
+        title: "Il confirme sur place",
+        body: "La porte est vérifiée et le montant validé avant qu'on y touche.",
+      },
+      {
+        title: "Ouvert, facturé, garanti",
+        body: "Testé devant vous, facture détaillée, garantie sur l'installation.",
+      },
+    ],
     coverageTitle: "Où nous intervenons",
     coverageBody:
       "Les 20 arrondissements de Paris et les sept départements d'Île-de-France, au même tarif partout. Ce qui change d'un secteur à l'autre, c'est le délai — annoncé au téléphone avant que l'artisan ne prenne la route.",
@@ -470,6 +504,8 @@ const fr = {
     readyTitle: "Votre demande est prête",
     readyBody:
       "Le récapitulatif ci-dessous est déjà rédigé. Envoyez-le sur WhatsApp : nous répondons avec un tarif avant tout déplacement, et l'échange reste écrit des deux côtés.",
+    emailedCopy:
+      "Nous avons bien reçu votre demande et vous en avons envoyé une copie par email.",
     sendWhatsapp: "Envoyer sur WhatsApp",
     orCall: "Ou appelez-nous directement",
     summaryLabel: "Récapitulatif envoyé",
@@ -603,6 +639,22 @@ const en: Dictionary = {
     fieldPhonePlaceholder: "06 XX XX XX XX",
     noPostalHelp: "Don't know your postcode?",
     noPostalCta: "Call us directly",
+    geoOr: "or",
+    geoCta: "Use my location",
+    geoBusy: "Finding you…",
+    geoNote:
+      "Your position is only used to look up the address. It is not stored.",
+    geoFound: "Address found",
+    geoErrorDenied:
+      "Location access was refused. Enter your postcode above instead.",
+    geoErrorUnavailable:
+      "Couldn't get your position. Enter your postcode above instead.",
+    geoErrorTimeout:
+      "Locating took too long. Enter your postcode above instead.",
+    geoErrorLookup:
+      "Address lookup is unavailable right now. Enter your postcode above instead.",
+    geoErrorNoAddress:
+      "No French address at that position. Enter your postcode above instead.",
   },
   trust: [
     {
@@ -897,6 +949,21 @@ const en: Dictionary = {
   },
   homeSections: {
     processEyebrow: "How it works",
+    processTitleShort: "Three steps, no surprises",
+    processStepsShort: [
+      {
+        title: "You call",
+        body: "The price and the arrival time, agreed before anyone sets off.",
+      },
+      {
+        title: "Confirmed at your door",
+        body: "The door is checked and the amount approved before anything starts.",
+      },
+      {
+        title: "Open, invoiced, guaranteed",
+        body: "Tested in front of you, itemised invoice, guaranteed work.",
+      },
+    ],
     coverageTitle: "Where we work",
     coverageBody:
       "All 20 Paris arrondissements and the seven departments of Île-de-France, at the same price everywhere. What changes between areas is the time — quoted on the phone before the tradesperson sets off.",
@@ -959,6 +1026,7 @@ const en: Dictionary = {
     readyTitle: "Your request is ready",
     readyBody:
       "The summary below is already written. Send it on WhatsApp: we reply with a price before anyone travels, and the exchange stays in writing on both sides.",
+    emailedCopy: "We've received your request and emailed you a copy.",
     sendWhatsapp: "Send on WhatsApp",
     orCall: "Or call us directly",
     summaryLabel: "Summary sent",

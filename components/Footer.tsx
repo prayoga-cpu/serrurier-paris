@@ -3,6 +3,7 @@ import { LogoWordmark } from "@/components/Logo";
 import {
   APE_CODE,
   BRAND_NAME,
+  EMAIL,
   PHONE_DISPLAY,
   PHONE_HREF,
   SIRET,
@@ -131,6 +132,15 @@ export default function Footer({ lang }: { lang: Locale }) {
                   className="transition-colors hover:text-signal"
                 >
                   {dict.common.whatsapp}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  data-event="email_click"
+                  className="break-all transition-colors hover:text-signal"
+                >
+                  {EMAIL}
                 </a>
               </li>
               <li>{dict.footer.availability}</li>

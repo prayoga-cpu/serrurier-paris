@@ -5,17 +5,27 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { ButtonLink, ButtonSubmit, Eyebrow } from "@/components/Button";
 import WhatsAppForm from "@/components/WhatsAppForm";
 import ContactOptions from "@/components/ContactOptions";
-import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/config";
+import { EMAIL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/config";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 
 export default function ContactView({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
 
+  // `event` rides along per item: the phone and the email are separate
+  // channels and CLAUDE.md §8 measures them separately, so the card can't
+  // hardcode call_click the way it did when the phone was the only link.
   const info = [
     {
       label: dict.contactPage.phoneLabel,
       value: PHONE_DISPLAY,
       href: PHONE_HREF,
+      event: "call_click",
+    },
+    {
+      label: dict.contactPage.emailLabel,
+      value: EMAIL,
+      href: `mailto:${EMAIL}`,
+      event: "email_click",
     },
     { label: dict.contactPage.hoursLabel, value: dict.contactPage.hoursValue },
     { label: dict.contactPage.areaLabel, value: dict.contactPage.areaValue },
@@ -41,7 +51,7 @@ export default function ContactView({ lang }: { lang: Locale }) {
             {dict.contactPage.lead}
           </p>
 
-          <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {info.map((item) => (
               <div
                 key={item.label}
@@ -53,8 +63,8 @@ export default function ContactView({ lang }: { lang: Locale }) {
                 {item.href ? (
                   <a
                     href={item.href}
-                    data-event="call_click"
-                    className="mt-1 block font-headline text-lg font-bold text-ink hover:text-signal-press"
+                    data-event={item.event}
+                    className="mt-1 block break-words font-headline text-lg font-bold text-ink hover:text-signal-press"
                   >
                     {item.value}
                   </a>

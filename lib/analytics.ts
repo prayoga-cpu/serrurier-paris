@@ -21,17 +21,19 @@ export type ConsentValue = "granted" | "denied";
 
 /**
  * The conversion events this site fires. The `data-event` attributes already
- * scattered through the components (call_click, form_submit, devis_start,
- * tarifs_view) match these names — see trackEvent below, which is what
+ * scattered through the components (call_click, email_click, form_submit,
+ * devis_start, tarifs_view) match these names — see trackEvent below, which is what
  * actually forwards them to the dataLayer.
  */
 export type AnalyticsEvent =
   | "call_click"
   | "whatsapp_click"
+  | "email_click"
   | "form_submit"
   | "booking_complete"
   | "tarifs_view"
-  | "devis_start";
+  | "devis_start"
+  | "geo_locate";
 
 type DataLayerWindow = Window & { dataLayer?: Record<string, unknown>[] };
 

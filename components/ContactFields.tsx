@@ -4,13 +4,20 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 /** Name/phone/email/address/message + submit — shared by the homepage hero
  * (once a postal code checks out) and the full /devis form. `postalCode`
  * feeds the address placeholder so the field doesn't repeat what step one
- * already collected. */
+ * already collected.
+ *
+ * `addressDefault` is set when the visitor started from "use my location":
+ * the Base Adresse Nationale result, house number included, prefilled so a
+ * one-tap start stays one tap. It is a defaultValue, not a value — the field
+ * stays editable, because a GPS fix can land on the building next door. */
 export default function ContactFields({
   lang,
   postalCode,
+  addressDefault = "",
 }: {
   lang: Locale;
   postalCode: string;
+  addressDefault?: string;
 }) {
   const dict = getDictionary(lang);
 
@@ -80,10 +87,14 @@ export default function ContactFields({
           {dict.devis.fieldAddress} *
         </label>
         <input
+          // Remounts when a location arrives, so the detected address lands in
+          // an uncontrolled field that was already on screen.
+          key={addressDefault}
           id="address"
           name="address"
           type="text"
           required
+          defaultValue={addressDefault}
           placeholder={
             postalCode
               ? `12 rue de la Paix, ${postalCode} Paris`
@@ -91,6 +102,9 @@ export default function ContactFields({
           }
           className="w-full rounded-2xl border border-ink/15 bg-paper px-4 py-3.5 text-ink outline-none transition-colors focus:border-signal-press"
         />
+        {addressDefault && (
+          <p className="mt-1.5 text-sm text-muted">{dict.hero.geoFound}</p>
+        )}
       </div>
 
       <div className="mt-5">
