@@ -15,7 +15,7 @@ export const PORTE_CLAQUEE: Guide = {
         "Si un enfant en bas âge, une personne âgée ou vulnérable est seul à l'intérieur, appelez le 18 ou le 112 : les pompiers passent en priorité et arrivent avant tout artisan.",
         "Porte claquée et porte fermée à clé ne se traitent pas pareil et ne coûtent pas pareil. Vérifiez laquelle vous avez, et dites-le au téléphone.",
         "N'essayez pas la carte bancaire : sur une porte moderne elle tord le pêne ou déforme la gâche, et transforme une ouverture simple en réparation de serrure.",
-        "Après une ouverture sans dégât, aucun remplacement de serrure ne se justifie techniquement. Un remplacement proposé « par sécurité » se refuse sans hésiter.",
+        "Ce qui décide, c'est l'état de la serrure et qui détient une clé : clés perdues ou volées, changez le cylindre ; s'il a fallu percer, le remplacement fait partie de l'intervention. Serrure intacte et aucune clé perdue, refusez le remplacement « par sécurité ».",
       ],
       sections: [
         {
@@ -29,7 +29,8 @@ export const PORTE_CLAQUEE: Guide = {
         {
           heading: "Vérifier ce qui s'est réellement passé",
           paragraphs: [
-            "Une porte « claquée » et une porte « fermée à clé » ne se traitent pas de la même manière, et ne coûtent pas la même chose. Une porte claquée n'est retenue que par le pêne demi-tour, la petite pièce biseautée qui s'enfonce quand on pousse la porte : elle s'ouvre le plus souvent sans dégât et sans démonter quoi que ce soit.",
+            "Une porte « claquée » et une porte « fermée à clé » ne se traitent pas de la même manière, et ne coûtent pas la même chose.",
+            "Une porte claquée n'est retenue que par le pêne demi-tour, la petite pièce biseautée qui s'enfonce quand on pousse la porte : elle s'ouvre le plus souvent sans dégât et sans démonter quoi que ce soit.",
             "Une porte verrouillée à un ou plusieurs tours de clé engage le pêne dormant, parfois plusieurs points d'ancrage. L'ouverture est plus longue, plus technique, et le risque d'avoir à intervenir sur le cylindre est réel.",
             "Sachez donc dire au téléphone laquelle des deux vous concerne : avez-vous simplement tiré la porte derrière vous, ou avez-vous tourné la clé ? La réponse conditionne le prix qu'on peut vous annoncer honnêtement.",
           ],
@@ -50,6 +51,9 @@ export const PORTE_CLAQUEE: Guide = {
         {
           heading: "Ce qu'il ne faut surtout pas faire",
           paragraphs: [
+            "Trois gestes aggravent la situation bien plus souvent qu'ils ne la sauvent.",
+          ],
+          list: [
             "Ne tentez pas d'ouvrir la porte vous-même avec une carte de fidélité ou un objet fin. Sur une porte moderne, la manœuvre échoue dans l'immense majorité des cas, et elle peut tordre le pêne ou déformer la gâche — transformant une ouverture simple en réparation de serrure.",
             "Ne forcez jamais une clé restée coincée ou déjà tordue dans le cylindre. Une clé cassée à l'intérieur du barillet fait basculer l'intervention d'une ouverture simple vers un remplacement complet.",
             "Ne cédez pas au premier numéro trouvé dans la panique, surtout s'il refuse d'annoncer un prix. Les dix minutes que vous « gagnez » en appelant sans vérifier sont exactement celles que le modèle économique de l'arnaque exploite.",
@@ -66,9 +70,12 @@ export const PORTE_CLAQUEE: Guide = {
         {
           heading: "Après l'ouverture : faut-il changer la serrure ?",
           paragraphs: [
-            "Si la porte a été ouverte sans dégât, non. Une serrure intacte reste une serrure intacte, et se voir proposer un remplacement « par sécurité » juste après une ouverture propre n'a aucune justification technique.",
-            "En revanche, si vos clés ont été perdues ou volées, remplacer le cylindre est la bonne décision : le mécanisme reste, seule la partie où tourne la clé change, ce qui neutralise tous les jeux en circulation pour une fraction du prix d'une serrure complète.",
-            "Si le perçage a été nécessaire, le remplacement fait partie de l'intervention et doit figurer au devis avant réalisation, pas être découvert au moment de payer.",
+            "La réponse dépend uniquement de la manière dont la porte a été ouverte. Trois cas de figure, trois réponses.",
+          ],
+          list: [
+            "Ouverture sans dégât : non. Une serrure intacte reste une serrure intacte, et se voir proposer un remplacement « par sécurité » juste après une ouverture propre n'a aucune justification technique.",
+            "Clés perdues ou volées : oui, mais le cylindre seul suffit. Le mécanisme reste en place, seule la partie où tourne la clé change, ce qui neutralise tous les jeux en circulation pour une fraction du prix d'une serrure complète.",
+            "Perçage nécessaire : le remplacement fait partie de l'intervention. Il doit figurer au devis avant réalisation, pas être découvert au moment de payer.",
           ],
         },
       ],
@@ -107,7 +114,7 @@ export const PORTE_CLAQUEE: Guide = {
         "If a small child, an elderly person or a vulnerable adult is alone inside, call 18 or 112: the fire service takes priority and will arrive before any tradesperson.",
         "A slammed door and a locked door are different jobs at different prices. Work out which one you have, and say so on the phone.",
         "Don't try the bank-card trick: on a modern door it bends the latch or deforms the strike plate, turning a simple opening into a lock repair.",
-        "After a damage-free opening, no lock replacement is technically justified. One offered “just to be safe” can be turned down without hesitation.",
+        "What decides is the lock’s condition and who holds a key: lost or stolen keys, change the cylinder; if they had to drill, the replacement is part of the job. Lock intact and no key missing, turn down a replacement “just to be safe”.",
       ],
       sections: [
         {
@@ -121,7 +128,8 @@ export const PORTE_CLAQUEE: Guide = {
         {
           heading: "Work out what actually happened",
           paragraphs: [
-            "A door that has pulled shut and a door that has been locked with the key are different jobs at different prices. A slammed door is held only by the latch — the small bevelled bolt that springs back as the door closes — and usually opens with no damage and nothing dismantled.",
+            "A door that has pulled shut and a door that has been locked with the key are different jobs at different prices.",
+            "A slammed door is held only by the latch — the small bevelled bolt that springs back as the door closes — and usually opens with no damage and nothing dismantled.",
             "A door locked with one or more turns of the key engages the deadbolt, sometimes several anchor points. Opening it takes longer, is more technical, and the chance of having to work on the cylinder is real.",
             "So be ready to say on the phone which one you're facing: did you simply pull the door behind you, or did you turn the key? The answer determines the price anyone can honestly quote you.",
           ],
@@ -140,6 +148,9 @@ export const PORTE_CLAQUEE: Guide = {
         {
           heading: "What not to do",
           paragraphs: [
+            "Three moves make things worse far more often than they help.",
+          ],
+          list: [
             "Don't try to open the door yourself with a loyalty card or a thin blade. On a modern door it fails in the vast majority of cases, and it can bend the latch or deform the strike plate — turning a simple opening into a lock repair.",
             "Never force a key that's stuck or already bent in the cylinder. A key snapped inside the barrel moves the job from a simple opening to a full replacement.",
             "Don't surrender to the first number you find in a panic, especially one that won't quote a price. The ten minutes you \"save\" by calling without checking are exactly the ones the scam business model exists to exploit.",
@@ -156,9 +167,12 @@ export const PORTE_CLAQUEE: Guide = {
         {
           heading: "After the opening: does the lock need changing?",
           paragraphs: [
-            'If the door was opened without damage, no. An intact lock is still an intact lock, and being offered a replacement "to be safe" right after a clean opening has no technical justification.',
-            "If your keys were lost or stolen, though, replacing the cylinder is the right call: the mechanism stays, only the part the key turns in changes, which neutralises every key in circulation for a fraction of the price of a full lock.",
-            "If drilling was necessary, the replacement is part of the job and belongs on the quote before the work, not discovered at payment time.",
+            "The answer depends entirely on how the door was opened. Three situations, three answers.",
+          ],
+          list: [
+            'Opened without damage: no. An intact lock is still an intact lock, and being offered a replacement "to be safe" right after a clean opening has no technical justification.',
+            "Keys lost or stolen: yes, but the cylinder alone is enough. The mechanism stays, only the part the key turns in changes, which neutralises every key in circulation for a fraction of the price of a full lock.",
+            "Drilling was necessary: the replacement is part of the job. It belongs on the quote before the work, not discovered at payment time.",
           ],
         },
       ],

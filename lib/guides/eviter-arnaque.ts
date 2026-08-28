@@ -13,7 +13,7 @@ export const EVITER_ARNAQUE: Guide = {
       lead: "La serrurerie d'urgence est l'un des secteurs les plus signalés à la DGCCRF. Ce guide décrit le mécanisme complet d'une arnaque type, les questions à poser avant qu'un artisan se déplace, et ce que vous pouvez faire si vous avez déjà payé une facture abusive.",
       keyTakeaways: [
         "Faites-vous annoncer un prix total TTC au téléphone, avant tout déplacement. Un professionnel sait chiffrer une ouverture de porte : ne pas vouloir le faire est le signal le plus fiable.",
-        "Au-delà de 150 €, le devis écrit et détaillé est obligatoire avant les travaux (arrêté du 24 janvier 2017), avec matériaux, main-d'œuvre et déplacement séparés.",
+        "Un devis écrit et détaillé — matériaux, main-d'œuvre, déplacement — vous est dû avant tout dépannage ou réparation en serrurerie, quel que soit le montant (arrêté du 24 janvier 2017). L'ancien seuil de 150 € ne s'applique plus à ce métier.",
         "Un écart entre le prix annoncé au téléphone et le devis présenté sur le palier est le moment de refuser — pas après l'intervention.",
         "Facture abusive déjà réglée : réclamez la facture détaillée, contestez par lettre recommandée avec accusé de réception, puis signalez à la DGCCRF via SignalConso.",
       ],
@@ -22,8 +22,9 @@ export const EVITER_ARNAQUE: Guide = {
           heading: "Pourquoi ce secteur concentre autant d'abus",
           paragraphs: [
             "Une arnaque a besoin de trois ingrédients : l'urgence, l'asymétrie d'information et l'absence d'alternative immédiate. Le dépannage serrurerie les réunit tous les trois. Vous êtes dehors, il est tard, vous n'avez aucune idée de ce que coûte l'ouverture d'une porte, et le premier numéro qui répond a un avantage écrasant sur vous.",
-            "Les enquêtes menées par la DGCCRF sur le dépannage à domicile relèvent régulièrement des anomalies chez une large majorité des professionnels contrôlés, la serrurerie figurant parmi les activités les plus signalées. Il ne s'agit donc pas de quelques brebis galeuses : c'est un modèle économique, industrialisé, qui vit de la panique.",
-            "La conséquence pratique est simple : la question n'est pas « ce serrurier est-il honnête ? », question à laquelle vous ne pouvez pas répondre à 23 h. La question est « ai-je obtenu un engagement de prix vérifiable avant que quiconque touche à ma porte ? ». Le reste de ce guide sert à obtenir cet engagement.",
+            "Il ne s'agit pas de quelques brebis galeuses : c'est un modèle économique, industrialisé, qui vit de la panique. Les enquêtes menées par la DGCCRF sur le dépannage à domicile relèvent régulièrement des anomalies chez une large majorité des professionnels contrôlés, la serrurerie figurant parmi les activités les plus signalées.",
+            "La conséquence pratique est simple : la question n'est pas « ce serrurier est-il honnête ? », question à laquelle vous ne pouvez pas répondre à 23 h.",
+            "La bonne question est plutôt : « ai-je obtenu un engagement de prix vérifiable avant que quiconque touche à ma porte ? ». Le reste de ce guide sert à obtenir cet engagement.",
           ],
         },
         {
@@ -57,8 +58,11 @@ export const EVITER_ARNAQUE: Guide = {
         {
           heading: "Ce que la loi impose, et que beaucoup ignorent",
           paragraphs: [
-            "L'arrêté du 24 janvier 2017 encadre la publicité des prix des prestations de dépannage, réparation et entretien dans le bâtiment — serrurerie comprise. Il impose la remise d'un devis écrit et détaillé avant l'exécution des travaux, mentionnant notamment le décompte des matériaux et de la main-d'œuvre, les frais de déplacement et le caractère gratuit ou payant du devis. Au-delà de 150 € TTC, l'obligation de devis vaut de toute façon pour toute prestation de service.",
-            "Un professionnel qui intervient à votre domicile conclut par ailleurs un contrat « hors établissement ». Le droit de rétractation de 14 jours s'applique en principe, avec une exception importante : les travaux d'entretien ou de réparation urgents que vous avez expressément sollicités en sont exclus, mais uniquement pour ce qui était strictement nécessaire à l'urgence. Tout ce qui va au-delà — un blindage vendu dans la foulée, un cylindre haut de gamme proposé sur le pas de la porte — reste soumis au délai de rétractation.",
+            "L'arrêté du 24 janvier 2017 impose la remise d'un devis écrit et détaillé avant l'exécution des travaux. Il encadre la publicité des prix des prestations de dépannage, réparation et entretien dans le bâtiment — serrurerie comprise.",
+            "Ce devis doit mentionner notamment le décompte des matériaux et de la main-d'œuvre, les frais de déplacement et le caractère gratuit ou payant du devis lui-même. Cette obligation ne dépend d'aucun montant : l'ancien seuil de 150 € valait sous le texte de 1990, que l'arrêté de 2017 a abrogé.",
+            "Un professionnel qui intervient à votre domicile conclut par ailleurs un contrat « hors établissement », ce qui ouvre en principe un droit de rétractation de 14 jours.",
+            "L'exception est importante : les travaux d'entretien ou de réparation urgents que vous avez expressément sollicités en sont exclus, mais uniquement pour ce qui était strictement nécessaire à l'urgence.",
+            "Tout ce qui va au-delà reste soumis au délai de rétractation : un blindage vendu dans la foulée, un cylindre haut de gamme proposé sur le pas de la porte.",
             "Enfin, une facture détaillée doit vous être remise. Sur le plan pratique, c'est votre meilleure protection : un professionnel qui refuse d'écrire ce qu'il facture vous dit tout ce qu'il y a à savoir sur lui.",
           ],
         },
@@ -77,17 +81,25 @@ export const EVITER_ARNAQUE: Guide = {
         {
           heading: "Pendant l'intervention : trois règles simples",
           paragraphs: [
-            "D'abord, ne laissez pas commencer sans devis signé si le montant dépasse ce qui vous a été annoncé au téléphone. Un écart entre l'annonce et le devis présenté sur le palier est le moment de dire non — pas après.",
-            "Ensuite, méfiez-vous du perçage présenté comme inévitable. Sur une porte claquée, l'ouverture non destructive fonctionne dans la grande majorité des cas. Un professionnel compétent explique pourquoi il ne peut pas faire autrement, s'il ne peut réellement pas.",
-            "Enfin, ne payez pas sans facture détaillée. Si l'on vous présente un terminal de paiement avant un document écrit, l'ordre des choses est inversé, et c'est délibéré.",
+            "Le serrurier est devant votre porte : trois règles suffisent à garder la main sur ce qui se passe ensuite.",
+          ],
+          list: [
+            "Ne laissez pas commencer sans devis signé si le montant dépasse ce qui vous a été annoncé au téléphone. Un écart entre l'annonce et le devis présenté sur le palier est le moment de dire non — pas après.",
+            "Méfiez-vous du perçage présenté comme inévitable. Sur une porte claquée, l'ouverture non destructive fonctionne dans la grande majorité des cas. Un professionnel compétent explique pourquoi il ne peut pas faire autrement, s'il ne peut réellement pas.",
+            "Ne payez pas sans facture détaillée. Si l'on vous présente un terminal de paiement avant un document écrit, l'ordre des choses est inversé, et c'est délibéré.",
           ],
         },
         {
           heading: "Vous avez déjà payé une facture abusive : les recours",
           paragraphs: [
-            "Rien n'est perdu, mais il faut agir vite et par écrit. Commencez par réclamer la facture détaillée si vous ne l'avez pas, puis contestez par lettre recommandée avec accusé de réception, en citant l'écart entre le prix annoncé et le montant facturé, et l'absence éventuelle de devis préalable.",
-            "Signalez ensuite l'entreprise sur SignalConso, la plateforme de la DGCCRF : les signalements alimentent les contrôles et sont pris au sérieux. Si l'entreprise adhère à un dispositif de médiation de la consommation, saisissez le médiateur, gratuit pour vous. En cas de manœuvre frauduleuse caractérisée, un dépôt de plainte reste possible.",
-            "Prévenez aussi votre assurance habitation si l'intervention faisait suite à une effraction : certains contrats couvrent les frais de serrurerie, et l'assureur a un intérêt direct à examiner une facture anormale.",
+            "Rien n'est perdu, mais il faut agir vite et par écrit. Les démarches se font dans cet ordre.",
+          ],
+          list: [
+            "Réclamez la facture détaillée si vous ne l'avez pas : sans elle, vous n'avez rien à opposer.",
+            "Contestez par lettre recommandée avec accusé de réception, en citant l'écart entre le prix annoncé et le montant facturé, et l'absence éventuelle de devis préalable.",
+            "Signalez l'entreprise sur SignalConso, la plateforme de la DGCCRF : les signalements alimentent les contrôles et sont pris au sérieux.",
+            "Saisissez le médiateur de la consommation si l'entreprise adhère à un dispositif de médiation : la démarche est gratuite pour vous. En cas de manœuvre frauduleuse caractérisée, un dépôt de plainte reste possible.",
+            "Prévenez votre assurance habitation si l'intervention faisait suite à une effraction : certains contrats couvrent les frais de serrurerie, et l'assureur a un intérêt direct à examiner une facture anormale.",
           ],
         },
       ],
@@ -126,7 +138,7 @@ export const EVITER_ARNAQUE: Guide = {
       lead: "Emergency locksmithing is one of the most reported sectors to the French consumer authority. This guide sets out how a typical scam works end to end, the questions to ask before anyone comes out, and what you can do if you've already paid an abusive invoice.",
       keyTakeaways: [
         "Get a total inc-VAT price on the phone, before anyone travels. A professional can quote a door opening: being unwilling to is the most reliable warning sign.",
-        "Above €150 a detailed written quote is required before work starts (French order of 24 January 2017), itemising materials, labour and call-out separately.",
+        "You're owed a detailed written quote — materials, labour, call-out — before any locksmith repair or emergency work, whatever the amount (French order of 24 January 2017). The old €150 threshold no longer applies to this trade.",
         "A gap between the price quoted on the phone and the quote handed to you at the door is the moment to say no — not after the work.",
         "Already paid an abusive invoice: request the itemised invoice, dispute it by recorded-delivery letter, then report it to the DGCCRF via SignalConso.",
       ],
@@ -135,8 +147,9 @@ export const EVITER_ARNAQUE: Guide = {
           heading: "Why this sector attracts so much abuse",
           paragraphs: [
             "A scam needs three ingredients: urgency, an information gap, and no immediate alternative. Emergency locksmithing supplies all three. You're outside, it's late, you have no idea what opening a door costs, and the first number that answers holds an overwhelming advantage over you.",
-            "Investigations by the DGCCRF, the French consumer authority, regularly find irregularities at a large majority of the home-repair businesses they inspect, with locksmithing among the most reported activities. This isn't a few bad apples: it's an industrialised business model that runs on panic.",
-            'The practical consequence is simple. The question isn\'t "is this locksmith honest?" — you can\'t answer that at 11pm. The question is "do I have a verifiable price commitment before anyone touches my door?" The rest of this guide is about getting that commitment.',
+            "This isn't a few bad apples: it's an industrialised business model that runs on panic. Investigations by the DGCCRF, the French consumer authority, regularly find irregularities at a large majority of the home-repair businesses they inspect, with locksmithing among the most reported activities.",
+            "The practical consequence is simple. The question isn't \"is this locksmith honest?\" — you can't answer that at 11pm.",
+            'The real question is "do I have a verifiable price commitment before anyone touches my door?" The rest of this guide is about getting that commitment.',
           ],
         },
         {
@@ -170,8 +183,11 @@ export const EVITER_ARNAQUE: Guide = {
         {
           heading: "What French law requires, and many people don't know",
           paragraphs: [
-            "The order of 24 January 2017 governs price transparency for repair, maintenance and emergency work in the building trades, locksmithing included. It requires a detailed written quote before work starts, itemising materials and labour, travel costs, and whether the quote itself is chargeable. Above €150 including VAT, a written quote is required for any service anyway.",
-            'A tradesperson working at your home is also concluding an "off-premises" contract. A 14-day right of withdrawal applies in principle, with one important exception: urgent repair or maintenance work you expressly requested is excluded — but only for what was strictly necessary to deal with the emergency. Anything beyond that, such as reinforcement sold on the spot or a premium cylinder offered on the doorstep, keeps the withdrawal period.',
+            "The order of 24 January 2017 requires a detailed written quote before work starts. It governs price transparency for repair, maintenance and emergency work in the building trades, locksmithing included.",
+            "That quote must itemise, among other things, materials and labour, travel costs, and whether the quote itself is chargeable. The obligation depends on no amount: the old €150 threshold belonged to the 1990 text, which the 2017 order repealed.",
+            'A tradesperson working at your home is also concluding an "off-premises" contract, which in principle opens a 14-day right of withdrawal.',
+            "The exception matters: urgent repair or maintenance work you expressly requested is excluded from that right, but only for what was strictly necessary to deal with the emergency.",
+            "Anything beyond that keeps the withdrawal period: reinforcement sold on the spot, or a premium cylinder offered on the doorstep.",
             "Finally, you must be given an itemised invoice. In practice that's your best protection: a professional who won't put in writing what they're charging has told you everything you need to know.",
           ],
         },
@@ -190,17 +206,25 @@ export const EVITER_ARNAQUE: Guide = {
         {
           heading: "During the job: three simple rules",
           paragraphs: [
-            "First, don't let work start without a signed quote if the amount exceeds what you were told on the phone. A gap between the phone quote and the paper presented on your landing is the moment to say no — not afterwards.",
-            "Second, be wary of drilling presented as unavoidable. On a slammed door, non-destructive opening works in the large majority of cases. A competent professional explains why they can't do otherwise, if they genuinely can't.",
-            "Third, don't pay without an itemised invoice. If a card terminal appears before a written document, the order has been reversed, and that's deliberate.",
+            "The locksmith is at your door. Three rules are enough to keep control of what happens next.",
+          ],
+          list: [
+            "Don't let work start without a signed quote if the amount exceeds what you were told on the phone. A gap between the phone quote and the paper presented on your landing is the moment to say no — not afterwards.",
+            "Be wary of drilling presented as unavoidable. On a slammed door, non-destructive opening works in the large majority of cases. A competent professional explains why they can't do otherwise, if they genuinely can't.",
+            "Don't pay without an itemised invoice. If a card terminal appears before a written document, the order has been reversed, and that's deliberate.",
           ],
         },
         {
           heading: "You've already paid an abusive invoice: what to do",
           paragraphs: [
-            "Nothing is lost, but act quickly and in writing. Start by demanding the itemised invoice if you don't have it, then dispute it by recorded-delivery letter, citing the gap between the price quoted and the amount billed, and any absence of a prior quote.",
-            "Report the business on SignalConso, the DGCCRF's reporting platform: reports feed inspections and are taken seriously. If the business subscribes to a consumer mediation scheme, refer the matter to the mediator, which is free to you. Where there's clear fraud, a criminal complaint remains possible.",
-            "Tell your home insurer too if the work followed a break-in: some policies cover locksmith costs, and the insurer has a direct interest in examining an abnormal invoice.",
+            "Nothing is lost, but act quickly and in writing. Take the steps in this order.",
+          ],
+          list: [
+            "Demand the itemised invoice if you don't have it: without it you have nothing to dispute.",
+            "Dispute it by recorded-delivery letter, citing the gap between the price quoted and the amount billed, and any absence of a prior quote.",
+            "Report the business on SignalConso, the DGCCRF's reporting platform: reports feed inspections and are taken seriously.",
+            "Refer the matter to the consumer mediator if the business subscribes to a mediation scheme: the process is free to you. Where there's clear fraud, a criminal complaint remains possible.",
+            "Tell your home insurer if the work followed a break-in: some policies cover locksmith costs, and the insurer has a direct interest in examining an abnormal invoice.",
           ],
         },
       ],

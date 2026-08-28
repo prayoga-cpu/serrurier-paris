@@ -317,7 +317,7 @@ export const NATIONAL_CITY_ZONES: Zone[] = [
             question:
               "J'ai loué ma maison pendant les 24 Heures et toutes les clés ne sont pas revenues. Que faire ?",
             answer:
-              "La course a lieu en juin, et le cas revient chaque année au Mans. Inutile de remplacer toute la serrure : sur la plupart des portes, changer le seul cylindre rend les anciennes clés inopérantes. Le prix est annoncé avant tout déplacement ; la loi impose un devis écrit dès 150 €.",
+              "La course a lieu en juin, et le cas revient chaque année au Mans. Inutile de remplacer toute la serrure : sur la plupart des portes, changer le seul cylindre rend les anciennes clés inopérantes. Le prix est annoncé avant tout déplacement, et la loi impose un devis écrit avant travaux, quel que soit le montant.",
           },
           {
             question:
@@ -374,7 +374,7 @@ export const NATIONAL_CITY_ZONES: Zone[] = [
             question:
               "I rented my house out during the 24 Heures and not all the keys came back. What now?",
             answer:
-              "The race is held in June, and the case comes up every year in Le Mans. No need to replace the whole lock: on most doors, changing the cylinder alone makes the old keys useless. The price is quoted before anyone travels; French law requires a written quote from 150 €.",
+              "The race is held in June, and the case comes up every year in Le Mans. No need to replace the whole lock: on most doors, changing the cylinder alone makes the old keys useless. The price is quoted before anyone travels, and French law requires a written quote before work, whatever the amount.",
           },
           {
             question:
@@ -452,7 +452,7 @@ export const NATIONAL_CITY_ZONES: Zone[] = [
             question:
               "Vous êtes basés à Paris : comment se passe une demande à Perpignan ?",
             answer:
-              "Vous nous joignez à toute heure, par téléphone ou WhatsApp. Nous confirmons d'abord la faisabilité, le délai et le prix à partir de votre code postal et de votre description, avant tout déplacement. Au-delà de 150 €, un devis écrit est établi, comme la loi l'impose.",
+              "Vous nous joignez à toute heure, par téléphone ou WhatsApp. Nous confirmons d'abord la faisabilité, le délai et le prix à partir de votre code postal et de votre description, avant tout déplacement. Un devis écrit est établi avant travaux, quel que soit le montant, comme la loi l'impose.",
           },
         ],
       },
@@ -509,7 +509,7 @@ export const NATIONAL_CITY_ZONES: Zone[] = [
             question:
               "You are based in Paris — how does a request from Perpignan work?",
             answer:
-              "You can reach us at any hour, by phone or WhatsApp. We first confirm feasibility, timing and price from your postcode and your description, before anyone travels. From 150 EUR up, a written quote is issued, as French law requires.",
+              "You can reach us at any hour, by phone or WhatsApp. We first confirm feasibility, timing and price from your postcode and your description, before anyone travels. A written quote is issued before work, whatever the amount, as French law requires.",
           },
         ],
       },

@@ -134,7 +134,7 @@ export function getCgvContent(lang: Locale): LegalPageContent {
           heading: "Quotes and pricing",
           paragraphs: [
             "Prices shown on this site are starting prices for the standard case. The exact price is confirmed by phone before travel, and agreed with the customer before any work begins — see /tarifs for the current price list.",
-            "In accordance with French regulations in force since 24/01/2017, a written quote is provided for any job exceeding €150, and must be accepted before work starts.",
+            "In accordance with French regulations in force since 24/01/2017, a written quote is provided before any work, whatever the amount, and must be accepted before work starts.",
           ],
         },
         {
@@ -193,7 +193,7 @@ export function getCgvContent(lang: Locale): LegalPageContent {
         heading: "Devis et tarifs",
         paragraphs: [
           "Les prix affichés sur ce site sont des tarifs de départ pour le cas standard. Le tarif exact est confirmé par téléphone avant le déplacement, puis validé avec le client avant toute intervention — voir la grille tarifaire sur /tarifs.",
-          "Conformément à la réglementation en vigueur depuis le 24/01/2017, un devis écrit est fourni pour toute intervention dépassant 150€, et doit être accepté avant le début des travaux.",
+          "Conformément à la réglementation en vigueur depuis le 24/01/2017, un devis écrit est fourni avant toute intervention, quel que soit le montant, et doit être accepté avant le début des travaux.",
         ],
       },
       {

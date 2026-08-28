@@ -85,7 +85,7 @@ const fr = {
       "Certifié A2P",
       "Grille tarifaire publique, consultable avant d'appeler",
       "Un seul interlocuteur, du premier appel à la facture",
-      "Devis écrit dès 150 €, comme la loi l'impose",
+      "Devis écrit avant travaux, quel que soit le montant",
       "Garantie sur nos installations",
     ],
     formTitle: "Besoin d'un serrurier maintenant ?",
@@ -118,7 +118,7 @@ const fr = {
     {
       title: "Tout est écrit avant qu'on commence",
       description:
-        "Devis détaillé remis dès 150 €, conformément à la réglementation du 24/01/2017.",
+        "Devis détaillé remis avant travaux, quel que soit le montant, conformément à la réglementation du 24/01/2017.",
     },
     {
       title: "Garantie sur nos installations",
@@ -151,7 +151,7 @@ const fr = {
     {
       title: "Tout est écrit avant qu'on commence",
       description:
-        "Devis détaillé remis dès 150 €, conformément à la réglementation du 24/01/2017.",
+        "Devis détaillé remis avant travaux, quel que soit le montant, conformément à la réglementation du 24/01/2017.",
     },
     {
       title: "Garantie sur les installations",
@@ -187,7 +187,7 @@ const fr = {
     siretLabel: "SIRET",
     apeLabel: "Code APE",
     writtenQuote:
-      "Devis écrit obligatoire au-delà de 150 € (réglementation du 24/01/2017). Tous les tarifs affichés s'entendent TTC.",
+      "Devis écrit obligatoire avant travaux, quel que soit le montant (réglementation du 24/01/2017). Tous les tarifs affichés s'entendent TTC.",
   },
   servicePage: {
     intervention: "L'intervention",
@@ -207,7 +207,7 @@ const fr = {
   pricingPage: {
     eyebrow: "prix serrurier paris",
     title: "Une grille tarifaire transparente",
-    lead: "Voici ce que coûte chaque intervention, ligne par ligne. Le tarif est fixé avec vous au téléphone, confirmé par écrit dès 150 €, et c'est celui qui figure sur la facture.",
+    lead: "Voici ce que coûte chaque intervention, ligne par ligne. Le tarif est fixé avec vous au téléphone, confirmé par écrit avant toute intervention, et c'est celui qui figure sur la facture.",
     responseTime:
       "Délai d'intervention : moins de 30 minutes selon le secteur.",
     colIntervention: "Intervention",
@@ -228,7 +228,7 @@ const fr = {
       "Le tarif dépend du type d'intervention, de la complexité de la serrure, du déplacement et de l'horaire (jour, nuit, week-end, jour férié).",
     writtenQuoteTitle: "Devis écrit obligatoire.",
     writtenQuoteBody:
-      "Conformément à la réglementation en vigueur depuis le 24/01/2017, un devis écrit est systématiquement fourni pour toute intervention dépassant 150€.",
+      "Conformément à la réglementation en vigueur depuis le 24/01/2017, un devis écrit est systématiquement fourni avant toute intervention, quel que soit le montant.",
     questionTitle: "Une question sur un tarif ?",
     questionBody:
       "Appelez-nous directement, ou décrivez votre besoin pour recevoir une estimation avant intervention.",
@@ -340,6 +340,7 @@ const fr = {
     title: "Contactez-nous",
     lead: "Une question, un projet, ou besoin d'un serrurier ? Appelez-nous directement ou laissez-nous un message.",
     phoneLabel: "Téléphone",
+    emailLabel: "Email",
     hoursLabel: "Disponibilité",
     hoursValue: "24h/24, 7j/7",
     areaLabel: "Secteur",
@@ -378,7 +379,7 @@ const fr = {
     credentials: [
       "Artisan serrurier indépendant, qualifié et assuré pour l'ensemble des prestations publiées sur ce site.",
       "Garantie sur les installations : les conditions et la durée exactes sont remises avec le devis écrit.",
-      "Devis écrit systématique dès 150 €, conformément à la réglementation du 24 janvier 2017 sur le dépannage à domicile.",
+      "Devis écrit systématique avant travaux, quel que soit le montant, conformément à la réglementation du 24 janvier 2017 sur le dépannage à domicile.",
       "Facture détaillée après chaque intervention, exploitable pour une déclaration d'assurance ou une demande auprès d'un bailleur.",
       "Vérification systématique du droit d'accès avant toute ouverture : pièce d'identité, facture ou attestation de domicile.",
     ],
@@ -589,7 +590,7 @@ const en: Dictionary = {
       "A2P certified",
       "Published price list, readable before you call",
       "One point of contact, from the first call to the invoice",
-      "Written quote from €150, as the law requires",
+      "Written quote before work, whatever the amount",
       "Guarantee on our installations",
     ],
     formTitle: "Need a locksmith right now?",
@@ -622,7 +623,7 @@ const en: Dictionary = {
     {
       title: "Everything is in writing before we start",
       description:
-        "A detailed quote from €150 up, under the French regulations of 24/01/2017.",
+        "A detailed quote before work, whatever the amount, under the French regulations of 24/01/2017.",
     },
     {
       title: "Guarantee on our installations",
@@ -649,7 +650,7 @@ const en: Dictionary = {
     {
       title: "Everything is in writing before we start",
       description:
-        "A detailed quote from €150 up, under the French regulations of 24/01/2017.",
+        "A detailed quote before work, whatever the amount, under the French regulations of 24/01/2017.",
     },
     {
       title: "Guarantee on installations",
@@ -685,7 +686,7 @@ const en: Dictionary = {
     siretLabel: "SIRET",
     apeLabel: "APE code",
     writtenQuote:
-      "A written quote is required above €150 (French regulations of 24/01/2017). All prices shown include VAT.",
+      "A written quote is required before work, whatever the amount (French regulations of 24/01/2017). All prices shown include VAT.",
   },
   servicePage: {
     intervention: "The work",
@@ -705,7 +706,7 @@ const en: Dictionary = {
   pricingPage: {
     eyebrow: "locksmith prices paris",
     title: "A transparent price list",
-    lead: "Here is what each job costs, line by line. The price is settled with you on the phone, confirmed in writing from €150 up, and it is the one that appears on the invoice.",
+    lead: "Here is what each job costs, line by line. The price is settled with you on the phone, confirmed in writing before any work, and it is the one that appears on the invoice.",
     responseTime: "Response time: under 30 minutes depending on the area.",
     colIntervention: "Service",
     colPrice: "Price",
@@ -724,7 +725,7 @@ const en: Dictionary = {
       "The price depends on the type of job, the complexity of the lock, the call-out, and the time (daytime, night, weekend, public holiday).",
     writtenQuoteTitle: "Written quote required.",
     writtenQuoteBody:
-      "Under French regulations in force since 24/01/2017, a written quote is always provided for any job exceeding €150.",
+      "Under French regulations in force since 24/01/2017, a written quote is always provided before work, whatever the amount.",
     questionTitle: "A question about a price?",
     questionBody:
       "Call us directly, or describe what you need to get an estimate before any work begins.",
@@ -828,6 +829,7 @@ const en: Dictionary = {
     title: "Contact us",
     lead: "A question, a project, or need a locksmith? Call us directly or leave us a message.",
     phoneLabel: "Phone",
+    emailLabel: "Email",
     hoursLabel: "Availability",
     hoursValue: "24/7",
     areaLabel: "Area",
@@ -866,7 +868,7 @@ const en: Dictionary = {
     credentials: [
       "Independent locksmith tradesperson, qualified and insured for every service published on this site.",
       "Guarantee on installations: exact terms and duration are provided with the written quote.",
-      "A written quote as standard from €150 up, under the French regulations of 24 January 2017 on home repair call-outs.",
+      "A written quote as standard before work, whatever the amount, under the French regulations of 24 January 2017 on home repair call-outs.",
       "An itemised invoice after every job, usable for an insurance claim or a request to a landlord.",
       "Proof of the right of access checked before any opening: ID, a bill or a tenancy document.",
     ],

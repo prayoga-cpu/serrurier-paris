@@ -20,7 +20,7 @@ export const PRIX_SERRURIER: Guide = {
       lead: "Personne ne connaît le prix d'un serrurier avant d'en avoir besoin, et c'est précisément ce qui rend ce marché opaque. Voici les fourchettes réelles à Paris et en Île-de-France, ce qui les fait bouger, et les repères qui permettent de dire « ce montant est normal » ou « ce montant ne l'est pas ».",
       keyTakeaways: [
         `Une ouverture de porte claquée se situe autour de ${price("ouverture-porte-claquee", "fr")} ; un changement de cylindre autour de ${price("changement-cylindre", "fr")}. Au-delà du double, demandez le détail.`,
-        "Trois choses font réellement bouger la facture : l'heure (nuit, week-end, jour férié), le type de fermeture, et l'état de la porte — pas l'urgence de votre situation.",
+        "Quatre facteurs, et quatre seulement, font légitimement bouger la facture : le type de fermeture, l'état du matériel en place, l'horaire (nuit, week-end, jour férié) et le matériel remplacé — pas l'urgence de votre situation.",
         "Un « à partir de » sans base de calcul n'est pas un prix. Demandez le montant total TTC pour votre cas précis, par écrit, avant le déplacement.",
         "Comparez deux devis sur trois lignes : déplacement, main-d'œuvre, matériel. Une ligne unique ne se compare pas, et ce n'est pas un hasard.",
       ],
@@ -45,14 +45,19 @@ export const PRIX_SERRURIER: Guide = {
           heading: "Ce qui fait réellement varier la facture",
           paragraphs: [
             "Quatre facteurs, et quatre seulement, expliquent l'essentiel des écarts légitimes entre deux factures pour ce qui ressemble au même travail.",
-            "Le type de fermeture d'abord : une porte claquée n'a rien à voir avec une porte verrouillée à trois tours, et une serrure multipoints demande plus de temps qu'un cylindre simple. Ensuite l'état du matériel : un cylindre grippé, une porte affaissée ou un mécanisme déjà forcé transforment une intervention de vingt minutes en chantier d'une heure.",
-            "Vient ensuite l'horaire. Les majorations de nuit, week-end et jour férié sont légitimes et pratiquées par toute la profession ; ce qui ne l'est pas, c'est de les découvrir sur la facture. Enfin le matériel remplacé : entre un cylindre d'entrée de gamme et un modèle certifié A2P à clé protégée, l'écart de prix d'achat est réel et doit apparaître sur le devis.",
+          ],
+          list: [
+            "Le type de fermeture. Une porte claquée n'a rien à voir avec une porte verrouillée à trois tours, et une serrure multipoints demande plus de temps qu'un cylindre simple.",
+            "L'état du matériel. Un cylindre grippé, une porte affaissée ou un mécanisme déjà forcé transforment une intervention de vingt minutes en chantier d'une heure.",
+            "L'horaire. Les majorations de nuit, week-end et jour férié sont légitimes et pratiquées par toute la profession ; ce qui ne l'est pas, c'est de les découvrir sur la facture.",
+            "Le matériel remplacé. Entre un cylindre d'entrée de gamme et un modèle certifié A2P à clé protégée, l'écart de prix d'achat est réel et doit apparaître sur le devis.",
           ],
         },
         {
           heading: "Le piège du tarif d'appel",
           paragraphs: [
-            "« Ouverture de porte à partir de 39 € » est le chiffre le plus rentable du secteur — pour celui qui l'affiche. Il correspond en général au seul déplacement, parfois à rien du tout, et sert uniquement à faire composer le numéro. La facture réelle arrive ensuite, une fois l'artisan sur le palier et la pression installée.",
+            "« Ouverture de porte à partir de 39 € » est le chiffre le plus rentable du secteur — pour celui qui l'affiche. Il correspond en général au seul déplacement, parfois à rien du tout.",
+            "Il sert uniquement à faire composer le numéro. La facture réelle arrive ensuite, une fois l'artisan sur le palier et la pression installée.",
             "Un tarif de départ n'a de valeur que s'il précise ce qu'il inclut : déplacement, main-d'œuvre, TVA. Un « à partir de » sans base de calcul n'est pas un prix, c'est un appât.",
             "Le test est simple : demandez le montant total TTC pour votre cas précis, avant le déplacement, par écrit. Un professionnel qui travaille en direct sait répondre. Une plateforme qui sous-traite ne le peut pas, parce que sa marge se joue justement sur ce qu'elle n'annonce pas.",
           ],
@@ -60,7 +65,8 @@ export const PRIX_SERRURIER: Guide = {
         {
           heading: "HT ou TTC : une différence de 20 %",
           paragraphs: [
-            "Beaucoup de sites de serrurerie affichent des prix HT. C'est parfaitement légal, et c'est la norme entre professionnels — mais pour un particulier, la TVA à 20 % s'ajoute au moment de la facture, et l'écart surprend. Un blindage annoncé autour de 890 € HT se règle près de 1 070 € TTC.",
+            "Beaucoup de sites de serrurerie affichent des prix HT. C'est parfaitement légal, et c'est la norme entre professionnels — mais pour un particulier, la TVA à 20 % s'ajoute au moment de la facture, et l'écart surprend.",
+            "Un blindage annoncé autour de 890 € HT se règle près de 1 070 € TTC.",
             "Pour un consommateur, le prix affiché doit être le prix payé, taxes comprises. C'est pourquoi notre grille indique le TTC en premier et le HT entre parenthèses, plutôt que l'inverse.",
             "Un cas mérite d'être connu : certains travaux d'amélioration ou d'entretien dans un logement achevé depuis plus de deux ans relèvent d'un taux de TVA réduit. Quand il s'applique, il apparaît sur le devis et vous payez moins que le tarif affiché — jamais plus.",
           ],
@@ -68,7 +74,8 @@ export const PRIX_SERRURIER: Guide = {
         {
           heading: "Ce que vous devez recevoir, quel que soit le montant",
           paragraphs: [
-            "Un devis écrit et détaillé avant l'exécution des travaux : c'est l'exigence de l'arrêté du 24 janvier 2017 pour les prestations de dépannage, réparation et entretien du bâtiment, et l'obligation vaut de toute façon pour toute prestation de service au-delà de 150 € TTC. Le devis doit distinguer matériel et main-d'œuvre, mentionner le déplacement, et indiquer si son établissement est payant.",
+            "Un devis écrit et détaillé avant l'exécution des travaux. C'est l'exigence de l'arrêté du 24 janvier 2017 pour les prestations de dépannage, réparation et entretien du bâtiment.",
+            "Cette obligation ne dépend d'aucun seuil : l'ancien plancher de 150 € a été supprimé pour ce secteur en 2017. Le devis doit distinguer matériel et main-d'œuvre, mentionner le déplacement, et indiquer si son établissement est payant.",
             "Une facture détaillée après l'intervention, qui reprend les mêmes lignes. Si le montant final diffère du devis, il doit avoir fait l'objet de votre accord explicite avant la réalisation, pas d'une explication après coup.",
             "Ces deux documents ne sont pas de la paperasse : ce sont les seuls éléments qui vous permettent de contester utilement, de faire jouer une assurance, ou simplement de comparer deux prestataires sur une base réelle.",
           ],
@@ -77,8 +84,12 @@ export const PRIX_SERRURIER: Guide = {
           heading: "Comment comparer deux devis sans être du métier",
           paragraphs: [
             "Ne comparez pas les totaux, comparez les lignes. Un devis à 250 € qui pose un cylindre certifié A2P avec trois clés protégées n'est pas plus cher qu'un devis à 190 € posant un cylindre standard : il ne vend pas la même chose.",
-            "Regardez trois points précis. Le matériel est-il nommé, avec sa marque et sa certification ? La main-d'œuvre est-elle chiffrée séparément du déplacement ? Les majorations horaires sont-elles indiquées à l'avance ?",
-            "Un devis qui répond oui aux trois est comparable. Un devis qui affiche une ligne unique « intervention serrurerie : 480 € » ne l'est pas, et ce n'est pas un hasard.",
+            "Un devis qui affiche une ligne unique « intervention serrurerie : 480 € » ne se compare à rien, et ce n'est pas un hasard. Regardez plutôt trois points précis. Un devis qui répond oui aux trois est comparable.",
+          ],
+          list: [
+            "Le matériel est-il nommé, avec sa marque et sa certification ?",
+            "La main-d'œuvre est-elle chiffrée séparément du déplacement ?",
+            "Les majorations horaires sont-elles indiquées à l'avance ?",
           ],
         },
       ],
@@ -113,7 +124,7 @@ export const PRIX_SERRURIER: Guide = {
       lead: 'Nobody knows what a locksmith costs until they need one, which is exactly what keeps this market opaque. Here are the real ranges in Paris and Île-de-France, what makes them move, and the reference points that let you say "this figure is normal" or "this one isn\'t".',
       keyTakeaways: [
         `Opening a slammed door runs around ${price("ouverture-porte-claquee", "en")}; a cylinder swap around ${price("changement-cylindre", "en")}. Beyond double that, ask for the breakdown.`,
-        "Three things genuinely move the invoice: the hour (night, weekend, public holiday), the type of lock, and the state of the door — not how urgent your situation is.",
+        "Four factors, and only four, legitimately move the invoice: the type of lock, the state of the existing hardware, the hour (night, weekend, public holiday) and the hardware fitted — not how urgent your situation is.",
         "A “from” price with no basis is not a price. Ask for the total inc-VAT figure for your specific case, in writing, before anyone travels.",
         "Compare two quotes on three lines: call-out, labour, parts. A single-line quote cannot be compared, and that is not an accident.",
       ],
@@ -138,14 +149,19 @@ export const PRIX_SERRURIER: Guide = {
           heading: "What legitimately moves the invoice",
           paragraphs: [
             "Four factors, and only four, explain most of the legitimate gap between two invoices for what looks like the same work.",
-            "First, the type of lock: a door that has pulled shut is nothing like one deadlocked with three turns, and a multi-point lock takes longer than a simple cylinder. Second, the state of the hardware: a seized cylinder, a dropped door or a mechanism already forced turns a twenty-minute job into an hour's work.",
-            "Third, the hour. Night, weekend and public-holiday surcharges are legitimate and used across the trade; what isn't legitimate is discovering them on the invoice. Fourth, the hardware fitted: between a budget cylinder and a certified A2P protected-key model, the purchase-price gap is real and belongs on the quote.",
+          ],
+          list: [
+            "The type of lock. A door that has pulled shut is nothing like one deadlocked with three turns, and a multi-point lock takes longer than a simple cylinder.",
+            "The state of the hardware. A seized cylinder, a dropped door or a mechanism already forced turns a twenty-minute job into an hour's work.",
+            "The hour. Night, weekend and public-holiday surcharges are legitimate and used across the trade; what isn't legitimate is discovering them on the invoice.",
+            "The hardware fitted. Between a budget cylinder and a certified A2P protected-key model, the purchase-price gap is real and belongs on the quote.",
           ],
         },
         {
           heading: "The headline-rate trap",
           paragraphs: [
-            '"Door opening from €39" is the most profitable number in the sector — for whoever advertises it. It usually covers travel alone, sometimes nothing at all, and exists only to make you dial. The real invoice arrives afterwards, once someone is on your landing and the pressure is on.',
+            '"Door opening from €39" is the most profitable number in the sector — for whoever advertises it. It usually covers travel alone, sometimes nothing at all.',
+            "It exists only to make you dial. The real invoice arrives afterwards, once someone is on your landing and the pressure is on.",
             "A starting price is only worth something if it says what it includes: travel, labour, VAT. A \"from\" price with no basis isn't a price, it's bait.",
             "The test is simple: ask for the total price including VAT for your specific case, in writing, before anyone travels. A tradesperson working directly can answer. A platform subcontracting the job can't, because its margin depends precisely on what it doesn't tell you.",
           ],
@@ -153,7 +169,8 @@ export const PRIX_SERRURIER: Guide = {
         {
           heading: "Ex-VAT or inc-VAT: a 20% difference",
           paragraphs: [
-            "Many locksmith sites publish ex-VAT prices. That is perfectly legal, and it is the norm between businesses — but for a private customer the 20% VAT is added at invoice time, and the gap comes as a surprise. Door reinforcement quoted at around €890 ex-VAT is settled at close to €1,070 inc. VAT.",
+            "Many locksmith sites publish ex-VAT prices. That is perfectly legal, and it is the norm between businesses — but for a private customer the 20% VAT is added at invoice time, and the gap comes as a surprise.",
+            "Door reinforcement quoted at around €890 ex-VAT is settled at close to €1,070 inc. VAT.",
             "For a consumer, the advertised price should be the price paid, taxes included. That's why our grid shows the inc-VAT figure first and the ex-VAT figure in brackets, rather than the other way round.",
             "One case is worth knowing: some improvement or maintenance work in homes completed more than two years ago qualifies for a reduced VAT rate. Where it applies, it appears on the quote and you pay less than the advertised price — never more.",
           ],
@@ -161,7 +178,8 @@ export const PRIX_SERRURIER: Guide = {
         {
           heading: "What you should receive, whatever the amount",
           paragraphs: [
-            "A detailed written quote before work starts: that's the requirement of the order of 24 January 2017 for repair, maintenance and emergency work in the building trades, and a written quote is required for any service above €150 including VAT in any case. The quote must separate materials from labour, state the travel charge, and say whether producing it is chargeable.",
+            "A detailed written quote before work starts. That's the requirement of the order of 24 January 2017 for repair, maintenance and emergency work in the building trades.",
+            "That obligation depends on no threshold: the old €150 floor was removed for this sector in 2017. The quote must separate materials from labour, state the travel charge, and say whether producing it is chargeable.",
             "An itemised invoice afterwards, echoing the same lines. If the final amount differs from the quote, it must have been agreed by you explicitly before the work — not explained after it.",
             "These two documents aren't paperwork: they're the only things that let you dispute effectively, claim on insurance, or simply compare two providers on a real basis.",
           ],
@@ -170,8 +188,12 @@ export const PRIX_SERRURIER: Guide = {
           heading: "Comparing two quotes without being in the trade",
           paragraphs: [
             "Don't compare totals, compare lines. A €250 quote fitting a certified A2P cylinder with three protected keys is not more expensive than a €190 quote fitting a standard cylinder: it isn't selling the same thing.",
-            "Look at three specific points. Is the hardware named, with its brand and certification? Is labour costed separately from travel? Are out-of-hours surcharges stated up front?",
-            'A quote that answers yes three times is comparable. A quote showing a single line reading "locksmithing: €480" is not, and that isn\'t an accident.',
+            'A quote showing a single line reading "locksmithing: €480" compares to nothing, and that isn\'t an accident. Look instead at three specific points. A quote that answers yes to all three is comparable.',
+          ],
+          list: [
+            "Is the hardware named, with its brand and certification?",
+            "Is labour costed separately from travel?",
+            "Are out-of-hours surcharges stated up front?",
           ],
         },
       ],

@@ -27,8 +27,17 @@ function ZoneCard({
       href={localePath(lang, `/${zone.slug}`)}
       className="group flex flex-col rounded-3xl border border-ink/10 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
     >
-      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink text-signal">
-        <span className="font-headline text-lg font-extrabold">
+      {/* The badge was a fixed 44px square, sized for an arrondissement number
+          ("1"-"20") or a department code ("92"). National city pages key off a
+          five-digit postal code, which overflowed it on both sides. It now grows
+          with its content, keeping the square shape for the short numbers that
+          still fit it, and steps the type down so five digits stay legible. */}
+      <div className="flex h-11 min-w-[2.75rem] items-center justify-center rounded-xl bg-ink px-2.5 text-signal">
+        <span
+          className={`font-headline font-extrabold tabular-nums ${
+            zone.number.length > 3 ? "text-sm" : "text-lg"
+          }`}
+        >
           {zone.number}
         </span>
       </div>
