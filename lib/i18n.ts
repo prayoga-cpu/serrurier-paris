@@ -501,11 +501,18 @@ const fr = {
     note: "Réponse sous 24 h ouvrées. Aucun engagement : la proposition est chiffrée avant toute intervention.",
   },
   submit: {
-    readyTitle: "Votre demande est prête",
-    readyBody:
-      "Le récapitulatif ci-dessous est déjà rédigé. Envoyez-le sur WhatsApp : nous répondons avec un tarif avant tout déplacement, et l'échange reste écrit des deux côtés.",
+    sendingTitle: "Envoi de votre demande…",
+    sendingBody: "Un instant, nous transmettons votre demande à l'atelier.",
+    sentTitle: "Demande envoyée",
+    sentBody:
+      "Nous l'avons bien reçue. Un serrurier vous rappelle avec un tarif annoncé avant tout déplacement.",
+    failedTitle: "L'envoi n'a pas abouti",
+    failedBody:
+      "Rien n'est perdu : votre récapitulatif est prêt ci-dessous. Envoyez-le sur WhatsApp, ou appelez-nous — c'est le plus rapide.",
     emailedCopy:
       "Nous avons bien reçu votre demande et vous en avons envoyé une copie par email.",
+    whatsappFollowUp:
+      "Urgent, ou vous préférez suivre l'échange par écrit ? Envoyez aussi le récapitulatif sur WhatsApp.",
     sendWhatsapp: "Envoyer sur WhatsApp",
     orCall: "Ou appelez-nous directement",
     summaryLabel: "Récapitulatif envoyé",
@@ -1023,10 +1030,17 @@ const en: Dictionary = {
     note: "Reply within one working day. No commitment: the proposal is costed before any work.",
   },
   submit: {
-    readyTitle: "Your request is ready",
-    readyBody:
-      "The summary below is already written. Send it on WhatsApp: we reply with a price before anyone travels, and the exchange stays in writing on both sides.",
+    sendingTitle: "Sending your request…",
+    sendingBody: "One moment — we're passing your request to the workshop.",
+    sentTitle: "Request sent",
+    sentBody:
+      "We've got it. A locksmith will call you back with a price agreed before anyone travels.",
+    failedTitle: "That didn't go through",
+    failedBody:
+      "Nothing is lost: your summary is ready below. Send it on WhatsApp, or call us — that's fastest.",
     emailedCopy: "We've received your request and emailed you a copy.",
+    whatsappFollowUp:
+      "Urgent, or would you rather follow up in writing? Send the summary on WhatsApp too.",
     sendWhatsapp: "Send on WhatsApp",
     orCall: "Or call us directly",
     summaryLabel: "Summary sent",

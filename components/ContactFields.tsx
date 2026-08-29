@@ -68,12 +68,13 @@ export default function ContactFields({
           htmlFor="email"
           className="mb-1.5 block text-sm font-semibold text-ink"
         >
-          {dict.devis.fieldEmail}
+          {dict.devis.fieldEmail} *
         </label>
         <input
           id="email"
           name="email"
           type="email"
+          required
           placeholder={dict.devis.fieldEmailPlaceholder}
           className="w-full rounded-2xl border border-ink/15 bg-paper px-4 py-3.5 text-ink outline-none transition-colors focus:border-signal-press"
         />
