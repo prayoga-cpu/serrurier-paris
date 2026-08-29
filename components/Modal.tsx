@@ -80,7 +80,7 @@ export default function Modal({
       }}
       className="modal"
     >
-      <div className="modal-panel flex max-h-[92dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl sm:max-h-[calc(100dvh-3rem)] sm:rounded-3xl">
+      <div className="modal-panel flex max-h-[92dvh] w-full max-w-lg flex-col overflow-clip rounded-t-3xl bg-white shadow-2xl sm:max-h-[calc(100dvh-3rem)] sm:rounded-3xl">
         <div className="shrink-0 border-b border-ink/8 px-6 pt-5 pb-5 sm:px-8 sm:pt-7">
           {/* Sheet grabber — a mobile affordance only; the desktop panel is
               centred and reads as a dialog without it. */}

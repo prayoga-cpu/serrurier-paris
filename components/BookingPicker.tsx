@@ -50,7 +50,7 @@ export default function BookingPicker({ lang }: { lang: Locale }) {
               return (
                 <label
                   key={day.value}
-                  className={`flex min-w-16 shrink-0 cursor-pointer flex-col items-center rounded-2xl border px-3 py-2.5 text-center transition-colors ${
+                  className={`relative flex min-w-16 shrink-0 cursor-pointer flex-col items-center rounded-2xl border px-3 py-2.5 text-center transition-colors ${
                     active
                       ? "border-signal-press bg-cream/50"
                       : "border-ink/15 hover:border-ink/30"
@@ -88,7 +88,7 @@ export default function BookingPicker({ lang }: { lang: Locale }) {
               return (
                 <label
                   key={slot.slug}
-                  className={`flex cursor-pointer flex-col rounded-2xl border px-4 py-3 transition-colors ${
+                  className={`relative flex cursor-pointer flex-col rounded-2xl border px-4 py-3 transition-colors ${
                     active
                       ? "border-signal-press bg-cream/50"
                       : "border-ink/15 hover:border-ink/30"
