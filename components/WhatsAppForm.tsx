@@ -2,8 +2,10 @@
 
 import { useState, type FormEvent, type ReactNode } from "react";
 import { WhatsAppIcon } from "@/components/ContactOptions";
+import Toast from "@/components/Toast";
 import { PHONE_DISPLAY, PHONE_HREF, whatsappHref } from "@/lib/config";
 import { getDictionary, type Locale } from "@/lib/i18n";
+import { inboxUrl } from "@/lib/webmail";
 import {
   collectFields,
   composeMessage,
@@ -77,6 +79,9 @@ export default function WhatsAppForm({
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string | null>(null);
   const [emailed, setEmailed] = useState(false);
+  // Kept so the confirmation can link the visitor at their own inbox rather
+  // than just telling them to go and look.
+  const [email, setEmail] = useState<string | null>(null);
 
   async function deliver(
     fields: SubmissionField[],
@@ -116,6 +121,7 @@ export default function WhatsAppForm({
     const data = new FormData(event.currentTarget);
     const honeypot = String(data.get("company_website") ?? "");
     const fields = collectFields(data);
+    setEmail(fields.find((f) => f.key === "email")?.value ?? null);
     setMessage(composeMessage(lang, kind, fields));
     setStatus("sending");
 
@@ -125,6 +131,7 @@ export default function WhatsAppForm({
   }
 
   const panel = status !== "idle" && message !== null;
+  const inbox = inboxUrl(email ?? undefined);
 
   return (
     <>
@@ -155,6 +162,8 @@ export default function WhatsAppForm({
         </div>
       </form>
 
+      {status === "sent" && <Toast message={dict.submit.toastSent} />}
+
       {panel && (
         <div className={className}>
           <div
@@ -175,9 +184,22 @@ export default function WhatsAppForm({
             </p>
 
             {status === "sent" && emailed && (
-              <p className="mt-3 text-sm font-semibold text-ink/70">
-                {dict.submit.emailedCopy}
-              </p>
+              <div className="mt-3">
+                <p className="text-sm font-semibold text-ink/70">
+                  {dict.submit.emailedCopy}
+                </p>
+                {inbox && (
+                  <a
+                    href={inbox}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1.5 inline-flex items-center gap-1.5 text-sm font-semibold text-ink underline decoration-signal-press decoration-2 underline-offset-4 hover:opacity-80"
+                  >
+                    {dict.submit.checkInbox}
+                    <span aria-hidden="true">→</span>
+                  </a>
+                )}
+              </div>
             )}
 
             {status === "sent" && (

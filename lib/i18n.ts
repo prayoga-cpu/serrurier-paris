@@ -511,6 +511,8 @@ const fr = {
       "Rien n'est perdu : votre récapitulatif est prêt ci-dessous. Envoyez-le sur WhatsApp, ou appelez-nous — c'est le plus rapide.",
     emailedCopy:
       "Nous avons bien reçu votre demande et vous en avons envoyé une copie par email.",
+    checkInbox: "Vérifier ma boîte mail",
+    toastSent: "Demande envoyée",
     whatsappFollowUp:
       "Urgent, ou vous préférez suivre l'échange par écrit ? Envoyez aussi le récapitulatif sur WhatsApp.",
     sendWhatsapp: "Envoyer sur WhatsApp",
@@ -1039,6 +1041,8 @@ const en: Dictionary = {
     failedBody:
       "Nothing is lost: your summary is ready below. Send it on WhatsApp, or call us — that's fastest.",
     emailedCopy: "We've received your request and emailed you a copy.",
+    checkInbox: "Check my inbox",
+    toastSent: "Request submitted",
     whatsappFollowUp:
       "Urgent, or would you rather follow up in writing? Send the summary on WhatsApp too.",
     sendWhatsapp: "Send on WhatsApp",
