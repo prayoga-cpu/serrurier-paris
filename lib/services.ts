@@ -81,7 +81,7 @@ export const SERVICES: Service[] = [
           "La clé tourne dans le vide, force anormalement, ou s'est cassée dans le cylindre.",
           "Une personne vulnérable ou un animal est enfermé seul : appelez d'abord le 18 ou le 112, les pompiers sont prioritaires.",
         ],
-        priceNote: `À partir de ${price("ouverture-porte-claquee", "fr")} pour une porte claquée, ${price("ouverture-porte-fermee-cle", "fr")} pour une porte fermée à clé. Tarif exact confirmé par téléphone avant le déplacement, validé sur place avant toute intervention.`,
+        priceNote: `${price("ouverture-porte-claquee", "fr")} pour une porte claquée, ${price("ouverture-porte-fermee-cle", "fr")} pour une porte fermée à clé. Tarif exact confirmé par téléphone avant le déplacement, validé sur place avant toute intervention.`,
         faq: [
           {
             question: "Combien de temps prend une ouverture de porte ?",
@@ -120,7 +120,7 @@ export const SERVICES: Service[] = [
           "The key turns without catching, needs abnormal force, or has snapped in the cylinder.",
           "A vulnerable person or a pet is shut in alone: call 18 or 112 first — the fire service takes priority.",
         ],
-        priceNote: `From ${price("ouverture-porte-claquee", "en")} for a slammed door, ${price("ouverture-porte-fermee-cle", "en")} for a locked door. Exact price confirmed by phone before travel, and agreed on site before any work begins.`,
+        priceNote: `${price("ouverture-porte-claquee", "en")} for a slammed door, ${price("ouverture-porte-fermee-cle", "en")} for a locked door. Exact price confirmed by phone before travel, and agreed on site before any work begins.`,
         faq: [
           {
             question: "How long does a door opening take?",
@@ -165,7 +165,7 @@ export const SERVICES: Service[] = [
           "Un jeu de clés a été perdu ou volé, surtout s'il portait une adresse.",
           "La clé accroche, le cylindre grippe, ou la serrure a déjà été forcée lors d'une tentative.",
         ],
-        priceNote: `À partir de ${price("changement-cylindre", "fr")} pour un cylindre seul, ${price("serrure-standard", "fr")} pour une serrure complète et ${price("serrure-securite", "fr")} pour une serrure haute sécurité. Tarif exact confirmé par téléphone avant le déplacement, validé sur place avant toute intervention.`,
+        priceNote: `${price("changement-cylindre", "fr")} pour un cylindre seul, ${price("serrure-standard", "fr")} pour une serrure complète et ${price("serrure-securite", "fr")} pour une serrure haute sécurité. Tarif exact confirmé par téléphone avant le déplacement, validé sur place avant toute intervention.`,
         faq: [
           {
             question: "Cylindre ou serrure complète, quelle différence ?",
@@ -206,7 +206,7 @@ export const SERVICES: Service[] = [
           "A key set has been lost or stolen, especially if it carried an address.",
           "The key catches, the cylinder is seizing, or the lock has already been forced in an attempt.",
         ],
-        priceNote: `From ${price("changement-cylindre", "en")} for the cylinder alone, ${price("serrure-standard", "en")} for a complete lock and ${price("serrure-securite", "en")} for a high-security lock. Exact price confirmed by phone before travel, and agreed on site before any work begins.`,
+        priceNote: `${price("changement-cylindre", "en")} for the cylinder alone, ${price("serrure-standard", "en")} for a complete lock and ${price("serrure-securite", "en")} for a high-security lock. Exact price confirmed by phone before travel, and agreed on site before any work begins.`,
         faq: [
           {
             question: "Cylinder or complete lock — what's the difference?",
@@ -251,7 +251,7 @@ export const SERVICES: Service[] = [
           "Vous êtes en rez-de-chaussée, en premier étage accessible, ou absent de longues périodes.",
           "Une tentative d'effraction a déjà eu lieu, chez vous ou dans l'immeuble.",
         ],
-        priceNote: `À partir de ${price("blindage-porte", "fr")}. Le tarif final dépend de la porte et du niveau de blindage choisi — devis écrit détaillé fourni avant tout engagement.`,
+        priceNote: `${price("blindage-porte", "fr")}. Le tarif final dépend de la porte et du niveau de blindage choisi — devis écrit détaillé fourni avant tout engagement.`,
         faq: [
           {
             question:
@@ -287,7 +287,7 @@ export const SERVICES: Service[] = [
           "You're on the ground floor, an accessible first floor, or away for long periods.",
           "An attempted break-in has already happened, at your home or in the building.",
         ],
-        priceNote: `From ${price("blindage-porte", "en")}. The final price depends on the door and the level of reinforcement chosen — a detailed written quote is provided before any commitment.`,
+        priceNote: `${price("blindage-porte", "en")}. The final price depends on the door and the level of reinforcement chosen — a detailed written quote is provided before any commitment.`,
         faq: [
           {
             question:
@@ -328,7 +328,7 @@ export const SERVICES: Service[] = [
           "Votre serrure multipoints existante ne verrouille plus en haut ou en bas.",
           "Votre assureur demande un nombre minimal de points de fermeture.",
         ],
-        priceNote: `À partir de ${price("multipoints-3", "fr")} pour une serrure 3 points, ${price("multipoints-5", "fr")} pour une 5 points, pose comprise. Le modèle exact dépend de la porte, et le tarif est validé avec vous avant la commande du matériel.`,
+        priceNote: `${price("multipoints-3", "fr")} pour une serrure 3 points, ${price("multipoints-5", "fr")} pour une 5 points, pose comprise. Le modèle exact dépend de la porte, et le tarif est validé avec vous avant la commande du matériel.`,
         faq: [
           {
             question:
@@ -363,7 +363,7 @@ export const SERVICES: Service[] = [
           "Your existing multi-point lock no longer engages at the top or bottom.",
           "Your insurer requires a minimum number of locking points.",
         ],
-        priceNote: `From ${price("multipoints-3", "en")} for a 3-point lock and ${price("multipoints-5", "en")} for a 5-point, fitting included. The exact model depends on the door, and the price is agreed with you before any hardware is ordered.`,
+        priceNote: `${price("multipoints-3", "en")} for a 3-point lock and ${price("multipoints-5", "en")} for a 5-point, fitting included. The exact model depends on the door, and the price is agreed with you before any hardware is ordered.`,
         faq: [
           {
             question: "Can a multi-point lock be fitted to any door?",
@@ -403,7 +403,7 @@ export const SERVICES: Service[] = [
           "Vous avez déposé plainte et devez sécuriser avant l'expertise ou le retour de l'assurance.",
           "Des clés ont disparu pendant l'effraction : le cylindre doit être remplacé, pas seulement réparé.",
         ],
-        priceNote: `À partir de ${price("securisation-effraction", "fr")} pour la remise en sécurité. Le remplacement de la serrure ou de la porte est chiffré à part, sur la même grille, et la facture détaillée est exploitable pour votre dossier d'assurance.`,
+        priceNote: `${price("securisation-effraction", "fr")} pour la remise en sécurité. Le remplacement de la serrure ou de la porte est chiffré à part, sur la même grille, et la facture détaillée est exploitable pour votre dossier d'assurance.`,
         faq: [
           {
             question: "Que faire en premier après une effraction ?",
@@ -437,7 +437,7 @@ export const SERVICES: Service[] = [
           "You've reported it and need to secure the home before the insurer's assessment.",
           "Keys went missing during the break-in: the cylinder needs replacing, not just repairing.",
         ],
-        priceNote: `From ${price("securisation-effraction", "en")} to make the property secure again. Replacing the lock or the door is costed separately on the same grid, and the itemised invoice can be used for your insurance claim.`,
+        priceNote: `${price("securisation-effraction", "en")} to make the property secure again. Replacing the lock or the door is costed separately on the same grid, and the itemised invoice can be used for your insurance claim.`,
         faq: [
           {
             question: "What should I do first after a break-in?",

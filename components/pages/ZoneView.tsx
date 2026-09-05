@@ -227,7 +227,7 @@ export default function ZoneView({
                         <td className="px-5 py-3.5 text-muted">
                           {startingPriceTTC === undefined
                             ? dict.pricingPage.onQuote
-                            : `${dict.pricingPage.from} ${formatPrice(startingPriceTTC, lang)}`}
+                            : formatPrice(startingPriceTTC, lang)}
                         </td>
                       </tr>
                     );

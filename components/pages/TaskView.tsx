@@ -153,7 +153,6 @@ export default function TaskView({
                           {tier.label[lang]}
                         </td>
                         <td className="px-5 py-3.5 text-muted">
-                          {dict.pricingPage.from}{" "}
                           {formatPrice(tier.priceTTC, lang)}
                         </td>
                       </tr>

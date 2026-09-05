@@ -34,7 +34,7 @@ export default function ServiceChecklist({ lang }: { lang: Locale }) {
               <span className="flex flex-col gap-1">
                 <span className="font-medium text-ink">{tier.label[lang]}</span>
                 <span className="text-xs text-muted">
-                  {dict.pricingPage.from} {formatPrice(tier.priceTTC, lang)}
+                  {formatPrice(tier.priceTTC, lang)}
                 </span>
               </span>
             </label>

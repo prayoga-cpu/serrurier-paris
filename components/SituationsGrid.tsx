@@ -43,7 +43,6 @@ export default function SituationsGrid({ lang }: { lang: Locale }) {
                 </p>
                 {startingPriceTTC !== undefined && (
                   <span className="mt-4 inline-flex w-fit rounded-full bg-cream px-3 py-1 text-sm font-bold text-ink">
-                    {dict.pricingPage.from}{" "}
                     {formatPrice(startingPriceTTC, lang)}
                   </span>
                 )}

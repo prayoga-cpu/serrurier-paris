@@ -228,12 +228,11 @@ const fr = {
       "Délai d'intervention : moins de 30 minutes selon le secteur.",
     colIntervention: "Intervention",
     colPrice: "Tarif",
-    from: "À partir de",
     onQuote: "Sur devis",
     optionsTitle: "Options et suppléments",
     optionsLead:
       "Ces suppléments s'ajoutent au tarif de l'intervention selon le contexte.",
-    noticeTitle: "Tarifs indicatifs, à partir de.",
+    noticeTitle: "Tarifs indicatifs.",
     noticeBody:
       "Les prix ci-dessus couvrent le cas standard le plus courant. Le tarif exact dépend de la complexité sur place (état de la serrure, accès, matériel nécessaire) et vous est communiqué par téléphone avant le déplacement, puis validé avec vous avant toute intervention.",
     taxBasisTitle: "Montants TTC, HT entre parenthèses.",
@@ -287,7 +286,7 @@ const fr = {
     fieldMessagePlaceholder: "Décrivez votre situation…",
     submitCta: "Envoyer ma demande",
     priceReassurance:
-      "Les tarifs ci-dessus sont indicatifs, à partir de. Le tarif exact est confirmé par téléphone avant le déplacement, et validé avec vous avant toute intervention.",
+      "Les tarifs ci-dessus sont indicatifs. Le tarif exact est confirmé par téléphone avant le déplacement, et validé avec vous avant toute intervention.",
     urgentTitle: "Besoin d'aide maintenant ?",
     urgentLead: "Pour une urgence, appeler reste le plus rapide.",
   },
@@ -771,11 +770,10 @@ const en: Dictionary = {
     responseTime: "Response time: under 30 minutes depending on the area.",
     colIntervention: "Service",
     colPrice: "Price",
-    from: "From",
     onQuote: "On quotation",
     optionsTitle: "Options and add-ons",
     optionsLead: "These add to the job price depending on the situation.",
-    noticeTitle: "Indicative prices, starting from.",
+    noticeTitle: "Indicative prices.",
     noticeBody:
       "The prices above cover the most common standard case. The exact price depends on the complexity on site (state of the lock, access, materials needed) and is given to you by phone before travel, then agreed with you before any work begins.",
     taxBasisTitle: "Prices inc. VAT, ex-VAT in brackets.",
@@ -824,7 +822,7 @@ const en: Dictionary = {
     fieldMessagePlaceholder: "Describe your situation…",
     submitCta: "Send my request",
     priceReassurance:
-      "Prices above are indicative, starting from. The exact price is confirmed by phone before travel, and agreed with you before any work begins.",
+      "Prices above are indicative. The exact price is confirmed by phone before travel, and agreed with you before any work begins.",
     urgentTitle: "Need help right now?",
     urgentLead: "For an emergency, calling is still fastest.",
   },

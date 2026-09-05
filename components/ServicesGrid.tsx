@@ -106,7 +106,7 @@ export default function ServicesGrid({ lang }: { lang: Locale }) {
                 <span className="mt-5 inline-flex w-fit rounded-full bg-cream px-3 py-1 text-sm font-bold text-ink">
                   {startingPriceTTC === undefined
                     ? dict.pricingPage.onQuote
-                    : `${dict.pricingPage.from} ${formatPrice(startingPriceTTC, lang)}`}
+                    : formatPrice(startingPriceTTC, lang)}
                 </span>
                 <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-ink">
                   {dict.common.learnMore}
