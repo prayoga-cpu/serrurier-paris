@@ -120,6 +120,19 @@ export default function WhatsAppForm({
 
     const data = new FormData(event.currentTarget);
     const honeypot = String(data.get("company_website") ?? "");
+
+    // The country select (name="phoneCountry") isn't a FIELD_KEYS entry —
+    // it exists only to prefix the phone number before collectFields runs,
+    // so the rest of the pipeline still sees one plain "phone" value.
+    const phoneCountry = String(data.get("phoneCountry") ?? "").trim();
+    const phoneNumber = String(data.get("phone") ?? "").trim();
+    if (phoneNumber) {
+      data.set(
+        "phone",
+        phoneCountry ? `${phoneCountry} ${phoneNumber}` : phoneNumber,
+      );
+    }
+
     const fields = collectFields(data);
     setEmail(fields.find((f) => f.key === "email")?.value ?? null);
     setMessage(composeMessage(lang, kind, fields));

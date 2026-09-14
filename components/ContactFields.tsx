@@ -1,4 +1,5 @@
 import { ButtonSubmit } from "@/components/Button";
+import { DEFAULT_COUNTRY_CODE, otherCountryCodes } from "@/lib/countryCodes";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 /** Name/phone/email/address/message + submit — shared by the homepage hero
@@ -52,14 +53,35 @@ export default function ContactFields({
           >
             {dict.hero.fieldPhone} *
           </label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            required
-            placeholder={dict.hero.fieldPhonePlaceholder}
-            className="w-full rounded-2xl border border-ink/15 bg-paper px-4 py-3.5 text-ink outline-none transition-colors focus:border-signal-press"
-          />
+          <div className="flex gap-2">
+            <label htmlFor="phoneCountry" className="sr-only">
+              {dict.hero.fieldPhoneCountry}
+            </label>
+            <select
+              id="phoneCountry"
+              name="phoneCountry"
+              defaultValue={DEFAULT_COUNTRY_CODE.dialCode}
+              className="w-36 shrink-0 rounded-2xl border border-ink/15 bg-paper px-2 py-3.5 text-ink outline-none transition-colors focus:border-signal-press"
+            >
+              <option value={DEFAULT_COUNTRY_CODE.dialCode}>
+                {DEFAULT_COUNTRY_CODE[lang]} ({DEFAULT_COUNTRY_CODE.dialCode})
+              </option>
+              <option disabled>──────────</option>
+              {otherCountryCodes(lang).map((country) => (
+                <option key={country.iso2} value={country.dialCode}>
+                  {country[lang]} ({country.dialCode})
+                </option>
+              ))}
+            </select>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              required
+              placeholder={dict.hero.fieldPhonePlaceholder}
+              className="w-full rounded-2xl border border-ink/15 bg-paper px-4 py-3.5 text-ink outline-none transition-colors focus:border-signal-press"
+            />
+          </div>
         </div>
       </div>
 
