@@ -458,6 +458,18 @@ export const DEFAULT_COUNTRY_CODE = COUNTRY_CODES.find(
   (c) => c.iso2 === DEFAULT_COUNTRY_ISO2,
 )!;
 
+/** ISO 3166-1 alpha-2 → flag emoji, via the Unicode regional-indicator
+ * trick (each letter maps to 0x1F1E6 + its offset from "A"). Kept short in
+ * the select's closed box — the flag plus dial code, not the spelled-out
+ * name — so the row fits on one line whatever country is selected. */
+export function flagEmoji(iso2: string): string {
+  return String.fromCodePoint(
+    ...[...iso2.toUpperCase()].map(
+      (char) => 0x1f1e6 + (char.charCodeAt(0) - 65),
+    ),
+  );
+}
+
 /** All entries except the default, sorted by localized name — used to fill
  * the dropdown below the pinned default option. */
 export function otherCountryCodes(lang: Locale): CountryCode[] {

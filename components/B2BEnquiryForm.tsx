@@ -1,6 +1,10 @@
 import { ButtonSubmit } from "@/components/Button";
 import WhatsAppForm from "@/components/WhatsAppForm";
-import { DEFAULT_COUNTRY_CODE, otherCountryCodes } from "@/lib/countryCodes";
+import {
+  DEFAULT_COUNTRY_CODE,
+  flagEmoji,
+  otherCountryCodes,
+} from "@/lib/countryCodes";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 const FIELD =
@@ -90,15 +94,23 @@ export default function B2BEnquiryForm({ lang }: { lang: Locale }) {
                 id="contact-phone-country"
                 name="phoneCountry"
                 defaultValue={DEFAULT_COUNTRY_CODE.dialCode}
-                className="w-36 shrink-0 rounded-2xl border border-ink/15 bg-paper px-2 py-3.5 text-ink outline-none transition-colors focus:border-signal-press"
+                className="w-28 shrink-0 rounded-2xl border border-ink/15 bg-paper px-2 py-3.5 text-ink outline-none transition-colors focus:border-signal-press"
               >
-                <option value={DEFAULT_COUNTRY_CODE.dialCode}>
-                  {DEFAULT_COUNTRY_CODE[lang]} ({DEFAULT_COUNTRY_CODE.dialCode})
+                <option
+                  value={DEFAULT_COUNTRY_CODE.dialCode}
+                  title={DEFAULT_COUNTRY_CODE[lang]}
+                >
+                  {flagEmoji(DEFAULT_COUNTRY_CODE.iso2)}{" "}
+                  {DEFAULT_COUNTRY_CODE.dialCode}
                 </option>
                 <option disabled>──────────</option>
                 {otherCountryCodes(lang).map((country) => (
-                  <option key={country.iso2} value={country.dialCode}>
-                    {country[lang]} ({country.dialCode})
+                  <option
+                    key={country.iso2}
+                    value={country.dialCode}
+                    title={country[lang]}
+                  >
+                    {flagEmoji(country.iso2)} {country.dialCode}
                   </option>
                 ))}
               </select>
