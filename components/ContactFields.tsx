@@ -1,9 +1,5 @@
 import { ButtonSubmit } from "@/components/Button";
-import {
-  DEFAULT_COUNTRY_CODE,
-  flagEmoji,
-  otherCountryCodes,
-} from "@/lib/countryCodes";
+import PhoneField from "@/components/PhoneField";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 /** Name/phone/email/address/message + submit — shared by the homepage hero
@@ -33,68 +29,25 @@ export default function ContactFields({
       </h2>
       <p className="mt-1 text-sm text-muted">{dict.devis.infoHint}</p>
 
-      <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <div>
-          <label
-            htmlFor="name"
-            className="mb-1.5 block text-sm font-semibold text-ink"
-          >
-            {dict.hero.fieldName} *
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            placeholder={dict.hero.fieldNamePlaceholder}
-            className="w-full rounded-2xl border border-ink/15 bg-paper px-4 py-3.5 text-ink outline-none transition-colors focus:border-signal-press"
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="phone"
-            className="mb-1.5 block text-sm font-semibold text-ink"
-          >
-            {dict.hero.fieldPhone} *
-          </label>
-          <div className="flex gap-2">
-            <label htmlFor="phoneCountry" className="sr-only">
-              {dict.hero.fieldPhoneCountry}
-            </label>
-            <select
-              id="phoneCountry"
-              name="phoneCountry"
-              defaultValue={DEFAULT_COUNTRY_CODE.dialCode}
-              className="w-28 shrink-0 rounded-2xl border border-ink/15 bg-paper px-2 py-3.5 text-ink outline-none transition-colors focus:border-signal-press"
-            >
-              <option
-                value={DEFAULT_COUNTRY_CODE.dialCode}
-                title={DEFAULT_COUNTRY_CODE[lang]}
-              >
-                {flagEmoji(DEFAULT_COUNTRY_CODE.iso2)}{" "}
-                {DEFAULT_COUNTRY_CODE.dialCode}
-              </option>
-              <option disabled>──────────</option>
-              {otherCountryCodes(lang).map((country) => (
-                <option
-                  key={country.iso2}
-                  value={country.dialCode}
-                  title={country[lang]}
-                >
-                  {flagEmoji(country.iso2)} {country.dialCode}
-                </option>
-              ))}
-            </select>
-            <input
-              id="phone"
-              name="phone"
-              type="tel"
-              required
-              placeholder={dict.hero.fieldPhonePlaceholder}
-              className="w-full rounded-2xl border border-ink/15 bg-paper px-4 py-3.5 text-ink outline-none transition-colors focus:border-signal-press"
-            />
-          </div>
-        </div>
+      <div className="mt-5">
+        <label
+          htmlFor="name"
+          className="mb-1.5 block text-sm font-semibold text-ink"
+        >
+          {dict.hero.fieldName} *
+        </label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          placeholder={dict.hero.fieldNamePlaceholder}
+          className="w-full rounded-2xl border border-ink/15 bg-paper px-4 py-3.5 text-ink outline-none transition-colors focus:border-signal-press"
+        />
+      </div>
+
+      <div className="mt-5">
+        <PhoneField lang={lang} />
       </div>
 
       <div className="mt-5">
