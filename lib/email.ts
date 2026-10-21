@@ -1,6 +1,12 @@
 import "server-only";
 
-import { BRAND_NAME, EMAIL, PHONE_DISPLAY, DOMAIN } from "@/lib/config";
+import {
+  BRAND_NAME,
+  EMAIL,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+  DOMAIN,
+} from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
 import {
   fieldLabels,
@@ -190,7 +196,7 @@ export async function sendCustomerConfirmation({
     <h1 style="margin:0 0 16px;font-size:22px;font-weight:800;line-height:1.3;">${esc(t.title)}</h1>
     <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#3d3d3d;">${esc(t.body)}</p>
     <p style="margin:0 0 24px;font-size:15px;line-height:1.65;color:#3d3d3d;">
-      ${esc(t.urgent.split(PHONE_DISPLAY)[0])}<a href="tel:${esc(PHONE_DISPLAY.replace(/\s/g, ""))}" style="color:#c8501e;font-weight:700;text-decoration:none;">${esc(PHONE_DISPLAY)}</a>${esc(t.urgent.split(PHONE_DISPLAY)[1] ?? "")}
+      ${esc(t.urgent.split(PHONE_DISPLAY)[0])}<a href="${esc(PHONE_HREF)}" style="color:#c8501e;font-weight:700;text-decoration:none;">${esc(PHONE_DISPLAY)}</a>${esc(t.urgent.split(PHONE_DISPLAY)[1] ?? "")}
     </p>
     <div style="border-top:1px solid #e6e2db;padding-top:20px;">
       <p style="margin:0 0 10px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#6b6b6b;">${esc(t.recap)}</p>

@@ -15,8 +15,8 @@ export const BRAND_NAME = "Serrurier Paris Express";
  */
 export const DOMAIN = "serrurier-paris-theta.vercel.app";
 
-export const PHONE_DISPLAY = "06 49 65 85 10";
-export const PHONE_HREF = "tel:+33649658510";
+export const PHONE_DISPLAY = "07 83 14 89 94";
+export const PHONE_HREF = "tel:+33783148994";
 export const EMAIL = "parisunlockdoor@gmail.com";
 
 // WhatsApp is the second contact channel, offered alongside the call rather
@@ -24,7 +24,7 @@ export const EMAIL = "parisunlockdoor@gmail.com";
 // suits the transparency positioning — the quoted price ends up in writing on
 // both sides. It's also where form submissions land until a form backend
 // exists (CLAUDE.md §2), so a request is never silently lost.
-export const WHATSAPP_NUMBER = "33649658510";
+export const WHATSAPP_NUMBER = "33783148994";
 export const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 /** wa.me link with the message box pre-filled. */
