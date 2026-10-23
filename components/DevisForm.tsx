@@ -86,7 +86,7 @@ export default function DevisForm({ lang }: { lang: Locale }) {
               </p>
             )}
             {status === "other" && (
-              <p className="mb-5 rounded-2xl bg-signal/15 px-4 py-3 text-sm leading-relaxed text-ink/80">
+              <p className="mb-5 rounded-2xl bg-cream/60 px-4 py-3 text-sm leading-relaxed text-ink">
                 {dict.devis.postalOther}
               </p>
             )}

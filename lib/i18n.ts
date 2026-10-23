@@ -67,14 +67,17 @@ const fr = {
     openMenu: "Ouvrir le menu",
   },
   hero: {
-    eyebrow: "Serrurier à Paris et en Île-de-France",
+    // Client's own wording (24/10/2026). No "Serrurier" here: the H1 below
+    // opens with it, and the shorter label stays on one line on a phone.
+    eyebrow: "Île-de-France et toute la France",
     availableNow: "Disponible maintenant",
-    // CLAUDE.md §0 (B4) / §15 Finding 2 — the previous H1 and benefit cards were
-    // word-for-word the client-supplied reference site. Same strategy, own words,
-    // and the primary keyword (§5: "serrurier paris") is now actually in the H1.
-    title: "Serrurier à Paris : le prix d'abord, l'outil ensuite.",
+    // CLAUDE.md §0 (B4) / §15 Finding 2 — own words, not the reference site's.
+    // "à Paris" left the H1 on 24/10/2026 at the client's request: the site now
+    // covers Île-de-France and the rest of France. The §5 keyword "serrurier
+    // paris" is kept in meta.homeTitle (the <title>), which outweighs the H1.
+    title: "Serrurier : le prix d'abord, l'outil ensuite.",
     lead: "Ouverture de porte, changement de serrure, blindage. Vous connaissez le montant avant que l'artisan ne prenne la route, et il vous est confirmé par écrit avant toute intervention.",
-    photoTitle: "Un tarif tenu, de Paris à toute l'Île-de-France",
+    photoTitle: "Un tarif tenu, en Île-de-France comme partout en France",
     photoAlt:
       "Toits et façades haussmanniennes de Paris, secteur d'intervention de nos serruriers",
     stat1Value: "24/7",
@@ -192,13 +195,13 @@ const fr = {
   },
   footer: {
     tagline:
-      "Ouverture de porte, changement de serrure et blindage à Paris, en Île-de-France et dans une sélection de villes en France. Artisan indépendant, montant fixé avant le déplacement.",
+      "Ouverture de porte, changement de serrure et blindage à Paris, en Île-de-France et partout en France. Artisan indépendant, montant fixé avant le déplacement.",
     interventions: "Interventions",
     information: "Informations",
     contact: "Contact",
     pricingGrid: "Grille tarifaire",
     availability: "Disponible 24h/24, 7j/7",
-    area: "Paris et Île-de-France",
+    area: "Île-de-France et toute la France",
     rights: "Tous droits réservés.",
     identity: "Artisan serrurier indépendant, qualifié et assuré.",
     siretLabel: "SIRET",
@@ -213,7 +216,7 @@ const fr = {
     priceTableTitle: "Le détail des tarifs",
     zonesTitle: "Où nous intervenons pour cette prestation",
     zonesLead:
-      "Paris et Île-de-France, au même tarif partout : c'est le délai qui varie selon le secteur, pas le prix.",
+      "En Île-de-France, le même tarif partout : c'est le délai qui varie selon le secteur, pas le prix. Ailleurs en France, le délai et le tarif vous sont confirmés avant tout déplacement.",
     zonesCta: "Voir toutes les zones",
     price: "Tarif",
     guaranteeTitle: "Garantie",
@@ -269,7 +272,7 @@ const fr = {
     postalNetwork:
       "Votre ville fait partie des secteurs que nous couvrons. Le délai et le tarif vous sont confirmés avant tout déplacement.",
     postalOther:
-      "Laissez vos coordonnées ci-dessous : nous vous confirmons rapidement si nous pouvons intervenir chez vous, et sous quel délai.",
+      "Nous intervenons partout en France. Laissez vos coordonnées ci-dessous : le délai et le tarif pour votre secteur vous sont confirmés avant tout déplacement.",
     editPostal: "Modifier le code postal",
     closeForm: "Fermer le formulaire",
     servicesLabel: "Type d'intervention",
@@ -338,15 +341,15 @@ const fr = {
   },
   zonesIndexPage: {
     eyebrow: "Zones d'intervention",
-    title: "Serrurier à Paris et en Île-de-France",
-    lead: "Nous couvrons les 20 arrondissements de Paris, les sept départements d'Île-de-France et une sélection de villes ailleurs en France. Sélectionnez votre secteur pour des informations locales : quartiers desservis, points de repère et interventions les plus fréquentes.",
+    title: "Serrurier à Paris, en Île-de-France et partout en France",
+    lead: "Nous couvrons les 20 arrondissements de Paris, les sept départements d'Île-de-France et le reste de la France. Sélectionnez votre secteur pour des informations locales : quartiers desservis, points de repère et interventions les plus fréquentes.",
     parisTitle: "Paris, arrondissement par arrondissement",
     parisLead:
       "Chaque arrondissement a son bâti, ses serrures et ses contraintes d'accès. Nos pages arrondissement le disent concrètement plutôt que de répéter la même fiche vingt fois.",
     // Rendered only when there is at least one city page outside Île-de-France.
     nationalTitle: "Autres villes en France",
     nationalLead:
-      "Les villes hors Île-de-France où nous couvrons les interventions. Le délai et le tarif vous sont confirmés avant tout déplacement.",
+      "Nous intervenons partout en France ; voici les villes hors Île-de-France qui ont leur propre page. Le délai et le tarif vous sont confirmés avant tout déplacement.",
     idfTitle: "Île-de-France, par département",
     idfLead:
       "Petite et grande couronne : pavillons, résidences collectives, locaux commerciaux et copropriétés. Choisissez votre département pour voir les communes couvertes.",
@@ -360,7 +363,7 @@ const fr = {
     hoursLabel: "Disponibilité",
     hoursValue: "24h/24, 7j/7",
     areaLabel: "Secteur",
-    areaValue: "Paris",
+    areaValue: "Île-de-France et toute la France",
     formTitle: "Envoyer un message",
     formLead:
       "Pour une demande de devis avec estimation, utilisez plutôt notre formulaire de devis.",
@@ -444,7 +447,7 @@ const fr = {
     ],
     coverageTitle: "Où nous intervenons",
     coverageBody:
-      "Les 20 arrondissements de Paris et les sept départements d'Île-de-France, au même tarif partout. Ce qui change d'un secteur à l'autre, c'est le délai — annoncé au téléphone avant que l'artisan ne prenne la route.",
+      "Les 20 arrondissements de Paris et les sept départements d'Île-de-France, au même tarif partout : ce qui change d'un secteur à l'autre, c'est le délai, annoncé au téléphone avant que l'artisan ne prenne la route. Ailleurs en France, le délai et le tarif vous sont confirmés avant tout déplacement.",
     guidesCta: "Lire tous les guides",
   },
   taskPage: {
@@ -564,9 +567,10 @@ const fr = {
       "Vérifiez si nous intervenons dans votre secteur et décrivez votre besoin. Estimation avant tout déplacement, montant confirmé par écrit.",
     serviceDescriptionSuffix:
       "Artisan indépendant, montant fixé au téléphone avant le déplacement.",
-    zonesTitle: "Zones d'intervention — serrurier à Paris et en Île-de-France",
+    zonesTitle:
+      "Zones d'intervention — serrurier Paris, Île-de-France et France",
     zonesDescription:
-      "Les 20 arrondissements de Paris, les sept départements d'Île-de-France et nos villes couvertes ailleurs en France : ouverture de porte, changement de serrure et blindage, montant fixé avant le déplacement.",
+      "Les 20 arrondissements de Paris, les sept départements d'Île-de-France et toute la France : ouverture de porte, changement de serrure et blindage, montant fixé avant le déplacement.",
     zoneDescriptionSuffix:
       "Ouverture de porte, changement de serrure, blindage. Artisan indépendant, montant fixé avant le déplacement.",
     // Zones marked coverage: "network" — no independent-artisan claim, because
@@ -620,11 +624,11 @@ const en: Dictionary = {
     openMenu: "Open menu",
   },
   hero: {
-    eyebrow: "Locksmith in Paris and Île-de-France",
+    eyebrow: "Île-de-France and across France",
     availableNow: "Available now",
-    title: "Locksmith in Paris: price first, tools second.",
+    title: "Locksmith: price first, tools second.",
     lead: "Door opening, lock replacement, door reinforcement. You know the amount before the tradesperson sets off, and it is confirmed to you in writing before any work begins.",
-    photoTitle: "A price that holds, from Paris across Île-de-France",
+    photoTitle: "A price that holds, in Île-de-France and across France",
     photoAlt:
       "Paris rooftops and Haussmann façades, the area our locksmiths cover",
     stat1Value: "24/7",
@@ -736,13 +740,13 @@ const en: Dictionary = {
   },
   footer: {
     tagline:
-      "Door opening, lock replacement and door reinforcement in Paris, Île-de-France and a selection of towns across France. An independent tradesperson, amount settled before travel.",
+      "Door opening, lock replacement and door reinforcement in Paris, Île-de-France and across France. An independent tradesperson, amount settled before travel.",
     interventions: "Services",
     information: "Information",
     contact: "Contact",
     pricingGrid: "Price list",
     availability: "Available 24/7",
-    area: "Paris and Île-de-France",
+    area: "Île-de-France and across France",
     rights: "All rights reserved.",
     identity: "Independent locksmith tradesperson, qualified and insured.",
     siretLabel: "SIRET",
@@ -757,7 +761,7 @@ const en: Dictionary = {
     priceTableTitle: "The price detail",
     zonesTitle: "Where we cover this service",
     zonesLead:
-      "Paris and Île-de-France, at the same price everywhere: what varies by area is the time, not the price.",
+      "Across Île-de-France, the same price everywhere: what varies by area is the time, not the price. Elsewhere in France, timing and price are confirmed before anyone travels.",
     zonesCta: "See every area",
     price: "Price",
     guaranteeTitle: "Guarantee",
@@ -807,7 +811,7 @@ const en: Dictionary = {
     postalNetwork:
       "Your town is one of the areas we cover. We confirm the timing and the price before anyone travels.",
     postalOther:
-      "Leave your details below and we'll quickly confirm whether we can come to you, and how soon.",
+      "We cover call-outs across France. Leave your details below: timing and price for your area are confirmed before anyone travels.",
     editPostal: "Edit postcode",
     closeForm: "Close the form",
     servicesLabel: "Type of work",
@@ -873,14 +877,14 @@ const en: Dictionary = {
   },
   zonesIndexPage: {
     eyebrow: "Areas we cover",
-    title: "Locksmith in Paris and Île-de-France",
-    lead: "We cover all 20 Paris arrondissements, the seven departments of Île-de-France and a selection of towns elsewhere in France. Pick your area for local information: neighbourhoods covered, landmarks, and the jobs we handle most often there.",
+    title: "Locksmith in Paris, Île-de-France and across France",
+    lead: "We cover all 20 Paris arrondissements, the seven departments of Île-de-France and the rest of France. Pick your area for local information: neighbourhoods covered, landmarks, and the jobs we handle most often there.",
     parisTitle: "Paris, arrondissement by arrondissement",
     parisLead:
       "Every arrondissement has its own building stock, locks and access constraints. Our arrondissement pages say so concretely, rather than repeating one template twenty times.",
     nationalTitle: "Other towns in France",
     nationalLead:
-      "Towns outside Île-de-France where we cover call-outs. Timing and price are confirmed before anyone travels.",
+      "We cover call-outs across France; these are the towns outside Île-de-France with their own page. Timing and price are confirmed before anyone travels.",
     idfTitle: "Île-de-France, by department",
     idfLead:
       "Inner and outer suburbs: houses, apartment blocks, commercial premises and managed buildings. Choose your department to see the towns covered.",
@@ -894,7 +898,7 @@ const en: Dictionary = {
     hoursLabel: "Availability",
     hoursValue: "24/7",
     areaLabel: "Area",
-    areaValue: "Paris",
+    areaValue: "Île-de-France and across France",
     formTitle: "Send a message",
     formLead:
       "For a quote request with an estimate, use our quote form instead.",
@@ -975,7 +979,7 @@ const en: Dictionary = {
     ],
     coverageTitle: "Where we work",
     coverageBody:
-      "All 20 Paris arrondissements and the seven departments of Île-de-France, at the same price everywhere. What changes between areas is the time — quoted on the phone before the tradesperson sets off.",
+      "All 20 Paris arrondissements and the seven departments of Île-de-France, at the same price everywhere: what changes between areas is the time, quoted on the phone before the tradesperson sets off. Elsewhere in France, timing and price are confirmed before anyone travels.",
     guidesCta: "Read every guide",
   },
   taskPage: {
@@ -1094,9 +1098,9 @@ const en: Dictionary = {
       "Check we cover your area and describe what you need. An estimate before anyone travels, with the amount confirmed in writing.",
     serviceDescriptionSuffix:
       "Independent tradesperson, amount settled on the phone before travel.",
-    zonesTitle: "Areas we cover — locksmith in Paris and Île-de-France",
+    zonesTitle: "Areas we cover — locksmith in Paris, Île-de-France and France",
     zonesDescription:
-      "All 20 Paris arrondissements, the seven departments of Île-de-France and the towns we cover elsewhere in France: door opening, lock replacement and door reinforcement, amount settled before travel.",
+      "All 20 Paris arrondissements, the seven departments of Île-de-France and the rest of France: door opening, lock replacement and door reinforcement, amount settled before travel.",
     zoneDescriptionSuffix:
       "Door opening, lock replacement, door reinforcement. Independent tradesperson, amount settled before travel.",
     zoneDescriptionSuffixNetwork:
