@@ -1,6 +1,6 @@
 // Central brand/config constants. Never inline these values elsewhere.
 
-export const BRAND_NAME = "Serrurier Paris Express";
+export const BRAND_NAME = "Serrurier Express";
 
 /**
  * The live origin. Canonicals, hreflang, the sitemap, OG URLs and the

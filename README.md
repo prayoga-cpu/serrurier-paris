@@ -1,4 +1,4 @@
-# Serrurier Paris Express — site
+# Serrurier Express — site
 
 A static-export Next.js site for a Paris locksmith, built around one thesis:
 the price quoted is the price paid. See [`CLAUDE.md`](./CLAUDE.md) for the

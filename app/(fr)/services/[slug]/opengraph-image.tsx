@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { BRAND_NAME } from "@/lib/config";
 import { ogImage, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og";
 import { getDictionary } from "@/lib/i18n";
 import { SERVICES, getLocalizedService } from "@/lib/services";
@@ -12,7 +13,7 @@ export function generateStaticParams() {
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = "Serrurier Paris Express";
+export const alt = BRAND_NAME;
 
 export default async function Image({
   params,
