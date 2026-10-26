@@ -71,11 +71,10 @@ const fr = {
     // opens with it, and the shorter label stays on one line on a phone.
     eyebrow: "Île-de-France et toute la France",
     availableNow: "Disponible maintenant",
-    // CLAUDE.md §0 (B4) / §15 Finding 2 — own words, not the reference site's.
-    // "à Paris" left the H1 on 24/10/2026 at the client's request: the site now
-    // covers Île-de-France and the rest of France. The §5 keyword "serrurier
+    // Client's own wording (26/10/2026), tutoiement included, verbatim. Replaces
+    // "Serrurier : le prix d'abord, l'outil ensuite." The §5 keyword "serrurier
     // paris" is kept in meta.homeTitle (the <title>), which outweighs the H1.
-    title: "Serrurier : le prix d'abord, l'outil ensuite.",
+    title: "Trouve ton serrurier en 1 clic",
     lead: "Ouverture de porte, changement de serrure, blindage. Vous connaissez le montant avant que l'artisan ne prenne la route, et il vous est confirmé par écrit avant toute intervention.",
     photoTitle: "Un tarif tenu, en Île-de-France comme partout en France",
     photoAlt:
@@ -626,7 +625,7 @@ const en: Dictionary = {
   hero: {
     eyebrow: "Île-de-France and across France",
     availableNow: "Available now",
-    title: "Locksmith: price first, tools second.",
+    title: "Find your locksmith in 1 click",
     lead: "Door opening, lock replacement, door reinforcement. You know the amount before the tradesperson sets off, and it is confirmed to you in writing before any work begins.",
     photoTitle: "A price that holds, in Île-de-France and across France",
     photoAlt:
