@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import RootShell from "@/components/RootShell";
 import { DOMAIN } from "@/lib/config";
 import "../globals.css";
@@ -6,6 +6,12 @@ import "../globals.css";
 // See the FR layout — same reason: resolves the colocated OG image absolutely.
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${DOMAIN}`),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#182941",
+  width: "device-width",
+  initialScale: 1,
 };
 
 // English root layout — English is secondary and lives prefixed at /en. See

@@ -2,6 +2,8 @@
 // (/, /tarifs, /services/…); English is secondary and prefixed (/en/…). Keeping
 // French unprefixed means no already-indexed URL moves when EN ships.
 
+import { DOMAIN } from "@/lib/config";
+
 export const LOCALES = ["fr", "en"] as const;
 export type Locale = (typeof LOCALES)[number];
 
@@ -521,9 +523,9 @@ const fr = {
     orCall: "Ou appelez-nous directement",
     summaryLabel: "Récapitulatif envoyé",
     editRequest: "Modifier ma demande",
-    quoteHeader: "Demande de devis — site parisunlockdoor.fr",
-    contactHeader: "Message depuis le site parisunlockdoor.fr",
-    proHeader: "Demande professionnelle — site parisunlockdoor.fr",
+    quoteHeader: `Demande de devis — site ${DOMAIN}`,
+    contactHeader: `Message depuis le site ${DOMAIN}`,
+    proHeader: `Demande professionnelle — site ${DOMAIN}`,
     fieldService: "Intervention",
     fieldOption: "Précisions",
     fieldPostal: "Code postal",
@@ -1052,9 +1054,9 @@ const en: Dictionary = {
     orCall: "Or call us directly",
     summaryLabel: "Summary sent",
     editRequest: "Edit my request",
-    quoteHeader: "Quote request — parisunlockdoor.fr",
-    contactHeader: "Message from parisunlockdoor.fr",
-    proHeader: "Business enquiry — parisunlockdoor.fr",
+    quoteHeader: `Quote request — ${DOMAIN}`,
+    contactHeader: `Message from ${DOMAIN}`,
+    proHeader: `Business enquiry — ${DOMAIN}`,
     fieldService: "Service",
     fieldOption: "Details",
     fieldPostal: "Postcode",

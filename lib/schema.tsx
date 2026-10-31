@@ -4,8 +4,6 @@ import { getStartingPriceTTC } from "@/lib/pricing";
 import type { LocalizedService } from "@/lib/services";
 import { ZONES } from "@/lib/zones";
 
-const SITE_URL = `https://${DOMAIN}`;
-
 // Coverage as actually published, derived from lib/zones rather than listed by
 // hand. CLAUDE.md §14 P1 requires areaServed to match real coverage; a hand-kept
 // list drifts the moment a zone page is added or removed, and an areaServed
@@ -32,18 +30,41 @@ const AREA_SERVED = [
   ),
 ];
 
+export function websiteSchema() {
+  const siteUrl = `https://${DOMAIN}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    url: siteUrl,
+    name: BRAND_NAME,
+    inLanguage: ["fr-FR", "en"],
+  };
+}
+
 export function localBusinessSchema() {
+  const siteUrl = `https://${DOMAIN}`;
   return {
     "@context": "https://schema.org",
     "@type": "Locksmith",
+    "@id": `${siteUrl}/#locksmith`,
     name: BRAND_NAME,
-    url: SITE_URL,
+    url: siteUrl,
+    image: `${siteUrl}/paris-bg.jpg`,
+    logo: `${siteUrl}/icon-logo.svg`,
     telephone: PHONE_HREF.replace("tel:", ""),
+    priceRange: "€€",
     areaServed: AREA_SERVED,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Paris",
+      addressRegion: "Île-de-France",
       addressCountry: "FR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 48.8566,
+      longitude: 2.3522,
     },
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
@@ -63,6 +84,7 @@ export function localBusinessSchema() {
 }
 
 export function serviceSchema(service: LocalizedService, lang: Locale) {
+  const siteUrl = `https://${DOMAIN}`;
   const startingPriceTTC = getStartingPriceTTC(service.slug);
 
   return {
@@ -71,22 +93,20 @@ export function serviceSchema(service: LocalizedService, lang: Locale) {
     serviceType: service.title,
     name: service.title,
     description: service.summary,
-    url: `${SITE_URL}${localePath(lang, `/services/${service.slug}`)}`,
+    url: `${siteUrl}${localePath(lang, `/services/${service.slug}`)}`,
     inLanguage: HTML_LANG[lang],
     provider: {
       "@type": "Locksmith",
+      "@id": `${siteUrl}/#locksmith`,
       name: BRAND_NAME,
+      telephone: PHONE_HREF.replace("tel:", ""),
     },
     areaServed: AREA_SERVED,
-    // Real starting price where the client has confirmed one — CLAUDE.md §4
-    // wants structured price answers, since that's what generative engines
-    // pull. Services without a confirmed price emit no offer at all rather
-    // than a placeholder. The grid stores TTC, which is also what a consumer
-    // pays, so the figure here is the same number the page prints — markup and
-    // page can never disagree (CLAUDE.md §15 Finding 4).
     ...(startingPriceTTC !== undefined && {
       offers: {
         "@type": "Offer",
+        priceCurrency: "EUR",
+        price: startingPriceTTC,
         priceSpecification: {
           "@type": "PriceSpecification",
           priceCurrency: "EUR",
@@ -96,9 +116,6 @@ export function serviceSchema(service: LocalizedService, lang: Locale) {
         availability: "https://schema.org/InStock",
       },
     }),
-    // No WarrantyPromise node: the guarantee is real and stated in page copy,
-    // but its duration isn't client-confirmed, and an empty WarrantyPromise
-    // would be meaningless markup. Add it here once the term is confirmed.
   };
 }
 
@@ -122,6 +139,7 @@ export function faqSchema(
 }
 
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
+  const siteUrl = `https://${DOMAIN}`;
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -129,7 +147,7 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `${SITE_URL}${item.path}`,
+      item: `${siteUrl}${item.path}`,
     })),
   };
 }

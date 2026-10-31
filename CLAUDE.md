@@ -35,6 +35,15 @@ Built by PRIONATION.io | Priority Foundation. Client: Serrurier Express (named S
 
 ---
 
+> **What changed in v1.7 — production domain cutover & Google Search readiness, 31/10/2026.**
+>
+> - ✅ **B2 domain cutover:** `DOMAIN` switched to `www.trouvetonserrurier.fr` (with `NEXT_PUBLIC_DOMAIN` env support). Canonicals, hreflang, sitemaps, OG tags, and structured data now resolve to the verified production domain.
+> - ✅ **Robots & sitemaps:** Replaced static `public/robots.txt` with App Router dynamic `app/robots.ts`. Sitemaps in `app/sitemap.ts` now output `x-default` alternate hreflang tags per Google Search Central multilingual specification.
+> - ✅ **Schema.org enriched:** Added `WebSite` schema, full Google-compliant `Locksmith` LocalBusiness schema (`image`, `logo`, `priceRange`, `geo` coordinates, and `addressRegion`), and linked `Service` provider `@id` with numeric prices.
+> - ✅ **Meta & Viewport:** Added `summary_large_image` Twitter cards, explicit robots directives (`max-image-preview: large`), and mobile theme color (`#182941`).
+>
+> ---
+
 > **What changed in v1.6 — brand rename and national positioning, 24/10/2026.** Client feedback relayed via WhatsApp:
 >
 > - ⚠️ **B1 reopened and re-closed: the brand is now "Serrurier Express"** (was "Serrurier Paris Express"). `BRAND_NAME` changed, so titles, OG, schema, emails and legal pages all follow. The 8 `opengraph-image.tsx` files had the old name inlined as `alt`; they now import `BRAND_NAME`. Prod sets no `MAIL_FROM`, so the sender name follows too. The domain (`parisunlockdoor.fr`) and the repo name keep "paris"; that's expected.

@@ -6,14 +6,11 @@ export const BRAND_NAME = "Serrurier Express";
  * The live origin. Canonicals, hreflang, the sitemap, OG URLs and the
  * LocalBusiness schema all derive from this one constant.
  *
- * Deliberately the Vercel deployment URL for now, not parisunlockdoor.fr:
- * that domain is bought but not yet pointed at this build (CLAUDE.md §0 B2),
- * and canonicals must name a URL that actually serves the page. Nothing is in
- * Search Console yet, so no ranking equity is being staked on this hostname.
- * Switch this one line — plus the Sitemap: line in public/robots.txt — the day
- * DNS cuts over, and add a redirect from this host to the new one.
+ * Configurable via NEXT_PUBLIC_DOMAIN env var, defaulting to the verified
+ * production domain trouvetonserrurier.fr.
  */
-export const DOMAIN = "serrurier-paris-theta.vercel.app";
+export const DOMAIN =
+  process.env.NEXT_PUBLIC_DOMAIN || "www.trouvetonserrurier.fr";
 
 export const PHONE_DISPLAY = "07 83 14 89 94";
 export const PHONE_HREF = "tel:+33783148994";

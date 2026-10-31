@@ -55,6 +55,9 @@ function allowedOrigins(request: Request): string[] {
   return [
     requestOrigin(request),
     `https://${DOMAIN}`,
+    "https://trouvetonserrurier.fr",
+    "https://www.trouvetonserrurier.fr",
+    "https://serrurier-paris-theta.vercel.app",
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
     process.env.VERCEL_PROJECT_PRODUCTION_URL
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`

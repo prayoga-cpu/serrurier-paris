@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import RootShell from "@/components/RootShell";
 import { DOMAIN } from "@/lib/config";
 import "../globals.css";
@@ -8,6 +8,12 @@ import "../globals.css";
 // image route is resolved against the layout.
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${DOMAIN}`),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#182941",
+  width: "device-width",
+  initialScale: 1,
 };
 
 // French root layout — French is the primary locale and lives unprefixed at the

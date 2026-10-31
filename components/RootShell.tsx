@@ -1,7 +1,7 @@
 import Analytics from "@/components/Analytics";
 import { fontVariables } from "@/lib/fonts";
 import { HTML_LANG, type Locale } from "@/lib/i18n";
-import { JsonLd, localBusinessSchema } from "@/lib/schema";
+import { JsonLd, localBusinessSchema, websiteSchema } from "@/lib/schema";
 
 /**
  * The <html>/<body> shell. There is one root layout per locale (app/(fr) and
@@ -30,6 +30,7 @@ export default function RootShell({
         className="flex min-h-full flex-col bg-paper text-ink"
         suppressHydrationWarning
       >
+        <JsonLd data={websiteSchema()} />
         <JsonLd data={localBusinessSchema()} />
         {children}
         <Analytics lang={lang} />

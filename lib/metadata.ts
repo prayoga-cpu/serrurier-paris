@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BRAND_NAME, DOMAIN } from "@/lib/config";
-import { alternates, getDictionary, type Locale } from "@/lib/i18n";
+import { alternates, getDictionary, localePath, type Locale } from "@/lib/i18n";
 import {
   getMentionsLegalesContent,
   getCgvContent,
@@ -43,17 +43,39 @@ function base(
   title: string,
   description: string,
 ): Metadata {
+  const url = `https://${DOMAIN}${localePath(lang, path)}`;
   return {
     metadataBase: new URL(`https://${DOMAIN}`),
     title,
     description,
     alternates: alternates(lang, path),
+    icons: {
+      icon: "/icon.svg",
+      apple: "/icon.svg",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
       title,
       description,
+      url,
       locale: OG_LOCALE[lang],
       type: "website",
       siteName: BRAND_NAME,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
     },
   };
 }

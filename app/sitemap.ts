@@ -1,26 +1,28 @@
 import type { MetadataRoute } from "next";
 import { DOMAIN } from "@/lib/config";
-import { LOCALES, localePath, type Locale } from "@/lib/i18n";
+import { LOCALES, DEFAULT_LOCALE, localePath, type Locale } from "@/lib/i18n";
 import { GUIDES } from "@/lib/guides";
 import { SERVICES } from "@/lib/services";
 import { TASKS } from "@/lib/tasks";
 import { ZONES } from "@/lib/zones";
 
-const SITE_URL = `https://${DOMAIN}`;
-
 export const dynamic = "force-static";
 
 function entry(lang: Locale, path: string): MetadataRoute.Sitemap[number] {
+  const siteUrl = `https://${DOMAIN}`;
   return {
-    url: `${SITE_URL}${localePath(lang, path)}`,
+    url: `${siteUrl}${localePath(lang, path)}`,
     lastModified: new Date(),
     alternates: {
-      languages: Object.fromEntries(
-        LOCALES.map((locale) => [
-          locale,
-          `${SITE_URL}${localePath(locale, path)}`,
-        ]),
-      ),
+      languages: {
+        ...Object.fromEntries(
+          LOCALES.map((locale) => [
+            locale,
+            `${siteUrl}${localePath(locale, path)}`,
+          ]),
+        ),
+        "x-default": `${siteUrl}${localePath(DEFAULT_LOCALE, path)}`,
+      },
     },
   };
 }
