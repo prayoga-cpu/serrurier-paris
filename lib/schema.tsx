@@ -1,4 +1,4 @@
-import { BRAND_NAME, DOMAIN, PHONE_HREF } from "@/lib/config";
+import { BRAND_NAME, BUSINESS_ADDRESS, DOMAIN, PHONE_HREF } from "@/lib/config";
 import { HTML_LANG, localePath, type Locale } from "@/lib/i18n";
 import { getStartingPriceTTC } from "@/lib/pricing";
 import type { LocalizedService } from "@/lib/services";
@@ -55,16 +55,21 @@ export function localBusinessSchema() {
     telephone: PHONE_HREF.replace("tel:", ""),
     priceRange: "€€",
     areaServed: AREA_SERVED,
+    // The registered seat, matching the SIRET record and the legal pages, so
+    // the address Google reads here, the one on Search/Maps and the one a
+    // visitor finds in the business register all agree (NAP consistency).
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Paris",
-      addressRegion: "Île-de-France",
-      addressCountry: "FR",
+      streetAddress: BUSINESS_ADDRESS.street,
+      postalCode: BUSINESS_ADDRESS.postalCode,
+      addressLocality: BUSINESS_ADDRESS.locality,
+      addressRegion: BUSINESS_ADDRESS.region,
+      addressCountry: BUSINESS_ADDRESS.country,
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 48.8566,
-      longitude: 2.3522,
+      latitude: BUSINESS_ADDRESS.latitude,
+      longitude: BUSINESS_ADDRESS.longitude,
     },
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",

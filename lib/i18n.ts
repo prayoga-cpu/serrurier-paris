@@ -407,6 +407,8 @@ const fr = {
       "Vérification systématique du droit d'accès avant toute ouverture : pièce d'identité, facture ou attestation de domicile.",
     ],
     identityTitle: "Identité de l'entreprise",
+    legalFormLabel: "Forme juridique",
+    addressLabel: "Siège",
     identityPending:
       "Le numéro SIRET et le code APE seront publiés ici et dans le pied de page dès leur communication. Nous préférons une ligne absente à un numéro approximatif : un identifiant faux est pire qu'un identifiant manquant.",
     commitmentsTitle: "Nos engagements, en clair",
@@ -941,6 +943,8 @@ const en: Dictionary = {
       "Proof of the right of access checked before any opening: ID, a bill or a tenancy document.",
     ],
     identityTitle: "Business identity",
+    legalFormLabel: "Legal form",
+    addressLabel: "Registered address",
     identityPending:
       "The SIRET and APE registration numbers will be published here and in the footer as soon as they're available. We'd rather show a missing line than an approximate number: a wrong identifier is worse than none.",
     commitmentsTitle: "Our commitments, in plain terms",

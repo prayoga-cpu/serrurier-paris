@@ -1,4 +1,13 @@
-import { BRAND_NAME, DOMAIN, EMAIL, PHONE_DISPLAY } from "@/lib/config";
+import {
+  APE_CODE,
+  BRAND_NAME,
+  BUSINESS_ADDRESS_LINE,
+  DOMAIN,
+  EMAIL,
+  LEGAL_FORM,
+  PHONE_DISPLAY,
+  SIRET,
+} from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
 
 export type LegalSection = {
@@ -16,12 +25,13 @@ export type LegalPageContent = {
 
 // Everything here is either standard boilerplate that doesn't depend on
 // unconfirmed client facts, or publicly known third-party info (Vercel's own
-// hosting address). Anything that DOES depend on an unconfirmed fact — legal
-// form, SIRET, registered address, named legal representative, payment
-// methods, the designated consumer mediator — is marked pending rather than
-// invented. See CLAUDE.md §0/§12 (B1, SIRET, "which domain is live").
-const LAST_UPDATED = "26 juillet 2026";
-const LAST_UPDATED_EN = "26 July 2026";
+// hosting address), or a client fact read from lib/config (legal form, SIRET,
+// APE, registered address — supplied 03/11/2026 and checked against the
+// official register). Anything still unconfirmed — the named publication
+// director, payment methods, the designated consumer mediator — is marked
+// pending rather than invented. See CLAUDE.md §0/§12 (B1, SIRET, "which domain is live").
+const LAST_UPDATED = "3 novembre 2026";
+const LAST_UPDATED_EN = "3 November 2026";
 
 export function getMentionsLegalesContent(lang: Locale): LegalPageContent {
   if (lang === "en") {
@@ -34,8 +44,8 @@ export function getMentionsLegalesContent(lang: Locale): LegalPageContent {
           heading: "Site publisher",
           paragraphs: [
             `This site is published by ${BRAND_NAME}, an independent locksmith tradesperson operating in Paris, France.`,
-            "Legal form and SIRET (business registration) number: pending client confirmation, to be published here once available.",
-            "Registered address: pending client confirmation.",
+            `Legal form: ${LEGAL_FORM.en}. SIRET (business registration number): ${SIRET}. APE code: ${APE_CODE} (metal joinery and locksmithing).`,
+            `Registered address: ${BUSINESS_ADDRESS_LINE}.`,
           ],
           list: [`Phone: ${PHONE_DISPLAY}`, `Email: ${EMAIL}`],
         },
@@ -80,8 +90,8 @@ export function getMentionsLegalesContent(lang: Locale): LegalPageContent {
         heading: "Éditeur du site",
         paragraphs: [
           `Le présent site est édité par ${BRAND_NAME}, artisan serrurier indépendant exerçant à Paris.`,
-          "Forme juridique et numéro SIRET : en attente de confirmation client, seront publiés ici dès leur communication.",
-          "Adresse du siège : en attente de confirmation client.",
+          `Forme juridique : ${LEGAL_FORM.fr}. SIRET : ${SIRET}. Code APE : ${APE_CODE} (travaux de menuiserie métallique et serrurerie).`,
+          `Adresse du siège : ${BUSINESS_ADDRESS_LINE}.`,
         ],
         list: [`Téléphone : ${PHONE_DISPLAY}`, `Email : ${EMAIL}`],
       },
@@ -247,9 +257,14 @@ export function getPrivacyContent(lang: Locale): LegalPageContent {
         {
           heading: "Data controller",
           paragraphs: [
-            `${BRAND_NAME} is the data controller for information collected through this site. Business registration (SIRET) is pending client confirmation, to be published once available.`,
+            `${BRAND_NAME} is the data controller for information collected through this site.`,
           ],
-          list: [`Contact: ${EMAIL}`, `Phone: ${PHONE_DISPLAY}`],
+          list: [
+            `SIRET: ${SIRET}`,
+            `Address: ${BUSINESS_ADDRESS_LINE}`,
+            `Contact: ${EMAIL}`,
+            `Phone: ${PHONE_DISPLAY}`,
+          ],
         },
         {
           heading: "Data we collect",
@@ -332,9 +347,14 @@ export function getPrivacyContent(lang: Locale): LegalPageContent {
       {
         heading: "Responsable du traitement",
         paragraphs: [
-          `${BRAND_NAME} est responsable du traitement des données collectées via ce site. Le numéro SIRET est en attente de confirmation client et sera publié dès sa communication.`,
+          `${BRAND_NAME} est responsable du traitement des données collectées via ce site.`,
         ],
-        list: [`Contact : ${EMAIL}`, `Téléphone : ${PHONE_DISPLAY}`],
+        list: [
+          `SIRET : ${SIRET}`,
+          `Adresse : ${BUSINESS_ADDRESS_LINE}`,
+          `Contact : ${EMAIL}`,
+          `Téléphone : ${PHONE_DISPLAY}`,
+        ],
       },
       {
         heading: "Données collectées",

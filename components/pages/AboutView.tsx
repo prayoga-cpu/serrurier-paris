@@ -4,7 +4,14 @@ import MobileCallBar from "@/components/MobileCallBar";
 import Breadcrumb from "@/components/Breadcrumb";
 import ServiceCTA from "@/components/ServiceCTA";
 import { Eyebrow } from "@/components/Button";
-import { APE_CODE, EMAIL, PHONE_DISPLAY, SIRET } from "@/lib/config";
+import {
+  APE_CODE,
+  BUSINESS_ADDRESS_LINE,
+  EMAIL,
+  LEGAL_FORM,
+  PHONE_DISPLAY,
+  SIRET,
+} from "@/lib/config";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 
 /**
@@ -127,6 +134,12 @@ export default function AboutView({ lang }: { lang: Locale }) {
                   {dict.footer.apeLabel} : {APE_CODE}
                 </li>
               )}
+              <li>
+                {dict.aboutPage.legalFormLabel} : {LEGAL_FORM[lang]}
+              </li>
+              <li>
+                {dict.aboutPage.addressLabel} : {BUSINESS_ADDRESS_LINE}
+              </li>
             </ul>
             {!SIRET && (
               <p className="mt-4 text-sm leading-relaxed text-muted">

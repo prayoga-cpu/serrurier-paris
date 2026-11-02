@@ -35,6 +35,14 @@ Built by PRIONATION.io | Priority Foundation. Client: Serrurier Express (named S
 
 ---
 
+> **What changed in v1.9 — business identity published, Vercel link repaired, 03/11/2026.**
+>
+> - ✅ **SIRET `103 059 358 00012`, APE `43.32B`, registered seat _10 avenue Mahsa Jina Amini, 94250 Gentilly_**, supplied by the client and checked against the official register (recherche-entreprises.api.gouv.fr): valid, active, entrepreneur individuel, address and APE match exactly. Now in the footer, /a-propos, mentions légales, privacy policy and the `Locksmith` schema (`streetAddress`, `postalCode`, `addressLocality: Gentilly`, geo from the register's own BAN geocoding). One source: `SIRET`, `APE_CODE`, `LEGAL_FORM`, `BUSINESS_ADDRESS` in `lib/config.ts`.
+> - 🔴 **Open: the SIRET is registered as _"MOHAMED ZEBOUCHI (SERRURIER DEPANNEUR IDF)"_**, the trade name of `serrurier-depanneur-idf.fr`, which §12/§15 record as the reference site built by a friend of Rani's and _not_ a client property. Either the two sites are one business, or the wrong SIRET was passed on. It matters three ways: (1) for an EI the mentions légales must name the entrepreneur ("Prénom Nom EI"), which isn't published yet; (2) the anti-scam guide tells visitors to check the company name against the SIRET, and today they find a different name; (3) if it is one business, Google treats two sites with overlapping copy for the same business as duplicates, and a single business gets a single Google Business Profile. Get written confirmation from Rani before ads run.
+> - ✅ **Vercel: why v1.7 was refused.** The project was transferred from the `prayoga-development` (personal) team, where the 31/10 deploy hit _"Account is blocked"_, to the **`epidom`** team, where every deploy since has succeeded. The local `.vercel/project.json` still named the old team, so the CLI reported the project as missing; it now points at `epidom` (`team_40PBrj63…`). Production env checked: `NEXT_PUBLIC_DOMAIN` unset (so `www.trouvetonserrurier.fr`), sample reviews off.
+>
+> ---
+
 > **What changed in v1.8 — Search Console readiness audit, 02/11/2026.** Crawled every sitemap URL on a production build and the live domain before submitting to Google.
 >
 > - ✅ **v1.7 had never reached production; v1.8 has.** Vercel refused `c3bbc87` with _"Account is blocked"_ (account-level, not a code fault), so until 02/11 the live robots.txt, all 136 sitemap URLs and every canonical still named `serrurier-paris-theta.vercel.app`. The block had lifted by the time `c13d356` was pushed: it deployed, and the live site was re-crawled clean on `www.trouvetonserrurier.fr`. If a deploy is ever refused again, check `gh api repos/prayoga-cpu/serrurier-paris/commits/<sha>/status`, because the site keeps serving the last good build silently.
@@ -102,7 +110,7 @@ All four blockers below are now **closed by the client**. Kept in place as the d
 
 ✅ **Why the B3 sequence is worth keeping.** The original override was recorded and implemented correctly; then market evidence contradicted the underlying fact; the fact was reopened rather than treated as settled; the client resolved it with real data. A published price is a public credibility claim, not just a config value — which is exactly why reopening it was worth the friction.
 
-Still unconfirmed, needed before launch but not before code: **SIRET and APE code** — `lib/config.ts` holds both as `null`, and the footer identifier block renders each line only once its value is non-null, so filling them in is the entire change — and **real customer reviews** (no `AggregateRating` until they exist).
+✅ **SIRET, APE, legal form and registered address published 03/11/2026** (v1.9), all from `lib/config.ts`. Still unconfirmed: **real customer reviews** (no `AggregateRating` until they exist) and 🔴 **whose business the SIRET is** (see v1.9: it is registered under the reference site's trade name).
 
 ---
 
@@ -414,7 +422,7 @@ Study for structure and messaging, not visual style (the vertical is aesthetical
 | Guarantee                    | 🆕 Installation guarantee confirmed as a formal commitment                                                                                                                                                                                                                                                                                                                   |
 | Insurance                    | 🆕 "Qualifiés et assurés" stated, supports LSA verification                                                                                                                                                                                                                                                                                                                  |
 | Business name                | ✅ **"Serrurier Express"** since 24/10/2026 (client renamed it from "Serrurier Paris Express", the B1 name of 12/08/2026). One constant: `BRAND_NAME` in `lib/config.ts`                                                                                                                                                                                                     |
-| SIRET                        | 🔴 still pending, with APE code. `lib/config.ts` — the footer renders each identifier only once it's non-null                                                                                                                                                                                                                                                                |
+| SIRET                        | ✅ `103 059 358 00012`, APE `43.32B`, EI, seat 10 avenue Mahsa Jina Amini, 94250 Gentilly (03/11/2026, register-checked). 🔴 Registered to _Mohamed Zebouchi (Serrurier Dépanneur IDF)_, see v1.9                                                                                                                                                                            |
 | Blindage price               | ✅ B3 closed 12/08/2026 (market grid), then re-rounded per brief point 2: published at **1 070 € TTC (891,67 € HT)**. `lib/pricing.ts` now stores **TTC as canonical** and derives HT — the reverse of what §4 originally documented                                                                                                                                         |
 | Which domain is live         | B2's _target_ is settled (parisunlockdoor.fr), but the host actually live is **`serrurier-paris-theta.vercel.app`**, and canonicals/hreflang/sitemap/OG/schema all name it. Nothing is in Search Console yet, so no ranking equity is staked on it. Cutover = one line in `lib/config.ts` + the `Sitemap:` line in `public/robots.txt`, then a redirect from the Vercel host |
 | Area served                  | ✅ Paris 1–20, 7 IDF department hubs and 8 IDF city pages, serviced **directly**. Plus 6 city pages outside IDF (Clermont-Ferrand, Limoges, Le Mans, Perpignan, Brest, Caen) marked `coverage: "network"` in `lib/zones/national.ts` — they promise coverage, not a Paris artisan on site. Response time stays "moins de 30 minutes selon le secteur"                        |
@@ -434,7 +442,7 @@ Study for structure and messaging, not visual style (the vertical is aesthetical
 - [x] Sticky tap-to-call on mobile, split urgent/planned CTAs — sticky bar and header CTA both open the call/WhatsApp chooser; `/devis` is the separate planned path; B2B pages route to their own enquiry form
 - [x] No `.lovable.app` references anywhere
 - [x] 🔴 B1, B2, B3, B4 all resolved — all four closed by the client on 12/08/2026, see §0
-- [ ] SIRET published, legal pages complete — legal pages built (FR+EN, footer-linked). SIRET, APE, legal form, registered address, publication director, payment methods and the designated mediator are all marked pending in-page rather than invented. Fill `lib/config.ts` (SIRET, APE — they then appear in the sitewide footer) and `lib/legal.ts` (the rest)
+- [ ] SIRET published, legal pages complete — ✅ SIRET, APE, legal form and registered address published 03/11/2026 (footer, /a-propos, mentions légales, privacy policy, `Locksmith` schema). Still pending in-page rather than invented: the publication director (for an EI, legally the entrepreneur, named as such), payment methods and the designated mediator, all in `lib/legal.ts`
 - [x] Custom OG images on key pages — 16 generated at build time via `next/og` (home, /tarifs, /devis, 5 services, ×2 locales). Guides and zone pages fall back to the shared card in `lib/og.tsx`
 - [x] 🆕 Two B2B service pages live (premises security, maintenance contracts) — both built, with a dedicated B2B enquiry form (structure, role incl. syndic, number of sites, need) and a proposal-first CTA instead of an emergency call
 - [ ] 🆕 Online booking flow working, three conversion paths measured separately — slot picker built on both the hero form and `/devis`; it submits a _preferred_ slot, not a confirmed reservation, and the copy says so. ✅ Requests now reach the business by **email** (`/api/submit` → Resend) as well as WhatsApp, so delivery no longer depends on the visitor finishing the WhatsApp step. Separate measurement is still blocked on the GTM item above
@@ -475,7 +483,7 @@ _These were public and each one undercut the honest-pricing positioning the bran
 
 ### ✅ P1.5 — Trust signals (done)
 
-- [x] Business identifiers in the sitewide footer — "Artisan serrurier indépendant, qualifié et assuré", with SIRET and APE lines that render as soon as `lib/config.ts` has them. 🔴 Still waiting on those two values
+- [x] Business identifiers in the sitewide footer — "Artisan serrurier indépendant, qualifié et assuré", with SIRET and APE lines that render as soon as `lib/config.ts` has them. ✅ Both live since 03/11/2026
 - [x] The 24/01/2017 written-quote notice moved into the sitewide footer, not just `/tarifs`
 - [x] Starting price on every homepage service card
 - [x] Missing price lines filled: cylinder, multipoints 3 and 5 points, sécurisation après effraction

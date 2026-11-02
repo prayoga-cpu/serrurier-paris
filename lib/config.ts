@@ -33,11 +33,38 @@ export function whatsappHref(message?: string): string {
 
 // Business identifiers published in the footer and the legal pages — the cheap,
 // real trust signal the audit found the reference site doing better (CLAUDE.md
-// §14 P1.5 / §15). Both are still 🔴 blocked on the client: the footer renders
-// each line only once its value is non-null, so filling them in here is the
-// whole change. Never invent these — a wrong SIRET is worse than none.
-export const SIRET: string | null = null;
-export const APE_CODE: string | null = null; // e.g. "4332B" — menuiserie/serrurerie
+// §14 P1.5 / §15). The footer and /a-propos render each line only when its value
+// is non-null. Never invent these — a wrong SIRET is worse than none.
+//
+// Supplied by the client 03/11/2026 and checked the same day against the
+// official register (recherche-entreprises.api.gouv.fr): SIRET valid and
+// active, entrepreneur individuel, APE 43.32B, seat at BUSINESS_ADDRESS below.
+// Formatted the way the register displays them, so a visitor following the
+// anti-scam guide's "check the SIRET" advice can match it at a glance.
+export const SIRET: string | null = "103 059 358 00012";
+export const APE_CODE: string | null = "43.32B"; // travaux de menuiserie métallique et serrurerie
+export const LEGAL_FORM = {
+  fr: "Entrepreneur individuel (EI)",
+  en: "Sole trader (entrepreneur individuel, EI)",
+} as const;
+
+/**
+ * Registered business address (siège), as recorded against the SIRET. Used by
+ * the Locksmith schema, the legal pages and /a-propos. The coordinates are the
+ * register's own geocoding of this address (Base Adresse Nationale).
+ */
+export const BUSINESS_ADDRESS = {
+  street: "10 avenue Mahsa Jina Amini",
+  postalCode: "94250",
+  locality: "Gentilly",
+  region: "Île-de-France",
+  country: "FR",
+  latitude: 48.81498,
+  longitude: 2.33334,
+} as const;
+
+/** One-line postal form, identical in both locales: "…, 94250 Gentilly, France". */
+export const BUSINESS_ADDRESS_LINE = `${BUSINESS_ADDRESS.street}, ${BUSINESS_ADDRESS.postalCode} ${BUSINESS_ADDRESS.locality}, France`;
 
 // Paths are locale-agnostic — run them through localePath() to render.
 // Labels live in the dictionary, keyed by `key`. See lib/i18n.ts.
