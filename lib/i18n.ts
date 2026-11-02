@@ -34,9 +34,12 @@ export function localePath(lang: Locale, path: string): string {
 export function alternates(lang: Locale, path: string) {
   return {
     canonical: localePath(lang, path),
+    // Keyed by HTML_LANG so the head tags and app/sitemap.ts emit identical
+    // hreflang codes — they had drifted (fr-FR here, fr in the sitemap).
     languages: {
-      "fr-FR": localePath("fr", path),
-      en: localePath("en", path),
+      ...Object.fromEntries(
+        LOCALES.map((locale) => [HTML_LANG[locale], localePath(locale, path)]),
+      ),
       "x-default": localePath(DEFAULT_LOCALE, path),
     },
   };
@@ -560,7 +563,7 @@ const fr = {
     homeTitle: "Serrurier à Paris, prix transparent",
     homeDescription:
       "Ouverture de porte, changement de serrure et blindage à Paris. Artisan indépendant, prix annoncé avant intervention, jamais de mauvaise surprise.",
-    pricingTitle: "Prix serrurier Paris — grille tarifaire transparente",
+    pricingTitle: "Prix serrurier Paris — tarifs transparents",
     pricingDescription:
       "La grille tarifaire de nos interventions à Paris : ouverture de porte, changement de serrure, blindage. Tarif toujours annoncé avant travaux.",
     devisTitle: "Demande de devis serrurier Paris",
@@ -568,8 +571,7 @@ const fr = {
       "Vérifiez si nous intervenons dans votre secteur et décrivez votre besoin. Estimation avant tout déplacement, montant confirmé par écrit.",
     serviceDescriptionSuffix:
       "Artisan indépendant, montant fixé au téléphone avant le déplacement.",
-    zonesTitle:
-      "Zones d'intervention — serrurier Paris, Île-de-France et France",
+    zonesTitle: "Zones : serrurier Paris, Île-de-France et France",
     zonesDescription:
       "Les 20 arrondissements de Paris, les sept départements d'Île-de-France et toute la France : ouverture de porte, changement de serrure et blindage, montant fixé avant le déplacement.",
     zoneDescriptionSuffix:
@@ -1099,7 +1101,7 @@ const en: Dictionary = {
       "Check we cover your area and describe what you need. An estimate before anyone travels, with the amount confirmed in writing.",
     serviceDescriptionSuffix:
       "Independent tradesperson, amount settled on the phone before travel.",
-    zonesTitle: "Areas we cover — locksmith in Paris, Île-de-France and France",
+    zonesTitle: "Locksmith areas: Paris, Île-de-France and France",
     zonesDescription:
       "All 20 Paris arrondissements, the seven departments of Île-de-France and the rest of France: door opening, lock replacement and door reinforcement, amount settled before travel.",
     zoneDescriptionSuffix:
@@ -1112,7 +1114,7 @@ const en: Dictionary = {
     aboutTitle: "About — independent locksmith in Paris",
     aboutDescription:
       "Who turns up, with what qualifications and what commitments. An independent tradesperson, reachable directly: the price is quoted before anyone travels.",
-    guidesTitle: "Locksmith guides — prices, security and emergencies",
+    guidesTitle: "Locksmith guides — prices, security, emergencies",
     guidesDescription:
       "Our guides to what a locksmith costs in Paris, how to read a quote, the A2P standard and insurance claims. Written to be useful, not to sell.",
     inParis: "in Paris",

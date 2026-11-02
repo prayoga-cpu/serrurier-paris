@@ -10,6 +10,7 @@ import { getLocalizedGuide } from "@/lib/guides";
 import { getLocalizedService } from "@/lib/services";
 import { getLocalizedTask } from "@/lib/tasks";
 import { getLocalizedZone } from "@/lib/zones";
+import { OG_CONTENT_TYPE, OG_SIZE } from "@/lib/og";
 import {
   formatPrice,
   getStartingPriceTTC,
@@ -33,6 +34,18 @@ function withPrice(description: string, suffix: string): string {
 }
 
 /**
+ * Google truncates titles at roughly 60–70 characters, and it shows the site
+ * name in its own slot above the result anyway. So the " — Serrurier Express"
+ * suffix is appended only while it fits: a long page title keeps its keywords
+ * whole rather than losing its tail to an ellipsis.
+ */
+const TITLE_MAX = 70;
+function brandTitle(title: string, separator: "—" | "|"): string {
+  const full = `${title} ${separator} ${BRAND_NAME}`;
+  return full.length <= TITLE_MAX ? full : title;
+}
+
+/**
  * Every page gets a unique title + description per locale, plus self-referencing
  * canonical and hreflang alternates. CLAUDE.md §7 — duplicate meta is what broke
  * indexing on the prototype, so this is the single place titles are built.
@@ -42,6 +55,7 @@ function base(
   path: string,
   title: string,
   description: string,
+  ogImage: "shared" | "colocated" = "shared",
 ): Metadata {
   const url = `https://${DOMAIN}${localePath(lang, path)}`;
   return {
@@ -71,6 +85,22 @@ function base(
       locale: OG_LOCALE[lang],
       type: "website",
       siteName: BRAND_NAME,
+      // Shared branded card (app/og/[lang]/route.tsx) for every page without
+      // its own opengraph-image.tsx. Pages WITH one must pass "colocated":
+      // Next only applies a colocated file when the page's metadata leaves
+      // `openGraph.images` unset, so setting it here would silently replace
+      // their dedicated card. twitter:image is filled from og:image either way,
+      // because the twitter block below sets no images.
+      ...(ogImage === "shared" && {
+        images: [
+          {
+            url: `/og/${lang}`,
+            ...OG_SIZE,
+            type: OG_CONTENT_TYPE,
+            alt: BRAND_NAME,
+          },
+        ],
+      }),
     },
     twitter: {
       card: "summary_large_image",
@@ -94,6 +124,7 @@ export function homeMetadata(lang: Locale): Metadata {
         dict.meta.priceSuffix,
       ),
     ),
+    "colocated",
   );
 }
 
@@ -102,7 +133,7 @@ export function pricingMetadata(lang: Locale): Metadata {
   return base(
     lang,
     "/tarifs",
-    `${dict.meta.pricingTitle} | ${BRAND_NAME}`,
+    brandTitle(dict.meta.pricingTitle, "|"),
     withPrice(
       dict.meta.pricingDescription,
       priceLine(
@@ -111,6 +142,7 @@ export function pricingMetadata(lang: Locale): Metadata {
         dict.meta.priceSuffix,
       ),
     ),
+    "colocated",
   );
 }
 
@@ -119,8 +151,9 @@ export function devisMetadata(lang: Locale): Metadata {
   return base(
     lang,
     "/devis",
-    `${dict.meta.devisTitle} | ${BRAND_NAME}`,
+    brandTitle(dict.meta.devisTitle, "|"),
     dict.meta.devisDescription,
+    "colocated",
   );
 }
 
@@ -135,13 +168,14 @@ export function serviceMetadata(lang: Locale, slug: string): Metadata {
   return base(
     lang,
     `/services/${service.slug}`,
-    `${service.title} ${dict.meta.inParis} — ${BRAND_NAME}`,
+    brandTitle(`${service.title} ${dict.meta.inParis}`, "—"),
     startingPriceTTC === undefined
       ? description
       : withPrice(
           description,
           priceLine(lang, startingPriceTTC, dict.meta.servicePriceSuffix),
         ),
+    "colocated",
   );
 }
 
@@ -150,7 +184,7 @@ export function zonesIndexMetadata(lang: Locale): Metadata {
   return base(
     lang,
     "/zones",
-    `${dict.meta.zonesTitle} | ${BRAND_NAME}`,
+    brandTitle(dict.meta.zonesTitle, "|"),
     dict.meta.zonesDescription,
   );
 }
@@ -177,7 +211,7 @@ export function zoneMetadata(lang: Locale, slug: string): Metadata {
   return base(
     lang,
     `/${zone.slug}`,
-    `${zone.title} — ${BRAND_NAME}`,
+    brandTitle(zone.title, "—"),
     isNetwork
       ? description
       : withPrice(
@@ -196,7 +230,7 @@ export function guidesIndexMetadata(lang: Locale): Metadata {
   return base(
     lang,
     "/guides",
-    `${dict.meta.guidesTitle} | ${BRAND_NAME}`,
+    brandTitle(dict.meta.guidesTitle, "|"),
     dict.meta.guidesDescription,
   );
 }
@@ -208,7 +242,7 @@ export function guideMetadata(lang: Locale, slug: string): Metadata {
   return base(
     lang,
     `/guides/${guide.slug}`,
-    `${guide.title} — ${BRAND_NAME}`,
+    brandTitle(guide.title, "—"),
     guide.summary,
   );
 }
@@ -224,7 +258,7 @@ export function taskMetadata(lang: Locale, slug: string): Metadata {
   return base(
     lang,
     `/${task.slug}`,
-    `${task.title} ${dict.meta.inParis} — ${BRAND_NAME}`,
+    brandTitle(`${task.title} ${dict.meta.inParis}`, "—"),
     startingPriceTTC === undefined
       ? description
       : withPrice(
@@ -239,7 +273,7 @@ export function aboutMetadata(lang: Locale): Metadata {
   return base(
     lang,
     "/a-propos",
-    `${dict.meta.aboutTitle} | ${BRAND_NAME}`,
+    brandTitle(dict.meta.aboutTitle, "|"),
     dict.meta.aboutDescription,
   );
 }
@@ -249,7 +283,7 @@ export function contactMetadata(lang: Locale): Metadata {
   return base(
     lang,
     "/contact",
-    `${dict.meta.contactTitle} | ${BRAND_NAME}`,
+    brandTitle(dict.meta.contactTitle, "|"),
     dict.meta.contactDescription,
   );
 }
@@ -259,14 +293,14 @@ export function mentionsLegalesMetadata(lang: Locale): Metadata {
   return base(
     lang,
     "/mentions-legales",
-    `${content.title} | ${BRAND_NAME}`,
+    brandTitle(content.title, "|"),
     content.intro,
   );
 }
 
 export function cgvMetadata(lang: Locale): Metadata {
   const content = getCgvContent(lang);
-  return base(lang, "/cgv", `${content.title} | ${BRAND_NAME}`, content.intro);
+  return base(lang, "/cgv", brandTitle(content.title, "|"), content.intro);
 }
 
 export function privacyMetadata(lang: Locale): Metadata {
@@ -274,7 +308,7 @@ export function privacyMetadata(lang: Locale): Metadata {
   return base(
     lang,
     "/politique-de-confidentialite",
-    `${content.title} | ${BRAND_NAME}`,
+    brandTitle(content.title, "|"),
     content.intro,
   );
 }

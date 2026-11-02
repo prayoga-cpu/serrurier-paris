@@ -35,6 +35,18 @@ Built by PRIONATION.io | Priority Foundation. Client: Serrurier Express (named S
 
 ---
 
+> **What changed in v1.8 — Search Console readiness audit, 02/11/2026.** Crawled every sitemap URL on a production build and the live domain before submitting to Google.
+>
+> - 🔴 **v1.7 never reached production.** Vercel refused to deploy `c3bbc87` with _"Account is blocked"_ (account-level, not a code fault: same author as the last successful deploy). Live is still the 26/10 build, so its robots.txt, all 136 sitemap URLs and every canonical name `serrurier-paris-theta.vercel.app`. **Do not submit the sitemap to Search Console until a deploy of v1.8 is live**: it would be rejected for naming another host. Also confirm `NEXT_PUBLIC_DOMAIN` is unset or `www.trouvetonserrurier.fr` in Vercel Production: `DOMAIN` reads it first.
+> - ✅ **Old host redirects.** `next.config.ts` 308s `serrurier-paris-theta.vercel.app/*` → `https://${DOMAIN}/*` (path + query kept). Preview hosts are unaffected; the list is filtered against `DOMAIN`, so it can't loop.
+> - ✅ **Every page has an OG image.** 116 pages (zones, guides, tasks, legal, /a-propos, /contact) emitted no `og:image`, so §13's "fall back to the shared card" was false: the page-level `openGraph` object replaces the layout's. They now point at `app/og/[lang]/route.tsx`. ⚠️ In this Next version a colocated `opengraph-image.tsx` is ignored whenever page metadata sets `openGraph.images`, so `base()` takes `"colocated"` for home, /tarifs, /devis and services. Pass it for any new page that gets its own card.
+> - ✅ **hreflang codes match.** Head tags and sitemap both key off `HTML_LANG` (`fr-FR`, `en`, `x-default`); they had drifted (`fr` in the sitemap).
+> - ✅ **Honest `lastmod`.** Only guides carry one (their `updated` date, which the page also prints). Everything else omits it rather than claiming a change on every deploy.
+> - ✅ **Titles ≤ 70 chars.** Four dictionary titles shortened; `brandTitle()` in `lib/metadata.ts` drops the brand suffix when it would push a title past 70, so no future page truncates.
+> - Verified: 136/136 URLs 200, self-canonical, indexable, unique title + description, one H1, valid JSON-LD, no broken or orphan internal links, real 404s.
+>
+> ---
+
 > **What changed in v1.7 — production domain cutover & Google Search readiness, 31/10/2026.**
 >
 > - ✅ **B2 domain cutover:** `DOMAIN` switched to `www.trouvetonserrurier.fr` (with `NEXT_PUBLIC_DOMAIN` env support). Canonicals, hreflang, sitemaps, OG tags, and structured data now resolve to the verified production domain.
